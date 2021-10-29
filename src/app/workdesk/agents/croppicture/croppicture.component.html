@@ -1,0 +1,61 @@
+<div class="grid-x grid-marginx" style="height: 64px;
+border-bottom: 1px solid #E5E5E5; padding: 16px;">
+<div class="cell large-6">
+    <input  id="file-input"type="file" (change)="fileChangeEvent($event)"  style="display: none;"/>
+    <label for="file-input"  class="upload">Choose File</label>
+</div>
+<div class="cell large-6" style="text-align: right;">
+    <span class="material-icons closebtn" mat-button [mat-dialog-close]="true" cdkFocusInitial>
+      close
+      </span>
+</div>
+</div>
+
+
+
+<!-- <button (click)="rotateLeft()">Rotate left</button>
+<button (click)="rotateRight()">Rotate right</button>
+<button (click)="flipHorizontal()">Flip horizontal</button>
+<button (click)="flipVertical()">Flip vertical</button> -->
+
+<!-- <button (click)="toggleContainWithinAspectRatio()">{{containWithinAspectRatio?'Fill Aspect Ratio':'Contain Within Aspect Ratio'}}</button>
+<button (click)="resetImage()">Reset image</button> -->
+
+<div class="grid-x">
+    <div class="cell large-12"  style="    height: 256px;
+    text-align: center;
+    background-color: #C4C4C4;
+    margin:16px 16px 0px 19px;
+    width: 490px;">
+        <image-cropper  style="background-color: #C4C4C4;"
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [containWithinAspectRatio]="containWithinAspectRatio"
+        [aspectRatio]="1 / 1"
+        [resizeToWidth]="256"
+        [cropperMinWidth]="256"
+        [onlyScaleDown]="true"
+        [roundCropper]="false"
+        [canvasRotation]="canvasRotation"
+        [transform]="transform"
+        [alignImage]="'center'"
+        [style.display]="showCropper ? null : 'none'"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+        (cropperReady)="cropperReady($event)"
+        (loadImageFailed)="loadImageFailed()"
+    ></image-cropper>
+    </div>
+</div>
+
+<div class="grid-x" style="padding: 16px;">
+<div class="cell large-4" style="text-align: left;">
+ <button (click)="zoomOut()">Zoom out</button>
+</div>
+<div class="cell large-4" style="text-align: center;">
+    <button (click)="uploadprofilepicture()">Save</button>
+</div>
+<div class="cell large-4" style="text-align: right;">
+    <button (click)="zoomIn()">Zoom in</button>
+</div>
+</div>

@@ -1,0 +1,82 @@
+.closebtn
+  
+{
+  margin-right: -11px;
+  margin-top: -11px;
+  width: 22px;
+  height: 22px;
+  color:  #A8A8B9;
+  opacity: 1;
+}
+.heading{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+align-items: center;
+text-align: center;
+color: #292F58;
+}
+
+.descp{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+display: flex;
+align-items: center;
+
+color: #292F58;
+
+}
+.fullname{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 24px;
+/* identical to box height, or 171% */
+align-items: center;
+color: #292F58;
+}
+
+.agentname{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+display: flex;
+align-items: center;
+
+color: #A6A8BA;
+}
+
+.yes{
+  width: 108px;
+height: 36px;
+background: #292F58;
+border-radius: 8px;
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+align-items: center;
+text-align: center;
+color: #FFFFFF;
+margin-right: 36px;
+}
+
+.cancel{
+  font-family: "Roboto";
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+align-items: center;
+text-align: center;
+color: #FF155A;
+}

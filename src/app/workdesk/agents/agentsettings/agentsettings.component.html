@@ -1,0 +1,127 @@
+<div class="grid-x grid-margin-x">
+<div class="cell large-12">
+<i (click)="getbacktoteams()" class="backicon fa fa-chevron-left" aria-hidden="true"></i>
+<p class="heading">Agent Settings</p>
+</div>
+</div>
+
+<div class="grid-x grid-margin-x" style="margin-top: 27px;" [hidden]="profiledetals">
+<div class="cell large-12">
+<img class="agentprofilepic" [src]="agentprofilepic" height="60" width="60" alt="">
+<div style="display: inline-block; vertical-align: middle;margin-left: 12px;">
+<p class="joiningname">{{agentfullname}}</p>
+<p class="agentemail">{{this.agentsettingdata?.email}}</p>
+</div>
+</div>
+</div>
+
+<div class="grid-x grid-margin-x" style="margin-top: 21px;" [hidden]="uploadpic">
+<div class="cell large-12">
+    <!-- <input id="file-input"  type="file"  style="display: none;" 
+   (change)="uploadpicture()" > -->
+    <label  (click)="uploadpicture()" class="upload">Upload a Photo</label>
+   
+</div>
+</div>
+
+<div class="grid-x">
+    <form  name="form" [formGroup]="form" (ngSubmit)="updateagentprofile()" class="cell large-12">
+        <div class="grid-x grid-margin-x" style="margin-top: 24px;" [hidden]="displayname_languages">
+            <div class="cell large-3">
+            <label for="" class="labal">
+                Agent Name
+            </label>
+            <input type="text"  formControlName="display_name" class="form_input"  placeholder="Account Name">
+            </div>
+            <div class="cell large-9">
+            
+            </div>
+            <div class="cell large-3">
+                <label for="" class="labal">
+                    Language
+                </label>
+                <ul style="margin-top: 16px;" id="accordion" class="vertical menu form_input " data-click-open="true" data-accordion-menu role="menu" >  
+                    <li style="height: 36px;">
+                    <a class="languagetext" >
+                        {{selectedlanguages}}
+                    <i class="tagiconnn fa fa-chevron-down" aria-hidden="true" ></i>
+                    </a>  
+                    <ul  class="menu vertical  submenu  nested submenuu" >
+                        <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="user" [checked]="allselectedtag" (change)="getalllanguage($event.target.checked)" type="checkbox" id="count"> <label class="dropdownlistitem"  for="count"> 
+                            Select all languages
+                           </label></li>
+                        <li class="listitem"  *ngFor="let count of this.lang; let i=index" [ngValue]="count.name" > <input  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name"  (click)="selectlanguageonebyone($event.target.checked,count.id)" [attr.id]="'count.name'+i"> <label class="dropdownlistitem"  [for]="'count.name'+i"> 
+                            {{count.name}}
+                           </label></li>
+                    </ul>
+                     </li>
+                  </ul>
+            </div>
+            </div>
+            
+            <div class="grid-x grid-margin-x" style="margin-top: 24px;" [hidden]="administratorright">
+                <div class="cell large-12">
+                    <p class="smallheading">Administrative Rights</p>
+                </div>
+                <div class="cell large-12">
+                    <p class="descp">Admins can add new agents and change settings. </p>
+                </div>
+            </div>
+            
+            <div class="grid-x grid-margin-x" style="margin-top: 6px;" [hidden]="administratorright">
+            <div class="cell large-12">
+                <label class="switch">
+                    <input type="checkbox" [checked]="!isadmin"
+                      formControlName="is_admin">
+                   <span class="slider round"></span>
+                  </label>
+            </div>
+            </div>
+            
+            <div class="grid-x" style="margin-top: 24px;" [hidden]="profileforagent">
+            <div class="cell large-12" style="margin-bottom: 24px;" >
+            <p class="heading">Account</p>
+            </div>
+           
+            <div class="cell large-3">
+                <label for="" class="labal">
+                    First Name
+                </label>
+                <input formControlName="first_name" type="text" class="form_input" placeholder="Account First Name">
+            </div>
+            <div class="cell large-9">
+            
+            </div>
+            <div class="cell large-3" >
+                <label for="" class="labal">
+                    Last Name
+                </label>
+                <input formControlName="last_name" type="text" class="form_input" placeholder="Account Last Name">
+            </div>
+            <div class="cell large-9">
+            
+            </div>
+            <div class="cell large-3" [hidden]="password">
+                <label for="" class="labal">
+                    Password
+                </label>
+                <input  type="text" class="form_input" placeholder="Old password" value="*********">
+                <span class="passwordtoggle" (click)="updatepasswordpopup()">Change</span>
+
+            </div>
+            <div class="cell large-9" [hidden]="password">
+            
+            </div>
+
+            </div>
+    </form>
+</div>
+<div class="grid-x grid-margin-x" >
+<div class="cell large-12" [hidden]="initationbtns" style="margin-top: 36px; margin-bottom: 24px;">
+<button class="sendinvite" (click)="invitationresendagent()">Resend Invitation</button>
+<button class="cancelinvite" (click)="cancelagentinvitation()">Cancel Invitation</button>
+</div>
+<div class="cell large-12" [hidden]="deltebutton" style="margin-top: 25px; margin-bottom: 24px;">
+    <button class="deleteagent" (click)="deleteagent()">Delete agent</button>
+    </div>
+</div>

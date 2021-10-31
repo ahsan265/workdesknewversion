@@ -95,6 +95,7 @@ font-size: 14px;
 letter-spacing: 0.02em;
 display: inline-block;
 color: rgba(22, 39, 65, 0.7);
+cursor: pointer;
 }
 .gigaaa-policy-text.priv
 {
@@ -303,6 +304,7 @@ span{
       width: 50%;
       text-align: left;
       margin-top: 18px;
+    
   }
   .gigaaa-policy-text.priv.moblast{
    text-align: right;

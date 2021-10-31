@@ -10,6 +10,7 @@
     font-size: 18px;
     line-height: 19px;
     padding-left: 30px;
+    margin-top: 9px;
     display: flex;
     align-items: center;
     color: #162741;
@@ -58,7 +59,10 @@ table{
     border-radius: 4px;
     font-size: 12px;
     cursor: text;
-    margin-right: 10px;
+  }
+  .form_input.search{
+    background: url(../../../assets/search.svg) no-repeat scroll 6px 9px;
+    padding-left: 36px;
   }
   .form_input::placeholder{
     font-family: "Roboto",sans-serif;
@@ -76,7 +80,7 @@ color: #7D8696;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
-    line-height: 30px;
+    line-height: 19.5px;
     margin-left: 11px;
     align-items: center;
     letter-spacing: 0.02em;
@@ -181,15 +185,15 @@ input[type="radio"]{
 .dropdownlistitem{ font-family: "Roboto",sans-serif;
   font-style: normal;
  font-weight: normal;
- font-size: 14px;
- line-height: 16px;
+ font-size: 12px;
+ line-height: 38.4px;
  display: inline-block;
- width: 150px;
+ width: max-content;
  overflow: hidden;
  white-space: nowrap;
  text-overflow: ellipsis;
  color: #292F58;
- vertical-align: bottom;
+ vertical-align: inherit;
  height: 24px;
 }
 input[type="radio"]:checked+label{
@@ -199,17 +203,21 @@ color: #292F58;
   list-style: none;
   width: 185.5px;
   display: inline-block;
+  margin-right: 10px;
 }
+
+
 .dropdown.agentype{
   background: #EDEDF6;
 }
 .dropdown-menu
 {  
-background: #FFFFFF;
-border: 0.5px solid rgba(166, 168, 186, 0.5);
-box-sizing: border-box;
-box-shadow: 0px 0px 5px 2px rgba(229, 229, 229, 0.5);
-border-radius: 8px;
+  background: #FFFFFF;
+  border: 1px solid rgba(208, 208, 222, 0.6);
+  box-sizing: border-box;
+  box-shadow: 4px 4px 17px -3px rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
+  margin-left: -11px;
 top: 0px;
 }
 .serachagents{
@@ -221,7 +229,7 @@ ul {
   list-style: none;
 }
 .dropdownmenu.dropdown-menu{
-transform: translate3d(0px 0px 0px);
+transform:none;
 justify-content: center;
 }
 
@@ -289,7 +297,7 @@ border-bottom:none;
 
 }
 input[type=radio]:checked{
-background-color: #64DFDF; 
+background-color: #1C54DB; 
 border-bottom:none;
 
 }
@@ -306,11 +314,7 @@ border-bottom:none;
 background: #64DFDF;
 } */
 
-.dropdown-menu.show{
-  transform: translate3d(0px 0px 0px);
-  margin-top: 12px;
-  width: 185.5px;
-} 
+ 
 input[type="checkbox"]  {
 height: 24px;
 width: 24px;
@@ -333,7 +337,7 @@ border-bottom:none;
 
 }
 input[type=checkbox]:checked{
-background-color: #64DFDF; 
+background-color: #1C54DB; 
 border-bottom:none;
 }
 
@@ -426,15 +430,9 @@ table,tbody
   border: 1px solid rgba(208, 208, 222, 0.6); 
 } */
 td p.displayname{
-  font-family: "Roboto",sans-serif;
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 17px;
 
-align-items: center;
-letter-spacing: 0.02em;
-color: #162741;
+font-weight: 500;
+
 
 }
 th{
@@ -563,6 +561,18 @@ line-height: 24px;
 display: block;
 align-items: center;
 color: #292F58;
+}
+.dropdown-menu.show{
+  transform: translate3d(0, 0, 0);
+  margin-top: 12px;
+  width: 185.5px;
+}
+/* .dropdown-menu.languages{
+  width: 108px;
+  left: -13px;
+} */
+.agentnames{
+  font-weight: 500;
 }
 @media (max-width: 768px){
   .tabs-title > a

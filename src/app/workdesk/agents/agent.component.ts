@@ -159,7 +159,7 @@ export class AgentComponent implements OnInit {
        var subsid=getdata.subscription_id.subsid.uuid
     
         this.gigaaaapi.getallagents(accesstoken,subsid,intid,parma1,param2,param3,lang).subscribe(data=>{
-          
+          console.log(data)
           this.tobefilteragent=data;
         
         this.totalnumberofagent=data['length'];
@@ -297,7 +297,7 @@ isagentonline(val){
       this.getallagents(intid?.int_id,1,1,1,this.id_soflanguages);
     }
   }
-  else if(e==true&& val=="Show active")
+  else if(e==true&& val=="Active")
   {  if(status!=1)
     {    
       this.getallagents(intid?.int_id,1,0,0,this.id_soflanguages);
@@ -308,7 +308,7 @@ isagentonline(val){
     this.inactive_agents=0;
     this.invited_agents=0;
   }
-  else if(e==true&& val=="Show inactive")
+  else if(e==true&& val=="Inactive")
   { if(status!=1)
     {
     this.getallagents(intid?.int_id,0,0,1,this.id_soflanguages);
@@ -317,7 +317,7 @@ isagentonline(val){
     this.inactive_agents=0;
     this.invited_agents=1;
   }
-  else if(e==true&& val=="Show invited")
+  else if(e==true&& val=="Invited")
   {if(status!=1)
     {
     this.getallagents(intid?.int_id,0,1,0,this.id_soflanguages);

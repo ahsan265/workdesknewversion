@@ -38,9 +38,9 @@ export class AgentComponent implements OnInit {
   selectedlanguages:any;
   allselectedtag:boolean;
   listofuser=[{name:'Show all' ,status:true},
-  {name:'Show active' ,status:false},
-  {name:'Show inactive' ,status:false},
-  {name:'Show invited' ,status:false}];
+  {name:'Active' ,status:false},
+  {name:'Inactive' ,status:false},
+  {name:'Invited' ,status:false}];
 
   language=[{name:'Arabic' ,status:true},
   {name:'English' ,status:false},

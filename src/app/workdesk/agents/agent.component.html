@@ -10,7 +10,7 @@
           {{selectedusername}}
       <i class="tagiconnn fa fa-chevron-down" aria-hidden="true"></i>
       </a>  
-      <ul class="dropdown-menu " style="transform: translate3d(0px, 23px, 0px);">
+      <ul class="dropdown-menu usertype" style="transform: translate3d(0px, 23px, 0px);">
           <li class="listitem user"   *ngFor="let count of this.listofuser" [ngValue]="count.name" > <input (click)="selectusertype($event.target.checked,count.name,0)"  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="radio" [value]="count.name" [attr.id]="count.name"> <label class="dropdownlistitem1"  [for]="count.name"> 
               {{count.name}}
              </label></li>
@@ -44,7 +44,11 @@
           
         <Input type="text"  (keyup)='search($event.target.value)' class="form_input search" placeholder="Search by name or e-mail..."/>
         </div> 
-       <button class="addagent" (click)="Invtieteagentpopup()">+ Add agent</button>
+       <button class="addagent" (click)="Invtieteagentpopup()"><span style="margin-right: 8px;
+            vertical-align: text-bottom;"><svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.2383 6.23828H6.73828V10.7383H5.26172V6.23828H0.761719V4.76172H5.26172V0.261719H6.73828V4.76172H11.2383V6.23828Z" fill="white"/>
+        </svg>
+        </span> Add agent</button>
       
        </div>
 

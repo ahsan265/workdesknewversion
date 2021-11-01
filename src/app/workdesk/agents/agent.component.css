@@ -193,8 +193,8 @@ input[type="radio"]{
  white-space: nowrap;
  text-overflow: ellipsis;
  color: #292F58;
- vertical-align: inherit;
- height: 24px;
+ vertical-align: middle;
+ height: 38px;
 }
 input[type="radio"]:checked+label{
 color: #292F58;
@@ -206,7 +206,9 @@ color: #292F58;
   margin-right: 10px;
 }
 
-
+.dropdown.agentype{
+  background: #EDEDF6;
+}
 .dropdown.agentype{
   background: #EDEDF6;
 }

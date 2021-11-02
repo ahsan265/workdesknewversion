@@ -1,3 +1,4 @@
+import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { Pipe } from '@angular/core';
 import { PipeTransform } from '@angular/core';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
@@ -148,9 +149,8 @@ export class AgentComponent implements OnInit {
  // get row of loggedin user at top 
  getloggedinuserattop(email)
  {
-   console.log(email)
     if(this.getsettingforloggedinagent()==email)
-  {    console.log("hello");
+  {    
 
     return 0;
   }
@@ -170,14 +170,19 @@ export class AgentComponent implements OnInit {
        var subsid=getdata.subscription_id.subsid.uuid
     
         this.gigaaaapi.getallagents(accesstoken,subsid,intid,parma1,param2,param3,lang).subscribe(data=>{
-          console.log(data);
+          console.log(typeof(data))
            var updateagentdata;
            updateagentdata =data;
+            updateagentdata.forEach(element => {
+              if(element.email==this.getsettingforloggedinagent())
+              {
+                var fromindex =updateagentdata.findIndex(x => x.email ===this.getsettingforloggedinagent());
+                var selectedobject=updateagentdata[fromindex];
+                updateagentdata.splice(fromindex, 1);
+                 updateagentdata.splice(0, 0, selectedobject);
+              }
+            });
            
-            var fromindex =updateagentdata.findIndex(x => x.email ===this.getsettingforloggedinagent());
-            var selectedobject=updateagentdata[fromindex];
-            updateagentdata.splice(fromindex, 1);
-            updateagentdata.splice(0, 0, selectedobject);
          
           this.tobefilteragent=data;
         
@@ -480,8 +485,9 @@ return false;
     this.sharedres.refreshagentlist$.subscribe(data=>{
       if(data==1)
       {
+        
         const intid = JSON.parse(localStorage.getItem('intgid'))
-        this.getallagents(intid?.int_id,1,1,1,this.id_soflanguages);
+        this.getallagents(intid?.int_id,this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages);
       }
     })
   }

@@ -317,7 +317,10 @@ background-color: #64DFDF;
 border-bottom:none;
 
 }
-
+input[type=radio]:checked:before{
+height: 4px;
+width: 4px;
+}
 input[type=radio]:checked:after {
 content: "\2714";
 margin-left: 4px;
@@ -332,8 +335,8 @@ background: #64DFDF;
 
 
 input[type="checkbox"]  {
-height: 14px;
-width: 14px;
+height: 17px;
+width: 17px;
 margin-left: 14px;
 margin-right: 0px;
 margin-top: 6px;
@@ -373,7 +376,7 @@ border-bottom:none;
   color: #A6A8BA;  
 }
 input[type=checkbox]:checked:after {
-content: "\2713";
+content: "✔";
 margin-top: 0px;
 margin-left: 1px;
 margin-bottom: 1px;

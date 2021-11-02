@@ -170,6 +170,7 @@ export class GigaaaApiService  {
 
    public   getallagents(accesstoken:string,subsid:string,intid:string,show_active:number,show_invited:number,show_inactive:number,languages:any)
    { 
+   console.log(show_active,show_inactive,show_invited)
      const httpOptions: any = {
     
      headers: new HttpHeaders({
@@ -179,7 +180,8 @@ export class GigaaaApiService  {
      })
    };
     const apiUrl = this.workdeskurl;
-    return  this.http.get("https://gigaaa-customer-support.azurewebsites.net/private/agents?show_active="+show_active+"&show_invited="+show_invited+"&show_inactive="+show_inactive+"&languages="+languages+"&organization="+subsid+"&integration="+intid,httpOptions)
+    console.log(this.http.get("https://gigaaa-customer-support.azurewebsites.net/private/agents?show_active="+show_active+"&show_invited="+show_invited+"&show_inactive="+show_inactive+"&languages="+languages+"&organization="+subsid+"&integration="+intid,httpOptions))
+    return this.http.get("https://gigaaa-customer-support.azurewebsites.net/private/agents?show_active="+show_active+"&show_invited="+show_invited+"&show_inactive="+show_inactive+"&languages="+languages+"&organization="+subsid+"&integration="+intid,httpOptions)
    
     }
 

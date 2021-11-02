@@ -93,11 +93,11 @@
         <div>
           <p class="totalnoofagent">{{totalnumberofagent}} agents</p>
         </div>
-        <div  [hidden]="noagent">
-        <p class="cell large-12 no-agents">There is no agents invited to this integration yet.</p>
-        </div>
+      
       </div>
-
+      <div  [hidden]="noagent">
+        <p class="cell large-12 no-agents">{{allagentmsg}}</p>
+        </div>
   
   
 </div>

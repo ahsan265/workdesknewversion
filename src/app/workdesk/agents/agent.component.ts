@@ -73,6 +73,11 @@ export class AgentComponent implements OnInit {
   inactive_agents:any;
   invited_agents:any;
   all_agents:any;
+
+  allagentmsg:any;
+  allactiveagentmsg:any;
+  allinvitedagentmsg:any;
+  allinactiveagetnmsg:any;
   constructor(private changeDetector: ChangeDetectorRef, private sharedres:sharedres_service,public dialog: MatDialog,private gigaaaapi:GigaaaApiService,private messageservie:MessageService) { }
   transform(value: any, ...args: any[]) {
     throw new Error('Method not implemented.');
@@ -316,13 +321,16 @@ isagentonline(val){
     this.active_agents=1;
     this.inactive_agents=1;
     this.invited_agents=1;
+    this.allagentmsg="There is no agents invited to this integration yet.";
     if(status!=1)
     {
       this.getallagents(intid?.int_id,1,1,1,this.id_soflanguages);
     }
   }
   else if(e==true&& val=="Active")
-  {  if(status!=1)
+  {     this.allagentmsg="There is no Active Agents yet";
+ 
+    if(status!=1)
     {    
       this.getallagents(intid?.int_id,1,0,0,this.id_soflanguages);
 
@@ -333,7 +341,9 @@ isagentonline(val){
     this.invited_agents=0;
   }
   else if(e==true&& val=="Inactive")
-  { if(status!=1)
+  { this.allagentmsg="There is no Inactive Agents yet";
+ 
+    if(status!=1)
     {
     this.getallagents(intid?.int_id,0,0,1,this.id_soflanguages);
     }

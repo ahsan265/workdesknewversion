@@ -179,7 +179,6 @@ export class GigaaaApiService  {
      })
    };
     const apiUrl = this.workdeskurl;
-    console.log("https://gigaaa-customer-support.azurewebsites.net/private/agents?show_active="+show_active+"&show_invited="+show_invited+"&show_inactive="+show_inactive+"&languages="+languages+"&organization="+subsid+"&integration="+intid)
     return  this.http.get("https://gigaaa-customer-support.azurewebsites.net/private/agents?show_active="+show_active+"&show_invited="+show_invited+"&show_inactive="+show_inactive+"&languages="+languages+"&organization="+subsid+"&integration="+intid,httpOptions)
    
     }

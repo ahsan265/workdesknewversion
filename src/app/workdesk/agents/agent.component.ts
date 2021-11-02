@@ -170,14 +170,15 @@ export class AgentComponent implements OnInit {
        var subsid=getdata.subscription_id.subsid.uuid
     
         this.gigaaaapi.getallagents(accesstoken,subsid,intid,parma1,param2,param3,lang).subscribe(data=>{
+          console.log(data);
            var updateagentdata;
            updateagentdata =data;
-           updateagentdata.forEach(element => {
+           
             var fromindex =updateagentdata.findIndex(x => x.email ===this.getsettingforloggedinagent());
             var selectedobject=updateagentdata[fromindex];
             updateagentdata.splice(fromindex, 1);
             updateagentdata.splice(0, 0, selectedobject);
-           });
+         
           this.tobefilteragent=data;
         
         this.totalnumberofagent=data['length'];

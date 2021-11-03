@@ -184,13 +184,10 @@ export class AgentComponent implements OnInit {
                 var fromindex =updateagentdata.findIndex(x => x.email ===this.getsettingforloggedinagent());
                 var selectedobject=updateagentdata[fromindex];
                 updateagentdata.splice(fromindex, 1);
-                 updateagentdata.splice(0, 0, selectedobject);
+                updateagentdata.splice(0, 0, selectedobject);
               }
             });
-           
-         
-          this.tobefilteragent=data;
-        
+        this.tobefilteragent=data;
         this.totalnumberofagent=data['length'];
         if(this.totalnumberofagent==0)
         {
@@ -201,12 +198,8 @@ export class AgentComponent implements OnInit {
           this.agentlist=false;
           this.noagent=true;
           this.all_agent=data;
-
         }
-        console.log(data);
         })
-    
-
     } catch (error) {
       this.handleLoginRegisterError(error.error.error);
     }

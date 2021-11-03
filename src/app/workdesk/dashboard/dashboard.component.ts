@@ -7,6 +7,7 @@ import { ChartsModule, Label, MultiDataSet } from 'ng2-charts';
 import { defineLocale, enGbLocale } from 'ngx-bootstrap/chronos';
 import { BsDaterangepickerDirective, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { element } from 'protractor';
+import { Subscription } from 'rxjs';
 import { GigaaaApiService } from 'src/app/service/gigaaaapi.service';
 import { MessageService } from 'src/app/service/messege.service';
 import { sharedres_service } from 'src/app/service/sharedres.service';
@@ -25,6 +26,7 @@ export class DashboardComponent implements OnInit {
    myChart1:any;
    myChart2:any;
    myChart3:any;
+   subscription: Subscription;
 
    rangeSelected:any;
   // get last week days 
@@ -687,11 +689,12 @@ createoschart()
    getstatsonintg()
   { 
     try{ 
-      this.sharedres.submitapplication$.subscribe(data=>{
+    this.subscription=  this.sharedres.submitapplication$.subscribe(data=>{
       this.getcallstats(data?.int_id)
       this.getcallcharts(data?.int_id)
     
     })
+  // this.subscription.unsubscribe();
     }
     catch(error)
     {

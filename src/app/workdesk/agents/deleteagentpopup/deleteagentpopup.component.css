@@ -1,5 +1,18 @@
-.closebtn
-  
+.deleteagentpanel{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.mainheadingpanel{
+  display: block;
+  width: 100%;
+}
+.headingpanel{
+  display: inline-block;
+  width: 80%;
+  text-align: left;
+}
+
+.closebtn 
 {
   margin-right: -11px;
   margin-top: -11px;
@@ -8,28 +21,35 @@
   color:  #A8A8B9;
   opacity: 1;
 }
+.closepanel{
+  display: inline-block;
+  width: 20%;
+  text-align: right;
+}
 .heading{
   font-family: "Roboto",sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
 line-height: 19px;
-align-items: center;
-text-align: center;
-color: #292F58;
+text-align: left;
+color: #162741;
 }
-
+.descroptionpanel{
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-top: 20px;
+}
 .descp{
   font-family: "Roboto",sans-serif;
 font-style: normal;
 font-weight: normal;
-font-size: 14px;
-line-height: 16px;
+font-size: 12px;
+line-height: 14px;
 display: flex;
-align-items: center;
-
-color: #292F58;
-
+align-items: left;
+color: #616B7B;
 }
 .fullname{
   font-family: "Roboto",sans-serif;
@@ -41,24 +61,46 @@ line-height: 24px;
 align-items: center;
 color: #292F58;
 }
-
+.roudnagentpic{
+  border-radius: 50%;
+  
+}
 .agentname{
   font-family: "Roboto",sans-serif;
 font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 16px;
+font-weight: 500;
+font-size: 16px;
+line-height: 18px;
 display: flex;
 align-items: center;
-
-color: #A6A8BA;
+text-align: left;
+color: #162741;
 }
-
+.agentinfopanel{
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+}
+.buttonpanel{
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+}
+.yesbtnpanel{
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+}
+.cancelbtnpanel{
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+}
 .yes{
-  width: 108px;
-height: 36px;
-background: #292F58;
-border-radius: 8px;
+  width: 114px;
+  height: 35px;
+background: #1C54DB;
+border-radius: 4px;border-radius: 4px;
 font-family: "Roboto",sans-serif;
 font-style: normal;
 font-weight: normal;
@@ -67,16 +109,21 @@ line-height: 16px;
 align-items: center;
 text-align: center;
 color: #FFFFFF;
-margin-right: 36px;
 }
 
 .cancel{
-  font-family: "Roboto";
+  width: 83px;
+height: 35px;
+  font-family: "Roboto",sans-serif;
 font-style: normal;
 font-weight: normal;
 font-size: 14px;
 line-height: 16px;
 align-items: center;
 text-align: center;
-color: #FF155A;
+color: #162741;
+background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px;
 }

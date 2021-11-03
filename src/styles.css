@@ -1719,10 +1719,10 @@ input:checked+.slider:before {
     position: absolute;
     display: block;
 
-    min-height: 264px;
-    max-height: 264px;
-    min-width:528px;
-    max-width: 528px;
+    min-height: 250px;
+    max-height: 250px;
+    min-width:594px;
+    max-width: 594px;
     justify-content: center;
  
 }

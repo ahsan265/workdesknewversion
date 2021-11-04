@@ -1697,16 +1697,16 @@ input:checked+.slider:before {
 .croppicture-dialog-container > .mat-dialog-container {
    
     background: #FFFFFF;
-    box-shadow: 0px 1px 5px 2px rgba(229, 229, 229, 0.5);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.23);
     border-radius: 4px;
     opacity: 1;
     position: absolute;
     display: block;
     padding: 0px;
-    min-height: 420px;
-    max-height: 420px;
-    min-width:528px;
-    max-width: 528px;
+    min-height: 355px;
+    max-height: 355px;
+    min-width:594px;
+    max-width: 594px;
     justify-content: center;
  
 }

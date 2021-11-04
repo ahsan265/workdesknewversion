@@ -233,6 +233,21 @@ width: 100%;
   display: inline-block;
   margin-right: 20px;
 }
+.deletetext{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 22px;
+vertical-align: text-top;
+align-items: center;
+letter-spacing: 0.02em;
+color: #162741;
+}
+.delbtn{
+  vertical-align: middle;
+  margin-right: 12px;
+}
 .form_input{
     text-align: left;
     line-height: 24px;

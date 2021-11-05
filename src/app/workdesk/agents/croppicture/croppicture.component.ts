@@ -19,6 +19,9 @@ export class CroppictureComponent implements OnInit {
   containWithinAspectRatio = false;
   transform: ImageTransform = {};
   imagesfile:any;
+  uploadpicture:any;
+  loadpicture:any;
+  croppicture:any;
   constructor(@Inject(MAT_DIALOG_DATA) public data,
   private gigaaapi:GigaaaApiService,private message:MessageService,
   public dialogRef: MatDialogRef<CroppictureComponent>,
@@ -27,6 +30,21 @@ export class CroppictureComponent implements OnInit {
   ngOnInit(): void {
     this.imageCropped(this.data.picture);
 
+  }
+  // get picture tranisition 
+  uploadpictuetransition(val)
+  {
+ if(val==true)
+ {
+    this.uploadpicture=true;
+    this.loadpicture=false;
+    this.croppicture=false; 
+ }
+ else if(val==false){
+    this.uploadpicture=false;
+    this.loadpicture=false;
+    this.croppicture=false; 
+ }
   }
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;

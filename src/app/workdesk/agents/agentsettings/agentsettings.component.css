@@ -6,6 +6,8 @@
 .settingsheadingpanel{
   display: block;
   width: 100%;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 .settingarea{
   background: #FFFFFF;
@@ -15,6 +17,7 @@
   padding-left: 30px;
   padding-right: 30px;
   margin-bottom: 30px;
+  height: 915px;
 }
 .headingpanel{
   display: block;
@@ -71,7 +74,7 @@ width: 50%;
 font-style: normal;
 font-weight: 500;
 font-size: 18px;
-line-height: 54.93px;
+line-height: 22px;
 display: inline-block;
 align-items: center;
 letter-spacing: 0.02em;
@@ -147,6 +150,7 @@ width: 100px;}
 .fas
 {
   color: #A6A8BA;
+  
 }
 .fas:hover{
   color: #A6A8BA;
@@ -232,6 +236,8 @@ width: 100%;
 .form_input.pass{
   display: inline-block;
   margin-right: 20px;
+  letter-spacing: 0.02em;
+
 }
 .deletetext{
   font-family: "Roboto",sans-serif;
@@ -679,8 +685,7 @@ border-radius: 4px;
   {
     font-size: 13px;
     color: #715DFF;
-    font-size: 12px;  
-    line-height: 14px;
+    line-height: 15px;
     cursor: pointer;
     display: inline-block;
     padding-right: 12px;

@@ -1370,10 +1370,9 @@ a.article, a.article:hover {
     min-height: 100vh;
     transition: all 0.4s;
     position: absolute;
-    top:  1rem;
- 
     right: 0;
     z-index: 1;
+    background: #FAFAFD;
 }
 #content.active {
     width: calc(100% -  4.6rem);

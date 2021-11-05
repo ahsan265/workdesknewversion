@@ -30,88 +30,87 @@
                     <button class="cancelinvite" (click)="cancelagentinvitation()">Cancel Invitation</button>
                     </div>
             </div>
+
+            <!-- <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div> -->
             <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div>
+            <form  name="form" [formGroup]="form" (ngSubmit)="updateagentprofile()">
 
-            <div class="formarea">
-                <form  name="form" [formGroup]="form" (ngSubmit)="updateagentprofile()">
-                    <div class="languagepanel"  [hidden]="displayname_languages">
-
-                            <p class="languagetextt">
-                                Language
-                            </p>
-                            <p class="languageheading">
-                                Select language(s) for this agent:
-                            </p>
-                            <ul style="margin-top: 13px;"  class="dropdown"  >  
-                                <li style="height: 36px;">
-                                <a class="languagetext" id="dropdownMenuButton2" data-toggle="dropdown" aria-expanded="false">
-                                    {{selectedlanguages}}
-                                <i class="tagiconnn fa fa-chevron-down" aria-hidden="true" ></i>
-                                </a>  
-                                <ul  class="dropdown-menu" >
-                                    <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="user" [checked]="allselectedtag" (change)="getalllanguage($event.target.checked)" type="checkbox" id="count"> <label class="dropdownlistitem"  for="count"> 
-                                        Select all languages
-                                       </label></li> -->
-                                    <li class="listitem"  *ngFor="let count of this.lang; let i=index" [ngValue]="count.name" > <input  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name"  (click)="selectlanguageonebyone($event.target.checked,count.id)" [attr.id]="'count.name'+i"> <label class="dropdownlistitem"  [for]="'count.name'+i"> 
-                                        {{count.name}}
-                                       </label></li>
-                                </ul>
-                                 </li>
-                              </ul>
-                        </div>
-                        <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div>
-
-                        <div class="adminrightpanel" [hidden]="administratorright">
-                                <p class="smallheading">Administrative Rights</p>
-                                <p class="descp">Admins can add new agents and change settings. </p>
-                        </div>
-                        
-            
-                            <label class="switch" [hidden]="administratorright">
-                                <input type="checkbox" [checked]="!isadmin"
-                                  formControlName="is_admin">
-                               <span class="slider round"></span>
-                              </label>
-                   
-                        <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div>
-
-                        <div   [hidden]="profileforagent">
-                        <p class="profile">Profile</p>
-                       
-                        <div class="textfield">
-                            <label for="" class="labal">
-                                First Name
-                            </label>
-                            <input formControlName="first_name" type="text" class="form_input" placeholder="Account First Name">
-                        </div>
-                        <div class="textfield" >
-                            <label for="" class="labal">
-                                Last Name
-                            </label>
-                            <input formControlName="last_name" type="text" class="form_input" placeholder="Account Last Name">
-                        </div>
-                        <div class="textfield last">
-                            <label for="" class="labal">
-                                Agent Name
-                            </label>
-                            <input type="text"  formControlName="display_name" class="form_input last"  placeholder="Account Name">
-                            </div>
-               
-                            <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div>
-
-                        <div class="textfield pass" [hidden]="password" style="margin-top: 9px;">
-                            <p class="passwordheading">Password</p>
-                            <label for="" class="labal">
-                                Set password
-                            </label>
-                            <input  type="text" class="form_input pass" placeholder="Old password" value="........">
-                            <p class="passwordtoggle" (click)="updatepasswordpopup()">Change</p>
-            
-                        </div>
-                        </div>
-                </form>
+            <div   [hidden]="profileforagent">
+            <p class="profile">Profile</p>
+           
+            <div class="textfield">
+                <label for="" class="labal">
+                    First Name
+                </label>
+                <input formControlName="first_name" type="text" class="form_input" placeholder="Account First Name">
             </div>
-          
+            <div class="textfield" >
+                <label for="" class="labal">
+                    Last Name
+                </label>
+                <input formControlName="last_name" type="text" class="form_input" placeholder="Account Last Name">
+            </div>
+            <div class="textfield last">
+                <label for="" class="labal">
+                    Agent Name
+                </label>
+                <input type="text"  formControlName="display_name" class="form_input last"  placeholder="Account Name">
+                </div>
+   
+                <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div>
+                <div class="languagepanel"  [hidden]="displayname_languages">
+
+                    <p class="languagetextt">
+                        Language
+                    </p>
+                    <p class="languageheading">
+                        Select language(s) for this agent:
+                    </p>
+                    <ul style="margin-top: 13px;"  class="dropdown"  >  
+                        <li style="height: 36px;">
+                        <a class="languagetext" id="dropdownMenuButton2" data-toggle="dropdown" aria-expanded="false">
+                            {{selectedlanguages}}
+                        <i class="tagiconnn fa fa-chevron-down" aria-hidden="true" ></i>
+                        </a>  
+                        <ul  class="dropdown-menu" >
+
+                            <li class="listitem"  *ngFor="let count of this.lang; let i=index" [ngValue]="count.name" > <input  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name"  (click)="selectlanguageonebyone($event.target.checked,count.id)" [attr.id]="'count.name'+i"> <label class="dropdownlistitem"  [for]="'count.name'+i"> 
+                                {{count.name}}
+                               </label></li>
+                        </ul>
+                         </li>
+                      </ul>
+                </div>
+              
+                </div>  
+                <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div>
+                <div class="formarea">
+                    <div class="adminrightpanel" [hidden]="administratorright">
+                            <p class="smallheading">Administrative Rights</p>
+                            <p class="descp">Admins can add new agents and change settings. </p>
+                    </div>
+                        <label class="switch" [hidden]="administratorright">
+                            <input type="checkbox" [checked]="!isadmin"
+                              formControlName="is_admin">
+                           <span class="slider round"></span>
+                          </label>
+            
+             </div>
+               
+                <div [hidden]="password" style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div>
+
+               
+            <div class="textfield pass" [hidden]="password" style="margin-top: 9px;">
+                <p class="passwordheading">Password</p>
+                <label for="" class="labal">
+                    Set password
+                </label>
+                <input  type="text" class="form_input pass last" placeholder="Old password" value="********">
+                <p class="passwordtoggle" (click)="updatepasswordpopup()">Change</p>
+                </div>
+            <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6); "></div>
+
+        </form>
        </div> 
         
 </div>

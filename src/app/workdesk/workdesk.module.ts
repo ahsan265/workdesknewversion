@@ -25,6 +25,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { BrowserModule } from '@angular/platform-browser';
 import { getloadpictures } from './Datapipes/datapipes';
 import { percentcolorpipe } from './Datapipes/percentcolor';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { percentcolorpipe } from './Datapipes/percentcolor';
     WorkdeskRoutingModule,
     MatDialogModule,
     CountUpModule,
+    MatProgressBarModule,
+    MatSliderModule
   ],
   providers: [UserloginserviceService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],

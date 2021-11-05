@@ -1702,11 +1702,12 @@ input:checked+.slider:before {
     opacity: 1;
     position: absolute;
     display: block;
-    padding: 0px;
-    min-height: 355px;
-    max-height: 355px;
+    padding: 30px;
+    min-height: fit-content;
+    max-height: fit-content;
     min-width:594px;
     max-width: 594px;
+    height: fit-content;
     justify-content: center;
  
 }
@@ -1818,14 +1819,13 @@ input:checked+.slider:before {
     box-shadow: 2px 2px 6px #A6A8B8B0;
     border-radius: 24px;
     opacity: 1;
-    width: 325px;
-    height: 385px;
+    width: 302px;
+    height: 413px;
     height: fit-content;
     overflow-x: hidden;
     overflow-y: hidden;
     vertical-align: middle;
-    padding-left: 48px;
-    padding-right: 48px;
+
    }
    .newcontacts-form-container .mat-dialog-container {
     background: #FFFFFF;
@@ -2006,18 +2006,16 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
   }
 
   .password-form-container .mat-dialog-container {
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 2px 2px 6px #A6A8B8B0;
-    border-radius: 24px;
+    background: #FFFFFF;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.23);
+    border-radius: 4px;
     opacity: 1;
-    width: 325px;
-    height: 385px;
+    width: 302px;
+    height: 413px;
     height: fit-content;
     overflow-x: hidden;
     overflow-y: hidden;
     vertical-align: middle;
-    padding-left: 48px;
-    padding-right: 48px;
    }
    button:focus { outline-style: none; }
    .container {

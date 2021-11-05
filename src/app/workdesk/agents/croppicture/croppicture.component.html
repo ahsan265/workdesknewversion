@@ -1,61 +1,114 @@
-<div class="grid-x grid-marginx" style="height: 64px;
-border-bottom: 1px solid #E5E5E5; padding: 16px;">
-<div class="cell large-6">
-    <input  id="file-input"type="file" (change)="fileChangeEvent($event)"  style="display: none;"/>
-    <label for="file-input"  class="upload">Choose File</label>
-</div>
-<div class="cell large-6" style="text-align: right;">
-    <span class="material-icons closebtn" mat-button [mat-dialog-close]="true" cdkFocusInitial>
-      close
-      </span>
-</div>
-</div>
+         <!-- uploadphoto -->
+        <div *ngIf="false">
+            <div class="mainheadingpanel">
+                <div class="headingpanel">
+                <p class="heading">Upload photo</p>
+                </div>
+                <div class="closepanel">
+                    <svg  mat-button [mat-dialog-close]="true" cdkFocusInitial width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.8203 1.35144L7.17188 5.99988L11.8203 10.6483L10.6484 11.8202L6 7.17175L1.35156 11.8202L0.179688 10.6483L4.82812 5.99988L0.179688 1.35144L1.35156 0.179565L6 4.828L10.6484 0.179565L11.8203 1.35144Z" fill="#616B7B"/>
+                        </svg>
+                        
+                </div>
+            </div>
+            <div class="uploadarea">
+                <div class="uploadicon">
+                    <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19.25L12 8.75" stroke="#162741" stroke-width="1.4" stroke-linecap="round"/>
+                        <path d="M8.5 11.25L11.2929 8.45711C11.6834 8.06658 12.3166 8.06658 12.7071 8.45711L15.5 11.25" stroke="#162741" stroke-width="1.4" stroke-linecap="round"/>
+                        <path d="M15 14.75H18.413C20.6702 14.75 22.5 12.9202 22.5 10.663V10.663C22.5 8.40588 20.6702 6.57609 18.413 6.57609H18.1444C17.9726 6.57609 17.8333 6.4368 17.8333 6.26498V5.04167C17.8333 2.67145 15.9119 0.75 13.5417 0.75H13.1862C11.0123 0.75 9.25 2.51231 9.25 4.68623V4.68623C9.25 4.84151 9.12412 4.96739 8.96884 4.96739H6.39131C3.68991 4.96739 1.5 7.1573 1.5 9.8587V9.8587C1.5 12.5601 3.68991 14.75 6.39131 14.75H8.25" stroke="#162741" stroke-width="1.4" stroke-linecap="round"/>
+                        </svg>
+                        
+                </div>
+                <div class="discriptionpanel">
+                    <p class="descp">Drag & Drop image file here</p>
+                    <p class="descp" >or</p>
+                </div>
+                <div class="uploadbtnpanel">
+                    <button class="uploadbtn">Browse Files</button>
+                </div>
+            </div>
+            <div class="btnpanel">
+                <button class="cancel">Cancel</button>
+            </div>
 
-
-
-<!-- <button (click)="rotateLeft()">Rotate left</button>
-<button (click)="rotateRight()">Rotate right</button>
-<button (click)="flipHorizontal()">Flip horizontal</button>
-<button (click)="flipVertical()">Flip vertical</button> -->
-
-<!-- <button (click)="toggleContainWithinAspectRatio()">{{containWithinAspectRatio?'Fill Aspect Ratio':'Contain Within Aspect Ratio'}}</button>
-<button (click)="resetImage()">Reset image</button> -->
-
-<div class="grid-x">
-    <div class="cell large-12"  style="    height: 256px;
-    text-align: center;
-    background-color: #C4C4C4;
-    margin:16px 16px 0px 19px;
-    width: 490px;">
-        <image-cropper  style="background-color: #C4C4C4;"
-        [imageChangedEvent]="imageChangedEvent"
-        [maintainAspectRatio]="true"
-        [containWithinAspectRatio]="containWithinAspectRatio"
-        [aspectRatio]="1 / 1"
-        [resizeToWidth]="256"
-        [cropperMinWidth]="256"
-        [onlyScaleDown]="true"
-        [roundCropper]="false"
-        [canvasRotation]="canvasRotation"
-        [transform]="transform"
-        [alignImage]="'center'"
-        [style.display]="showCropper ? null : 'none'"
-        (imageCropped)="imageCropped($event)"
-        (imageLoaded)="imageLoaded()"
-        (cropperReady)="cropperReady($event)"
-        (loadImageFailed)="loadImageFailed()"
-    ></image-cropper>
-    </div>
-</div>
-
-<div class="grid-x" style="padding: 16px;">
-<div class="cell large-4" style="text-align: left;">
- <button (click)="zoomOut()">Zoom out</button>
-</div>
-<div class="cell large-4" style="text-align: center;">
-    <button (click)="uploadprofilepicture()">Save</button>
-</div>
-<div class="cell large-4" style="text-align: right;">
-    <button (click)="zoomIn()">Zoom in</button>
-</div>
-</div>
+        </div>
+        <!-- loadphoto -->
+        <div *ngIf="false">
+            <div class="mainheadingpanel">
+                <div class="headingpanel">
+                <p class="heading">Uploading...</p>
+                </div>
+            </div>
+            <div class="loadingpanel">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.7" y="0.7" width="18.6" height="18.6" rx="9.3" stroke="#162741" stroke-width="1.4"/>
+                    <circle cx="10.0369" cy="7.20356" r="1.83694" stroke="#162741" stroke-width="1.4"/>
+                    <path d="M13.374 13.027C13.374 13.3043 13.171 13.6921 12.5446 14.05C11.938 14.3967 11.0533 14.6333 10.038 14.6333C9.02272 14.6333 8.13798 14.3967 7.53138 14.05C6.90497 13.6921 6.70195 13.3043 6.70195 13.027C6.70195 12.7497 6.90497 12.3619 7.53138 12.004C8.13798 11.6573 9.02272 11.4207 10.038 11.4207C11.0533 11.4207 11.938 11.6573 12.5446 12.004C13.171 12.3619 13.374 12.7497 13.374 13.027Z" stroke="#162741" stroke-width="1.4"/>
+                    </svg>
+                    <p class="filename">myprofile_photo.jpg</p>
+                    
+            </div>
+            <div class="progresspanel">
+                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+            </div>
+            <div class="datasizepanel">
+                <p class="datasize">852 kb</p>
+            </div>
+            <div class="btnpanel">
+                <button class="cancel">Cancel</button>
+            </div>
+        </div>
+        <!-- cropphoto -->
+       <div *ngIf="true">
+        <div class="mainheadingpanel">
+            <div class="headingpanel">
+            <p class="heading">Upload photo</p>
+            </div>
+            <div class="closepanel">
+                <svg  mat-button [mat-dialog-close]="true" cdkFocusInitial width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.8203 1.35144L7.17188 5.99988L11.8203 10.6483L10.6484 11.8202L6 7.17175L1.35156 11.8202L0.179688 10.6483L4.82812 5.99988L0.179688 1.35144L1.35156 0.179565L6 4.828L10.6484 0.179565L11.8203 1.35144Z" fill="#616B7B"/>
+                    </svg>
+                    
+            </div>
+        </div>
+        <div class="picturearea" >
+                <image-cropper  style="background-color: #C4C4C4;"
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [containWithinAspectRatio]="containWithinAspectRatio"
+                [aspectRatio]="1 / 1"
+                [resizeToWidth]="256"
+                [cropperMinWidth]="256"
+                [onlyScaleDown]="true"
+                [roundCropper]="false"
+                [canvasRotation]="canvasRotation"
+                [transform]="transform"
+                [alignImage]="'center'"
+                [style.display]="showCropper ? null : 'none'"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady($event)"
+                (loadImageFailed)="loadImageFailed()"
+            ></image-cropper>
+        </div>
+        <div class="btnpanelzooms">
+            <svg class="zoomout" (click)="zoomOut()" width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.8203 1.82019H0.179688V0.179565H11.8203V1.82019Z" fill="#7D8696"/>
+                </svg>
+                <mat-slider aria-label="unit(s)"></mat-slider>
+                <svg class="zoomin" (click)="zoomIn()" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.8203 6.82019H6.82031V11.8202H5.17969V6.82019H0.179688V5.17957H5.17969V0.179565H6.82031V5.17957H11.8203V6.82019Z" fill="#7D8696"/>
+                </svg>
+        </div>
+        <div class="btnpanel">
+            <div class="cancelpanel">
+                <button class="cancel">Cacel</button>
+            </div>
+            <div class="savepanel">
+                <button class="save" (click)="uploadprofilepicture()">Save</button>
+            </div>
+        </div>
+       </div>
+     
+       

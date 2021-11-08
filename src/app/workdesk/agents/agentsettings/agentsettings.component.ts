@@ -203,7 +203,6 @@ form = new FormGroup({
         this.deltebutton=true;
         this.agentfullname= "Not joined yet	";
         this.password=true;
-
       }
       if(data.invited==false)
       {
@@ -215,26 +214,21 @@ form = new FormGroup({
         this.initationbtns=true;
         this.getdeletebutton(data.email);
         this.password=true;
-
         this.agentfullname=this.agentsettingdata.first_name+"\xa0"+this.agentsettingdata.last_name
-
       }
       const getdata = JSON.parse(localStorage.getItem('gigaaa-user'))
       console.log(this.agentsettingdata?.email,getdata.email)
-if(this.agentsettingdata?.email!=getdata?.email)
-{
-  this.form.controls["first_name"].disable();
-  this.form.controls["last_name"].disable();
-}
- else if(this.agentsettingdata?.email==getdata?.email)
- {
-  this.form.controls["first_name"].enable();
-  this.form.controls["last_name"].enable();
-  this.password=false;
-
- }
-
-
+    if(this.agentsettingdata?.email!=getdata?.email)
+    {
+      this.form.controls["first_name"].disable();
+      this.form.controls["last_name"].disable();
+    }
+    else if(this.agentsettingdata?.email==getdata?.email)
+    {
+      this.form.controls["first_name"].enable();
+      this.form.controls["last_name"].enable();
+      this.password=false;
+    }
     })
   }
 

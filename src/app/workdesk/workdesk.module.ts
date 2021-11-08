@@ -27,10 +27,11 @@ import { getloadpictures } from './Datapipes/datapipes';
 import { percentcolorpipe } from './Datapipes/percentcolor';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSliderModule} from '@angular/material/slider';
+import { DragDirective } from './agents/croppicture/dragdroppic';
 
 
 @NgModule({
-  declarations: [percentcolorpipe,getloadpictures, AgentComponent, ChatComponent, ViewchatComponent, ActivechatComponent, EditformComponent, AddagentComponent, DashboardComponent, InviteagentComponent, AgentsettingsComponent, DeleteagentpopupComponent, UpdatepasswordComponent, CroppictureComponent],
+  declarations: [DragDirective,percentcolorpipe,getloadpictures, AgentComponent, ChatComponent, ViewchatComponent, ActivechatComponent, EditformComponent, AddagentComponent, DashboardComponent, InviteagentComponent, AgentsettingsComponent, DeleteagentpopupComponent, UpdatepasswordComponent, CroppictureComponent],
   imports: [  Ng2SearchPipeModule,  BrowserModule,  ImageCropperModule,
     BsDatepickerModule.forRoot(),
     ChartsModule,
@@ -41,9 +42,11 @@ import {MatSliderModule} from '@angular/material/slider';
     MatDialogModule,
     CountUpModule,
     MatProgressBarModule,
-    MatSliderModule
+    MatSliderModule,
+    
+    
   ],
-  providers: [UserloginserviceService],
+  providers: [UserloginserviceService,],
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
 
 })

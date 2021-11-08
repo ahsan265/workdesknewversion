@@ -92,11 +92,18 @@ color: #162741;
   display: inline-block;
   margin-right: 8px;
   vertical-align: middle;
+  cursor: pointer;
+  height: 34px;
 }
 .zoomin{
   display: inline-block;
   margin-left: 8px;
   vertical-align: middle;
+  cursor: pointer;
+  height: 34px;
+}
+.square{
+  background: black;
 }
 mat-slider {
   width: 300px;
@@ -163,10 +170,11 @@ color: rgba(22, 39, 65, 0.8);
 font-style: normal;
 font-weight: normal;
 font-size: 14px;
-line-height: 18px;
-align-items: center;
+line-height: 40px;
 text-align: center;
+margin: auto;
 letter-spacing: 0.02em;
+cursor: pointer;
 color: #162741;
 width: 103px;
 height: 42px;
@@ -197,6 +205,7 @@ align-items: center;
 text-align: center;
 letter-spacing: 0.02em;
 color: #162741;
+margin: 0px;
 }
 .save{
   width: 82px;

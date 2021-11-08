@@ -1,20 +1,35 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Inject, OnInit, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSliderChange } from '@angular/material/slider';
+import { SafeUrl } from '@angular/platform-browser';
 import { base64ToFile, Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
 import { GigaaaApiService } from 'src/app/service/gigaaaapi.service';
 import { MessageService } from 'src/app/service/messege.service';
+import { FileHandle } from './dragdroppic';
 
 @Component({
   selector: 'app-croppicture',
   templateUrl: './croppicture.component.html',
   styleUrls: ['./croppicture.component.css']
 })
+
 export class CroppictureComponent implements OnInit {
+
   imageChangedEvent: any = '';
   croppedImage: any = '';
+  filename:any;
   canvasRotation = 0;
   rotation = 0;
   scale = 1;
+  autoTicks = false;
+  showTicks = false;
+  step = 5;
+  thumbLabel = false;
+  value = 0;
+  vertical = false;
+  tickInterval = 1;
+  zoomoutnumber=0;
+  zoominnumber=100;
   showCropper = false;
   containWithinAspectRatio = false;
   transform: ImageTransform = {};
@@ -22,44 +37,159 @@ export class CroppictureComponent implements OnInit {
   uploadpicture:any;
   loadpicture:any;
   croppicture:any;
+  progressbarvalue:any=0;
+  filesize:any;
   constructor(@Inject(MAT_DIALOG_DATA) public data,
   private gigaaapi:GigaaaApiService,private message:MessageService,
   public dialogRef: MatDialogRef<CroppictureComponent>,
   ) { }
 
   ngOnInit(): void {
-    this.imageCropped(this.data.picture);
+    this.uploadpicture=true;
+    this.loadpicture=false;
+    this.croppicture=false; 
+  //  this.imageCropped(this.data.picture);
 
+  }
+  @HostListener("dragover", ["$event"]) onDragOver(event: any) {
+    event.preventDefault();
+  }
+  @HostListener("dragenter", ["$event"]) onDragEnter(event: any) {
+    event.preventDefault();
+  }
+  @HostListener("dragend", ["$event"]) onDragEnd(event: any) {
+    event.preventDefault();
+  }
+  @HostListener("dragleave", ["$event"]) onDragLeave(event: any) {
+    event.preventDefault();
+  }
+  @HostListener("drop", ["$event"]) onDrop(event: any) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.dataTransfer.files) {
+      let files: FileList = event.dataTransfer.files;
+      this.saveFiles(files);
+    }
+  }
+
+  bytesToSize(bytes) {
+    const units = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  let l = 0, n = parseInt(bytes, 10) || 0;
+  while(n >= 1024 && ++l){
+      n = n/1024;
+  }
+  return(n.toFixed(n < 10 && l > 0 ? 1 : 0) + ' ' + units[l]);
+  }
+  saveFiles(files: FileList) {
+
+    if (files.length > 1) {
+        this.message.setErrorMessage("Only one file is allowed")
+    }
+   
   }
   // get picture tranisition 
   uploadpictuetransition(val)
   {
- if(val==true)
- {
-    this.uploadpicture=true;
-    this.loadpicture=false;
-    this.croppicture=false; 
- }
- else if(val==false){
-    this.uploadpicture=false;
-    this.loadpicture=false;
-    this.croppicture=false; 
- }
+        if(val==true)
+        {
+            this.uploadpicture=true;
+            this.loadpicture=false;
+            this.croppicture=false; 
+        }
+        else if(val==false){
+            this.uploadpicture=false;
+            this.loadpicture=false;
+            this.croppicture=false; 
+        }
   }
+  filesDropped(event: any): void {
+        console.log(event[0])
+        this.filename=event[0].file.name;
+
+        this.bytesToSize
+        //this.fileChangeEvent(event)
+        this.uploadpicture=false;
+        this.croppicture=false
+        this.imageChangedEvent = event[0].url;
+        this.loadpicture=true;
+ 
+        setInterval(() => {
+            if(this.progressbarvalue!=100)
+            {
+             this.progressbarvalue +=1;
+            }
+            if(this.progressbarvalue==100)
+        {
+      
+             if(this.loadpicture==true)
+             {
+                 this.uploadpicture=false;
+                 this.loadpicture=false;
+                 this.croppicture=true;
+             }
+        }
+        },50)
+  }
+
   fileChangeEvent(event: any): void {
-    this.imageChangedEvent = event;
+      console.log(event)
+       this.filename=event.target.files[0].name;
+        this.filesize=this.bytesToSize(event.target.files[0].size);
+       this.uploadpicture=false;
+       this.croppicture=false
+       this.imageChangedEvent = event;
+       this.loadpicture=true;
+
+       setInterval(() => {
+           if(this.progressbarvalue!=100)
+           {
+            this.progressbarvalue +=1;
+           }
+           if(this.progressbarvalue==100)
+       {
+     
+            if(this.loadpicture==true)
+            {
+                this.uploadpicture=false;
+                this.loadpicture=false;
+                this.croppicture=true;
+            }
+       }
+       },50)
+
+       
 }
 
 imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
-     this.imagesfile=base64ToFile(event.base64);
+    this.imagesfile=base64ToFile(event.base64);
     console.log(typeof(this.imagesfile))
     console.log(event, base64ToFile(event.base64));
 }
 
 imageLoaded() {
     this.showCropper = true;
+
     console.log('Image loaded');
+
+}
+getSliderTickInterval(): number | 'auto' {
+    if (this.showTicks) {
+        console.log(this.autoTicks ? 'auto' : this.tickInterval)
+      return this.autoTicks ? 'auto' : this.tickInterval;
+    }
+
+    return 0;
+  }
+
+updateSetting(event: MatSliderChange) {
+       console.log(event.value)
+       this.zoomoutnumber=event.value;
+            this.scale= .1;
+            this.transform = {
+                ...this.transform,
+                scale: this.scale
+            };
 }
 
 cropperReady(sourceImageDimensions: Dimensions) {
@@ -113,19 +243,31 @@ resetImage() {
 }
 
 zoomOut() {
-    this.scale -= .1;
-    this.transform = {
-        ...this.transform,
-        scale: this.scale
-    };
+    if(this.zoomoutnumber!=0)
+    {       
+        this.zoomoutnumber +=10;
+        this.scale -=.1;
+        this.transform = {
+            ...this.transform,
+            scale: this.scale
+        };
+    }
+    else{
+        this.resetImage()
+    }
 }
 
 zoomIn() {
-    this.scale += .1;
-    this.transform = {
-        ...this.transform,
-        scale: this.scale
-    };
+    if(this.zoomoutnumber!=100)
+    {
+        this.zoomoutnumber -=10;
+        this.scale +=.1;
+        this.transform = {
+            ...this.transform,
+            scale: this.scale
+        };
+    }
+
 }
 
 toggleContainWithinAspectRatio() {

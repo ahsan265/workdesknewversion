@@ -2025,13 +2025,30 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
   {  font-family: futura;
       src: url(https://use.typekit.net/mey7gaj.css);
   }
-
+  .toast-success {
+    background-image: url(../src/assets/assets_workdesk/saved_icon.svg);
+}
+.toast-container .ngx-toastr{
+    box-shadow: none;
+}
+.toast-container .ngx-toastr:hover{
+    box-shadow: none;
+}
+  #toast-container{
+      padding-right:100px;
+  }
   #toast-container > .toast-success {
-    background-color: #4D7099;
+    background-color: #ffffff;
+    color: #6A7585;
+    width: fit-content;
+    border-radius: 4px;
+
 }
 
 #toast-container > .toast-warning {
     background-color: #4D7099;
+    width: fit-content;
+
 }
   
 @media (max-width: 768px){

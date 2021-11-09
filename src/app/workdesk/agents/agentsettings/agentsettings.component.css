@@ -122,14 +122,16 @@ color: #6A7585;
   position: relative;
   margin-right: 28.6px;
 }
+.uploadcamera{
+  margin: 5px;
+  margin-top: 6px;
+}
 .status-circle {
   width: 28px;
   height: 28px;
   border-radius: 50%;
   bottom: 0;
   right: -8px;
-  padding-top: 4.6px;
-  padding-left: 4.5px;
   position: absolute;
   background: #FFFFFF;
   cursor: pointer;

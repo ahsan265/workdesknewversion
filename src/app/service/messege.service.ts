@@ -10,7 +10,7 @@ export class MessageService {
 
   public setSuccessMessage(message: string, position?: string): void {
     this.toastrService.success(message, '', {
-      timeOut: 3000,
+      timeOut: 20000,
       positionClass: position ? position : 'toast-bottom-right'
     });
   }

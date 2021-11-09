@@ -24,9 +24,9 @@ export class UpdatepasswordComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<UpdatepasswordComponent>, private message:MessageService, private fb:FormBuilder, private gigaaaapi:GigaaaApiService) { }
  
   ngOnInit(): void {
-    this.srcpass1="../../../assets/assets_workdesk/private_1_1.svg"
-    this.srcpass2="../../../assets/assets_workdesk/private_1_1.svg"
-    this.srcpass3="../../../assets/assets_workdesk/private_1_1.svg"
+    this.srcpass1="../../../assets/assets_workdesk/hide_icon.svg"
+    this.srcpass2="../../../assets/assets_workdesk/hide_icon.svg"
+    this.srcpass3="../../../assets/assets_workdesk/hide_icon.svg"
 
     this.form = this.fb.group({
     
@@ -44,11 +44,11 @@ export class UpdatepasswordComponent implements OnInit {
       if(this.passType=== 'password'){
         this.passType= 'text';
         this.passtag="hide";
-        this.srcpass1="../../../assets/assets_workdesk/eye_1.svg"
+        this.srcpass1="../../../assets/assets_workdesk/hide_icon.svg"
         }else {
         this.passType= 'password';
         this.passtag="Show"
-        this.srcpass1="../../../assets/assets_workdesk/private_1_1.svg"
+        this.srcpass1="../../../assets/assets_workdesk/show_icon.svg"
 
         }
     }
@@ -57,12 +57,12 @@ export class UpdatepasswordComponent implements OnInit {
       if(this.passType1==='password'){
         this.passType1='text';
         this.passtag1="hide"
-        this.srcpass2="../../../assets/assets_workdesk/eye_1.svg"
+        this.srcpass2="../../../assets/assets_workdesk/hide_icon.svg"
 
         }else {
         this.passType1= 'password';
         this.passtag1="Show";
-        this.srcpass2="../../../assets/assets_workdesk/private_1_1.svg"
+        this.srcpass2="../../../assets/assets_workdesk/show_icon.svg"
 
         }
     }
@@ -71,11 +71,11 @@ export class UpdatepasswordComponent implements OnInit {
       if(this.passType2== 'password'){
         this.passType2= 'text';
         this.passtag2="hide"
-        this.srcpass3="../../../assets/assets_workdesk/eye_1.svg"
+        this.srcpass3="../../../assets/assets_workdesk/hide_icon.svg"
         }else{
         this.passType2= 'password';
         this.passtag2="Show";
-        this.srcpass3="../../../assets/assets_workdesk/private_1_1.svg"
+        this.srcpass3="../../../assets/assets_workdesk/show_icon.svg"
         }
     }
   }

@@ -1,3 +1,8 @@
+.callsarea{
+  display: block;
+  padding-left: 30px;
+  padding-right: 30px;
+}
 .calander{
   background: #FFFFFF;
   border: 1px solid rgba(166, 168, 186, 0.5);

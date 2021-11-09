@@ -98,7 +98,7 @@
             <svg class="zoomout" (click)="zoomOut()" width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11.8203 1.82019H0.179688V0.179565H11.8203V1.82019Z" fill="#7D8696"/>
                 </svg>
-                <mat-slider   step="10" [disabled]="true" 
+                <mat-slider   [disabled]="true" [value]="zoomvalue" (change)="updateSetting($event)"
                    [tickInterval]="getSliderTickInterval()"
                 [min]="zoomoutnumber" [max]="zoominnumber" ></mat-slider>
                 <svg class="zoomin" (click)="zoomIn()" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

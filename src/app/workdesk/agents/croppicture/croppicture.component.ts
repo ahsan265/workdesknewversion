@@ -30,6 +30,7 @@ export class CroppictureComponent implements OnInit {
   tickInterval = 1;
   zoomoutnumber=0;
   zoominnumber=100;
+  zoomvalue:any=0;
   showCropper = false;
   containWithinAspectRatio = false;
   transform: ImageTransform = {};
@@ -183,13 +184,16 @@ getSliderTickInterval(): number | 'auto' {
   }
 
 updateSetting(event: MatSliderChange) {
-       console.log(event.value)
-       this.zoomoutnumber=event.value;
-            this.scale= .1;
-            this.transform = {
-                ...this.transform,
-                scale: this.scale
-            };
+       this.zoomvalue=event.value;
+       if(this.zoomvalue!=100)
+       {
+        this.scale= (this.zoomvalue/10)*0.1;
+        this.transform = {
+            ...this.transform,
+            scale: this.scale
+        };
+       }
+            
 }
 
 cropperReady(sourceImageDimensions: Dimensions) {
@@ -243,9 +247,9 @@ resetImage() {
 }
 
 zoomOut() {
-    if(this.zoomoutnumber!=0)
+    if(this.zoomvalue!=0)
     {       
-        this.zoomoutnumber -=10;
+        this.zoomvalue-=10;
         this.scale -=.1;
         this.transform = {
             ...this.transform,
@@ -258,9 +262,9 @@ zoomOut() {
 }
 
 zoomIn() {
-    if(this.zoomoutnumber!=100)
+    if(this.zoomvalue!=100)
     {
-        this.zoomoutnumber +=10;
+        this.zoomvalue +=10;
         this.scale +=.1;
         this.transform = {
             ...this.transform,

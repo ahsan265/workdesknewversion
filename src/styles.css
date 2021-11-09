@@ -2028,6 +2028,10 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
   .toast-success {
     background-image: url(../src/assets/assets_workdesk/saved_icon.svg);
 }
+.toast-warning{
+    background-image: url(../src/assets/assets_workdesk/error_icon.svg);
+
+}
 .toast-container .ngx-toastr{
     box-shadow: none;
 }
@@ -2046,8 +2050,10 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
 }
 
 #toast-container > .toast-warning {
-    background-color: #4D7099;
+    background-color: #ffffff;
+    color: #6A7585;
     width: fit-content;
+    border-radius: 4px;
 
 }
   

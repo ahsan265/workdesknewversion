@@ -23,7 +23,7 @@ administratorright:boolean;
 password:boolean;
 initationbtns:boolean;
 deltebutton:boolean;
-
+valuechanges:boolean=false;
 profileforagent:boolean;
 agentsettingdata:any;
 agentfullname:any;
@@ -53,9 +53,7 @@ form = new FormGroup({
  selectedlanguages:any;
  allselectedtag:boolean;
   ngOnInit(): void {
-    $(document).ready(function() {
-      $(document).foundation();
-    });
+
     this.getlllangugaes();
     this.getagentprofilesettingview();
     this.updategaentprofilewith();
@@ -106,10 +104,10 @@ form = new FormGroup({
       this.selectedlanguages="Not Selected";
       this.allselectedtag=false;
       if(this.idsoflanguages.length!=0)
-      {
+      { 
         this.updateagentprofile()
         console.log("hello language")
-        this.sharedres.getrefreshagentlist(1);
+        //this.sharedres.getrefreshagentlist(1);
   
       }
   }
@@ -164,7 +162,11 @@ form = new FormGroup({
    }
 
    getbacktoteams()
-   {       
+   {   
+     if(this.valuechanges==true)
+     {
+       this.message.setSuccessMessage("All Changes Saved");
+     }    
       this.idsoflanguages.length=0;
       // this.selectedlanguages=null;
       this.sharedres.getrefreshagentlist(1);
@@ -368,7 +370,6 @@ form = new FormGroup({
          
        });
       
-          console.log(this.lang)
      this.selectedlanguages=this.idsoflanguages.length +"\xa0"+"Selected";
     // console.log(this.selectedlanguages);
       if(this.idsoflanguages.length==6)
@@ -380,11 +381,12 @@ form = new FormGroup({
    }
   
   // updateagentprofile
+ 
   updategaentprofilewith()
   {
 
     this.form.valueChanges.subscribe(data=>{
-      //console.log(data)
+     // console.log(data)
      if(this.idsoflanguages.length!=0)
      {
     this.updateagentprofile()
@@ -403,7 +405,8 @@ public async updateagentprofile(): Promise<any>
       var data={"display_name": this.form.controls.display_name.value, "language_ids": this.idsoflanguages, "first_name": this.form.controls.first_name.value, "last_name": this.form.controls.last_name.value, "admin": !this.form.controls.is_admin.value}
      console.log(data);
       await  this.gigaaaapi.updateagentsettings(accesstoken,subsid,intg_id.int_id,this.agentsettingdata?.agentuuid,data);
-
+      this.valuechanges=true;
+      console.log(this.valuechanges)
     
     }
     catch(err)
@@ -461,7 +464,7 @@ public async updateagentprofile(): Promise<any>
       let updatearr = language.map((item, i) => Object.assign({}, item, languagee[i]));
         console.log(updatearr)
         this.lang=updatearr;
-        this.getalllanguage(false);
+       // this.getalllanguage(false);
 
     }
     catch(err){

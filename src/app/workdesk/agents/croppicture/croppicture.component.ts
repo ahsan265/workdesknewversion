@@ -245,7 +245,7 @@ resetImage() {
 zoomOut() {
     if(this.zoomoutnumber!=0)
     {       
-        this.zoomoutnumber +=10;
+        this.zoomoutnumber -=10;
         this.scale -=.1;
         this.transform = {
             ...this.transform,
@@ -260,14 +260,14 @@ zoomOut() {
 zoomIn() {
     if(this.zoomoutnumber!=100)
     {
-        this.zoomoutnumber -=10;
+        this.zoomoutnumber +=10;
         this.scale +=.1;
         this.transform = {
             ...this.transform,
             scale: this.scale
         };
     }
-
+    console.log(this.zoomoutnumber)
 }
 
 toggleContainWithinAspectRatio() {

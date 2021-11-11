@@ -53,14 +53,14 @@
     <div class="subcard">
       <div class="withincard" >
         <div class="imagepanelforcard">
-          <div class="imageforcard">
+          <div class="imageforcard" style="background: #EDEDF6;">
             <img class="iconsfordashboard" src="../../../assets/assets_workdesk/calls_incoming.svg" alt="">
           </div>
         </div>
     
         <div class="carddetails">
           <p class="cardheading">
-            TOTAL INCOMING
+            Total Incoming
             </p>
             <p class="cardvalue" >
              {{totalincoming}}
@@ -71,30 +71,30 @@
       
        <div class="withincard">
         <div class="imagepanelforcard">
-          <div class="imageforcard">
+          <div class="imageforcard" style="background: #F9EBEF;">
             <img class="iconsfordashboard" src="../../../assets/assets_workdesk/calls_total_missed.svg" alt="">
           </div>
         </div>
         <div  class="carddetails">
           <p class="cardheading">
-            TOTAL MISSED
+            Total Missed
             </p>
             <p class="cardvalue" >
               {{totalmissed}}
             </p>
-              <p class="time"><span [ngStyle]="totalmissedper|percentpipe"> </span> {{totalmissedper}}%vs last week</p>
+              <p class="time"><span [ngStyle]="totalmissedper|percentpipe"> </span> {{totalmissedper}}% vs last week</p>
         </div>
 
       </div>
       <div class="withincard">
         <div class="imagepanelforcard">
-          <div class="imageforcard">
+          <div class="imageforcard" style="background: #EBF7DD;">
             <img class="iconsfordashboard" src="../../../assets/assets_workdesk/calls_answered.svg" alt="">
           </div>
         </div>
         <div  class="carddetails">
           <p class="cardheading">
-            TOTAL ANSWERED
+            Total Answered
             </p>
             <p class="cardvalue" >
               {{answered}}
@@ -104,18 +104,18 @@
       </div>
       <div class="withincard last">
         <div class="imagepanelforcard">
-          <div class="imageforcard">
+          <div class="imageforcard" style="background: #E9EFFE;">
             <img class="iconsfordashboard" src="../../../assets/assets_workdesk/chats_answered_ai.svg" alt="">
           </div>
         </div>
         <div  class="carddetails">
           <p class="cardheading">
-            TOTAL ANSWERED BY AI
+            Total Answered by AI
             </p>
             <p class="cardvalue" >
              {{answeredbyai}}
             </p>
-              <p class="time"><span> </span>  {{answeredbyaiper}} %vs last week</p>
+              <p class="time"><span  [ngStyle]="answeredper|percentpipe"> </span>  {{answeredbyaiper}}% vs last week</p>
         </div>
         
       </div>
@@ -183,7 +183,7 @@
     
         <div class="carddetails">
           <p class="cardheading">
-            TOTAL INCOMING
+            Total Incoming
             </p>
             <p class="cardvalue" >
              {{totalincoming}}
@@ -200,13 +200,13 @@
         </div>
         <div  class="carddetails">
           <p class="cardheading">
-            TOTAL MISSED
+            Total Missed
             </p>
             <p class="cardvalue" >
               {{totalmissed}}
             </p>
-              <p class="time"><span [ngStyle]="totalmissedper|percentpipe"> </span> {{totalmissedper}}%vs last week</p>
-        </div>
+            <p class="time"><span [ngStyle]="totalincomingper|percentpipe"> </span>{{totalmissedper}}% vs last week</p>
+          </div>
 
       </div>
       <div class="withincard">
@@ -217,7 +217,7 @@
         </div>
         <div  class="carddetails">
           <p class="cardheading">
-            TOTAL ANSWERED
+            Total Answered
             </p>
             <p class="cardvalue" >
               {{answered}}
@@ -233,12 +233,12 @@
         </div>
         <div  class="carddetails">
           <p class="cardheading">
-            TOTAL ANSWERED BY AI
+            Total Answered by AI
             </p>
             <p class="cardvalue" >
              {{answeredbyai}}
             </p>
-              <p class="time"><span> </span>  {{answeredbyaiper}} %vs last week</p>
+              <p class="time"><span> </span>  {{answeredbyaiper}}% vs last week</p>
         </div>
         
       </div>

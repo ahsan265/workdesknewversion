@@ -26,6 +26,7 @@ table{
   border-top: 1px solid #E1E1EA;
   padding-left: 2rem;
   padding-right: 2rem;
+  height: 100vh;
 }
 .icon-container {
   margin-right: 12px;

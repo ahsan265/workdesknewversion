@@ -22,6 +22,10 @@ interface IRange {
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  selecteddashboard:any;
+  showcallsdashboard:boolean=false;
+  showchatsdashboard:boolean=false;
+  listofdashboard=[{name:"Calls",status:true},{name:"Chats",status:false},{name:"Visitors",status:false},{name:"Tickets",status:false}];
    myChart:any;
    myChart1:any;
    myChart2:any;
@@ -141,7 +145,7 @@ export class DashboardComponent implements OnInit {
   }
   };
  
-  public barChartLabels: Label[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  public barChartLabels: Label[] = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = false;
   public barChartPlugins = [];
@@ -185,9 +189,21 @@ export class DashboardComponent implements OnInit {
       this.localeService.currentLocale;
       
      }
-data:any
-
-  ngOnInit(): void {
+     getlistofdashboard(val)
+     {
+       if(val=="Calls")
+       {
+         this.showcallsdashboard=false;
+         this.showchatsdashboard=true;
+       }
+       else if(val=="Chats"){
+        this.showcallsdashboard=true;
+        this.showchatsdashboard=false;
+       }
+      this.selecteddashboard=val;
+     }
+     ngOnInit(): void {
+       this.getlistofdashboard("Calls");
       this.onDateChange([this.ranges[0].value[0],this.ranges[0].value[1]])
       this.router.navigate(['dashboard'])
       this.generatecircleround();
@@ -212,7 +228,7 @@ data:any
    this.myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels:lebel,
+        labels:['M', 'T', 'W', 'T', 'F', 'S', 'S'],
         datasets: [{
           data:data,
          backgroundColor : [
@@ -236,7 +252,7 @@ data:any
         showLines:false,
         layout:{
           padding:{
-            bottom:24
+            bottom:22
           }
         },
         legend:{
@@ -273,11 +289,13 @@ data:any
       ],
         yAxes: [{
             gridLines: {
-                display:false
+                display:true
             },
             ticks: {
-              display: false,
-              beginAtZero: true
+              display: true,
+              beginAtZero: true,
+              maxTicksLimit: 4,
+
   
           },
         }],
@@ -296,7 +314,7 @@ data:any
      this.myChart1 = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: lebel,
+        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
         datasets: [{
           data:data,
          backgroundColor : [
@@ -357,11 +375,12 @@ data:any
       ],
         yAxes: [{
             gridLines: {
-                display:false
+                display:true
             },
             ticks: {
-              display: false,
-              beginAtZero: true
+              display: true,
+              beginAtZero: true,
+              maxTicksLimit: 4,
   
           },
         }],
@@ -381,7 +400,7 @@ data:any
  this.myChart2 = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels:lebel,
+        labels:['M', 'T', 'W', 'T', 'F', 'S', 'S'],
         datasets: [{
           data:data,
          backgroundColor : [
@@ -442,11 +461,12 @@ data:any
       ],
         yAxes: [{
             gridLines: {
-                display:false
+                display:true
             },
             ticks: {
-              display: false,
-              beginAtZero: true
+              display: true,
+              beginAtZero: true,
+              maxTicksLimit: 4,
   
           },
         }],
@@ -465,7 +485,7 @@ data:any
     this.myChart3 = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: lebel,
+        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
         datasets: [{
           data:data,
          backgroundColor : [
@@ -486,7 +506,7 @@ data:any
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        showLines:false,
+        showLines:true,
         layout:{
           padding:{
             bottom:24
@@ -526,11 +546,12 @@ data:any
       ],
         yAxes: [{
             gridLines: {
-                display:false
+                display:true
             },
             ticks: {
-              display: false,
-              beginAtZero: true
+              display: true,
+              beginAtZero: true,
+              maxTicksLimit: 4,
   
           },
         }],
@@ -871,7 +892,7 @@ createoschart()
      var vm = this._view;
      var left, right, top, bottom, signX, signY, borderSkipped, radius;
      var borderWidth = vm.borderWidth;
-     var cornerRadius = 8;
+     var cornerRadius = 4;
  
      if (!vm.horizontal) {
          // bar
@@ -908,7 +929,7 @@ createoschart()
          // not become a vertical line?
          if (borderLeft !== borderRight) {
              top = borderTop;
-             bottom = borderBottom;
+             bottom = 0;
          }
          // not become a horizontal line?
          if (borderTop !== borderBottom) {

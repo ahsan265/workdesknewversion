@@ -1,3 +1,30 @@
+.dashboardpanel{
+ display: block;
+ width: 100%;
+
+}
+.mainheadingpanel{
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+.dashboardarea{
+    padding-left: 30px;
+padding-right: 30px;
+background: #FFFFFF;
+border-top: 1px solid rgba(208, 208, 222, 0.6);
+}
+.datepicker{
+    width: 200px;
+    height: 34px;
+    /* display: flex; */
+    float: right;
+
+}
 .doughnutchart-legend ul {
     list-style: none;
     margin: 0;
@@ -5,80 +32,168 @@
     width: 300px;
 }
 .mainheading{
-    font-family: "Roboto",sans-serif;
+font-family: "Roboto",sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 18px;
-line-height: 50px;
-/* or 278% */
-
-display: flex;
+line-height: 22px;
+display: "flex";
 align-items: center;
-margin-bottom: 24px;
-color: #292F58;
+letter-spacing: 0.02em;
+color: #162741;
+}
+    .maindropdownpanel{
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
 
-}
-.chartscard{
-    background: #FFFFFF;
-box-shadow: 0px 1px 5px 2px rgba(166, 168, 186, 0.3);
-border-radius: 20px;
-height: 276px;
-margin-bottom: 24px;
-}
-.chartscard.circle{
-    height: 216px;
-}
+    }
+    .dashboardtypepanel{
+        display: inline-block;
+        width: 50%;
+    }
+    .dropdownlistitem1{ font-family: "Roboto",sans-serif;
+        font-style: normal;
+       font-weight: normal;
+       font-size: 12px;
+       line-height: 20px;
+       display: inline-block;
+       width: 45px;
+        /* overflow: hidden; */
+        white-space: nowrap;
+        text-overflow: inherit;
+       color: #292F58;
+       vertical-align: bottom;
+       height: 24px;
+      }
+    .selecteddashboardname{
+        font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    padding-left: 11px;
+    display: inline-block;
+    vertical-align: sub;
+    width: 200px;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: rgba(22, 39, 65, 0.8);
+    }
+    .statsareapanel{
+        display: block;
+        width: 100%;
+    }
+    .statsheading{
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .calltype.dropdown{
+        width: 200px;
+        background: #EDEDF6;
+    border-radius: 4px;
+    }
+    .datepickerpanel{
+        display:inline;
+        width: 50%;
 
-.subcard{
-    background: #FFFFFF;
-    box-shadow: 0px 1px 5px 2px rgba(166, 168, 186, 0.3);
-    border-radius: 20px;
-    height: 132px;
-    margin-bottom: 24px;
+    }
+    .chartscard{
+        background: #FFFFFF;
+        border: 1px solid rgba(208, 208, 222, 0.6);
+        box-sizing: border-box;
+        border-radius: 7px;
+        margin-bottom: 24px;
+        height: 328px;
+    }
+    .chartheadingpanel{
+        height: 48px;
+        border-bottom: 1px solid rgba(208, 208, 222, 0.6);;
+    }
+    .chartscard.circle{
+        height: 216px;
+    }
+    .subcard{
+        display: block;
+        width: 100%;
     }
     .withincard{
-        border-right: 2px solid rgba(166, 168, 186, 0.3);
-        height: 108px;
-        margin-top: 12px;
+        height: 89px;
+        display: inline-block;
+        width: 24.2%;
+        background: #FFFFFF;
+        border: 1px solid rgba(208, 208, 222, 0.6);
+        box-sizing: border-box;
+        border-radius: 7px;
+        margin-right: 1.06%;
+        font-size: 30px;
     }
-   
+    .withincard.last{
+        margin-right: 0%;
+    }
+    .imagepanelforcard{
+        display: flex;
+        float:left;
+        width: fit-content;
+        margin-top: 22px;
+        margin-left: 20px;
+    }
+    .imageforcard{
+        width: 44px;
+        height: 44px;
+        background: #EDEDF6;
+        border-radius: 100%;
+    }
+    .iconsfordashboard{
+     padding: 12px;
+    }
+    .carddetails
+    {
+       display: inline-block; 
+    }
     .cardheading
     {
         font-family: "Roboto",sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    height: 24px;
-    display: inherit;
-    align-items: center;
-    text-align: center;
-    color: #A6A8BA;
-    margin-top: 12px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height:14px;
+        margin-top: 15px;
+        margin-left: 16px;
+        align-items: center;
+        letter-spacing: 0.02em;
+        color: rgba(22, 39, 65, 0.6);
     }
     .cardvalue
     {
+        margin-top: 7px;
         font-family: "Roboto",sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    height: 24px;
-    margin-top: 12px;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    color: #715DFF;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.02em;
+        color: #162741;
+        margin-left: 16px
+
     }
     
 .time{
-     font-family: "Roboto",sans-serif;
-     font-weight: 500;
-     font-size: 12px;
-     align-items: center;
-     text-align: center;
-     line-height: 50px;
-     color: #A6A8BA;
-     margin-top: 5px;
-     margin-bottom: 12px;
+    margin-top: 7px;
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 14px;
+display: flex;
+align-items: center;
+color: #162741;
+margin-left: 16px
+
 }   
 
 .heading{
@@ -96,6 +211,7 @@ margin-bottom: 24px;
 }
 .heading.bar{
     color: #292F58;
+    text-align: left;
 }
 /* .heading:hover{
     cursor: default;
@@ -107,15 +223,19 @@ margin-bottom: 24px;
 }
 .calander{
     background: #FFFFFF;
-    border: 1px solid rgba(166, 168, 186, 0.5);
+    border: 1px solid rgba(208, 208, 222, 0.6);
     box-sizing: border-box;
-    border-radius: 6px;
-    /* width: 238px; */
-height: 44px;
-padding: 0px;
-cursor: pointer;
+    border-radius: 4px;
+        height: 34px;
+        padding: 0px;
+        cursor: pointer;
 }
 
+.barchartpanel{
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
 .doughnutchart
 {
     margin: auto;
@@ -131,18 +251,30 @@ cursor: pointer;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
-    line-height: 40px;
-    margin-left: 8px;
-    /* identical to box height */
+    line-height: 14px;
+    vertical-align: sub;
     display: inline-block;
-    vertical-align: middle;
+    align-items: center;
+    letter-spacing: 0.02em;
+    padding-left: 11px;
+    color: rgba(22, 39, 65, 0.8);
+}
+.arrowdownicon1{
+    float: right;
+    line-height: 40px;
+    display: flex;
+    margin-right: 12px;
+    margin-top: 6px;
+    cursor: pointer;
     color: #292F58;
+
 }
 .arrowdownicon{
     float: right;
     line-height: 40px;
     display: flex;
     margin-right: 12px;
+    margin-top: 12px;
     cursor: pointer;
     color: #292F58;
 
@@ -166,6 +298,50 @@ color:  #C4C4C4;
  color: greenyellow;
  background: greenyellow;
 }
+input[type="radio"]  {
+    height: 18px;
+    width: 18px;
+    margin-left: 12px;
+    margin-right: 0px;
+    border-radius: 50%;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    background: #FFFFFF;
+    border: 0.5px solid rgba(166, 168, 186, 0.5);
+    box-sizing: border-box;
+    vertical-align: middle;
+    appearance: inherit;
+    cursor: pointer;
+    }
+    
+    input[type=radio]:before{
+    background-color: #FFFFFF; 
+    border-bottom:none;
+    
+    }
+    input[type=radio]:checked{
+    background-color: #1C54DB; 
+    border-bottom:none;
+    
+    }
+    
+    input[type=radio]:checked:after {
+    content: "\2714";
+    margin-left: 2px;
+    margin-top: 0px;
+    position: absolute;
+    color: #FFFFFF;
+    border-bottom:none;
+    }
+    /* input[type=checkbox]:checked:after {
+    background: #64DFDF;
+    } */
+    li.listitem{
+    margin: 4px;
+    border-radius: 4px;
+    display: block;
+    width: 95%;
+    }
 .boxstyle{
     height: 25px;
     width: 25px;
@@ -183,7 +359,7 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
 color: inherit;
 }
 .selectionlistitem{
-    font-family: Roboto;
+    font-family: "Roboto",sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 12px;
@@ -193,27 +369,12 @@ align-items: center;
 text-align: center;
 color: #A6A8BA;
 }
-.selectionlistitem:hover{
-    background: #292F58;
-    color: #FFFFFF;
+.dropdown-menu.show.usertype{
+    width: 200px;
+    margin-top: 20px;
 }
 
- .dropdown-menu.show{
-        display: inline-flex;
-        width: 668px;
-      height: 288px;
-      padding: 0px;
- }
-.legend-con{
-    margin: auto; 
-    text-align: left;
-}
-.mobileheading{
-    display: none;
-}
-.mobilecalander{
-    display: none;
-}
+
  @media (max-width: 768px){
     .mobileheading1{
         display: none;
@@ -238,22 +399,22 @@ color: #A6A8BA;
         width: 50%;
     }
     .subcard{
-        display: block;
-        height: fit-content;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        background-color: #2196F3;
+        padding: 10px;
     }
     .withincard{
-        border-right: 0px;
-        border-bottom:  2px solid rgba(166, 168, 186, 0.3);
-        margin: 0px;
-        margin-bottom: 12px;
+        background: #FFFFFF;
+        border: 1px solid rgba(208, 208, 222, 0.6);
+        box-sizing: border-box;
+        border-radius: 7px;
+        text-align: center;
     }
     .withincard.last{
-        border-bottom: none;
+        margin-right: 0px;        
     }
-    .withincard.last
-    {
-        border-bottom: none;
-    }
+  
     .time{
         font-family: "Roboto",sans-serif;
     font-weight: 500;

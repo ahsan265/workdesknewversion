@@ -1,154 +1,300 @@
-<div class="grid-x grid-margin-x mobilemain">
-  <div class="cell large-9 mobileheading1">
-    <p class="mainheading">Calls</p>
+<div class="dashboardpanel">
+  <div class="mainheadingpanel">
+    <p class="mainheading">Dashboard</p>
       </div>
-      <div class="cell large-3 mobilecalander1" >
-          <div class="calander dropdown" data-toggle="dropdown">
-         
-            <svg   #dp class="caland" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4H7V2H9V4H15V2H17V4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22ZM5 10V20H19V10H5ZM5 6V8H19V6H5ZM17 18H15V16H17V18ZM13 18H11V16H13V18ZM9 18H7V16H9V18ZM17 14H15V12H17V14ZM13 14H11V12H13V14ZM9 14H7V12H9V14Z" fill="#292F58"/>
-              </svg>
-          <p class="calhead">{{rangeSelected}}</p>  <i class="arrowdownicon fas fa-chevron-down"></i> 
-        
-          
-          <div class="dropdown-menu dropdown-menu-right">
-             <div class="selectionpanel">
+      <div class="dashboardarea">
+        <div class="maindropdownpanel">
+          <div class="dashboardtypepanel">
+            <div class="dropdown calltype">
+             <li style="height: 34px; list-style: none;">
+             <a class="selecteddashboardname"   data-toggle="dropdown" aria-expanded="false">
+                 {{selecteddashboard}}
+                 <svg  class="arrowdownicon1" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                  </svg>
+             </a>  
+             <ul class="dropdown-menu usertype" style="transform: translate3d(0px, 23px, 0px);">
+                 <li class="listitem user"   *ngFor="let count of this.listofdashboard" [ngValue]="count.name" > <input (click)="getlistofdashboard(count.name)"  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="radio" [value]="count.name" [attr.id]="count.name"> <label class="dropdownlistitem1"  [for]="count.name"> 
+                     {{count.name}}
+                    </label></li>
+             </ul>
+              </li>
+               </div>
           </div>
-            <bs-daterangepicker-inline style=" margin: 0px;
-            display: contents;"  type="text"
-            bsDaterangepicker
-            placement="bottom"
-            [bsValue]="bsValue"
-            (bsValueChange)="onDateChange($event)"
-            [bsConfig]="bsConfig">
-            
-          </bs-daterangepicker-inline>
-        </div></div>
-      </div>
-  <div class="grid-x large-12">
-    <div class="cell large-9 mobileheading">
-      <p class="mainheading">Calls</p>
-        </div>
-        <div class="cell large-3 mobilecalander" >
-            <div class="calander dropdown" data-toggle="dropdown">
-           
-              <svg   #dp class="caland" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4H7V2H9V4H15V2H17V4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22ZM5 10V20H19V10H5ZM5 6V8H19V6H5ZM17 18H15V16H17V18ZM13 18H11V16H13V18ZM9 18H7V16H9V18ZM17 14H15V12H17V14ZM13 14H11V12H13V14ZM9 14H7V12H9V14Z" fill="#292F58"/>
+          <div class="datepickerpanel">
+            <div class="datepicker" >
+              <div class="calander dropdown" data-toggle="dropdown">
+              <p  #dp class="calhead">{{rangeSelected}}</p>  
+              <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
                 </svg>
-            <p class="calhead">{{rangeSelected}}</p>  <i class="arrowdownicon fas fa-chevron-down"></i> 
-          
-            
-            <div class="dropdown-menu dropdown-menu-right">
-               <div class="selectionpanel">
-            </div>
-              <bs-daterangepicker-inline style=" margin: 0px;
-              display: contents;"  type="text"
-              bsDaterangepicker
-              placement="bottom"
-              [bsValue]="bsValue"
-              (bsValueChange)="onDateChange($event)"
-              [bsConfig]="bsConfig">
-              
-            </bs-daterangepicker-inline>
-          </div></div>
+              <div class="dropdown-menu dropdown-menu-right">
+                 <div class="selectionpanel">
+              </div>
+                <bs-daterangepicker-inline style=" margin: 0px;
+                display: contents;"  type="text"
+                bsDaterangepicker
+                placement="bottom"
+                [bsValue]="bsValue"
+                (bsValueChange)="onDateChange($event)"
+                [bsConfig]="bsConfig">
+              </bs-daterangepicker-inline>
+            </div></div>
+          </div>
+          </div>
         </div>
-  </div>
- 
-  <div class="cell large-12 subcard">
-    <div class="grid-x ">
-    <div class="cell large-3 withincard" >
-       <p class="cardheading">
-        TOTAL INCOMING
-        </p>
-        <p class="cardvalue" >
-         {{totalincoming}}
-        </p>
-        <div ></div>
-          <p class="time"><span [ngStyle]="totalincomingper|percentpipe">{{totalincomingper}}%</span> vs last week</p>
-     </div>
+  <div *ngIf="!showcallsdashboard">
+    <div class="statsareapanel">
+      <div class="statsheading">
+        <p class="mainheading">Calls</p>
+          </div>
+    </div>
+   
+    <div class="subcard">
+      <div class="withincard" >
+        <div class="imagepanelforcard">
+          <div class="imageforcard">
+            <img class="iconsfordashboard" src="../../../assets/assets_workdesk/calls_incoming.svg" alt="">
+          </div>
+        </div>
     
-     <div class="cell large-3 withincard">
-       <p class="cardheading">
-        TOTAL MISSED
-        </p>
-        <p class="cardvalue" >
-          {{totalmissed}}
-        </p>
-        <div ></div>
-          <p class="time"><span [ngStyle]="totalmissedper|percentpipe">{{totalmissedper}}%</span> vs last week</p>
-    </div>
-    <div class="cell large-3 withincard">
-       <p class="cardheading">
-        TOTAL ANSWERED
-        </p>
-        <p class="cardvalue" >
-          {{answered}}
-        </p>
-        <div ></div>
-          <p class="time"><span [ngStyle]="answeredper|percentpipe">{{answeredper}}%</span> vs last week</p>
-    </div>
-    <div class="cell large-3 withincard last">
-       <p class="cardheading">
-        TOTAL ANSWERED BY AI
-        </p>
-        <p class="cardvalue" >
-         {{answeredbyai}}
-        </p>
-        <div ></div>
-          <p class="time"><span [ngStyle]="answeredbyaiper|percentpipe">{{answeredbyaiper}}%</span> vs last week</p>
-    </div>
-    
-    </div>
-    </div>
+        <div class="carddetails">
+          <p class="cardheading">
+            TOTAL INCOMING
+            </p>
+            <p class="cardvalue" >
+             {{totalincoming}}
+            </p>
+              <p class="time"><span [ngStyle]="totalincomingper|percentpipe"> </span>{{totalincomingper}}% vs last week</p>
+        </div>
+       </div>
+      
+       <div class="withincard">
+        <div class="imagepanelforcard">
+          <div class="imageforcard">
+            <img class="iconsfordashboard" src="../../../assets/assets_workdesk/calls_total_missed.svg" alt="">
+          </div>
+        </div>
+        <div  class="carddetails">
+          <p class="cardheading">
+            TOTAL MISSED
+            </p>
+            <p class="cardvalue" >
+              {{totalmissed}}
+            </p>
+              <p class="time"><span [ngStyle]="totalmissedper|percentpipe"> </span> {{totalmissedper}}%vs last week</p>
+        </div>
 
-<div class="cell large-12">
-<div class="grid-x grid-margin-x">
-  <div class="cell large-12 grid-x chartscard">
-    <div class="cell large-12" style="text-align: center;">
-    <p class="heading bar">Incoming</p>
-    </div>
-    <div class="cell large-12" style="text-align: center; height: 222px;">
-      <canvas
-      id="income" style="display: inline-block;"  ></canvas>
-
-    </div>
-    </div>
-<div class="cell large-12 grid-x chartscard">
-  <div class="cell large-12" style="text-align: center;">
-  <p class="heading bar">Missed</p>
-  </div>
-  <div class="cell large-12" style="text-align: center; height: 222px;">
-    <canvas
-    id="missed" style="display: inline-block;"  ></canvas>
-
-  </div>
-  </div>
-   <div class="cell large-12 grid-x chartscard">
-      <div class="cell large-12" style="text-align: center;">
-      <p class="heading bar">Answered</p>
       </div>
-      <div class="cell large-12" style="text-align: center; height: 222px;">
+      <div class="withincard">
+        <div class="imagepanelforcard">
+          <div class="imageforcard">
+            <img class="iconsfordashboard" src="../../../assets/assets_workdesk/calls_answered.svg" alt="">
+          </div>
+        </div>
+        <div  class="carddetails">
+          <p class="cardheading">
+            TOTAL ANSWERED
+            </p>
+            <p class="cardvalue" >
+              {{answered}}
+            </p>
+              <p class="time"><span [ngStyle]="answeredper|percentpipe"></span>{{answeredper}}% vs last week</p>
+        </div>
+      </div>
+      <div class="withincard last">
+        <div class="imagepanelforcard">
+          <div class="imageforcard">
+            <img class="iconsfordashboard" src="../../../assets/assets_workdesk/chats_answered_ai.svg" alt="">
+          </div>
+        </div>
+        <div  class="carddetails">
+          <p class="cardheading">
+            TOTAL ANSWERED BY AI
+            </p>
+            <p class="cardvalue" >
+             {{answeredbyai}}
+            </p>
+              <p class="time"><span> </span>  {{answeredbyaiper}} %vs last week</p>
+        </div>
+        
+      </div>
+      
+      </div>
+  
+  <div class="barchartpanel">
+    <div class=" chartscard">
+      <div class="cell large-12 chartheadingpanel" style="text-align: left; padding-left: 23px;">
+      <p class="heading bar">INCOMING</p>
+      </div>
+      <div  style="width: 100%; text-align: center; height: 222px; padding-left: 27px; padding-right: 40px; margin-top: 46px;">
         <canvas
-        id="answered" style="display: inline-block;"  ></canvas>
+        id="income" style="display: inline-block;"  ></canvas>
+  
       </div>
       </div>
-      <div class="cell large-12 grid-x chartscard" >
-        <div class="cell large-12" style="text-align: center;">
-        <p class="heading bar">Answered by AI</p>
+      <div class="chartscard">
+        <div class="cell large-12 chartheadingpanel" style="text-align: left; padding-left: 23px;">
+        <p class="heading bar">MISSED</p>
         </div>
-        <div class="cell large-12" style="text-align: center; height: 222px;">
+        <div  style="width: 100%; text-align: center; height: 222px; padding-left: 27px; padding-right: 40px; margin-top: 46px;">
           <canvas
-          id="ansbyai" style="display: inline-block;"  ></canvas>
-      
+          id="missed" style="display: inline-block;"  ></canvas>
+    
         </div>
         </div>
+        <div class="chartscard">
+          <div class="cell large-12 chartheadingpanel" style="text-align: left; padding-left: 23px;">
+          <p class="heading bar">ANSWERED</p>
+          </div>
+          <div  style="width: 100%; text-align: center; height: 222px; padding-left: 27px; padding-right: 40px; margin-top: 46px;">
+            <canvas
+            id="answered" style="display: inline-block;"  ></canvas>
       
-</div>
-</div>
+          </div>
+          </div>
+          <div class="chartscard">
+            <div class="cell large-12 chartheadingpanel" style="text-align: left; padding-left: 23px;">
+            <p class="heading bar">ANSWERED BY AI
+            </p>
+            </div>
+            <div  style="width: 100%; text-align: center; height: 222px; padding-left: 27px; padding-right: 40px; margin-top: 46px;">
+              <canvas
+              id="ansbyai" style="display: inline-block;"  ></canvas>
+            </div>
+            </div>
+        
+  </div>
+  </div>
+  <div *ngIf="!showchatsdashboard">
+    <div class="statsareapanel">
+      <div class="statsheading">
+        <p class="mainheading">Chats</p>
+          </div>
+    </div>
+   
+    <div class="subcard">
+      <div class="withincard" >
+        <div class="imagepanelforcard">
+          <div class="imageforcard">
+            <img class="iconsfordashboard" src="../../../assets/assets_workdesk/chats_total.svg" alt="">
+          </div>
+        </div>
+    
+        <div class="carddetails">
+          <p class="cardheading">
+            TOTAL INCOMING
+            </p>
+            <p class="cardvalue" >
+             {{totalincoming}}
+            </p>
+              <p class="time"><span [ngStyle]="totalincomingper|percentpipe"> </span>{{totalincomingper}}% vs last week</p>
+        </div>
+       </div>
+      
+       <div class="withincard">
+        <div class="imagepanelforcard">
+          <div class="imageforcard">
+            <img class="iconsfordashboard" src="../../../assets/assets_workdesk/chats_missed.svg" alt="">
+          </div>
+        </div>
+        <div  class="carddetails">
+          <p class="cardheading">
+            TOTAL MISSED
+            </p>
+            <p class="cardvalue" >
+              {{totalmissed}}
+            </p>
+              <p class="time"><span [ngStyle]="totalmissedper|percentpipe"> </span> {{totalmissedper}}%vs last week</p>
+        </div>
 
-</div>
+      </div>
+      <div class="withincard">
+        <div class="imagepanelforcard">
+          <div class="imageforcard">
+            <img class="iconsfordashboard" src="../../../assets/assets_workdesk/chats_answered.svg" alt="">
+          </div>
+        </div>
+        <div  class="carddetails">
+          <p class="cardheading">
+            TOTAL ANSWERED
+            </p>
+            <p class="cardvalue" >
+              {{answered}}
+            </p>
+              <p class="time"><span [ngStyle]="answeredper|percentpipe"></span>{{answeredper}}% vs last week</p>
+        </div>
+      </div>
+      <div class="withincard last">
+        <div class="imagepanelforcard">
+          <div class="imageforcard">
+            <img class="iconsfordashboard" src="../../../assets/assets_workdesk/chats_answered_ai.svg" alt="">
+          </div>
+        </div>
+        <div  class="carddetails">
+          <p class="cardheading">
+            TOTAL ANSWERED BY AI
+            </p>
+            <p class="cardvalue" >
+             {{answeredbyai}}
+            </p>
+              <p class="time"><span> </span>  {{answeredbyaiper}} %vs last week</p>
+        </div>
+        
+      </div>
+      
+      </div>
+  
+  <div class="barchartpanel">
+    <div class=" chartscard">
+      <div class="cell large-12 chartheadingpanel" style="text-align: left; padding-left: 23px;">
+      <p class="heading bar">INCOMING</p>
+      </div>
+      <div  style="width: 100%; text-align: center; height: 222px; padding-left: 27px; padding-right: 40px; margin-top: 46px;">
+        <canvas
+        id="income" style="display: inline-block;"  ></canvas>
+  
+      </div>
+      </div>
+      <div class="chartscard">
+        <div class="cell large-12 chartheadingpanel" style="text-align: left; padding-left: 23px;">
+        <p class="heading bar">MISSED</p>
+        </div>
+        <div  style="width: 100%; text-align: center; height: 222px; padding-left: 27px; padding-right: 40px; margin-top: 46px;">
+          <canvas
+          id="missed" style="display: inline-block;"  ></canvas>
+    
+        </div>
+        </div>
+        <div class="chartscard">
+          <div class="cell large-12 chartheadingpanel" style="text-align: left; padding-left: 23px;">
+          <p class="heading bar">ANSWERED</p>
+          </div>
+          <div  style="width: 100%; text-align: center; height: 222px; padding-left: 27px; padding-right: 40px; margin-top: 46px;">
+            <canvas
+            id="answered" style="display: inline-block;"  ></canvas>
+      
+          </div>
+          </div>
+          <div class="chartscard">
+            <div class="cell large-12 chartheadingpanel" style="text-align: left; padding-left: 23px;">
+            <p class="heading bar">ANSWERED BY AI
+            </p>
+            </div>
+            <div  style="width: 100%; text-align: center; height: 222px; padding-left: 27px; padding-right: 40px; margin-top: 46px;">
+              <canvas
+              id="ansbyai" style="display: inline-block;"  ></canvas>
+            </div>
+            </div>
+        
+  </div>
+  </div>
+  
+  </div>
+      </div>
+
  <!-- for visitor -->
-<div class="grid-x grid-margin-x">
+<!-- <div class="grid-x grid-margin-x">
   <div class="cell large-12">
 <p class="mainheading">Visitors</p>
   </div>
@@ -229,4 +375,4 @@
 </div>
 </div>
 
-</div>
+</div> -->

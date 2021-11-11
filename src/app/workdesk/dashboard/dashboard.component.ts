@@ -289,12 +289,15 @@ export class DashboardComponent implements OnInit {
       ],
         yAxes: [{
             gridLines: {
-                display:true
+                display:true,
+                drawBorder: false,
+
             },
             ticks: {
               display: true,
               beginAtZero: true,
               maxTicksLimit: 4,
+              padding: 20
 
   
           },
@@ -375,12 +378,16 @@ export class DashboardComponent implements OnInit {
       ],
         yAxes: [{
             gridLines: {
-                display:true
+                display:true,
+                drawBorder: false,
+
             },
             ticks: {
               display: true,
               beginAtZero: true,
               maxTicksLimit: 4,
+              padding: 20
+
   
           },
         }],
@@ -461,12 +468,16 @@ export class DashboardComponent implements OnInit {
       ],
         yAxes: [{
             gridLines: {
-                display:true
+                display:true,
+                drawBorder: false,
+
             },
             ticks: {
               display: true,
               beginAtZero: true,
               maxTicksLimit: 4,
+              padding: 20
+
   
           },
         }],
@@ -538,7 +549,9 @@ export class DashboardComponent implements OnInit {
        
         xAxes: [{
             gridLines: {
-                display:false
+                display:false,
+                drawBorder: false,
+
             },
           
         },
@@ -546,12 +559,15 @@ export class DashboardComponent implements OnInit {
       ],
         yAxes: [{
             gridLines: {
-                display:true
+                display:true,
+                drawBorder: false,
+
             },
             ticks: {
               display: true,
               beginAtZero: true,
               maxTicksLimit: 4,
+              padding: 20
   
           },
         }],

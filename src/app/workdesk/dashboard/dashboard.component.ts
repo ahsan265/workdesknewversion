@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
   selecteddashboard:any;
   showcallsdashboard:boolean=false;
   showchatsdashboard:boolean=false;
+  showvisitordashboard:boolean=false;
   listofdashboard=[{name:"Calls",status:true},{name:"Chats",status:false},{name:"Visitors",status:false},{name:"Tickets",status:false}];
    myChart:any;
    myChart1:any;
@@ -199,10 +200,19 @@ export class DashboardComponent implements OnInit {
        {
          this.showcallsdashboard=false;
          this.showchatsdashboard=true;
+         this.showvisitordashboard=true;
        }
        else if(val=="Chats"){
         this.showcallsdashboard=true;
         this.showchatsdashboard=false;
+        this.showvisitordashboard=true;
+
+       }
+       else if(val=="Visitors")
+       {
+        this.showcallsdashboard=true;
+        this.showchatsdashboard=true;
+        this.showvisitordashboard=false;
        }
       this.selecteddashboard=val;
      }
@@ -210,7 +220,7 @@ export class DashboardComponent implements OnInit {
        this.getlistofdashboard("Calls");
       this.onDateChange([this.ranges[0].value[0],this.ranges[0].value[1]])
       this.router.navigate(['dashboard'])
-      this.generatecircleround();
+     // this.generatecircleround();
       this.roundbarchartcorners()
       this.loadcallstatsoninit();
       this.loadcallchartinit();
@@ -301,7 +311,7 @@ export class DashboardComponent implements OnInit {
               display: true,
               beginAtZero: true,
               maxTicksLimit: 4,
-              padding: 20
+              padding: 14
 
   
           },
@@ -390,7 +400,7 @@ export class DashboardComponent implements OnInit {
               display: true,
               beginAtZero: true,
               maxTicksLimit: 4,
-              padding: 20
+              padding: 14
 
   
           },
@@ -480,7 +490,7 @@ export class DashboardComponent implements OnInit {
               display: true,
               beginAtZero: true,
               maxTicksLimit: 4,
-              padding: 20
+              padding: 14
 
   
           },
@@ -571,7 +581,7 @@ export class DashboardComponent implements OnInit {
               display: true,
               beginAtZero: true,
               maxTicksLimit: 4,
-              padding: 20
+              padding: 14
   
           },
         }],
@@ -591,14 +601,14 @@ export class DashboardComponent implements OnInit {
         labels: ['Desktop', 'Tablet','Mobile'],
         datasets: [{
           data:[250, 500,250],
-          backgroundColor: ['#64DFDF','#FF155A','#715DFF'],
+          backgroundColor: ['#1C54DB','#715DFF','#6B94F9'],
           borderWidth    : 0
 
         }],
 
       },
       options: {
-         cutoutPercentage: 70,
+         cutoutPercentage: 48,
         responsive: false,
         tooltips: {
         displayColors: false,
@@ -610,6 +620,7 @@ export class DashboardComponent implements OnInit {
 
         legend:{
           display:false,  
+          position:'top'
            
         },
       
@@ -618,8 +629,8 @@ export class DashboardComponent implements OnInit {
           text.push('<ul  style="list-style:none">');
           var ds = chart.data.datasets[0];
           for (var i=0; i<ds.data.length; i++) {
-            text.push('<li style="color:#A6A8BA;font-family:"Roboto";">');
-            text.push('<span style="background-color:' + ds.backgroundColor[i] + ';margin-right:12px;height:12px; width:12px;border-radius:50%">' + '</span>' + chart.data.labels[i] );
+            text.push('<li style="color:#A6A8BA; display:inline-block; width:50%; margin-bottom:20px;">');
+            text.push('<span style="background-color:' + ds.backgroundColor[i] + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:14px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +chart.data.labels[i]+'</span>'+'<span style="display:block;margin-left:25px; color: #162741; font-weight: 500;">'+ds.data[i] + '%'+'</span>');
             text.push('</li>');
           }
           text.push('</ul>');
@@ -640,13 +651,13 @@ export class DashboardComponent implements OnInit {
          labels: ['Google Chrome', 'Mozzila Firefox','Opera','Safari','Other'],
          datasets: [{
            data: [250,150,250,150,200],
-           backgroundColor: ['#292F58', '#64DFDF','#FF155A','#715DFF','#A6A8BA'],
+           backgroundColor: ['#1C54DB', '#715DFF','#6B94F9','#FF155A','#1E03BF'],
            borderWidth    : 0
 
          }]
        },
        options: {
-          cutoutPercentage: 70,
+          cutoutPercentage: 48,
          responsive: false,
          tooltips: {
          displayColors: false,
@@ -666,8 +677,8 @@ export class DashboardComponent implements OnInit {
            text.push('<ul  style="list-style:none">');
            var ds = chart.data.datasets[0];
            for (var i=0; i<ds.data.length; i++) {
-             text.push('<li style="color:#A6A8BA;font-family:"Roboto";">');
-             text.push('<span style="background-color:' + ds.backgroundColor[i] + ';margin-right:12px;height:12px; width:12px;border-radius:50%">' + '</span>' + chart.data.labels[i] );
+             text.push('<li style="color:#A6A8BA; display:inline-block; width:50%; margin-bottom:20px;">');
+             text.push('<span style="background-color:' + ds.backgroundColor[i] + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:14px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +chart.data.labels[i]+'</span>'+'<span style="display:block;margin-left:25px; color: #162741; font-weight: 500;">'+ds.data[i] + '%'+'</span>');
              text.push('</li>');
            }
            text.push('</ul>');
@@ -685,16 +696,16 @@ createoschart()
   var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ['Microsoft Windows', 'Apple OS','Linux','Android'],
+      labels: ['Microsoft Windows', 'IOS','Linux','Android'],
       datasets: [{
         data:  [250,500,250,250],
-        backgroundColor: ['#292F58', '#64DFDF','#FF155A','#715DFF'],
+        backgroundColor: ['#1C54DB', '#715DFF','#6B94F9','#FF155A'],
         borderWidth    : 0
 
       }]
     },
     options: {
-       cutoutPercentage: 70,
+       cutoutPercentage: 48,
       responsive: false,
       tooltips: {
       displayColors: false,
@@ -714,8 +725,8 @@ createoschart()
         text.push('<ul  style="list-style:none">');
         var ds = chart.data.datasets[0];
         for (var i=0; i<ds.data.length; i++) {
-          text.push('<li style="color:#A6A8BA;font-family:"Roboto";">');
-          text.push('<span style="background-color:' + ds.backgroundColor[i] + ';margin-right:12px;height:12px; width:12px;border-radius:50%">' + '</span>' + chart.data.labels[i] );
+          text.push('<li style="color:#A6A8BA; display:inline-block; width:50%; margin-bottom:20px;">');
+          text.push('<span style="background-color:' + ds.backgroundColor[i] + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:14px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +chart.data.labels[i]+'</span>'+'<span style="display:block;margin-left:25px; color: #162741; font-weight: 500;">'+ds.data[i] + '%'+'</span>');
           text.push('</li>');
         }
         text.push('</ul>');

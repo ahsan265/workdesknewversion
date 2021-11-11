@@ -105,7 +105,7 @@ font-family: "Roboto",sans-serif;
         border: 1px solid rgba(208, 208, 222, 0.6);
         box-sizing: border-box;
         border-radius: 7px;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
         height: 328px;
     }
     .chartheadingpanel{
@@ -113,7 +113,13 @@ font-family: "Roboto",sans-serif;
         border-bottom: 1px solid rgba(208, 208, 222, 0.6);;
     }
     .chartscard.circle{
-        height: 216px;
+        height: 300px;
+        display: inline-block;
+        width: 49%;
+        margin-right: 2%
+    }
+    .chartscard.circle.last{
+        margin-right: 0%;
     }
     .subcard{
         display: block;
@@ -129,6 +135,9 @@ font-family: "Roboto",sans-serif;
         border-radius: 7px;
         margin-right: 1.06%;
         font-size: 30px;
+    }
+   .withincard.visit{
+        width: 32.6%;
     }
     .withincard.last{
         margin-right: 0%;
@@ -232,7 +241,14 @@ margin-left: 16px
         padding: 0px;
         cursor: pointer;
 }
-
+.legend-con{
+    display: inline-block;
+    width: 28%;
+    text-align: left;
+    position: absolute;
+    padding-top: 30px;
+;
+}
 .barchartpanel{
     display: block;
     width: 100%;
@@ -241,6 +257,13 @@ margin-left: 16px
 .doughnutchart
 {
     margin: auto;
+}
+.doughnutchartpanel{
+    display: inline-block;
+    padding-left: 44px;
+    padding-top: 30px;
+    text-align: left;
+    width: 35%;
 }
 .caland{
 
@@ -377,128 +400,6 @@ color: #A6A8BA;
 }
 
 
- @media (max-width: 768px){
-    .mobileheading1{
-        display: none;
-    }
-    .mobilecalander1{
-        display: none;
-    }
-     .mainheading{
-         width: 50%;
-     }
-    .mobilemain{
-        display: block;
-        position: relative;
-    }
-    .mobileheading{
-        display: inline-block;
-        width: 45%;
-        margin-left: 2%;
-    }
-    .mobilecalander{
-        display: inline-block;
-        width: 50%;
-    }
-    .subcard{
-        display: grid;
-        grid-template-columns: auto auto auto;
-        background-color: #2196F3;
-        padding: 10px;
-    }
-    .withincard{
-        background: #FFFFFF;
-        border: 1px solid rgba(208, 208, 222, 0.6);
-        box-sizing: border-box;
-        border-radius: 7px;
-        text-align: center;
-    }
-    .withincard.last{
-        margin-right: 0px;        
-    }
-  
-    .time{
-        font-family: "Roboto",sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    align-items: center;
-    text-align: center;
-    line-height: 18px;
-    color: #A6A8BA;
-    }
-    .chartscard.circle{
-        height: 340px;
-    }
-    .chartscard.circle
-    {
-        text-align: center;
-    }
-    .legend-con{
-        margin: auto; 
-        text-align: left;
-        width: max-content;
-    }
-    .mobiledoughnut{
-        margin-bottom: 72px;
-    }
-    .bs-datepicker .bs-media-container {
-        flex-direction: row;
-        margin: 0px;
-    }
-    .dropdown-menu.show{
-        width: 364px;
-    }
 
-    body .bs-datepicker {
-   
-        width: auto;
-    }
-    .selectionpanel{
-        display: inline-block;
-    }
-   
-    .calander{
-        width: 224px;
-        float: right;
-    }
-    
-    .arrowdownicon{
-        height: 20px;
-        width: 10px;
-        float: right;
-        line-height: 40px;
-        display: flex;
-        margin-right: 21px;
-    }
-     .bs-datepicker .bs-media-container {
-        flex-direction: row;
-        margin: 0px;
-    }
-    .dropdown-menu.show{
-        width: 364px;
-    }
-
-    body .bs-datepicker {
-   
-        width: auto;
-    }
-    .selectionpanel{
-        display: inline-block;
-    }
-   
-    .calander{
-        width: 224px;
-        float: right;
-    }
-    
-    .arrowdownicon{
-        height: 20px;
-        width: 10px;
-        float: right;
-        line-height: 40px;
-        display: flex;
-        margin-right: 21px;
-    }
- }
 
 

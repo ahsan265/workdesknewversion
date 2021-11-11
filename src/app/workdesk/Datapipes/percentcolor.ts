@@ -11,14 +11,14 @@ export class percentcolorpipe implements PipeTransform{
   // get pictures
   percentpipe(val)
   {  
-    if (val > 0) {
-        return {'color':'#64DFDF'};
+        if (val > 0) {
+        return '../../../assets/assets_workdesk/green_arrow.svg';
         }
         else if(val < 0) {
-          return {'color':'#FF155A'};
+          return '../../../assets/assets_workdesk/red_arrow.svg';
         }
         else if(val == 0) {
-          return {'color':'#A6A8BA'};
+          return '../../../assets/assets_workdesk/red_arrow.svg';
         }
   }
 }

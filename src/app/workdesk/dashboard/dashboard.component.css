@@ -195,7 +195,9 @@ color: #162741;
 margin-left: 16px
 
 }   
-
+.trendupdown{
+    vertical-align: baseline;
+}
 .heading{
     font-family: "Roboto",sans-serif;
     font-style: normal;

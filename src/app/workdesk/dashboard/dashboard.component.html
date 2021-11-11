@@ -43,7 +43,7 @@
           </div>
           </div>
         </div>
-  <div *ngIf="!showcallsdashboard">
+  <div [hidden]="showcallsdashboard">
     <div class="statsareapanel">
       <div class="statsheading">
         <p class="mainheading">Calls</p>
@@ -65,7 +65,7 @@
             <p class="cardvalue" >
              {{totalincoming}}
             </p>
-              <p class="time"><span [ngStyle]="totalincomingper|percentpipe"> </span>{{totalincomingper}}% vs last week</p>
+              <p class="time"><span ><img class="trendupdown" [src]="totalincper|percentpipe" alt=""> </span>{{totalincomingper}}% vs last week</p>
         </div>
        </div>
       
@@ -82,7 +82,7 @@
             <p class="cardvalue" >
               {{totalmissed}}
             </p>
-              <p class="time"><span [ngStyle]="totalmissedper|percentpipe"> </span> {{totalmissedper}}% vs last week</p>
+              <p class="time"><span ><img class="trendupdown" [src]="totalmissper|percentpipe" alt=""> </span> {{totalmissedper}}% vs last week</p>
         </div>
 
       </div>
@@ -99,7 +99,7 @@
             <p class="cardvalue" >
               {{answered}}
             </p>
-              <p class="time"><span [ngStyle]="answeredper|percentpipe"></span>{{answeredper}}% vs last week</p>
+              <p class="time"><span ><img class="trendupdown" [src]="ansper|percentpipe" alt=""></span>{{answeredper}}% vs last week</p>
         </div>
       </div>
       <div class="withincard last">
@@ -115,7 +115,7 @@
             <p class="cardvalue" >
              {{answeredbyai}}
             </p>
-              <p class="time"><span  [ngStyle]="answeredper|percentpipe"> </span>  {{answeredbyaiper}}% vs last week</p>
+              <p class="time"><span><img class="trendupdown" [src]="ansbyai|percentpipe" alt=""> </span>  {{answeredbyaiper}}% vs last week</p>
         </div>
         
       </div>
@@ -139,7 +139,7 @@
         </div>
         <div  style="width: 100%; text-align: center; height: 222px; padding-left: 27px; padding-right: 40px; margin-top: 46px;">
           <canvas
-          id="missed" style="display: inline-block;"  ></canvas>
+          id="missed" style="display: inline-block;"></canvas>
     
         </div>
         </div>
@@ -166,7 +166,7 @@
         
   </div>
   </div>
-  <div *ngIf="!showchatsdashboard">
+  <div [hidden]="showchatsdashboard">
     <div class="statsareapanel">
       <div class="statsheading">
         <p class="mainheading">Chats</p>
@@ -188,7 +188,7 @@
             <p class="cardvalue" >
              {{totalincoming}}
             </p>
-              <p class="time"><span [ngStyle]="totalincomingper|percentpipe"> </span>{{totalincomingper}}% vs last week</p>
+              <p class="time"><span ><img  class="trendupdown" [src]="totalincper|percentpipe" alt=""> </span>{{totalincomingper}}% vs last week</p>
         </div>
        </div>
       
@@ -205,7 +205,7 @@
             <p class="cardvalue" >
               {{totalmissed}}
             </p>
-            <p class="time"><span [ngStyle]="totalincomingper|percentpipe"> </span>{{totalmissedper}}% vs last week</p>
+            <p class="time"><span ><img class="trendupdown" [src]="totalmissper|percentpipe" alt=""> </span>{{totalmissedper}}% vs last week</p>
           </div>
 
       </div>
@@ -222,7 +222,7 @@
             <p class="cardvalue" >
               {{answered}}
             </p>
-              <p class="time"><span [ngStyle]="answeredper|percentpipe"></span>{{answeredper}}% vs last week</p>
+              <p class="time"><span > <img class="trendupdown" [src]="ansper|percentpipe" alt=""></span>{{answeredper}}% vs last week</p>
         </div>
       </div>
       <div class="withincard last">
@@ -238,7 +238,7 @@
             <p class="cardvalue" >
              {{answeredbyai}}
             </p>
-              <p class="time"><span> </span>  {{answeredbyaiper}}% vs last week</p>
+              <p class="time"><span><img class="trendupdown" [src]="ansbyai|percentpipe" alt=""> </span>  {{answeredbyaiper}}% vs last week</p>
         </div>
         
       </div>
@@ -293,86 +293,3 @@
   </div>
       </div>
 
- <!-- for visitor -->
-<!-- <div class="grid-x grid-margin-x">
-  <div class="cell large-12">
-<p class="mainheading">Visitors</p>
-  </div>
-  <div class="cell large-12 subcard">
-    <div class="grid-x ">
-    <div class="cell large-4 withincard">
-       <p class="cardheading">
-        TOTAL VISITORS
-        </p>
-        <p class="cardvalue" >
-          0
-        </p>
-        <div ></div>
-          <p class="time">+ 33.32% vs last week</p>
-     </div>
-    
-     <div class="cell large-4 withincard">
-       <p class="cardheading">
-        TOTAL UNIQUE VISITORS   </p>
-        <p class="cardvalue" >
-          0
-        </p>
-        <div ></div>
-          <p class="time">+ 33.32% vs last week</p>
-    </div>
-    <div class="cell large-4 withincard last">
-       <p class="cardheading">
-        AVERAGE SESSION DURATION
-        </p>
-        <p class="cardvalue" >
-          0
-        </p>
-        <div ></div>
-          <p class="time">-5.77% vs last week</p>
-    </div>
-   
-    </div>
-    </div>
-
-<div class="cell large-12 mobiledoughnut">
-<div class="grid-x grid-margin-x">
-  <div class="cell large-4 grid-x chartscard circle">
-    <div class="cell large-12" style="text-align: center;">
-    <p class="heading bar">Internet browsers</p>
-    </div>
-    <div class="cell large-12 grid-x">
-      <div class="cell large-7" style="text-align: center;">
-        <canvas id="browserchart" style="display: inline-block;" width="150" height="150"></canvas>
-
-      </div>
-      <div  class="cell large-5 legend-con" id="browserlegend"></div> 
-    </div>
-    </div>
-    <div class="cell large-4 grid-x chartscard circle">
-      <div class="cell large-12" style="text-align: center;">
-      <p class="heading bar">Devices</p>
-      </div>
-      <div class="cell large-12 grid-x">
-        <div class="cell large-7" style="text-align: center;">
-          <canvas id="devicechart" style="display: inline-block;" width="150" height="150"></canvas>
-  
-        </div>
-        <div  class="cell large-5 legend-con" id="devicechartlegend"></div> 
-      </div>
-      </div>
-      <div class="cell large-4 grid-x chartscard circle">
-        <div class="cell large-12" style="text-align: center;">
-        <p class="heading bar">Operating systems</p>
-        </div>
-        <div class="cell large-12 grid-x">
-          <div class="cell large-7" style="text-align: center;">
-            <canvas id="oschart" style="display: inline-block;" width="150" height="150"></canvas>
-    
-          </div>
-          <div class="cell large-5 legend-con" id="oslegend"></div> 
-        </div>
-        </div>
-</div>
-</div>
-
-</div> -->

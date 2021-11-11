@@ -177,6 +177,10 @@ export class DashboardComponent implements OnInit {
   answeredbyaiper:any;
   totalmissedper:any;
   totalincomingper:any;
+   ansper:any;
+   ansbyai:any;
+   totalmissper:any;
+   totalincper:any;
 
   constructor(private sharedres:sharedres_service,
     private router:Router,
@@ -753,10 +757,22 @@ createoschart()
           this.answered=data['answered']?.count;
           this.totalincoming=data['incoming']?.count;
 
-          this.answeredper=this.getpercentagecalculated(data['answered']?.increase);
+          this.answeredper =this.getpercentagecalculated(data['answered']?.increase);
           this.answeredbyaiper=this.getpercentagecalculated(data['handed_to_ai']?.increase);
           this.totalmissedper=this.getpercentagecalculated(data['missed']?.increase);
           this.totalincomingper=this.getpercentagecalculated(data['incoming']?.increase);
+
+          this.ansper=this.answeredper;
+          this.ansbyai=this.answeredbyaiper;
+          this.totalmissper=this.totalmissedper;
+          this.totalincper=this.totalincomingper;
+
+          this.answeredper='\xa0'+'+'+'\xa0'+this.answeredper;
+          this.answeredbyaiper='\xa0'+'+'+'\xa0'+this.answeredbyaiper;
+          this.totalmissedper='\xa0'+'+'+'\xa0'+this.totalmissedper;
+          this.totalincomingper='\xa0'+'+'+'\xa0'+this.totalincomingper;
+       
+
         })
     }
     catch (err){
@@ -831,8 +847,16 @@ createoschart()
   {var calculated;
     if(val!=null)
     {
-      calculated=(val*100).toFixed(2);;
-    return calculated;
+      calculated=(val*100).toFixed(2);
+      if(calculated>0)
+      {
+        return calculated;
+
+      }
+      else{
+        return calculated;
+
+      }
     }
     else{
       return 0

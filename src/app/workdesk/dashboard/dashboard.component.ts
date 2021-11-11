@@ -232,16 +232,16 @@ export class DashboardComponent implements OnInit {
         datasets: [{
           data:data,
          backgroundColor : [
-            "#64DFDF", "#715DFF", "#64DFDF", "#715DFF", "#64DFDF","#715DFF","#64DFDF"
+            "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB","#1C54DB","#1C54DB"
           ],
           hoverBackgroundColor: [
-            "#64DFDF", "#715DFF", "#64DFDF", "#715DFF", "#64DFDF","#715DFF","#64DFDF"
+            "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB","#1C54DB","#1C54DB"
           ],
           radius:[24],
           hoverRadius:24,
           hitRadius:24,
           borderCapStyle:'round',
-          maxBarThickness:96,
+          maxBarThickness:65,
           fill: false,
         }],
 
@@ -318,16 +318,16 @@ export class DashboardComponent implements OnInit {
         datasets: [{
           data:data,
          backgroundColor : [
-            "#64DFDF", "#715DFF", "#64DFDF", "#715DFF", "#64DFDF","#715DFF","#64DFDF"
+            "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB","#1C54DB","#1C54DB"
           ],
           hoverBackgroundColor: [
-            "#64DFDF", "#715DFF", "#64DFDF", "#715DFF", "#64DFDF","#715DFF","#64DFDF"
+            "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB","#1C54DB","#1C54DB"
           ],
           radius:[24],
           hoverRadius:24,
           hitRadius:24,
           borderCapStyle:'round',
-          maxBarThickness:96,
+          maxBarThickness:65,
           fill: false,
         }],
 
@@ -404,16 +404,16 @@ export class DashboardComponent implements OnInit {
         datasets: [{
           data:data,
          backgroundColor : [
-            "#64DFDF", "#715DFF", "#64DFDF", "#715DFF", "#64DFDF","#715DFF","#64DFDF"
+            "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB","#1C54DB","#1C54DB"
           ],
           hoverBackgroundColor: [
-            "#64DFDF", "#715DFF", "#64DFDF", "#715DFF", "#64DFDF","#715DFF","#64DFDF"
+            "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB","#1C54DB","#1C54DB"
           ],
           radius:[24],
           hoverRadius:24,
           hitRadius:24,
           borderCapStyle:'round',
-          maxBarThickness:96,
+          maxBarThickness:65,
           fill: false,
         }],
 
@@ -489,16 +489,16 @@ export class DashboardComponent implements OnInit {
         datasets: [{
           data:data,
          backgroundColor : [
-            "#64DFDF", "#715DFF", "#64DFDF", "#715DFF", "#64DFDF","#715DFF","#64DFDF"
+            "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB","#1C54DB","#1C54DB"
           ],
           hoverBackgroundColor: [
-            "#64DFDF", "#715DFF", "#64DFDF", "#715DFF", "#64DFDF","#715DFF","#64DFDF"
+            "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB", "#1C54DB","#1C54DB","#1C54DB"
           ],
           radius:[24],
           hoverRadius:24,
           hitRadius:24,
           borderCapStyle:'round',
-          maxBarThickness:96,
+          maxBarThickness:65,
           fill: false,
         }],
 

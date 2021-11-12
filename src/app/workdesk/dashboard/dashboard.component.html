@@ -166,6 +166,7 @@
         
   </div>
   </div>
+  <!-- chats dashboard -->
   <div [hidden]="showchatsdashboard">
     <div class="statsareapanel">
       <div class="statsheading">
@@ -393,6 +394,139 @@
   </div>
   </div>
   
+    <!-- tickets dashboard -->
+    <div [hidden]="showticketsdashboard">
+      <div class="statsareapanel">
+        <div class="statsheading">
+          <p class="mainheading">Tickets</p>
+            </div>
+      </div>
+  
+      <div class="subcard">
+        <div class="withincard" >
+          <div class="imagepanelforcard">
+            <div class="imageforcard"   style="background: #EDEDF6; padding-left: 12px;padding-top: 9px;">
+              <img class="iconsfordashboard" src="../../../assets/assets_workdesk/Total Unassigned.svg" alt="">
+            </div>
+          </div>
+      
+          <div class="carddetails">
+            <p class="cardheading">
+              Total Unassigned
+              </p>
+              <p class="cardvalue" >
+               {{totalincoming}}
+              </p>
+                <p class="time"><span ><img class="trendupdown" [src]="totalincper|percentpipe" alt=""> </span>{{totalincomingper}}% vs last week</p>
+          </div>
+         </div>
+        
+         <div class="withincard">
+          <div class="imagepanelforcard">
+            <div class="imageforcard" style="background: #F9EBEF; padding-left: 12px;padding-top: 9px;">
+              <img class="iconsfordashboard" src="../../../assets/assets_workdesk/Not Started.svg" alt="">
+            </div>
+          </div>
+          <div  class="carddetails">
+            <p class="cardheading">
+              Total Assigned - Not Started
+              </p>
+              <p class="cardvalue" >
+                {{totalmissed}}
+              </p>
+                <p class="time"><span ><img class="trendupdown" [src]="totalmissper|percentpipe" alt=""> </span> {{totalmissedper}}% vs last week</p>
+          </div>
+  
+        </div>
+        <div class="withincard">
+          <div class="imagepanelforcard">
+            <div class="imageforcard" style="background: #EBF7DD; padding-left: 12px;padding-top: 9px;">
+              <img class="iconsfordashboard" src="../../../assets/assets_workdesk/In Progress.svg" alt="">
+            </div>
+          </div>
+          <div  class="carddetails">
+            <p class="cardheading">
+              Total Assigned - In Progress
+              </p>
+              <p class="cardvalue" >
+                {{answered}}
+              </p>
+                <p class="time"><span ><img class="trendupdown" [src]="ansper|percentpipe" alt=""></span>{{answeredper}}% vs last week</p>
+          </div>
+        </div>
+        <div class="withincard last">
+          <div class="imagepanelforcard">
+            <div class="imageforcard" style="background: #E9EFFE;padding-left: 12px;padding-top: 9px;">
+              <img class="iconsfordashboard" src="../../../assets/assets_workdesk/Done.svg" alt="">
+            </div>
+          </div>
+          <div  class="carddetails">
+            <p class="cardheading">
+              Total Assigned - Done
+              </p>
+              <p class="cardvalue" >
+               {{answeredbyai}}
+              </p>
+                <p class="time"><span><img class="trendupdown" [src]="ansbyai|percentpipe" alt=""> </span>  {{answeredbyaiper}}% vs last week</p>
+          </div>
+          
+        </div>
+        
+        </div>
+    
+        <div class="barchartpanel">
+          <div class=" chartscard circle">
+            <div class=" chartheadingpanel" style="text-align: left; padding-left: 23px;">
+            <p class="heading bar">PRIORITY</p>
+            </div>
+            <div class="doughnutchartpanel">
+              <canvas id="priorityticket" style="display: inline-block;" width="100px" height="100px"></canvas>
+            </div>
+            <div  class="legend-con" id="priorityticketchartlegend"></div> 
+            </div>
+            <div class="chartscard circle last">
+              <div class="chartheadingpanel" style="text-align: left; padding-left: 23px;">
+              <p class="heading bar">TICKET TYPE</p>
+              </div>
+              <div class="doughnutchartpanel">
+                <canvas id="tickettype" style="display: inline-block;" width="100px" height="100px"></canvas>
+        
+              </div>
+              <div  class="legend-con" id="tickettypechartlegend"></div> 
+              </div>
+        </div>
+        <div class="tablepanel" [hidden]="showtopticketedagent">
+          <table>
+            <thead >
+              <tr  class="head" style="background: white;">
+                <th style="width:30%; padding-left: 31px;">AGENT</th>
+                <th  style="width:20%;">FULL NAME</th>
+                <th style="width: 50%; text-align: right; padding-right: 30px;">ASSIGNED TICKETS</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr  class="mainlist list" *ngFor="let data of  all_agent; " >
+                  <td style="padding-left: 30px;"> 
+            
+                  <div  class="icon-container"> 
+                    <img style="margin-right: 15px;"  class="agentpic" height="36p" width="36" src="../../../assets/picface.jpeg" alt="" >
+                   </div>
+                    <div style="
+                    width: 100px;
+                    white-space: nowrap;
+                    display: inline-block;
+                    vertical-align: middle;
+                    ">
+                       <p class="displayname"  >Ahsan</p>
+                       <p >csahsan021@gmail.com</p></div>
+                  </td>
+                  <td>Muhammad Ahsan</td>
+                  <td style="text-align: right; padding-right: 30px;">183</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
   </div>
       </div>
 

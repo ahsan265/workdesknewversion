@@ -3,6 +3,13 @@
  width: 100%;
 
 }
+.icon-container {
+    margin-right: 12px;
+    height: 36px;
+    width: 36px;
+    display: inline-block;
+    position: relative;
+  }
 .mainheadingpanel{
     display: block;
     width: 100%;
@@ -155,7 +162,83 @@ font-family: "Roboto",sans-serif;
         background: #EDEDF6;
         border-radius: 100%;
     }
- 
+ .tablepanel{
+     display: block;
+     width: 100%;
+ }
+ table{
+    border: 1px solid rgba(208, 208, 222, 0.6);
+    box-sizing: border-box;
+  
+  }
+
+  tr{
+    height: 50px;
+  }
+  tr:nth-last-child(even)
+  {
+    background: #FFFFFF;
+  }
+  tr:nth-last-child(odd)
+  {
+    background: #FAFAFD;
+  }
+  .head{
+    background: #FFFFFF;
+  }
+
+  th{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(22, 39, 65, 0.6);    
+    width: 20%;
+    align-items: center;
+    font-family: "Roboto",sans-serif;
+    border-bottom: 0px solid rgba(166, 168, 186, 0.1);
+    margin-bottom: 6px;
+    height: 48px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+th ,td{
+    padding-left: 0px;
+    font-weight: 500;
+font-size: 12px;
+}
+td {   font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 50px;
+    align-items: center;
+    color: #162741;
+    vertical-align:middle;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+td,td p {   
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 24px;
+    align-items: center;
+    color: #162741;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+td p.displayname{
+    font-weight: 500;
+}
+.agentpic{
+    width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  }
     .carddetails
     {
        display: inline-block; 

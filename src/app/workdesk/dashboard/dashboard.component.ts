@@ -22,10 +22,13 @@ interface IRange {
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  all_agent=[{},{},{},{},{}]
+  showtopticketedagent:boolean;
   selecteddashboard:any;
   showcallsdashboard:boolean=false;
   showchatsdashboard:boolean=false;
   showvisitordashboard:boolean=false;
+  showticketsdashboard:boolean=false;
   listofdashboard=[{name:"Calls",status:true},{name:"Chats",status:false},{name:"Visitors",status:false},{name:"Tickets",status:false}];
    myChart:any;
    myChart1:any;
@@ -192,6 +195,17 @@ export class DashboardComponent implements OnInit {
       defineLocale('en-gb', enGbLocale);
       this.localeService.use('en-gb');
       this.localeService.currentLocale;
+      this.sharedres.getuserole();
+      this.sharedres.agentrole$.subscribe(data=>{
+       if(data?.is_admin==true)
+       {
+          this.showtopticketedagent=false;
+
+       }
+       else{
+            this.showtopticketedagent=true;
+       }
+      })
       
      }
      getlistofdashboard(val)
@@ -201,11 +215,13 @@ export class DashboardComponent implements OnInit {
          this.showcallsdashboard=false;
          this.showchatsdashboard=true;
          this.showvisitordashboard=true;
+         this.showticketsdashboard=true
        }
        else if(val=="Chats"){
         this.showcallsdashboard=true;
         this.showchatsdashboard=false;
         this.showvisitordashboard=true;
+        this.showticketsdashboard=true
 
        }
        else if(val=="Visitors")
@@ -213,6 +229,15 @@ export class DashboardComponent implements OnInit {
         this.showcallsdashboard=true;
         this.showchatsdashboard=true;
         this.showvisitordashboard=false;
+        this.showticketsdashboard=true
+
+       }
+       else if(val=="Tickets")
+       {
+        this.showcallsdashboard=true;
+        this.showchatsdashboard=true;
+        this.showvisitordashboard=true;
+        this.showticketsdashboard=false
        }
       this.selecteddashboard=val;
      }
@@ -231,6 +256,8 @@ export class DashboardComponent implements OnInit {
     this.createdevicechart();
     this.createoschart();
     this.createbrowerschart();
+    this.createtickettypechart();
+    this.createprioritticketchart();
   }
 
   incomingbarchart(data,lebel)
@@ -640,6 +667,106 @@ export class DashboardComponent implements OnInit {
     });
     // generate HTML legend
    $("#devicechartlegend").html(myChart.generateLegend());
+  }
+  // priority ticket 
+  createprioritticketchart()
+  {
+    var ctx = document.getElementById("priorityticket") as HTMLCanvasElement;
+    var myChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Low', 'Medium','High'],
+        datasets: [{
+          data:[250, 500,250],
+          backgroundColor: ['#1C54DB','#715DFF','#6B94F9'],
+          borderWidth    : 0
+
+        }],
+
+      },
+      options: {
+         cutoutPercentage: 48,
+        responsive: false,
+        tooltips: {
+        displayColors: false,
+  
+        callbacks: {
+          title : () => null // or function () { return null; }
+       }
+     },
+
+        legend:{
+          display:false,  
+          position:'top'
+           
+        },
+      
+        legendCallback: function(chart) {
+          var text = [];
+          text.push('<ul  style="list-style:none">');
+          var ds = chart.data.datasets[0];
+          for (var i=0; i<ds.data.length; i++) {
+            text.push('<li style="color:#A6A8BA; display:block; width:50%; margin-bottom:20px;">');
+            text.push('<span style="background-color:' + ds.backgroundColor[i] + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:14px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +chart.data.labels[i]+'</span>'+'<span style="display:block;margin-left:25px; color: #162741; font-weight: 500;">'+ds.data[i] + '%'+'</span>');
+            text.push('</li>');
+          }
+          text.push('</ul>');
+          return text.join("") ;
+        }
+      }
+    });
+    // generate HTML legend
+   $("#priorityticketchartlegend").html(myChart.generateLegend());
+  }
+  // ticket type
+  createtickettypechart()
+  {
+    var ctx = document.getElementById("tickettype") as HTMLCanvasElement;
+    var myChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Bug', 'Sales','How to','Cancelation','Technical request','Other'],
+        datasets: [{
+          data:[25, 20,30,25,25],
+          backgroundColor: ['#1C54DB','#FF155A','#715DFF','#1E03BF','#6B94F9','#F0AD00'],
+          borderWidth    : 0
+
+        }],
+
+      },
+      options: {
+         cutoutPercentage: 48,
+        responsive: false,
+        tooltips: {
+        displayColors: false,
+  
+        callbacks: {
+          title : () => null // or function () { return null; }
+       }
+     },
+
+        legend:{
+          display:false,  
+          position:'top'
+           
+        },
+      
+        legendCallback: function(chart) {
+          var text = [];
+          text.push('<ul  style="list-style:none">');
+          var ds = chart.data.datasets[0];
+          for (var i=0; i<ds.data.length; i++) {
+            text.push('<li style="color:#A6A8BA; display:inline-block; width:50%; margin-bottom:20px;">');
+            text.push('<span style="background-color:' + ds.backgroundColor[i] + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:14px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +chart.data.labels[i]+'</span>'+'<span style="display:block;margin-left:25px; color: #162741; font-weight: 500;">'+ds.data[i] + '%'+'</span>');
+            text.push('</li>');
+          }
+          text.push('</ul>');
+          return text.join("") ;
+        }
+      }
+    });
+    // generate HTML legend
+   $("#tickettypechartlegend").html(myChart.generateLegend());
   }
    // browser chart 
    createbrowerschart()

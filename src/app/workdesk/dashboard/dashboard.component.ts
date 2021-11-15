@@ -37,6 +37,9 @@ export class DashboardComponent implements OnInit {
    subscription: Subscription;
 
    rangeSelected:any;
+   datepreviewstart:any;
+   datepreviewend:any;
+
   // get last week days 
     beforeOneWeek = new Date(new Date().getTime() - 60 * 60 * 24 * 7 * 1000)
    day = this.beforeOneWeek.getDay()
@@ -92,7 +95,7 @@ export class DashboardComponent implements OnInit {
     startView:2,
     customTodayClass:'custom-today-class',
     showPreviousMonth: false,
-    returnFocusToInput: true 
+    returnFocusToInput: false 
   };
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -190,7 +193,7 @@ export class DashboardComponent implements OnInit {
     private router:Router,
     private localeService: BsLocaleService,
      private gigaaaservice:GigaaaApiService,private messageservie:MessageService) { 
-      enGbLocale.weekdaysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      enGbLocale.weekdaysShort = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
       enGbLocale.week.dow = 1;
       defineLocale('en-gb', enGbLocale);
       this.localeService.use('en-gb');
@@ -1211,6 +1214,38 @@ createoschart()
           if(x.value[0].toDateString()==d.toDateString()&&x.value[1].toDateString()==d1.toDateString())
             {
               this.rangeSelected=x.label
+              var  month = '' + (d.getMonth() + 1);
+              var   day = '' +(d.getDate());
+              var  year = d.getFullYear();
+        
+            if (month.length < 2) 
+             {
+              month = '0' + month;
+        
+             }
+            if (day.length < 2) 
+              {
+                day = '0' + day;
+        
+              }
+              var dateStart1= [day,month,year].join('/');
+              var  month1 = '' + (d1.getMonth() + 1);
+            var   day1 = '' +( d1.getDate());
+            var  year1 = d1.getFullYear();
+      
+          if (month1.length < 2) 
+           {
+            month1 = '0' + month1;
+      
+           }
+          if (day1.length < 2) 
+            {
+              day1 = '0' + day1;
+      
+            }
+            var dateEnd1= [day1,month1,year1].join('/');
+              this.datepreviewstart=dateStart1;
+              this.datepreviewend=dateEnd1;
               ismatched=true;
              
                 $('.btn').addClass('.selected');
@@ -1252,8 +1287,15 @@ createoschart()
             var dateEnd= [day1,month1,year1].join('/');
       
             this.rangeSelected= dateStart+ " -"+ dateEnd;
+            this.datepreviewstart=dateStart;
+            this.datepreviewend=dateEnd;
                 
           }
 
+      }
+      canceldaterange()
+      {
+        this.onDateChange([this.ranges[0].value[0],this.ranges[0].value[1]])
+  
       }
 }

@@ -39,7 +39,23 @@
                 (bsValueChange)="onDateChange($event)"
                 [bsConfig]="bsConfig">
               </bs-daterangepicker-inline>
-            </div></div>
+              <div class="datepreviewpanel">
+                <div class="previewmain">
+                  <p class="selectedvalue">{{datepreviewstart}}</p><span><svg style="margin: 9px;" width="12" height="3" viewBox="0 0 12 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.2383 2.23828H0.761719V0.761719H11.2383V2.23828Z" fill="#162741"/>
+                    </svg>
+                    </span><p  class="selectedvalue">{{datepreviewend}}</p> 
+                </div>
+
+                <div class="buttonpanelfordate">
+                  <button (click)="canceldaterange()" class="cancel">Cancel</button>
+                  <button class="applybtn">Apply</button>
+
+                </div>
+              </div>
+            </div>
+        
+          </div>
           </div>
           </div>
         </div>

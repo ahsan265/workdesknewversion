@@ -1867,7 +1867,7 @@ input:checked+.slider:before {
   body .bs-datepicker{
     width: 545px;
     height: 284px;
-    position: absolute;
+    position: relative;
     display: block;
     right: auto;
     bottom: 0px;
@@ -1876,15 +1876,15 @@ input:checked+.slider:before {
     text-align: right;
    }
   body .bs-datepicker-container .bs-datepicker-head  *{
-    font-family: Roboto;
+    font-family: "Roboto",sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 14px;
     align-items: center;
     text-align: center;
     
-    color: #292F58;
+    color: #162741;
   }
   body .bs-datepicker-container  .bs-datepicker-head {
     min-width: inherit;
@@ -1895,11 +1895,17 @@ input:checked+.slider:before {
     margin-bottom: 12px;
 }
 body .bs-datepicker-body table td span.selected{
-    background-color:  #253342;
+    background-color:  #1C54DB; 
+   border-radius: 50%;
 }
 body .bs-datepicker span.in-range{
-    background: #A6A8BA;    
-    border-radius: none;
+    background: #EDEDF7;    
+    border-radius: 0px;
+    color:  rgba(22, 39, 65, 0.8);
+}
+.bs-datepicker-body table td:before{
+    left: 0px;
+    right: 0px;
 }
   body .bs-datepicker-container  .bs-datepicker-head {
     background-color: #ffffff;
@@ -1924,54 +1930,96 @@ body .bs-datepicker-container  .bs-datepicker-body  thead {
 body .bs-datepicker-container  .bs-datepicker-body  thead th{
 padding: 0px;    
 min-width: inherit;
-font-family: Roboto;
+font-family: "Roboto",sans-serif;
 font-style: normal;
-font-weight: 500;
-font-size: 14px;
+font-weight: normal;
+font-size: 12px;
 line-height: 28px;
 
-color: #292F58;
+color: rgba(115, 125, 141, 0.7);
 }
-body .bs-datepicker-container .bs-datepicker-body table td span.selected, .bs-datepicker-body table td.selected span
+body .bs-datepicker-container .bs-datepicker-body table td span.selected
 {
     color: #ffffff;
-    border-radius: 4px;
+    border-radius: 0px;
+    /* border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px; */
+
+}
+body .bs-datepicker-container .bs-datepicker-body table td span.select-start
+{
+    color: #ffffff;
+    border-radius: 0px;
+    border-radius: 50%;
+    /* border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px; */
+
+}
+body .bs-datepicker-container .bs-datepicker-body table td span.select-end
+{   border-radius: 0px;
+    border-radius: 50%;
+
+    /* border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px; */
 }
 body .bs-datepicker-body table td span.is-other-month, .bs-datepicker-body table td.is-other-month span.is-other-month 
 {
-    color:  #A6A8BA;
+    color:   rgba(115, 125, 141, 0.45);
 
+}
+body .bs-datepicker-container .bs-datepicker-multiple{
+padding-right: 60px;
+}
+.bs-datepicker-body table td span
+{
+    border-radius: 0px;
+}
+body .bs-datepicker-head button.previous span 
+{
+    text-align: center;
+}
+body .bs-datepicker-head button.previous span:hover {
+background: none;
 }
 body .bs-datepicker-custom-range{
     position: relative;
-    right: 119px;
+    right: 153px;
     top: -266px;
-    width: 117px;
+    width: 152px;
     background: white;
     padding: 0px;
 }
 body .btn:last-child { display: none; }
 body .bs-datepicker-predefined-btns button{
-
+    width: 103px;
     background-color: #ffffff;
     display: block;
-    color: #A6A8BA;
+    color: rgba(22, 39, 65, 0.8);
+    letter-spacing: 0.02em;
+    font-style: normal;
+    font-weight: normal;
+    font-family: "Roboto",sans-serif;
     font-size: 12px;
     border: 0;
     padding: 0px;
-    text-align: center;
+    text-align: left;
     border-radius: 0px;
     margin: 0px;
-    height: 24px;
+    margin-left: 20px;
+    margin-right: 30px;
+    height: 36px;
+    padding-left: 11px;
 }
 body .bs-datepicker-predefined-btns button:hover{
-    color:  #ffffff;
-    background-color: #292F58;
+    color:  rgba(22, 39, 65, 0.8);
+    background-color: #EDEDF7;
 
 }
 body .bs-datepicker-predefined-btns button.selected{
-    color:  #ffffff;
-    background-color: #292F58;
+    color: rgba(22, 39, 65, 0.8);
+    background-color: #EDEDF7;
+    border-radius: 4px;
+    font-weight: 500;
     border: none;
     outline: none;
 }
@@ -1980,16 +2028,17 @@ body .btn:focus{
 }
 body .bs-datepicker-container  .bs-datepicker-body table.days span
 {
-/* height: 12px;
-line-height: 12px;
 font-size: 12px;
-padding: 2px; */
+}
+.bs-datepicker-body table.days span{
 
-border-radius: 4px;
+height: 32px;
+width: 33px;
 }
 body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
     background-color: #FFFFFF;
 }
+
    .linkexpired-form-container .mat-dialog-container {
     background: #FFFFFF;
     box-shadow: 0px 1px 5px 2px rgba(166, 168, 186, 0.3);
@@ -2034,7 +2083,7 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
 }
 .toast-message {
     word-wrap: break-word;
-    line-height: 11px;
+    line-height: 10px;
 }
 .toast-container .ngx-toastr{
     box-shadow: none;
@@ -2042,18 +2091,18 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
 .toast-container .ngx-toastr:hover{
     box-shadow: none;
 }
-button.toast-close-button[aria-label="Close"].ng-tns-c19-1 {
+.ngx-toastr.toast-success > button.toast-close-button[aria-label="Close"]{
     color: #1C54DB;
 }
-button.toast-close-button[aria-label="Close"].ng-tns-c19-1:hover{
+.ngx-toastr.toast-success > button.toast-close-button[aria-label="Close"]:hover{
     color: #1C54DB;
 
 }
 
-button.toast-close-button[aria-label="Close"].ng-tns-c19-0 {
+.ngx-toastr.toast-warning > button.toast-close-button[aria-label="Close"] {
     color: #FF155A;
 }
-button.toast-close-button[aria-label="Close"].ng-tns-c19-0:hover{
+.ngx-toastr.toast-warning button.toast-close-button[aria-label="Close"]:hover{
     color: #FF155A;
 }
   #toast-container{
@@ -2072,7 +2121,7 @@ button.toast-close-button[aria-label="Close"].ng-tns-c19-0:hover{
 #toast-container > .toast-warning {
     
     background-color: #FEDEE8;
-    color: #6A7585;
+    color: #FF155A;
     border: 1px solid rgba(255, 21, 90, 0.4);
     border-radius: 4px;
     height: 40px;
@@ -2379,6 +2428,10 @@ button.toast-close-button[aria-label="Close"].ng-tns-c19-0:hover{
         margin-top: 10px;
         margin-left: 0;
         display: none;
+        padding-right: 34px;
+    }
+    body .bs-datepicker-container .bs-datepicker-multiple {
+     padding-right: 60px;
     }
     body .bs-datepicker-custom-range {
         position: relative;

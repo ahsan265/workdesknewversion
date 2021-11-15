@@ -230,6 +230,9 @@ export class DashboardComponent implements OnInit {
         this.showchatsdashboard=true;
         this.showvisitordashboard=false;
         this.showticketsdashboard=true
+        this.createdevicechart();
+        this.createoschart();
+        this.createbrowerschart();
 
        }
        else if(val=="Tickets")
@@ -238,6 +241,9 @@ export class DashboardComponent implements OnInit {
         this.showchatsdashboard=true;
         this.showvisitordashboard=true;
         this.showticketsdashboard=false
+        
+    this.createtickettypechart();
+    this.createprioritticketchart();
        }
       this.selecteddashboard=val;
      }
@@ -253,11 +259,7 @@ export class DashboardComponent implements OnInit {
     $(document).ready(function() {
       $(document).foundation();
     });
-    this.createdevicechart();
-    this.createoschart();
-    this.createbrowerschart();
-    this.createtickettypechart();
-    this.createprioritticketchart();
+
   }
 
   incomingbarchart(data,lebel)

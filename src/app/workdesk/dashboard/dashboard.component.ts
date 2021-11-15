@@ -899,6 +899,7 @@ createoschart()
       var accesstoken=getdata?.access_token;
       var orgid=getdata?.subscription_id?.subsid?.uuid
         this.gigaaaservice.getcallstatistics(accesstoken,orgid,intid).subscribe(data=>{
+          console.log(data)
           this.answeredbyai=data['handed_to_ai']?.count;
           this.totalmissed=data['missed']?.count;
           this.answered=data['answered']?.count;
@@ -909,15 +910,15 @@ createoschart()
           this.totalmissedper=this.getpercentagecalculated(data['missed']?.increase);
           this.totalincomingper=this.getpercentagecalculated(data['incoming']?.increase);
 
-          this.ansper=this.answeredper;
-          this.ansbyai=this.answeredbyaiper;
-          this.totalmissper=this.totalmissedper;
-          this.totalincper=this.totalincomingper;
+          this.ansper=this.answeredper?.cal;
+          this.ansbyai=this.answeredbyaiper?.cal;
+          this.totalmissper=this.totalmissedper?.cal;
+          this.totalincper=this.totalincomingper?.cal;
 
-          this.answeredper='\xa0'+'+'+'\xa0'+this.answeredper;
-          this.answeredbyaiper='\xa0'+'+'+'\xa0'+this.answeredbyaiper;
-          this.totalmissedper='\xa0'+'+'+'\xa0'+this.totalmissedper;
-          this.totalincomingper='\xa0'+'+'+'\xa0'+this.totalincomingper;
+          this.answeredper=this.answeredper?.withsign;
+          this.answeredbyaiper=this.answeredbyaiper?.withsign;
+          this.totalmissedper=this.totalmissedper?.withsign;
+          this.totalincomingper=this.totalincomingper?.withsign;
        
 
         })
@@ -997,16 +998,16 @@ createoschart()
       calculated=(val*100).toFixed(2);
       if(calculated>0)
       {
-        return calculated;
+        return {cal:calculated,withsign:'\xa0'+'+'+'\xa0'+calculated};
 
       }
       else{
-        return calculated;
+        return {cal:calculated,withsign:'\xa0'+calculated};
 
       }
     }
     else{
-      return 0
+      return {cal:0,withsign:'\xa0'+0};
     }
   }
 

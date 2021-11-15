@@ -2034,7 +2034,7 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
 }
 .toast-message {
     word-wrap: break-word;
-    line-height: 30px;
+    line-height: 11px;
 }
 .toast-container .ngx-toastr{
     box-shadow: none;
@@ -2044,7 +2044,6 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
 }
 button.toast-close-button[aria-label="Close"].ng-tns-c19-1 {
     color: #1C54DB;
-    margin-top: 10px;
 }
 button.toast-close-button[aria-label="Close"].ng-tns-c19-1:hover{
     color: #1C54DB;
@@ -2053,7 +2052,6 @@ button.toast-close-button[aria-label="Close"].ng-tns-c19-1:hover{
 
 button.toast-close-button[aria-label="Close"].ng-tns-c19-0 {
     color: #FF155A;
-    margin-top: 10px;
 }
 button.toast-close-button[aria-label="Close"].ng-tns-c19-0:hover{
     color: #FF155A;
@@ -2066,6 +2064,7 @@ button.toast-close-button[aria-label="Close"].ng-tns-c19-0:hover{
     background-color: #DEE8FF;
     color: #1C54DB;
     border-radius: 4px;
+    height: 40px;
     border: 1px solid rgba(28, 84, 219, 0.4);
 
 }
@@ -2076,7 +2075,7 @@ button.toast-close-button[aria-label="Close"].ng-tns-c19-0:hover{
     color: #6A7585;
     border: 1px solid rgba(255, 21, 90, 0.4);
     border-radius: 4px;
-
+    height: 40px;
 }
   
 @media (max-width: 768px){

@@ -1862,7 +1862,7 @@ input:checked+.slider:before {
     display: block;
     margin: auto;
     width: 515px;
-    height: 288px;
+    height: 286px;
   }
   body .bs-datepicker{
     width: 545px;

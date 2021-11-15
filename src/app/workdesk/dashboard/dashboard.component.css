@@ -482,6 +482,13 @@ color: #A6A8BA;
     margin-top: 7px;
 }
 
+.dropdown-menu.show.calander{
+       display: inline-flex;
+       width: 668px;
+     height: 288px;
+     padding: 0px;
+}
+
 
 
 

@@ -173,7 +173,7 @@ font-family: "Roboto",sans-serif;
   }
 
   tr{
-    height: 50px;
+    height: 55px;
   }
   tr:nth-last-child(even)
   {
@@ -189,7 +189,7 @@ font-family: "Roboto",sans-serif;
 
   th{
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     line-height: 24px;
     color: rgba(22, 39, 65, 0.6);    
@@ -202,9 +202,9 @@ font-family: "Roboto",sans-serif;
     padding-bottom: 0px;
     padding-top: 0px;
 }
-th ,td{
+th {
     padding-left: 0px;
-    font-weight: 500;
+    font-weight: 600;
 font-size: 12px;
 }
 td {   font-family: "Roboto",sans-serif;
@@ -213,10 +213,11 @@ td {   font-family: "Roboto",sans-serif;
     font-size: 12px;
     line-height: 50px;
     align-items: center;
-    color: #162741;
+    color: #445167;
     vertical-align:middle;
     padding-bottom: 0px;
     padding-top: 0px;
+    padding-left: 0px;
 }
 td,td p {   
     font-family: "Roboto",sans-serif;
@@ -225,12 +226,13 @@ td,td p {
     font-size: 12px;
     line-height: 24px;
     align-items: center;
-    color: #162741;
+    color: #445167;
     padding-bottom: 0px;
     padding-top: 0px;
 }
 td p.displayname{
     font-weight: 500;
+    color: #445167;
 }
 .agentpic{
     width: 36px;

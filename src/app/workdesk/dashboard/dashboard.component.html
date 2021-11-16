@@ -21,7 +21,44 @@
               </li>
                </div>
           </div>
-          <div class="datepickerpanel">
+          <div class="datepickerpanel mobile">
+            <div class="datepicker" >
+              <div class="calander dropdown" data-toggle="dropdown">
+              <!-- <p   class="calhead">{{rangeSelected}}</p>   -->
+              <svg  #dp class="arrowdownicon" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.27331 11.5985C9.29131 11.6145 9.30831 11.6295 9.32531 11.6475C10.4043 12.7535 10.9993 14.2185 10.9993 15.7735V19.7575L13.2353 18.5395C13.4113 18.4435 13.5203 18.2555 13.5203 18.0485V15.7615C13.5203 14.2125 14.1093 12.7525 15.1783 11.6525L20.0153 6.50751C20.3283 6.17451 20.5003 5.73751 20.5003 5.27651V4.34051C20.5003 3.87651 20.1343 3.49951 19.6863 3.49951H4.81531C4.36631 3.49951 4.00031 3.87651 4.00031 4.34051V5.27651C4.00031 5.73751 4.17231 6.17451 4.48531 6.50651L9.27331 11.5985ZM10.6463 21.5005C10.4443 21.5005 10.2443 21.4465 10.0623 21.3385C9.71031 21.1285 9.49931 20.7575 9.49931 20.3455V15.7735C9.49931 14.6385 9.07631 13.5695 8.30531 12.7505C8.28231 12.7315 8.25931 12.7105 8.23931 12.6885L3.39331 7.53551C2.81731 6.92351 2.50031 6.12051 2.50031 5.27651V4.34051C2.50031 3.04951 3.53931 1.99951 4.81531 1.99951H19.6863C20.9613 1.99951 22.0003 3.04951 22.0003 4.34051V5.27651C22.0003 6.11951 21.6833 6.92151 21.1093 7.53451L16.2623 12.6885C15.4593 13.5165 15.0203 14.6055 15.0203 15.7615V18.0485C15.0203 18.8045 14.6113 19.4965 13.9533 19.8565L11.1923 21.3605C11.0203 21.4535 10.8333 21.5005 10.6463 21.5005Z" fill="#455267"/>
+                </svg>
+              <div class="calander dropdown-menu dropdown-menu-right">
+                 <div class="selectionpanel">
+              </div>
+                <bs-daterangepicker-inline style=" margin: 0px;
+                display: contents;"  type="text"
+                bsDaterangepicker
+                placement="bottom"
+                [bsValue]="bsValue"
+                (bsValueChange)="onDateChange($event)"
+                [bsConfig]="bsConfig">
+              </bs-daterangepicker-inline>
+              <div class="datepreviewpanel">
+                <div class="previewmain">
+                  <p class="selectedvalue">{{datepreviewstart}}</p><span><svg style="margin: 9px;" width="12" height="3" viewBox="0 0 12 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.2383 2.23828H0.761719V0.761719H11.2383V2.23828Z" fill="#162741"/>
+                    </svg>
+                    </span><p  class="selectedvalue">{{datepreviewend}}</p> 
+                </div>
+
+                <div class="buttonpanelfordate">
+                  <button (click)="canceldaterange()" class="cancel">Cancel</button>
+                  <button class="applybtn">Apply</button>
+
+                </div>
+              </div>
+            </div>
+        
+          </div>
+          </div>
+          </div>
+          <div class="datepickerpanel desktop">
             <div class="datepicker" >
               <div class="calander dropdown" data-toggle="dropdown">
               <p  #dp class="calhead">{{rangeSelected}}</p>  
@@ -169,7 +206,7 @@
       
           </div>
           </div>
-          <div class="chartscard">
+          <div class="chartscard mobilelastcard">
             <div class="cell large-12 chartheadingpanel" style="text-align: left; padding-left: 23px;">
             <p class="heading bar">ANSWERED BY AI
             </p>

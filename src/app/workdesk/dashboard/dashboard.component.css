@@ -562,7 +562,64 @@ color: #A6A8BA;
      padding: 0px;
      margin-top: 7px;
 }
-
+.datepickerpanel.mobile
+{
+    display: none;
+}
+@media (max-width: 768px){
+    .datepickerpanel.desktop{
+        display: none;
+    }
+    .datepickerpanel.mobile{
+        display: inline-flex;
+    }
+    .dashboardarea{
+        padding: 0px;
+        background: none;
+        border: none;
+    }
+    .mainheadingpanel{
+    padding: 0px;
+    width: 75%;
+    }
+    .datepickerpanel.mobile{
+        width: 20%;
+        display: inline-flex;
+        float: right;
+        height: 55px;
+    }
+    .calltype.dropdown{
+        width: 257px;
+        height: 55px;
+    }
+    .selecteddashboardname{
+        line-height: 55px;
+    }
+    .dropdown-menu.show.usertype{
+        width: 257px;
+    }
+    .arrowdownicon{
+        margin-right: 30.5%;
+    }
+    .arrowdownicon1{
+        margin-right: -44px;
+        margin-top: 25px;
+    }
+    .calander{
+        margin-left: 5%;
+        height: 55px;
+    }
+    .withincard{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .barchartpanel{
+        margin-top: 0px;
+    }
+    .mobilelastcard{
+        margin-bottom: 100px;
+    }
+}
 
 
 

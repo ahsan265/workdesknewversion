@@ -2201,6 +2201,7 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
         height: fit-content;
     }
     .container-fluid {
+        background: white;
         padding: 16px;
         width: inherit;
         height: 100%;

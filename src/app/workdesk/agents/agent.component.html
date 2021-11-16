@@ -59,7 +59,7 @@
         <thead >
           <tr  class="head" style="background: white;">
             <th style="width:30%; padding-left: 31px;">AGENT</th>
-            <th  style="width:25%;">FULL NAME</th>
+            <th  style="width:25%; padding-left: 34px;">FULL NAME</th>
             <th style="width: 30%;">LANGUAGE</th>
             <th style="width: 25%;"></th>
           </tr>
@@ -84,14 +84,25 @@
                  <p class="displayname"  [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)">{{getagentname(data?.display_name)}}</p>
                  <p [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)">{{data?.email}}</p></div>
             </td>
-            <td [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)">{{getfullname(data?.invited,data?.inactive,data?.active,data?.first_name,data?.last_name)}}</td>
+            <td [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)"><div style="display: inline-block; padding-right: 15px;">
+              <img class="" [src]="getengamentofagentcall('incall')" alt="">
+            </div> {{getfullname(data?.invited,data?.inactive,data?.active,data?.first_name,data?.last_name)}}</td>
             <td><p [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)" *ngFor="let lang of data?.languages; let i=index;" style="display:inline-block;padding-right: 2px;">{{lang.name}}<span [hidden]="i == data.languages.length-1">, </span> </p></td>
             <td ><img class="settings" (click)="getsettingspage(data?.images[96],data?.email,data?.invited,data?.display_name,data?.first_name,data?.last_name,data?.languages,data?.role,data?.uuid)" [hidden]="!(getsettingforloggedinagent()==data?.email && isagent==false||isagent==true)" [src]="agentrole" ></td>
           </tr>
         </tbody>
       </table>
-        <div>
-          <p class="totalnoofagent">{{totalnumberofagent}} agents</p>
+        <div class="showagentinnumberpanel">
+          <div  class="numberofagentpanel">
+            <p class="totalnoofagent">{{totalnumberofagent}} agents</p>
+
+          </div>
+          <div class="numberofavailableagent">
+            <p class="totalnoofagent">
+              1 available
+            </p>
+          </div>
+         
         </div>
       
       </div>

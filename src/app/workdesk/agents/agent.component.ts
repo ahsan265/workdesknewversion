@@ -142,6 +142,18 @@ export class AgentComponent implements OnInit {
       data :{"role":val.role,'id':val.id,"name":val.display_name,"agentlanguages":val.languages,"agentintegrations":val.integrations}
     });
   }
+
+  getengamentofagentcall(val)
+  {
+    if(val=="inchat")
+    {
+      return '../../../assets/assets_workdesk/chat.svg';
+    }
+   else  if(val=="incall")
+    {
+      return '../../../assets/assets_workdesk/call.svg';
+    }
+  }
  getsettingforloggedinagent()
  {
    
@@ -175,7 +187,7 @@ export class AgentComponent implements OnInit {
        var subsid=getdata.subscription_id.subsid.uuid
     
         this.gigaaaapi.getallagents(accesstoken,subsid,intid,parma1,param2,param3,lang).subscribe(data=>{
-          console.log(typeof(data))
+          console.log(data)
            var updateagentdata;
            updateagentdata =data;
             updateagentdata.forEach(element => {

@@ -355,7 +355,7 @@ border-bottom:none;
 }
 
 input[type=checkbox]:checked:after {
-content: "";
+content: " ";
 margin-left: 2px;
 margin-top: 0px;
 position: absolute;
@@ -408,11 +408,20 @@ font-style: normal;
 font-weight: normal;
 font-size: 12px;
 line-height: 120%;
-display: flex;
 align-items: center;
 letter-spacing: 0.02em;
 color: #7D8696;
 margin-left: 8px;
+}
+.numberofagentpanel{
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+}
+.numberofavailableagent{
+  display: inline-block;
+  width: 50%;
+  text-align: right;
 }
 tr{
   height: 50px;
@@ -597,6 +606,11 @@ color: #292F58;
 } */
 .agentnames{
   font-weight: 500;
+}
+.showagentinnumberpanel{
+  width: 100%;
+  display: block;
+  
 }
 @media (max-width: 768px){
   .tabs-title > a

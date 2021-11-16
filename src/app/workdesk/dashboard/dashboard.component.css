@@ -427,13 +427,17 @@ input[type="radio"]  {
     
     }
     input[type=radio]:checked{
-    background-color: #1C54DB; 
+    /* background-color: #1C54DB;  */
     border-bottom:none;
-    
+    background-image: url(../../../assets/assets_workdesk/checkbox_icon.svg);
+    background-repeat: no-repeat;
+    background-size: 19px 21px;
+    background-position: center;
     }
     
     input[type=radio]:checked:after {
-    content: "\2714";
+ 
+    content: "";
     margin-left: 2px;
     margin-top: 0px;
     position: absolute;

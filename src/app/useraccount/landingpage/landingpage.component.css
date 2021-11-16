@@ -127,6 +127,15 @@ cursor: pointer;
   }
 span{
       color: #1C54DB;
+      text-align: center;
+      font-family: "Roboto",sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 0.02em;
+      position: relative;
+      display: contents;
 
   }
   .smallheading{

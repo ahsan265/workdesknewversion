@@ -8,6 +8,7 @@ import { AuthService } from './service/authservice.service';
 import { GigaaaApiService } from './service/gigaaaapi.service';
 import { MessageService } from './service/messege.service';
 import { UserloginserviceService } from './service/userloginservice.service';
+import { agentsocketapi } from './service/agentsocketapi';
 
 const routes: Routes = [  { path: 'dashboard', component: AppComponent},
 

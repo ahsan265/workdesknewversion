@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { agentsocketapi } from 'src/app/service/agentsocketapi';
 import { AuthService } from 'src/app/service/authservice.service';
 import { GigaaaApiService } from 'src/app/service/gigaaaapi.service';
 import { gigaaasocketapi } from 'src/app/service/gigaaasocketapi.service';
@@ -36,7 +37,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
 {name:"Console",url:'https://console.gigaaa.com/'},
 {name:"Messenger",url:'https://messenger.gigaaa.com/chat'}]
   constructor(private gigaaasocket:gigaaasocketapi,private sharedres:sharedres_service,private messege:MessageService,private gigaaaapi:GigaaaApiService,private route: Router,private useraccountservice:UserloginserviceService,
-    private AuthService:AuthService) 
+    private AuthService:AuthService,private agentsocketapi:agentsocketapi) 
     { 
       this.getallintegrationlist();
     }
@@ -153,6 +154,10 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
       }
       
     });
+    var intid = JSON.parse(localStorage.getItem('intgid'))
+  this.gigaaaapi.getloggedinagentuuid(accesstoken,uuid,intid.int_id).subscribe(data=>{
+    localStorage.setItem('userlogged_uuid', JSON.stringify(data));
+  })
     })
   } catch (error) {
     this.handleLoginRegisterError(error.error.error);
@@ -204,7 +209,7 @@ getonlinestatus(token,orgid,intid)
   this.gigaaaapi.getagentonlinestatus(token,orgid,intid).subscribe(data=>{
 
   localStorage.setItem('user-status', JSON.stringify(data));
-this.showonlinetatus()
+  this.showonlinetatus()
   })
 }
  showonlinetatus(){
@@ -214,11 +219,15 @@ this.showonlinetatus()
 
     this.online_status="Online"
     this.statusonline=true;
+this.agentsocketapi.send_isonline_status(true);
+
   }
   else if(data['is_online']==false)
   {
     this.online_status="Away"
-    this.statusonline=false
+    this.statusonline=false;
+    this.agentsocketapi.send_isonline_status(false);
+
 
     
   }
@@ -232,10 +241,12 @@ const intid = JSON.parse(localStorage.getItem('intgid'))
 var accesstoken=getdata.access_token;
 var uuid=getdata.subscription_id.subsid.uuid;
 var onlinestatus={"is_online":e};
-try{
-await  this.gigaaaapi.putonlinestatus(accesstoken,uuid,intid.int_id,onlinestatus);
-  this.getonlinestatus(accesstoken,uuid,intid.int_id)
-}
+//this.agentsocketapi.send_isonline_status(e);
+
+    try{
+    await  this.gigaaaapi.putonlinestatus(accesstoken,uuid,intid.int_id,onlinestatus);
+      this.getonlinestatus(accesstoken,uuid,intid.int_id);
+    }
 catch(err)
 {
   this.messege.setErrorMessage(err.error.error)

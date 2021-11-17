@@ -28,6 +28,7 @@ import { percentcolorpipe } from './Datapipes/percentcolor';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSliderModule} from '@angular/material/slider';
 import { DragDirective } from './agents/croppicture/dragdroppic';
+import { agentsocketapi } from '../service/agentsocketapi';
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import { DragDirective } from './agents/croppicture/dragdroppic';
     
     
   ],
-  providers: [UserloginserviceService,],
+  providers: [UserloginserviceService,agentsocketapi],
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
 
 })

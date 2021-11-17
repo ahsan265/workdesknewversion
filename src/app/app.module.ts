@@ -38,6 +38,7 @@ import { LinkexpiredialogComponent } from './useraccount/linkexpiredialog/linkex
 import { ChartsModule } from 'ng2-charts';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { agentsocketapi } from './service/agentsocketapi';
 
 @NgModule({
   declarations: [

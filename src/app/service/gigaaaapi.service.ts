@@ -575,7 +575,20 @@ export class GigaaaApiService  {
        
                  return  this.http.get("https://gigaaa-customer-support.azurewebsites.net/private/analytics/call-chart?organization="+orgid+"&integration="+intid,httpOptions)
                  }
-
+                 // get loggedin agent uuid
+                 getloggedinagentuuid(accesstoken:string,orgid:string,intid:string)
+                 {
+                  console.log(orgid,intid)  
+                  const httpOptions: any = {
+                    headers: new HttpHeaders({
+                     'Content-Type': 'application/json',
+                     'Accept': 'application/json',
+                     'Authorization': `Bearer ${accesstoken}`
+                 })
+                 };
+      
+                return  this.http.get("https://gigaaa-customer-support.azurewebsites.net/private/agent?organization="+orgid+"&integration="+intid,httpOptions)
+                 }
 }
 
 

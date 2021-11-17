@@ -56,8 +56,8 @@ export class AuthService implements CanActivate {
     localStorage.setItem('gigaaa-subscription', JSON.stringify(subsiddata))
     this.user.next(user);
    
-    this.message.setSuccessMessage("Logged In Successfully")
-
+     this.message.setSuccessMessage("Logged In Successfully")
+  
     this.useraccountservice.getopendashboard(1);
 
     return user;

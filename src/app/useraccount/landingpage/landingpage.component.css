@@ -125,6 +125,10 @@ cursor: pointer;
   position: relative;
 
   }
+  span.descp{
+    color: #1C54DB;
+
+  }
 span{
       color: #1C54DB;
       text-align: center;

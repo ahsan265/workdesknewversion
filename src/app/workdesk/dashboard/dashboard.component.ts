@@ -261,6 +261,11 @@ export class DashboardComponent implements OnInit {
         var data= await this.gigaaaservice.getAllCountries(accesstoken);
         console.log(data)
          this.countrylist=data;
+         this.countrylist= this.countrylist.sort((a, b)=> {
+          var textA = a.name;
+          var textB = b.name;
+          return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+      });
       }
       catch(err){
         this.messageservie.setErrorMessage(err.error.error);

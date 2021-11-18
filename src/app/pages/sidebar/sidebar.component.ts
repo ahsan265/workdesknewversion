@@ -219,14 +219,12 @@ getonlinestatus(token,orgid,intid)
 
     this.online_status="Online"
     this.statusonline=true;
-this.agentsocketapi.send_isonline_status(true);
 
   }
   else if(data['is_online']==false)
   {
     this.online_status="Away"
     this.statusonline=false;
-    this.agentsocketapi.send_isonline_status(false);
 
 
     
@@ -244,6 +242,8 @@ var onlinestatus={"is_online":e};
 //this.agentsocketapi.send_isonline_status(e);
 
     try{
+      this.agentsocketapi.send_isonline_status(e);
+
     await  this.gigaaaapi.putonlinestatus(accesstoken,uuid,intid.int_id,onlinestatus);
       this.getonlinestatus(accesstoken,uuid,intid.int_id);
     }

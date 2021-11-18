@@ -118,8 +118,10 @@ export class AgentComponent implements OnInit {
     this.getlistofagentwithintg();
     this.getagentlist();
     this.getagentrole();
-
+   setTimeout(() => {
     this.selectusertype(true,"Show all",0)
+
+   }, 500);
 
     this.sharedres.submitapplication$.subscribe(data=>{
     this.getallagents(data?.int_id,this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages);
@@ -366,6 +368,7 @@ isagentonline(val){
       this.agentsocketgigaaaapi.send_agentsparam_status(1,1,1,this.id_soflanguages)
 
     }
+   
   }
   else if(e==true&& val=="Active")
   {     this.allagentmsg="There is no Active Agents yet";
@@ -604,7 +607,7 @@ return false;
            if(this.all_agent!=null)
            {
             this.getallagents(intid?.int_id,this.active_agents, this.inactive_agents,this.invited_agents,this.id_soflanguages);
-            this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
+           // this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
 
            }
 
@@ -627,7 +630,7 @@ return false;
         {
           //this.updateagentprofile()
           this.getallagents(intid?.int_id,this.active_agents, this.inactive_agents,this.invited_agents,this.id_soflanguages);
-          this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
+         // this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
 
     
         }

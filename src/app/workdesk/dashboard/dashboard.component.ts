@@ -188,7 +188,8 @@ export class DashboardComponent implements OnInit {
    ansbyai:any;
    totalmissper:any;
    totalincper:any;
-
+  countrylist:any;
+  lang:any;
   constructor(private sharedres:sharedres_service,
     private router:Router,
     private localeService: BsLocaleService,
@@ -250,6 +251,43 @@ export class DashboardComponent implements OnInit {
        }
       this.selecteddashboard=val;
      }
+
+     // get all country 
+     public async getallthecountries(): Promise<void>
+     {
+      const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
+      var accesstoken=getdata?.access_token;
+       var data= await this.gigaaaservice.getAllCountries(accesstoken);
+        this.countrylist=data;
+       
+
+     }
+     // getall languages
+     public async getlllangugaes(): Promise<void>{
+      const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
+      var accesstoken=getdata.access_token;
+      var subsid=getdata.subscription_id.subsid.uuid;
+      const intid = JSON.parse(localStorage.getItem('intgid'))
+      try{
+       var languagee=[{name:'Arabic' ,status:false},
+        {name:'English' ,status:false},
+        {name:'German' ,status:false},
+        {name:'Russian' ,status:false},
+        {name:'Spanish' ,status:false},
+        {name:'Turkish' ,status:false},
+  
+      ];
+      var  language= await this.gigaaaservice.getAllLanguages(accesstoken,subsid,intid.int_id)
+        let updatearr = language.map((item, i) => Object.assign({}, item, languagee[i]));
+          console.log(updatearr)
+         this.lang=updatearr;
+         // this.getalllanguage(false);
+  
+      }
+      catch(err){
+        this.messageservie.setErrorMessage(err.error.error)
+      }
+    }
      ngOnInit(): void {
        this.getlistofdashboard("Calls");
       this.onDateChange([this.ranges[0].value[0],this.ranges[0].value[1]])
@@ -259,6 +297,8 @@ export class DashboardComponent implements OnInit {
       this.loadcallstatsoninit();
       this.loadcallchartinit();
       this.getstatsonintg();
+    //  this.getallthecountries();
+      this.getlllangugaes();
     $(document).ready(function() {
       $(document).foundation();
     });

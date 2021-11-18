@@ -14,7 +14,7 @@ import { sharedres_service } from "./sharedres.service";
      {    this.getagetnlist$ = this.getagentlistsubject.asObservable().pipe();
 
         this.getagentlive()
-    //    this.callsocketapi_by_selecting_intgid()
+        //this.callsocketapi_by_selecting_intgid()
       }
       callsocketapi_by_selecting_intgid()
       {    const socketvalue = JSON.parse(localStorage.getItem('gigaaa-socket'))

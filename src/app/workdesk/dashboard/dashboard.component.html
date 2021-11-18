@@ -23,6 +23,7 @@
           </div>
           <div class="datepickerpanel mobile">
             <div class="datepicker" >
+
               <div class="calander dropdown" data-toggle="dropdown">
               <!-- <p   class="calhead">{{rangeSelected}}</p>   -->
               <svg  #dp class="arrowdownicon" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,8 +61,8 @@
           </div>
           <div class="datepickerpanel desktop">
             <div class="datepicker" >
-              <div class="calander dropdown" data-toggle="dropdown">
-              <p  #dp class="calhead">{{rangeSelected}}</p>  
+              <div style="height: 36px; list-style: none;" class="calander dropdown" data-toggle="dropdown">
+              <p   #dp class="calhead">{{rangeSelected}}</p>  
               <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
                 </svg>
@@ -94,6 +95,38 @@
         
           </div>
           </div>
+            <div class="dropdown location">
+              <li style="height: 34px; list-style: none;">
+              <a class="selecteddashboardname"   data-toggle="dropdown" aria-expanded="false">
+                Location
+                  <svg  class="arrowdownicon1" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                   </svg>
+              </a>  
+              <ul class="dropdown-menu usertype" style="transform: translate3d(0px, 23px, 0px);">
+                  <li class="listitem user"   *ngFor="let count of this.countrylist" [ngValue]="count.name" > <input (click)="getlistofdashboard(count.name)"  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="radio" [value]="count.name" [attr.id]="count.name"> <label class="dropdownlistitem1"  [for]="count.name"> 
+                      {{count.name}}
+                     </label></li>
+              </ul>
+               </li>
+                </div>
+              
+            <div class="dropdown  country">
+              <li style="height: 34px; list-style: none;">
+              <a class="selecteddashboardname"   data-toggle="dropdown" aria-expanded="false">
+                English (US)
+                  <svg  class="arrowdownicon1" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                   </svg>
+              </a>  
+              <ul class="dropdown-menu usertype" style="transform: translate3d(0px, 23px, 0px);">
+                  <li class="listitem user"   *ngFor="let count of this.lang" [ngValue]="count.name" > <input (click)="getlistofdashboard(count.name)"  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name" [attr.id]="count.name"> <label class="dropdownlistitem1"  [for]="count.name"> 
+                      {{count.name}}
+                     </label></li>
+              </ul>
+               </li>
+                </div>
+         
           </div>
         </div>
   <div [hidden]="showcallsdashboard">

@@ -82,12 +82,12 @@ export class GigaaaApiService  {
     return await this.http.post("https://gigaaa-backend.azurewebsites.net/users/password", passwordPayload, httpOptions).toPromise();
   }
 
-  public getAllCountries(user: User): Promise<any> {
+  public getAllCountries(accesstoken: string): Promise<any> {
     const httpOptions: any = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': `Bearer ${user.api_token}`
+        'Authorization': `Bearer ${accesstoken}`
       })
     };
     return this.http.get(this.apiUrl + `countries`, httpOptions).toPromise();

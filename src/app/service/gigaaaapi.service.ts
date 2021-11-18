@@ -90,7 +90,7 @@ export class GigaaaApiService  {
         'Authorization': `Bearer ${accesstoken}`
       })
     };
-    return this.http.get(this.apiUrl + `countries`, httpOptions).toPromise();
+    return this.http.get('https://gigaaa-backend.azurewebsites.net/public/countries', httpOptions).toPromise();
   }
 
   public getAllLanguages(accesstoken: string,orgid:string,intid:string): Promise<any> {

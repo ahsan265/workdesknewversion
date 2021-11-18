@@ -257,8 +257,14 @@ export class DashboardComponent implements OnInit {
      {
       const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
       var accesstoken=getdata?.access_token;
-       var data= await this.gigaaaservice.getAllCountries(accesstoken);
-        this.countrylist=data;
+      try{
+        var data= await this.gigaaaservice.getAllCountries(accesstoken);
+        console.log(data)
+         this.countrylist=data;
+      }
+      catch(err){
+        this.messageservie.setErrorMessage(err.error.error);
+      }
        
 
      }
@@ -297,8 +303,8 @@ export class DashboardComponent implements OnInit {
       this.loadcallstatsoninit();
       this.loadcallchartinit();
       this.getstatsonintg();
-    //  this.getallthecountries();
-      this.getlllangugaes();
+      this.getallthecountries();
+      this.getlllangugaes(); 
     $(document).ready(function() {
       $(document).foundation();
     });

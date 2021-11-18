@@ -95,7 +95,7 @@
         
           </div>
           </div>
-            <div class="dropdown location">
+            <div class="dropdown country">
               <li style="height: 34px; list-style: none;">
               <a class="selecteddashboardname"   data-toggle="dropdown" aria-expanded="false">
                 Location
@@ -103,7 +103,7 @@
                    <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
                    </svg>
               </a>  
-              <ul class="dropdown-menu usertype" style="transform: translate3d(0px, 23px, 0px);">
+              <ul class="dropdown-menu country" style="transform: translate3d(0px, 23px, 0px);">
                   <li class="listitem user"   *ngFor="let count of this.countrylist" [ngValue]="count.name" > <input (click)="getlistofdashboard(count.name)"  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="radio" [value]="count.name" [attr.id]="count.name"> <label class="dropdownlistitem1"  [for]="count.name"> 
                       {{count.name}}
                      </label></li>
@@ -111,7 +111,7 @@
                </li>
                 </div>
               
-            <div class="dropdown  country">
+            <div class="dropdown  location">
               <li style="height: 34px; list-style: none;">
               <a class="selecteddashboardname"   data-toggle="dropdown" aria-expanded="false">
                 English (US)

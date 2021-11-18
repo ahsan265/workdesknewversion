@@ -72,6 +72,7 @@
                             {{selectedlanguages}}
                         <i class="tagiconnn fa fa-chevron-down" aria-hidden="true" ></i>
                         </a>  
+                       
                         <ul  class="dropdown-menu" >
 
                             <li class="listitem"  *ngFor="let count of this.lang; let i=index" [ngValue]="count.name" > <input  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name"  (click)="selectlanguageonebyone($event.target.checked,count.id)" [attr.id]="'count.name'+i"> <label class="dropdownlistitem"  [for]="'count.name'+i"> 

@@ -94,6 +94,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
   }
   toggleSideBar(){
     this.gigaaasocket.closewebsocketcalls();
+    this.agentsocketapi.closeagentsocket();
     this.AuthService.logOff();
     this.useraccountservice.getopendashboard(2);
     this.route.navigate(['/']);

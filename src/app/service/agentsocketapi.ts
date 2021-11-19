@@ -75,20 +75,30 @@ import { sharedres_service } from "./sharedres.service";
 
     // send online away status
     send_isonline_status(data:boolean)
-    { 
+    {  if(this.ws.readyState==this.ws.OPEN)
+      {
         var object= {"action": "update_status", "data":{"action": "is_online", "value":data}}
      
         this.ws.send(JSON.stringify(object))    
-   
+      }
       }
 
           // send agents params
     send_agentsparam_status(invited:any,active:any,inactive:any,languages:Array<any>)
     { 
-        var object= {"action": "filter", "data":{"languages": languages, "invited":invited, "active":active, "inactive":inactive}}
+      if(this.ws.readyState==this.ws.OPEN)
+      {var object= {"action": "filter", "data":{"languages": languages, "invited":invited, "active":active, "inactive":inactive}}
       console.log(object)
-       
+     
         this.ws.send(JSON.stringify(object))    
-      
+    }
+      }
+
+      // close agent socket
+      closeagentsocket()
+      {if(this.ws.OPEN==1)
+        {
+        this.ws.close();
+        }
       }
 }

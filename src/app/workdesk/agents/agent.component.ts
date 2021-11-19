@@ -188,6 +188,7 @@ export class AgentComponent implements OnInit {
     {
       return '../../../assets/assets_workdesk/call.svg';
     }
+    
   }
  getsettingforloggedinagent()
  {

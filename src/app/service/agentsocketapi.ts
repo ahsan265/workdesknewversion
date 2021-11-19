@@ -10,29 +10,20 @@ import { sharedres_service } from "./sharedres.service";
     getagetnlist$: Observable<any>;
     private getagentlistsubject = new Subject<any>();
      ws:  WebSocket;
+     issocketliveornot:boolean=false;
     constructor(private message:MessageService,private sharedres:sharedres_service)
      {    this.getagetnlist$ = this.getagentlistsubject.asObservable().pipe();
-
         this.getagentlive()
-        //this.callsocketapi_by_selecting_intgid()
+     this.callsocketapi_by_selecting_intgid()
       }
-      callsocketapi_by_selecting_intgid()
-      {    const socketvalue = JSON.parse(localStorage.getItem('gigaaa-socket'))
-      
-        this.sharedres.runsocketapiusingint_id$.subscribe(data=>{
-          if(data==1 && socketvalue!=true)
-          {   
-            this.getagentlive()
-           //   this.checksocketopen=false;
-          }
-          // else if(this.checksocketopen==false)
-          // {
-          //   this.getlistofliveque();
-          //   this.checksocketopen=true;
-      
-          // }
-        
+        public  callsocketapi_by_selecting_intgid()
+          {    const socketvalue = JSON.parse(localStorage.getItem('gigaaa-socket'))
           
+            this.sharedres.runsocketapiusingint_id$.subscribe(data=>{
+              if(data==1 && socketvalue!=true)
+              {   
+                this.getagentlive()
+              }
         })
       
       }
@@ -51,6 +42,11 @@ import { sharedres_service } from "./sharedres.service";
                 this.ws = new WebSocket(url);
                     this.ws.onopen=(e)=>{
                         this.message.setErrorMessage("hello-"+e.type);
+                  
+                      var checksocketopen=true;
+                        localStorage.setItem('gigaaa-socket', JSON.stringify(checksocketopen));
+                        this.sharedres.runagentsocket(1);
+
                     }
                     this.ws.onmessage = (e) => {
                    if(this.ws.OPEN==1)
@@ -64,10 +60,10 @@ import { sharedres_service } from "./sharedres.service";
                     }
                     }
                     this.ws.onerror=(e)=>{
-                        this.message.setErrorMessage("socket-"+e.type);
+                        this.message.setErrorMessage("Agent-socket-"+e.type);
                     }
                     this.ws.onclose=(e)=>{
-                        this.message.setErrorMessage("hello-"+e.type);
+                        this.message.setErrorMessage("Agent-socket-"+e.type);
                     }
 
       }

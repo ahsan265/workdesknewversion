@@ -312,6 +312,7 @@ export class DashboardComponent implements OnInit {
       this.getstatsonintg();
       this.getallthecountries();
       this.getlllangugaes(); 
+
     $(document).ready(function() {
       $(document).foundation();
     });
@@ -1022,8 +1023,12 @@ createoschart()
   { 
     try{ 
     this.subscription=  this.sharedres.submitapplication$.subscribe(data=>{
+      var status = JSON.parse(localStorage.getItem('user-status'))
+    if(status?.is_online===null)
+    {
       this.getcallstats(data?.int_id)
       this.getcallcharts(data?.int_id)
+    }
     
     })
   // this.subscription.unsubscribe();

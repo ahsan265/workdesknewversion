@@ -31,6 +31,9 @@ export class sharedres_service {
 
     runsocketapiusingint_id$: Observable<any>;
     private runsocketapiusingint_idsubject = new Subject<any>();
+
+    runthesocketforagent$: Observable<any>;
+    private runthesocketforagent_subject = new Subject<any>();
     constructor(private gigaaaapi:GigaaaApiService,
       private router: ActivatedRoute,
 
@@ -43,6 +46,7 @@ export class sharedres_service {
         this.agentsprofilesetting$=this.agentsprofilesettingsubject.asObservable().pipe();
         this.inviteduserdetails$=this.inviteduserdetailssubject.asObservable().pipe();
         this.runsocketapiusingint_id$=this.runsocketapiusingint_idsubject.asObservable().pipe();
+        this.runthesocketforagent$=this.runthesocketforagent_subject.asObservable().pipe();
 
 
     }
@@ -122,6 +126,12 @@ getcallsocketapi(val){
 this.runsocketapiusingint_idsubject.next(val)
 }
 
+
+// runagentsocket
+runagentsocket(val)
+{
+  this.runthesocketforagent_subject.next(val)
+}
 
 
 }

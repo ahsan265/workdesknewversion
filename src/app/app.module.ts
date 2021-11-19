@@ -79,7 +79,7 @@ import { agentsocketapi } from './service/agentsocketapi';
     
   ], 
   bootstrap: [AppComponent],
-  providers: [gigaaasocketapi,UserloginserviceService,AuthService,GigaaaApiService,MessageService,sharedres_service,{
+  providers: [gigaaasocketapi,agentsocketapi,UserloginserviceService,AuthService,GigaaaApiService,MessageService,sharedres_service,{
     provide: MatDialogRef,
     useValue: {}
   }],

@@ -39,11 +39,11 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
   constructor(private gigaaasocket:gigaaasocketapi,private sharedres:sharedres_service,private messege:MessageService,private gigaaaapi:GigaaaApiService,private route: Router,private useraccountservice:UserloginserviceService,
     private AuthService:AuthService,private agentsocketapi:agentsocketapi) 
     { 
-      this.getallintegrationlist();
+     
     }
 
   ngOnInit(): void {
-  
+    this.getallintegrationlist();
     this.getuserdetails();
     this.getagentrole();
     this.languagetag='English';
@@ -90,7 +90,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
     
 
   });
-   this.setinetgration();
+   this.calltheagentsocket();
   }
   toggleSideBar(){
     this.gigaaasocket.closewebsocketcalls();
@@ -141,22 +141,41 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
     this.gigaaaapi.getallintegration(accesstoken,uuid).subscribe(data=>{
     this.integration=data;
     this.integration.forEach(element => {
-      if(element.last_used==true)
+      if(element.last_used===true)
       {        localStorage.setItem('intgid', JSON.stringify({int_id:element.uuid,name:element.name}));
 
         this.defaultingt=element.name;
-       // this.sharedres.getintegrationrelation(element.uuid);
+        this.sharedres.getintegrationrelation(element.uuid);
       // this.getonlinestatus(accesstoken,uuid,element.uuid);
-       this.showonlinetatus(0);        
-       this.sharedres.getuserole();
-        this.sharedres.getcallsocketapi(1);
+          
+      this.sharedres.getuserole();
+     
+       var intid = JSON.parse(localStorage.getItem('intgid'))
+       this.gigaaaapi.getloggedinagentuuid(accesstoken,uuid,intid.int_id).subscribe(data=>{
+         localStorage.setItem('userlogged_uuid', JSON.stringify(data));
+         this.showonlinetatus(0);
+         this.sharedres.getcallsocketapi(1);
 
-
+       });
+    
       }
       
     });
-    setTimeout(() => {
+  
+    })
+  
+  } catch (error) {
+    this.handleLoginRegisterError(error.error.error);
+  }
+ }
+
+ calltheagentsocket()
+ {
+  this.sharedres.runthesocketforagent$.subscribe(data=>{
+    if(data==1)
+    {
       var status = JSON.parse(localStorage.getItem('user-status'))
+
       if (status!=null)
       {
         this.agentsocketapi.send_isonline_status(status);
@@ -165,16 +184,9 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
         this.showonlinetatus(3)
         this.agentsocketapi.send_isonline_status(false);
       }
-    }, 1000);
-  
-    var intid = JSON.parse(localStorage.getItem('intgid'))
-  this.gigaaaapi.getloggedinagentuuid(accesstoken,uuid,intid.int_id).subscribe(data=>{
-    localStorage.setItem('userlogged_uuid', JSON.stringify(data));
-  })
-    })
-  } catch (error) {
-    this.handleLoginRegisterError(error.error.error);
-  }
+    }
+
+  });
  }
  getuserdetails()
  {

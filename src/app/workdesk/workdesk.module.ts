@@ -47,7 +47,7 @@ import { agentsocketapi } from '../service/agentsocketapi';
     
     
   ],
-  providers: [UserloginserviceService,agentsocketapi],
+  providers: [UserloginserviceService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
 
 })

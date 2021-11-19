@@ -161,8 +161,8 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
         this.agentsocketapi.send_isonline_status(status);
       }
       else{
-        this.agentsocketapi.send_isonline_status(false);
         this.showonlinetatus(3)
+        this.agentsocketapi.send_isonline_status(false);
       }
     }, 1000);
   

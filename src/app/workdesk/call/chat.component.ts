@@ -645,13 +645,13 @@ public async dialcall(callid:any): Promise<void>
   const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
     var accesstoken=getdata.access_token;
     const id = JSON.parse(localStorage.getItem('intgid'))
-    const agentuuid = JSON.parse(localStorage.getItem('intgid'))
+    const agentuuid = JSON.parse(localStorage.getItem('userlogged_uuid'))
 
     var uuid=getdata.subscription_id.subsid.uuid;
    var data= {"call_uuid": callid}
   try{
   const call_url= await this.gigaaaservice.getcalltype(accesstoken,uuid,id.int_id,data);
-  window.open(call_url.url+"&integration="+id.int_id, "_blank");
+  window.open(call_url.url+"&integration="+id.int_id+"&agentlogged_uuid="+agentuuid?.uuid, "_blank");
 
   }
   catch(err){

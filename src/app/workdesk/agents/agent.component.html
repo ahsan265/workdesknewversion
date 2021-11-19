@@ -85,7 +85,7 @@
                  <p [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)">{{data?.email}}</p></div>
             </td>
             <td [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)"><div style="display: inline-block; padding-right: 15px;">
-              <img class="" [src]="getengamentofagentcall('incall')" alt="">
+              <img class="" [src]="getengamentofagentcall(data.is_in_call,data.is_in_chat)" alt="">
             </div> {{getfullname(data?.invited,data?.inactive,data?.active,data?.first_name,data?.last_name)}}</td>
             <td><p [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)" *ngFor="let lang of data?.languages; let i=index;" style="display:inline-block;padding-right: 2px;">{{lang.name}}<span [hidden]="i == data.languages.length-1">, </span> </p></td>
             <td ><img class="settings" (click)="getsettingspage(data?.images[96],data?.email,data?.invited,data?.display_name,data?.first_name,data?.last_name,data?.languages,data?.role,data?.uuid)" [hidden]="!(getsettingforloggedinagent()==data?.email && isagent==false||isagent==true)" [src]="agentrole" ></td>

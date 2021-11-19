@@ -109,7 +109,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
       this.defaultingt=val;
       this.sharedres.getintegrationrelation(int_id)
       localStorage.setItem('intgid', JSON.stringify({int_id:int_id,name:val}));
-      this.getonlinestatus(accesstoken,uuid,int_id)  
+     // this.showonlinetatus()
       this.sharedres.getuserole();
       this.sharedres.getcallsocketapi(1);
     }
@@ -122,8 +122,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
       const intg = JSON.parse(localStorage.getItem('intgid'))
       if(intg?.name!=null){
         this.defaultingt=intg.name;
-        this.getonlinestatus(accesstoken,uuid,intg?.int_id) 
-         
+      //  this.showonlinetatus()         
       }
       else{
         this.defaultingt="Select integration";
@@ -146,14 +145,27 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
 
         this.defaultingt=element.name;
        // this.sharedres.getintegrationrelation(element.uuid);
-        this.getonlinestatus(accesstoken,uuid,element.uuid);
-        this.sharedres.getuserole();
+      // this.getonlinestatus(accesstoken,uuid,element.uuid);
+       this.showonlinetatus(0);        
+       this.sharedres.getuserole();
         this.sharedres.getcallsocketapi(1);
 
 
       }
       
     });
+    setTimeout(() => {
+      var status = JSON.parse(localStorage.getItem('user-status'))
+      if (status!=null)
+      {
+        this.agentsocketapi.send_isonline_status(status);
+      }
+      else{
+        this.agentsocketapi.send_isonline_status(false);
+        this.showonlinetatus(3)
+      }
+    }, 1000);
+  
     var intid = JSON.parse(localStorage.getItem('intgid'))
   this.gigaaaapi.getloggedinagentuuid(accesstoken,uuid,intid.int_id).subscribe(data=>{
     localStorage.setItem('userlogged_uuid', JSON.stringify(data));
@@ -206,28 +218,32 @@ onlinestatus(val)
 }
 getonlinestatus(token,orgid,intid)
 {
-  this.gigaaaapi.getagentonlinestatus(token,orgid,intid).subscribe(data=>{
 
-  localStorage.setItem('user-status', JSON.stringify(data));
-  this.showonlinetatus()
+  this.gigaaaapi.getagentonlinestatus(token,orgid,intid).subscribe(data=>{
+    localStorage.setItem('user-status', JSON.stringify(data['is_online']));
+    this.showonlinetatus(0);
   })
+ 
 }
- showonlinetatus(){
+ showonlinetatus(value:any){
   const data = JSON.parse(localStorage.getItem('user-status'))
-  if(data['is_online']==true)
+  if(data==true && value!=1)
   { 
 
     this.online_status="Online"
     this.statusonline=true;
-
+  //  this.agentsocketapi.send_isonline_status(true);
   }
-  else if(data['is_online']==false)
+  else if(data==false && value!=1)
   {
     this.online_status="Away"
     this.statusonline=false;
+  //  this.agentsocketapi.send_isonline_status(false);
 
-
-    
+  }
+  else if(value==3){
+    this.online_status="Away"
+    this.statusonline=false;
   }
  }
 
@@ -240,12 +256,21 @@ var accesstoken=getdata.access_token;
 var uuid=getdata.subscription_id.subsid.uuid;
 var onlinestatus={"is_online":e};
 //this.agentsocketapi.send_isonline_status(e);
-
+localStorage.setItem('user-status', JSON.stringify(e));
     try{
-      this.agentsocketapi.send_isonline_status(e);
-
+    this.agentsocketapi.send_isonline_status(e);
     await  this.gigaaaapi.putonlinestatus(accesstoken,uuid,intid.int_id,onlinestatus);
-      this.getonlinestatus(accesstoken,uuid,intid.int_id);
+    if(e==true)
+    {
+      this.online_status="Online"
+      this.statusonline=true;
+    }
+    else if(e==false)
+    {
+      this.online_status="Away"
+      this.statusonline=false;
+    }
+   // this.getonlinestatus(accesstoken,uuid,intid.int_id);
     }
 catch(err)
 {

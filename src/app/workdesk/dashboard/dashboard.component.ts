@@ -790,7 +790,6 @@ export class DashboardComponent implements OnInit {
           pointBorderColor: '#fff',
           pointHoverBackgroundColor: '#fff',
           pointHoverBorderColor: 'rgba(148,159,177,0.8)',
-          fill: 'origin',
         
         },
         {
@@ -807,7 +806,8 @@ export class DashboardComponent implements OnInit {
 
       },
       options:{ responsive: true,
-        maintainAspectRatio: false,}
+        maintainAspectRatio: false,
+      legend:{position:'bottom'}}
  
     });
       linchart.update()

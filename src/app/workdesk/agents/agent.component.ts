@@ -178,13 +178,13 @@ export class AgentComponent implements OnInit {
     });
   }
 
-  getengamentofagentcall(val)
+  getengamentofagentcall(val,val1)
   {
-    if(val=="inchat")
+    if(val==true&&val1==false)
     {
       return '../../../assets/assets_workdesk/chat.svg';
     }
-   else  if(val=="incall")
+   else  if(val==false&&val1==true)
     {
       return '../../../assets/assets_workdesk/call.svg';
     }
@@ -364,7 +364,7 @@ isagentonline(val){
     this.allagentmsg="There is no agents invited to this integration yet.";
     if(status!=1)
     {
-      this.getallagents(intid?.int_id,1,1,1,this.id_soflanguages);
+     // this.getallagents(intid?.int_id,1,1,1,this.id_soflanguages);
       this.agentsocketgigaaaapi.send_agentsparam_status(1,1,1,this.id_soflanguages)
 
     }
@@ -375,7 +375,7 @@ isagentonline(val){
  
     if(status!=1)
     {    
-      this.getallagents(intid?.int_id,1,0,0,this.id_soflanguages);
+   //   this.getallagents(intid?.int_id,1,0,0,this.id_soflanguages);
       this.agentsocketgigaaaapi.send_agentsparam_status(1,0,0,this.id_soflanguages)
 
     }
@@ -389,7 +389,7 @@ isagentonline(val){
  
     if(status!=1)
     {
-    this.getallagents(intid?.int_id,0,0,1,this.id_soflanguages);
+    //this.getallagents(intid?.int_id,0,0,1,this.id_soflanguages);
     this.agentsocketgigaaaapi.send_agentsparam_status(0,0,1,this.id_soflanguages)
     }
     this.active_agents=0;
@@ -399,7 +399,7 @@ isagentonline(val){
   else if(e==true&& val=="Invited")
   {if(status!=1)
     {
-    this.getallagents(intid?.int_id,0,1,0,this.id_soflanguages);
+  //  this.getallagents(intid?.int_id,0,1,0,this.id_soflanguages);
     this.agentsocketgigaaaapi.send_agentsparam_status(0,1,0,this.id_soflanguages)
     }
     this.active_agents=0;
@@ -543,7 +543,7 @@ return false;
       {
         
         const intid = JSON.parse(localStorage.getItem('intgid'))
-        this.getallagents(intid?.int_id,this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages);
+       // this.getallagents(intid?.int_id,this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages);
         this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
 
       }
@@ -638,6 +638,7 @@ return false;
       this.lang=udpatedlang;
      
      }
+
      selectlanguageonebyone(e,id)
    {      const intid = JSON.parse(localStorage.getItem('intgid'));
 
@@ -656,7 +657,7 @@ return false;
        if(this.id_soflanguages.length!=null)
     {
      // this.updateagentprofile()
-     this.getallagents(intid?.int_id,this.active_agents, this.inactive_agents,this.invited_agents,this.id_soflanguages);
+   //  this.getallagents(intid?.int_id,this.active_agents, this.inactive_agents,this.invited_agents,this.id_soflanguages);
      this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
 
     }
@@ -667,7 +668,7 @@ return false;
       if (index !== -1) {
         this.id_soflanguages.splice(index, 1);
       //  this.updateagentprofile()
-      this.getallagents(intid?.int_id,this.active_agents, this.inactive_agents,this.invited_agents,this.id_soflanguages);
+     // this.getallagents(intid?.int_id,this.active_agents, this.inactive_agents,this.invited_agents,this.id_soflanguages);
       this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
 
       }
@@ -675,7 +676,7 @@ return false;
       if(this.id_soflanguages.length==0)
       {
        this.selectedlanguages="Not Selected";
-       this.getallagents(intid?.int_id,this.active_agents, this.inactive_agents,this.invited_agents,this.id_soflanguages);
+     //  this.getallagents(intid?.int_id,this.active_agents, this.inactive_agents,this.invited_agents,this.id_soflanguages);
        this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
 
       }

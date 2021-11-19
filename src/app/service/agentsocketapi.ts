@@ -47,13 +47,12 @@ import { sharedres_service } from "./sharedres.service";
           var integrationid=intid?.int_id;
           if(accesstoken!=null&&uuid!=null&&integrationid!=null)
             { 
-                var  url="wss://websockets.gigaaa.com/customer-support/agents?organization="+uuid+"&integration="+integrationid+"&token="+accesstoken+"&agent="+loggedinuser_uuid?.uuid;
+                var  url="wss://websockets.gigaaa.com/customer-support/agents?organization="+uuid+"&integration="+integrationid+"&agent="+loggedinuser_uuid?.uuid;
                 this.ws = new WebSocket(url);
                     this.ws.onopen=(e)=>{
                         this.message.setErrorMessage("hello-"+e.type);
                     }
                     this.ws.onmessage = (e) => {
-                  console.log(e.data);
                    if(this.ws.OPEN==1)
                    {
                        if(e.data !="ping")
@@ -62,9 +61,7 @@ import { sharedres_service } from "./sharedres.service";
                         console.log(data);
                         this.getagentlistsubject.next(data)
                        }
-                  
-                   }
-                   
+                    }
                     }
                     this.ws.onerror=(e)=>{
                         this.message.setErrorMessage("socket-"+e.type);

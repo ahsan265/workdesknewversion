@@ -237,6 +237,8 @@ export class DashboardComponent implements OnInit {
         this.createdevicechart();
         this.createoschart();
         this.createbrowerschart();
+        this.visitorchart();
+        this. visitorchart1();
 
        }
        else if(val=="Tickets")
@@ -721,8 +723,94 @@ export class DashboardComponent implements OnInit {
         }
       }
     });
+
+    // call visitor
+    
     // generate HTML legend
    $("#devicechartlegend").html(myChart.generateLegend());
+  }
+  // visitor chart
+  visitorchart1()
+  {
+    // if (typeof(this.myChart3) != "undefined") {
+    //   this.myChart3.destroy();
+    //   }
+    var ctx = document.getElementById("visitortwo") as HTMLCanvasElement;
+  var linchart= new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        datasets: [{
+          data: [ 65, 59, 80, 81, 56, 55, 40 ],
+          label: 'Series A',
+          backgroundColor: 'rgba(148,159,177,0.2)',
+          borderColor: 'rgba(148,159,177,1)',
+          pointBackgroundColor: 'rgba(148,159,177,1)',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+          fill: 'origin',
+        
+        },
+        {
+          data: [ 28, 48, 40, 19, 86, 27, 90 ],
+          label: 'Series B',
+          backgroundColor: 'rgba(77,83,96,0.2)',
+          borderColor: 'rgba(77,83,96,1)',
+          pointBackgroundColor: 'rgba(77,83,96,1)',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgba(77,83,96,1)',
+        }
+      ],
+
+      },
+      options:{ responsive: true,
+        maintainAspectRatio: false,}
+ 
+    });
+      linchart.update()
+  }
+  visitorchart()
+  {
+    // if (typeof(this.myChart3) != "undefined") {
+    //   this.myChart3.destroy();
+    //   }
+    var ctx = document.getElementById("visitorone") as HTMLCanvasElement;
+  var linchart= new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        datasets: [{
+          data: [ 65, 59, 80, 81, 56, 55, 40 ],
+          label: 'Series A',
+          backgroundColor: 'rgba(148,159,177,0.2)',
+          borderColor: 'rgba(148,159,177,1)',
+          pointBackgroundColor: 'rgba(148,159,177,1)',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+          fill: 'origin',
+        
+        },
+        {
+          data: [ 28, 48, 40, 19, 86, 27, 90 ],
+          label: 'Series B',
+          backgroundColor: 'rgba(77,83,96,0.2)',
+          borderColor: 'rgba(77,83,96,1)',
+          pointBackgroundColor: 'rgba(77,83,96,1)',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgba(77,83,96,1)',
+        }
+      ],
+
+      },
+      options:{ responsive: true,
+        maintainAspectRatio: false,}
+ 
+    });
+      linchart.update()
   }
   // priority ticket 
   createprioritticketchart()

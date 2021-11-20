@@ -182,11 +182,11 @@ export class AgentComponent implements OnInit {
   {
     if(val==true&&val1==false)
     {
-      return '../../../assets/assets_workdesk/chat.svg';
+      return '../../../assets/assets_workdesk/call.svg';
     }
    else  if(val==false&&val1==true)
     {
-      return '../../../assets/assets_workdesk/call.svg';
+      return '../../../assets/assets_workdesk/chat.svg';
     }
     
   }

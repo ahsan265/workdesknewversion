@@ -146,10 +146,9 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
 
         this.defaultingt=element.name;
         this.sharedres.getintegrationrelation(element.uuid);
-      // this.getonlinestatus(accesstoken,uuid,element.uuid);
+       // this.getonlinestatus(accesstoken,uuid,element.uuid);
           
-      this.sharedres.getuserole();
-     
+       this.sharedres.getuserole();
        var intid = JSON.parse(localStorage.getItem('intgid'))
        this.gigaaaapi.getloggedinagentuuid(accesstoken,uuid,intid.int_id).subscribe(data=>{
          localStorage.setItem('userlogged_uuid', JSON.stringify(data));
@@ -263,16 +262,15 @@ getonlinestatus(token,orgid,intid)
 // setonline status
 public  async setonlinestatus(e): Promise<any>
 {
-  const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
-const intid = JSON.parse(localStorage.getItem('intgid'))
-var accesstoken=getdata.access_token;
-var uuid=getdata.subscription_id.subsid.uuid;
-var onlinestatus={"is_online":e};
+//   const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
+// const intid = JSON.parse(localStorage.getItem('intgid'))
+// var accesstoken=getdata.access_token;
+// var uuid=getdata.subscription_id.subsid.uuid;
+// var onlinestatus={"is_online":e};
 //this.agentsocketapi.send_isonline_status(e);
 localStorage.setItem('user-status', JSON.stringify(e));
     try{
     this.agentsocketapi.send_isonline_status(e);
-    await  this.gigaaaapi.putonlinestatus(accesstoken,uuid,intid.int_id,onlinestatus);
     if(e==true)
     {
       this.online_status="Online"
@@ -283,13 +281,12 @@ localStorage.setItem('user-status', JSON.stringify(e));
       this.online_status="Away"
       this.statusonline=false;
     }
-   // this.getonlinestatus(accesstoken,uuid,intid.int_id);
     }
-catch(err)
-{
-  this.messege.setErrorMessage(err.error.error)
-}
-}
+    catch(err)
+    {
+      this.messege.setErrorMessage(err.error.error)
+    }
+    }
 // get agent role
 getagentrole()
 {

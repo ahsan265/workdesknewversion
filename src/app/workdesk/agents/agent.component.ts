@@ -115,7 +115,7 @@ export class AgentComponent implements OnInit {
     this.agentlist=false;
     this.noagent=true;
     this.getagentviews();
-    this.getlistofagentwithintg();
+  this.getlistofagentwithintg();
     this.getagentlist();
     this.getagentrole();
    setTimeout(() => {
@@ -124,7 +124,7 @@ export class AgentComponent implements OnInit {
    }, 500);
 
     this.sharedres.submitapplication$.subscribe(data=>{
-    this.getallagents(data?.int_id,this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages);
+      this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
     })
     this.getagentdetailslive()
 
@@ -164,9 +164,7 @@ export class AgentComponent implements OnInit {
 
   getlistofagentwithintg()
   {
-    const intg_id = JSON.parse(localStorage.getItem('intgid'))
-    this.getallagents(intg_id?.int_id,1,1,1,this.id_soflanguages)
-
+    this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
   }
   geteditagent(val)
 
@@ -606,8 +604,8 @@ return false;
            // this.sharedres.getrefreshagentlist(1);
            if(this.all_agent!=null)
            {
-            this.getallagents(intid?.int_id,this.active_agents, this.inactive_agents,this.invited_agents,this.id_soflanguages);
-           // this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
+           // this.getallagents(intid?.int_id,this.active_agents, this.inactive_agents,this.invited_agents,this.id_soflanguages);
+            this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
 
            }
 
@@ -629,8 +627,8 @@ return false;
         if(this.id_soflanguages.length!=0)
         {
           //this.updateagentprofile()
-          this.getallagents(intid?.int_id,this.active_agents, this.inactive_agents,this.invited_agents,this.id_soflanguages);
-         // this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
+         // this.getallagents(intid?.int_id,this.active_agents, this.inactive_agents,this.invited_agents,this.id_soflanguages);
+          this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
 
     
         }

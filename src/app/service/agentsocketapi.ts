@@ -55,8 +55,7 @@ import { sharedres_service } from "./sharedres.service";
                        if(e.data !="ping")
                        {
                          var data=JSON.parse(e.data)
-                         if(this.issocketliveornot==true)
-                         {
+                       
                           data.forEach(element => {
                             if(element?.email==this.getsettingforloggedinagent())
                             {
@@ -69,10 +68,9 @@ import { sharedres_service } from "./sharedres.service";
                               }
                             }
                             });
-                            this.sharedres.runagentsocket(1);
-                            this.issocketliveornot=false;
-                         }
+                          
                         
+                         this.sharedres.runagentsocket(1);
 
                             this.getagentlistsubject.next(data)
                           }

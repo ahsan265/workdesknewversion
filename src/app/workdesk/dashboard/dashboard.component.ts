@@ -732,7 +732,7 @@ export class DashboardComponent implements OnInit {
           text.push('<ul  style="list-style:none">');
           var ds = chart.data.datasets[0];
           for (var i=0; i<ds.data.length; i++) {
-            text.push('<li style="color:#A6A8BA; display:block; width:50%; margin-bottom:20px;">');
+            text.push('<li class="roundchartlegend" style="color:#A6A8BA; display:block; width:50%; margin-bottom:20px;">');
             text.push('<span style="background-color:' + ds.backgroundColor[i] + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:14px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +chart.data.labels[i]+'</span>'+'<span style="display:block;margin-left:25px; color: #162741; font-weight: 500;">'+ds.data[i] + '%'+'</span>');
             text.push('</li>');
           }
@@ -1126,7 +1126,7 @@ export class DashboardComponent implements OnInit {
           text.push('<ul  style="list-style:none">');
           var ds = chart.data.datasets[0];
           for (var i=0; i<ds.data.length; i++) {
-            text.push('<li style="color:#A6A8BA; display:inline-block; width:50%; margin-bottom:20px;">');
+            text.push('<li  class="roundchartlegend" style="color:#A6A8BA; display:inline-block; width:50%; margin-bottom:20px;">');
             text.push('<span style="background-color:' + ds.backgroundColor[i] + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:14px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +chart.data.labels[i]+'</span>'+'<span style="display:block;margin-left:25px; color: #162741; font-weight: 500;">'+ds.data[i] + '%'+'</span>');
             text.push('</li>');
           }
@@ -1174,7 +1174,7 @@ export class DashboardComponent implements OnInit {
            text.push('<ul  style="list-style:none">');
            var ds = chart.data.datasets[0];
            for (var i=0; i<ds.data.length; i++) {
-             text.push('<li style="color:#A6A8BA; display:inline-block; width:50%; margin-bottom:20px;">');
+             text.push('<li class="roundchartlegend" style=" color:#A6A8BA; display:inline-block; width:50%; margin-bottom:20px;">');
              text.push('<span style="background-color:' + ds.backgroundColor[i] + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:14px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +chart.data.labels[i]+'</span>'+'<span style="display:block;margin-left:25px; color: #162741; font-weight: 500;">'+ds.data[i] + '%'+'</span>');
              text.push('</li>');
            }
@@ -1224,12 +1224,12 @@ createoschart()
         for (var i=0; i<ds.data.length; i++) {
           if(i==1 || i==0)
           {
-            text.push('<li style="color:#A6A8BA; display:inline-block; width:50%; margin-bottom:20px;">');
+            text.push('<li  class="roundchartlegend" style="color:#A6A8BA; display:inline-block; width:50%; margin-bottom:20px;">');
             text.push('<span style="background-color:' + ds.backgroundColor[i] + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:14px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +chart.data.labels[i]+'</span>'+'<span style="display:block;margin-left:25px; color: #162741; font-weight: 500;">'+ds.data[i] + '%'+'</span>');
             text.push('</li>');
           }
           else{
-            text.push('<li style="color:#A6A8BA; display:block; width:50%; margin-bottom:20px;">');
+            text.push('<li  class="roundchartlegend" style="color:#A6A8BA; display:block; width:50%; margin-bottom:20px;">');
             text.push('<span style="background-color:' + ds.backgroundColor[i] + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:14px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +chart.data.labels[i]+'</span>'+'<span style="display:block;margin-left:25px; color: #162741; font-weight: 500;">'+ds.data[i] + '%'+'</span>');
             text.push('</li>');
           }

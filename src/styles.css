@@ -2128,9 +2128,18 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
 }
   
 @media (max-width: 768px){
+   
+    #browserlegend  .roundchartlegend{
+        width:max-content !important; 
+    }
+    #devicechartlegend  .roundchartlegend{
+        width:max-content !important; 
+    }
+    #oslegend  .roundchartlegend{
+        width:max-content !important; 
+    }
     .hideitem , .hideitem.components{
         display: none;
-    
     }
     .logoutsvg{
         width: 100%;

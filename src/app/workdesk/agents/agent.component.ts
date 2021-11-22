@@ -125,7 +125,7 @@ export class AgentComponent implements OnInit {
    }, 500);
 
     this.sharedres.submitapplication$.subscribe(data=>{
-      this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,this.id_soflanguages)
+      this.agentsocketgigaaaapi.send_agentsparam_status(this.invited_agents,this.active_agents,this.inactive_agents,this.id_soflanguages)
     })
     this.getagentdetailslive()
 
@@ -383,7 +383,7 @@ isagentonline(val,val1){
     if(status!=1)
     {    
    //   this.getallagents(intid?.int_id,1,0,0,this.id_soflanguages);
-      this.agentsocketgigaaaapi.send_agentsparam_status(1,0,0,this.id_soflanguages)
+      this.agentsocketgigaaaapi.send_agentsparam_status(0,1,0,this.id_soflanguages)
 
     }
 
@@ -404,10 +404,11 @@ isagentonline(val,val1){
     this.invited_agents=1;
   }
   else if(e==true&& val=="Invited")
-  {if(status!=1)
+  {this.allagentmsg="There is no Invited Agents yet";
+    if(status!=1)
     {
   //  this.getallagents(intid?.int_id,0,1,0,this.id_soflanguages);
-    this.agentsocketgigaaaapi.send_agentsparam_status(0,1,0,this.id_soflanguages)
+    this.agentsocketgigaaaapi.send_agentsparam_status(1,0,0,this.id_soflanguages)
     }
     this.active_agents=0;
     this.inactive_agents=1;

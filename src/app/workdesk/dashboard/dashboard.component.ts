@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
   showvisitordashboard:boolean=false;
   showticketsdashboard:boolean=false;
   showuserdashboard:boolean=false;
-  listofdashboard=[{name:"Calls",status:true},{name:"Chats",status:false},{name:"Visitors",status:false},{name:"Tickets",status:false},{name:"Users",status:false}];
+  listofdashboard=[{name:"Calls",status:true},{name:"Chats",status:false},{name:"Visitors",status:false},{name:"Users",status:false},{name:"Tickets",status:false}];
    myChart:any;
    myChart1:any;
    myChart2:any;

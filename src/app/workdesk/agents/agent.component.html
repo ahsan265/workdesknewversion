@@ -70,7 +70,7 @@
                 <svg class="loggedinuser"  *ngIf="getsettingforloggedinagent()==data?.email" width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M9 1L3.90823 6L1.5 3.63517" stroke="#162741" stroke-opacity="0.46" stroke-width="1.4" stroke-linecap="round"/>
                   </svg>
-                <div  class="icon-container"> <img style="margin-right: 15px;"  class="agentpic" height="36p" width="36" src="{{data?.images[96] | getpicture}}" alt="" ><div class='status-circle' [style.background]="isagentonline(data?.is_online)">
+                <div  class="icon-container"> <img style="margin-right: 15px;"  class="agentpic" height="36p" width="36" src="{{data?.images[96] | getpicture}}" alt="" ><div class='status-circle' [style.background]="isagentonline(data?.is_online,data?.is_available)">
              </div>    
              </div>
               <div style="

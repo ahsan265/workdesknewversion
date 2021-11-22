@@ -152,7 +152,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
        var intid = JSON.parse(localStorage.getItem('intgid'))
        this.gigaaaapi.getloggedinagentuuid(accesstoken,uuid,intid.int_id).subscribe(data=>{
          localStorage.setItem('userlogged_uuid', JSON.stringify(data));
-         this.showonlinetatus(0);
+        //  this.showonlinetatus(0);
          this.sharedres.getcallsocketapi(1);
 
        });
@@ -169,19 +169,19 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
  }
 
  calltheagentsocket()
- {
+ {    
   this.sharedres.runthesocketforagent$.subscribe(data=>{
+    const status = JSON.parse(localStorage.getItem('user-status'))
+    console.log(data);
     if(data==1)
     {
-      var status = JSON.parse(localStorage.getItem('user-status'))
-
-      if (status!=null)
+      if (status==false)
       {
-        this.agentsocketapi.send_isonline_status(status);
+        this.showonlinetatus(1)
+
       }
-      else{
-        this.showonlinetatus(3)
-        this.agentsocketapi.send_isonline_status(false);
+      else if(status==true){
+        this.showonlinetatus(0)
       }
     }
 
@@ -209,83 +209,67 @@ getlanguage(name,flag)
    this.updatelanguages = this.languages.filter(function(e) {
     return itemsToRemove.indexOf(e.name) === -1;
   });
-
   //this.languages=newItems;
-
-
 }
 
-onlinestatus(val)
-{
-  if(val==true)
-  {
-      this.online_status="Online"
-  }
-  else{
-    this.online_status="Away"
+// onlinestatus(val)
+// {
+//   if(val==true)
+//   {
+//       this.online_status="Online"
+//   }
+//   else{
+//     this.online_status="Away"
 
-  }
+//   }
 
 
-}
-getonlinestatus(token,orgid,intid)
-{
-
-  this.gigaaaapi.getagentonlinestatus(token,orgid,intid).subscribe(data=>{
-    localStorage.setItem('user-status', JSON.stringify(data['is_online']));
-    this.showonlinetatus(0);
-  })
+// }
+// get online status of user logged in.
+// getonlinestatus(token,orgid,intid)
+// {
+//     this.gigaaaapi.getagentonlinestatus(token,orgid,intid).subscribe(data=>{
+//     console.log(data)
+//     localStorage.setItem('user-status', JSON.stringify(data['is_online']));
+//     this.showonlinetatus(0);
+//   })
  
-}
+// }
  showonlinetatus(value:any){
-  const data = JSON.parse(localStorage.getItem('user-status'))
-  if(data==true && value!=1)
+  if(value==0)
   { 
 
     this.online_status="Online"
     this.statusonline=true;
-  //  this.agentsocketapi.send_isonline_status(true);
   }
-  else if(data==false && value!=1)
+  else if(value==1)
   {
     this.online_status="Away"
     this.statusonline=false;
-  //  this.agentsocketapi.send_isonline_status(false);
 
   }
-  else if(value==3){
-    this.online_status="Away"
-    this.statusonline=false;
-  }
+ 
  }
 
 // setonline status
-public  async setonlinestatus(e): Promise<any>
+public setonlinestatus(e)
 {
-//   const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
-// const intid = JSON.parse(localStorage.getItem('intgid'))
-// var accesstoken=getdata.access_token;
-// var uuid=getdata.subscription_id.subsid.uuid;
-// var onlinestatus={"is_online":e};
-//this.agentsocketapi.send_isonline_status(e);
-localStorage.setItem('user-status', JSON.stringify(e));
-    try{
+    localStorage.setItem('user-status', JSON.stringify(e));
     this.agentsocketapi.send_isonline_status(e);
     if(e==true)
     {
       this.online_status="Online"
       this.statusonline=true;
+
     }
     else if(e==false)
     {
       this.online_status="Away"
       this.statusonline=false;
+
     }
-    }
-    catch(err)
-    {
-      this.messege.setErrorMessage(err.error.error)
-    }
+  
+   
     }
 // get agent role
 getagentrole()
@@ -303,7 +287,6 @@ getagentrole()
 
 openwebsites(val)
 {
-  console.log(val)
   window.open(val, '_blank');
 }
 }

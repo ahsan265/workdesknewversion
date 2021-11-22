@@ -281,14 +281,13 @@ export class AgentComponent implements OnInit {
    
   }
 // check agent is online
-isagentonline(val){
- if(val==true)
+isagentonline(val,val1){
+ if(val==true&&val1==true)
  {
    return '#2FDE13'
  }
- else if(val==false)
+ else if(val==false&&val1==false)
  {
-   
     '#FF155A';
  }
 }

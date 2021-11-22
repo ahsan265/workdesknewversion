@@ -45,7 +45,8 @@ import { sharedres_service } from "./sharedres.service";
                   
                       var checksocketopen=true;
                         localStorage.setItem('gigaaa-socket', JSON.stringify(checksocketopen));
-                        this.sharedres.runagentsocket(1);
+                        
+                        this.issocketliveornot=true;
 
                     }
                     this.ws.onmessage = (e) => {
@@ -53,10 +54,28 @@ import { sharedres_service } from "./sharedres.service";
                    {
                        if(e.data !="ping")
                        {
-                        var data=JSON.parse(e.data)
-                        console.log(data);
-                        this.getagentlistsubject.next(data)
-                       }
+                         var data=JSON.parse(e.data)
+                         if(this.issocketliveornot==true)
+                         {
+                          data.forEach(element => {
+                            if(element?.email==this.getsettingforloggedinagent())
+                            {
+                              if(element?.is_available==true&&element?.is_online==true)
+                              {
+                                localStorage.setItem('user-status', JSON.stringify(true));
+                              }
+                              else{
+                                localStorage.setItem('user-status', JSON.stringify(false));
+                              }
+                            }
+                            });
+                            this.sharedres.runagentsocket(1);
+                            this.issocketliveornot=false;
+                         }
+                        
+
+                            this.getagentlistsubject.next(data)
+                          }
                     }
                     }
                     this.ws.onerror=(e)=>{
@@ -73,7 +92,7 @@ import { sharedres_service } from "./sharedres.service";
     send_isonline_status(data:boolean)
     {  if(this.ws.readyState==this.ws.OPEN)
       {
-        var object= {"action": "update_status", "data":{"action": "is_online", "value":data}}
+        var object= {"action": "update_status", "data":{"action": "is_available", "value":data}}
      
         this.ws.send(JSON.stringify(object))    
       }
@@ -96,5 +115,12 @@ import { sharedres_service } from "./sharedres.service";
         {
         this.ws.close();
         }
+      }
+      // get loggedin Email
+
+      getsettingforloggedinagent()
+      {
+         const getdata = JSON.parse(localStorage.getItem('gigaaa-user'))
+        return getdata.email;  
       }
 }

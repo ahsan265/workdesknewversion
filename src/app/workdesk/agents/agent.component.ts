@@ -115,11 +115,11 @@ export class AgentComponent implements OnInit {
     this.agentlist=false;
     this.noagent=true;
     this.getagentviews();
-  this.getlistofagentwithintg();
+  //  this.getlistofagentwithintg();
     this.getagentlist();
     this.getagentrole();
    setTimeout(() => {
-    this.selectusertype(true,"Show all",0)
+   this.selectusertype(true,"Show all",0)
 
    }, 500);
 

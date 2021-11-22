@@ -745,11 +745,11 @@ export class DashboardComponent implements OnInit {
           data: [ 65, 59, 80, 81, 56, 55, 40 ],
           label: 'New Visitors',
           backgroundColor: 'rgba(77,83,96,0.2)',
-          borderColor: '#1C54DB',
-          pointBackgroundColor: '#1C54DB',
-          pointBorderColor: '#1C54DB',
-          pointHoverBackgroundColor: '#1C54DB',
-          pointHoverBorderColor: '#1C54DB',
+          borderColor: '#76CB09',
+          pointBackgroundColor: '#76CB09',
+          pointBorderColor: '#76CB09',
+          pointHoverBackgroundColor: '#76CB09',
+          pointHoverBorderColor: '#76CB09',
           fill: false,
           lineTension: 0.0
 
@@ -758,11 +758,11 @@ export class DashboardComponent implements OnInit {
           data: [ 28, 48, 40, 19, 86, 27, 90 ],
           label: 'Returning Visitors',
           backgroundColor: 'rgba(77,83,96,0.2)',
-          borderColor: '#FF155A',
-          pointBackgroundColor: '#FF155A',
-          pointBorderColor: '#FF155A',
-          pointHoverBackgroundColor: '#FF155A',
-          pointHoverBorderColor: '#FF155A',
+          borderColor: '#F0AD00',
+          pointBackgroundColor: '#F0AD00',
+          pointBorderColor: '#F0AD00',
+          pointHoverBackgroundColor: '#F0AD00',
+          pointHoverBorderColor: '#F0AD00',
           fill: false,
           lineTension: 0.0
 

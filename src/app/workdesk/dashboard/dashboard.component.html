@@ -462,7 +462,7 @@
         </div>
         <div class="withincard visit linecard" style="margin-top: 20px;">
           <div class="chartheadingpanel" style="text-align: left; padding-left: 23px;">
-            <p class="heading bar">VISITORS</p>
+            <p class="heading bar">NEW VISITORS</p>
             </div>
             <div  style="width: 100%; text-align: center; height: 245px; padding-left: 27px; padding-right: 40px; margin-top: 46px;">
               <canvas
@@ -642,6 +642,102 @@
             </tbody>
           </table>
         </div>
+    </div>
+    <!-- user dashboard -->
+    <div [hidden]="showuserdashboard">
+      <div class="statsareapanel">
+        <div class="statsheading">
+          <p class="mainheading">Users</p>
+            </div>
+      </div>
+     
+      <div class="subcard">
+        <div class="withincard" >
+          <div class="imagepanelforcard">
+            <div class="imageforcard"   style="background: #EDEDF6; padding-left: 12px;padding-top: 9px;">
+              <img class="iconsfordashboard" src="../../../assets/assets_workdesk/Total Users.svg" alt="">
+            </div>
+          </div>
+      
+          <div class="carddetails">
+            <p class="cardheading">
+              Total Users
+              </p>
+              <p class="cardvalue" >
+               {{totalincoming}}
+              </p>
+                <p class="time"><span ><img class="trendupdown" [src]="totalincper|percentpipe" alt=""> </span>{{totalincomingper}}% vs last week</p>
+          </div>
+         </div>
+        
+         <div class="withincard">
+          <div class="imagepanelforcard">
+            <div class="imageforcard" style="background: #F9EBEF; padding-left: 10.5px;padding-top: 11px;">
+              <img class="iconsfordashboard" src="../../../assets/assets_workdesk/Total Active Users.svg" alt="">
+            </div>
+          </div>
+          <div  class="carddetails">
+            <p class="cardheading">
+              Total Active Users
+              </p>
+              <p class="cardvalue" >
+                {{totalmissed}}
+              </p>
+                <p class="time"><span ><img class="trendupdown" [src]="totalmissper|percentpipe" alt=""> </span> {{totalmissedper}}% vs last week</p>
+          </div>
+  
+        </div>
+        <div class="withincard">
+          <div class="imagepanelforcard">
+            <div class="imageforcard" style="background: #EBF7DD; padding-left: 12.5px;padding-top: 9px;">
+              <img class="iconsfordashboard" src="../../../assets/assets_workdesk/Total Unique Users.svg" alt="">
+            </div>
+          </div>
+          <div  class="carddetails">
+            <p class="cardheading">
+              Total Unique Users
+              </p>
+              <p class="cardvalue" >
+                {{answered}}
+              </p>
+                <p class="time"><span ><img class="trendupdown" [src]="ansper|percentpipe" alt=""></span>{{answeredper}}% vs last week</p>
+          </div>
+        </div>
+        <div class="withincard last">
+          <div class="imagepanelforcard">
+            <div class="imageforcard" style="background: #E9EFFE; padding-left: 10.5px;padding-top: 7px;">
+              <img class="iconsfordashboard" src="../../../assets/assets_workdesk/Average Duration.svg" alt="">
+            </div>
+          </div>
+          <div  class="carddetails">
+            <p class="cardheading">
+              Average Session Duration
+              </p>
+              <p class="cardvalue" >
+               {{answeredbyai}}
+              </p>
+                <p class="time"><span><img class="trendupdown" [src]="ansbyai|percentpipe" alt=""> </span>  {{answeredbyaiper}}% vs last week</p>
+          </div>
+          
+        </div>
+        
+        </div>
+    
+    <div class="barchartpanel">
+        <div class="withincard visit linecard">
+          <div class="cell large-12 chartheadingpanel" style="text-align: left; padding-left: 23px;">
+            <p class="heading bar">USERS</p>
+            </div>
+            <div  style="width: 100%; text-align: center; height: 245px; padding-left: 27px; padding-right: 40px; margin-top: 46px;">
+              <canvas
+              id="userchart" style="display: inline-block;"  ></canvas>
+        
+            </div>
+            <div id="userchartlegends" style="height: 50px;">
+    
+            </div>
+        </div>
+    </div>
     </div>
   </div>
       </div>

@@ -29,7 +29,8 @@ export class DashboardComponent implements OnInit {
   showchatsdashboard:boolean=false;
   showvisitordashboard:boolean=false;
   showticketsdashboard:boolean=false;
-  listofdashboard=[{name:"Calls",status:true},{name:"Chats",status:false},{name:"Visitors",status:false},{name:"Tickets",status:false}];
+  showuserdashboard:boolean=false;
+  listofdashboard=[{name:"Calls",status:true},{name:"Chats",status:false},{name:"Visitors",status:false},{name:"Tickets",status:false},{name:"Users",status:false}];
    myChart:any;
    myChart1:any;
    myChart2:any;
@@ -220,12 +221,15 @@ export class DashboardComponent implements OnInit {
          this.showchatsdashboard=true;
          this.showvisitordashboard=true;
          this.showticketsdashboard=true
+         this.showuserdashboard=true;
        }
        else if(val=="Chats"){
         this.showcallsdashboard=true;
         this.showchatsdashboard=false;
         this.showvisitordashboard=true;
-        this.showticketsdashboard=true
+        this.showticketsdashboard=true;
+        this.showuserdashboard=true;
+
 
        }
        else if(val=="Visitors")
@@ -233,7 +237,9 @@ export class DashboardComponent implements OnInit {
         this.showcallsdashboard=true;
         this.showchatsdashboard=true;
         this.showvisitordashboard=false;
-        this.showticketsdashboard=true
+        this.showticketsdashboard=true;
+        this.showuserdashboard=true;
+
         this.createdevicechart();
         this.createoschart();
         this.createbrowerschart();
@@ -246,10 +252,21 @@ export class DashboardComponent implements OnInit {
         this.showcallsdashboard=true;
         this.showchatsdashboard=true;
         this.showvisitordashboard=true;
-        this.showticketsdashboard=false
+        this.showticketsdashboard=false;
+        this.showuserdashboard=true;
+
         
     this.createtickettypechart();
     this.createprioritticketchart();
+       }
+       else if(val=="Users")
+       {
+        this.showuserdashboard=false;
+        this.showcallsdashboard=true;
+        this.showchatsdashboard=true;
+        this.showvisitordashboard=true;
+        this.showticketsdashboard=true;
+        this.usercharts();
        }
       this.selecteddashboard=val;
      }
@@ -733,9 +750,7 @@ export class DashboardComponent implements OnInit {
   // visitor chart
   visitorchart1()
   {
-    // if (typeof(this.myChart3) != "undefined") {
-    //   this.myChart3.destroy();
-    //   }
+   
     var ctx = document.getElementById("visitortwo") as HTMLCanvasElement;
   var linchart= new Chart(ctx, {
       type: 'line',
@@ -915,6 +930,113 @@ export class DashboardComponent implements OnInit {
     $("#visitorchartonelegends").html(linchart.generateLegend());
 
       linchart.update()
+  }
+
+  // usercharts
+  usercharts()
+  {
+   
+    var ctx = document.getElementById("userchart") as HTMLCanvasElement;
+  var linchart= new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        datasets: [{
+          data: [ 65, 59, 80, 81, 56, 55, 40 ],
+          label: 'Users',
+          backgroundColor: 'rgba(77,83,96,0.2)',
+          borderColor: '#1C54DB',
+          pointBackgroundColor: '#1C54DB',
+          pointBorderColor: '#1C54DB',
+          pointHoverBackgroundColor: '#1C54DB',
+          pointHoverBorderColor: '#1C54DB',
+          fill: false,
+          lineTension: 0.0
+
+        },
+        {
+          data: [ 28, 48, 40, 19, 86, 27, 90 ],
+          label: 'Active Users',
+          backgroundColor: 'rgba(77,83,96,0.2)',
+          borderColor: '#F0AD00',
+          pointBackgroundColor: '#F0AD00',
+          pointBorderColor: '#F0AD00',
+          pointHoverBackgroundColor: '#F0AD00',
+          pointHoverBorderColor: '#F0AD00',
+          fill: false,
+          lineTension: 0.0
+
+        },
+        {
+          data: [ 28, 34, 20, 19, 18, 25, 110 ],
+          label: 'Unique Users',
+          backgroundColor: 'rgba(77,83,96,0.2)',
+          borderColor: '#FF155A',
+          pointBackgroundColor: '#FF155A',
+          pointBorderColor: '#FF155A',
+          pointHoverBackgroundColor: '#FF155A',
+          pointHoverBorderColor: '#FF155A',
+          fill: false,
+          lineTension: 0.0
+
+        }
+      ],
+
+      },
+      options:{ responsive: true,
+        maintainAspectRatio: false,
+        
+        legend:{
+          position:"bottom",
+          display:false
+        },
+        
+        scales: {
+       
+          xAxes: [{
+              gridLines: {
+                  display:false,
+                  drawBorder: false,
+  
+              },
+            
+          },
+          
+        ],
+          yAxes: [{
+              gridLines: {
+                  display:true,
+                  drawBorder: false,
+  
+              },
+              ticks: {
+                display: true,
+                beginAtZero: true,
+                maxTicksLimit: 8,
+                padding: 14
+    
+            },
+          }],
+          
+      },
+      legendCallback: function(chart) {
+        var text = [];
+        text.push('<ul  style="list-style:none; width:100%; display:block; text-align:center;">');
+        var ds = chart.data.datasets;
+        for (var i=0; i<ds.length; i++) {
+          var clk=ds[i]
+          text.push('<li style="color:#A6A8BA; display:inline; width:fit-content; margin-right:40px;">');
+          text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
+          text.push('</li>');
+        }
+        text.push('</ul>');
+        return text.join("") ;
+      }}
+ 
+    });
+    $("#userchartlegends").html(linchart.generateLegend());
+
+   //   linchart.update()
   }
   // priority ticket 
   createprioritticketchart()

@@ -80,6 +80,7 @@ export class AgentComponent implements OnInit {
   allactiveagentmsg:any;
   allinvitedagentmsg:any;
   allinactiveagetnmsg:any;
+  online_available:any;
   constructor(private changeDetector: ChangeDetectorRef,
      private sharedres:sharedres_service,
      public dialog: MatDialog,
@@ -132,8 +133,10 @@ export class AgentComponent implements OnInit {
   // get agents details live
   getagentdetailslive(){
   this.agentsocketgigaaaapi.getagetnlist$.subscribe(data=>{
+    console.log(data);
     var updateagentdata;
     updateagentdata =data;
+    var count=0;
      updateagentdata.forEach(element => {
        if(element.email==this.getsettingforloggedinagent())
        {
@@ -141,6 +144,11 @@ export class AgentComponent implements OnInit {
          var selectedobject=updateagentdata[fromindex];
          updateagentdata.splice(fromindex, 1);
          updateagentdata.splice(0, 0, selectedobject);
+       }
+       if(element.is_in_call==false&&element.is_online==true&&element.is_available==true)
+       {
+          count+=1;
+          
        }
      });
  this.tobefilteragent=data;
@@ -154,6 +162,7 @@ export class AgentComponent implements OnInit {
    this.agentlist=false;
    this.noagent=true;
    this.all_agent=data;
+   this.online_available=count+'\xa0'+'available';
  }
   });
   }

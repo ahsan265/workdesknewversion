@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import * as Chart from 'chart.js';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { Console } from 'console';
+import { Console, dirxml } from 'console';
 import { ChartsModule, Label, MultiDataSet } from 'ng2-charts';
 import { defineLocale, enGbLocale } from 'ngx-bootstrap/chronos';
 import { BsDaterangepickerDirective, BsLocaleService } from 'ngx-bootstrap/datepicker';
@@ -827,9 +827,18 @@ export class DashboardComponent implements OnInit {
         var ds = chart.data.datasets;
         for (var i=0; i<ds.length; i++) {
           var clk=ds[i]
-          text.push('<li style="color:#A6A8BA; display:inline; width:fit-content; margin-right:40px;">');
-          text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
-          text.push('</li>');
+          if(i==0)
+          {
+            text.push('<li style="color:#A6A8BA; display:inline; width:fit-content; margin-right:40px;">');
+            text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
+            text.push('</li>'); 
+          }
+          else{
+            text.push('<li style="color:#A6A8BA; display:inline; width:fit-content;">');
+            text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
+            text.push('</li>');
+          }
+      
         }
         text.push('</ul>');
         return text.join("") ;
@@ -917,9 +926,17 @@ export class DashboardComponent implements OnInit {
       var ds = chart.data.datasets;
       for (var i=0; i<ds.length; i++) {
         var clk=ds[i]
-        text.push('<li style="color:#A6A8BA; display:inline; width:fit-content; margin-right:40px;">');
-        text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
-        text.push('</li>');
+        if(i==0)
+        {
+          text.push('<li style="color:#A6A8BA; display:inline; width:fit-content; margin-right:40px;">');
+          text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
+          text.push('</li>'); 
+        }
+        else{
+          text.push('<li style="color:#A6A8BA; display:inline; width:fit-content;">');
+          text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
+          text.push('</li>');
+        }
       }
       text.push('</ul>');
       return text.join("") ;

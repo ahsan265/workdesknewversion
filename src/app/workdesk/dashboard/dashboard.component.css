@@ -751,6 +751,9 @@ color: #A6A8BA;
     .withincard.visit.linecard.last{
         margin-top: 0px;
     }
+    .chartscard.circle.reducesize{
+    height: 304px;
+    }
 }
 
 

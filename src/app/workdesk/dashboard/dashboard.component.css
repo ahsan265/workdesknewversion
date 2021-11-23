@@ -677,8 +677,83 @@ color: #A6A8BA;
 {
     display: none;
 }
-
+.tablepanel.mobile
+{
+    display: none;
+}
 @media (max-width: 768px){
+    .agentpic{
+        height: 30px;
+        width: 30px;
+        margin-top: 6px;
+    }
+    .icon-container{
+        height: 30px;
+        width: 30px;
+    }
+    .tableheadingmobile{
+        font-family: "Roboto";
+font-style: normal;
+font-weight: 500;
+padding-right: 20px;
+font-size: 14px;
+line-height: 55px;
+text-align: right;
+letter-spacing: 0.02em;
+color: rgba(22, 39, 65, 0.6);
+
+    }
+    .tabledatamobile{
+        font-family: "Roboto";
+font-style: normal;
+font-weight: 500;
+padding-right: 20px;
+font-size: 14px;
+line-height: 45px;
+text-align: left;
+letter-spacing: 0.02em;
+color: rgba(22, 39, 65, 0.6);
+
+    }
+    .tableheadingmobile.last{
+        line-height: 26px;
+   
+    }
+    .mobiletablepanel{
+        display: block;
+        width: 100%;
+        bottom: 120px;
+        height: 165px;
+        background: #FFFFFF;
+        border: 1px solid rgba(208, 208, 222, 0.6);
+        box-sizing: border-box;
+        border-radius: 4px 0px 0px 0px;
+    }
+    .tableheader{
+        display: inline-block;
+        width: 30%;
+        vertical-align: top;
+    }
+    .tabledata{
+        display: inline-block;
+        width: 70%;
+    }
+    .tabledatapanel{
+        border-bottom: 1px solid rgba(208, 208, 222, 0.6);
+        height: 55px;
+        display: inline-flex;
+        padding-left: 16px;
+        padding-top: 6px;
+        width: 100%;
+    }
+    .tableheaderpanel{
+        display: block;
+        height: 55px;
+        border-bottom: 1px solid rgba(208, 208, 222, 0.6);
+        border-right: 1px solid rgba(208, 208, 222, 0.6);
+        box-sizing: border-box;
+        border-radius: 4px 0px 0px 0px;
+    }
   #browserlegend  .roundchartlegend{
         width:100%; 
     }
@@ -753,6 +828,12 @@ color: #A6A8BA;
     }
     .chartscard.circle.reducesize{
     height: 304px;
+    }
+    .tablepanel{
+        display: none;
+    }
+    .tablepanel.mobile{
+        display: block;
     }
 }
 

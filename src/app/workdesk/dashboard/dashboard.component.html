@@ -393,7 +393,7 @@
     <div class="subcard">
       <div class="withincard visit" >
         <div class="imagepanelforcard">
-          <div class="imageforcard" style="background: EDEDF6;padding-left: 10.5px;padding-top: 9px;">
+          <div class="imageforcard" style="background: EDEDF6;padding-left: 10.4px;padding-top: 9px;">
             <img class="iconsfordashboard" src="../../../assets/assets_workdesk/Group_1637.svg" alt="">
           </div>
         </div>
@@ -411,7 +411,7 @@
       
        <div class="withincard visit">
         <div class="imagepanelforcard">
-          <div class="imageforcard" style="background: #F9EBEF;padding-left: 10.5px;padding-top: 9px;">
+          <div class="imageforcard" style="background: #F9EBEF;padding-left: 10.4px;padding-top: 9px;">
             <img class="iconsfordashboard" src="../../../assets/assets_workdesk/Group_1707.svg" alt="">
           </div>
         </div>
@@ -429,7 +429,7 @@
       <div class="withincard last visit">
         <div class="imagepanelforcard">
           <div class="imageforcard" style="background: #EBF6DD;">
-            <img style="    margin-left: 11.5px;
+            <img style="    margin-left: 11.3px;
             margin-top: 10.5px;" class="iconsfordashboard" src="../../../assets/assets_workdesk/visitors_session_duration.svg" alt="">
           </div>
         </div>
@@ -642,6 +642,51 @@
             </tbody>
           </table>
         </div>
+
+        <div class="tablepanel mobile" [hidden]="showtopticketedagent">
+      <div class="mobiletablepanel">
+        <div class="tableheader">
+        <div class="tableheaderpanel">
+          <p class="tableheadingmobile">AGENT</p>
+        </div>
+        <div class="tableheaderpanel">
+          <p class="tableheadingmobile">FULL NAME</p>
+        </div>
+        <div class="tableheaderpanel">
+          <p class="tableheadingmobile last">ASSIGNED TICKETS</p>
+        </div>
+      </div>
+      <div class="tabledata">
+        <div style="height: 165px; overflow-x: scroll;
+        overflow-y: hidden; width: 100%; display:flex;" >
+ <div style="display: inline-block; width: 100%;"  *ngFor="let data of  all_agent; ">
+  <div class="tabledatapanel" style="background: #FAFAFD;">
+    <div  class="icon-container"> 
+      <img style="margin-right: 15px;"  class="agentpic" height="30" width="30" src="../../../assets/picface.jpeg" alt="" >
+     </div>
+      <div style="
+      white-space: nowrap;
+      display: inline-block;
+      vertical-align: middle;
+      ">
+         <p class="displayname">Ahsan</p>
+         <p >csahsan021@gmail.com</p></div>
+  </div>
+  <div class="tabledatapanel">
+    <p class="tabledatamobile">Muhammad Ahsan</p>
+  </div>
+  <div class="tabledatapanel"  style="background: #FAFAFD;">
+    <p  class="tabledatamobile">183</p>
+  </div>
+</div>
+        </div>
+       
+         
+          
+      </div>
+        </div>
+        
+      </div>
     </div>
     <!-- user dashboard -->
     <div [hidden]="showuserdashboard">

@@ -2128,7 +2128,16 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
 }
   
 @media (max-width: 768px){
-   
+   #priorityticketchartlegend .roundchartlegend
+   {
+    width:max-content !important; 
+
+   }
+   #tickettypechartlegend .roundchartlegend
+   {
+    width:max-content !important; 
+
+   }
     #browserlegend  .roundchartlegend{
         width:max-content !important; 
     }

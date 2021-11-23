@@ -1042,9 +1042,18 @@ export class DashboardComponent implements OnInit {
         var ds = chart.data.datasets;
         for (var i=0; i<ds.length; i++) {
           var clk=ds[i]
-          text.push('<li style="color:#A6A8BA; display:inline; width:fit-content; margin-right:40px;">');
-          text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
-          text.push('</li>');
+          if(i!=ds.length-1)
+          {
+            text.push('<li class="roundchartlegend" style="color:#A6A8BA; display:inline; width:fit-content;  margin-right:40px">');
+            text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
+            text.push('</li>');
+          }
+          else{
+            text.push('<li class="roundchartlegend" style="color:#A6A8BA; display:inline; width:fit-content;">');
+            text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
+            text.push('</li>');
+          }
+        
         }
         text.push('</ul>');
         return text.join("") ;

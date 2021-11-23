@@ -2128,7 +2128,11 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
 }
 
 @media (max-width: 768px){
-  
+    #userchartlegends .roundchartlegend{
+        width:max-content !important; 
+        margin-right: 12px !important;
+
+    }
    #priorityticketchartlegend .roundchartlegend
    {
     width:max-content !important; 

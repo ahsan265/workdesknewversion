@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as Chart from 'chart.js';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
@@ -11,6 +12,7 @@ import { Subscription } from 'rxjs';
 import { GigaaaApiService } from 'src/app/service/gigaaaapi.service';
 import { MessageService } from 'src/app/service/messege.service';
 import { sharedres_service } from 'src/app/service/sharedres.service';
+import { MobilefilterspopupComponent } from '../mobilefilterspopup/mobilefilterspopup.component';
 declare var $: any;
 interface IRange {
   value: Date[];
@@ -194,6 +196,7 @@ export class DashboardComponent implements OnInit {
   constructor(private sharedres:sharedres_service,
     private router:Router,
     private localeService: BsLocaleService,
+    public dialog: MatDialog,
      private gigaaaservice:GigaaaApiService,private messageservie:MessageService) { 
       enGbLocale.weekdaysShort = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
       enGbLocale.week.dow = 1;
@@ -1692,5 +1695,14 @@ createoschart()
       {
         this.onDateChange([this.ranges[0].value[0],this.ranges[0].value[1]])
   
+      }
+
+      // open mobile filterpopups
+      openmobilefilterpopup()
+      {
+        this.dialog.open(MobilefilterspopupComponent,{
+          hasBackdrop:true,
+          panelClass:"mobilefilter-form-container",
+        });
       }
 }

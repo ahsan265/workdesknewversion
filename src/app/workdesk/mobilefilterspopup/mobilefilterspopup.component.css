@@ -1,0 +1,141 @@
+.mobilefilterpanel{
+    display: block;
+    width: 100%;
+
+}
+.filterpanel{
+    display: inherit;
+    width: 100%;
+    height: 88px;
+    padding-left: 26px;
+    padding-right: 26px;
+    border-bottom: 1px solid rgba(208, 208, 222, 0.6);
+}
+.clearallfilterpanel{
+    padding-left: 26px;
+    padding-right: 26px;
+    height: 50px;
+    border: none;
+    background:  #EDEDF6;
+    box-sizing: border-box;
+    border-radius: 0px 0px 4px 4px;
+}
+.informationpanel{
+    display: inline-block;
+    width: 75%;
+    height: 88px;
+    padding-top: 10px;
+    vertical-align: middle;
+
+}
+.selectedpanel.location{
+    line-height: 64px;
+}
+.informationpanel.clear{
+    height: 50px;
+}
+.arrowpanel{
+    display: inline-block;
+    width: 25%;
+    text-align: right;
+}
+
+.selectedpanel{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 35px;
+    display: block;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #162741;
+    
+color: rgba(22, 39, 65, 0.8);
+}
+.selecteddaterange{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    /* or 22px */
+    
+    display: block;
+    align-items: center;
+    letter-spacing: 0.02em;
+    
+    color: rgba(22, 39, 65, 0.8);
+}
+.clearall{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 26px;
+/*  to box height, or 24px */
+display: block;
+align-items: center;
+letter-spacing: 0.02em;
+text-align: left;
+color: #162741;
+}
+.selecteddaterangepanel{
+    display: block;
+    width: 100%;
+}
+.showdatemainpanel{
+    display: inherit;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid rgba(208, 208, 222, 0.6);
+    padding-left: 26px;
+    padding-right: 26px;
+}
+.arrowpanel.daterange{
+    text-align: left;
+    width: fit-content;
+}
+.showdateheadingpanel{
+    width: 90%;
+    display: inline-block;
+}
+.datemainheading{
+    font-family: "Roboto";
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 48px;
+/* or 24px */
+display: block;
+align-items: center;
+text-align: center;
+letter-spacing: 0.02em;
+color: #162741;
+}
+.selectedtabspanel{
+    padding-left: 26px;
+    padding-right: 26px;
+    height: 50px;
+    display: block;
+    border-bottom: 1px solid rgba(208, 208, 222, 0.6);
+}
+.selectedtabspanel.custom{
+    background: #EDEDF6;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 0px 0px 4px 4px;
+}
+.selecteddate{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 48px;
+/* or 24px */
+display: block;
+align-items: center;
+letter-spacing: 0.02em;
+color: #162741;
+cursor: pointer;
+}

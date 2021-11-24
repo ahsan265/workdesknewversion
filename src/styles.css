@@ -2066,6 +2066,19 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
     overflow-y: hidden;
     vertical-align: middle;
    }
+
+   .mobilefilter-form-container .mat-dialog-container {
+    background: #FFFFFF;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.23);
+    border-radius: 4px;
+    opacity: 1;
+    width: 321px;
+    height: fit-content;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    vertical-align: middle;
+    padding: 0px;
+   }
    button:focus { outline-style: none; }
    .container {
     grid-row: auto;

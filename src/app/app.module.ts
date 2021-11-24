@@ -50,8 +50,6 @@ import { agentsocketapi } from './service/agentsocketapi';
     SidebarComponent,
     HomebarComponent,
     LinkexpiredialogComponent,
-    
-
   ],
   imports: [
     ChartsModule,

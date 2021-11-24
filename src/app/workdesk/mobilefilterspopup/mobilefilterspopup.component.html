@@ -1,0 +1,79 @@
+<div class="mobilefilterpanel">
+    <div [hidden]="showmainfilters">
+        <div class="filterpanel">
+            <div class="informationpanel">
+               <p (click)="showselectedpanel('selectedrange')" class="selectedpanel">Last week</p>
+               <p  (click)="showselectedpanel('selectedrange')" class="selecteddaterange">29/08/2021 - 04/09/2021</p> 
+            </div>
+            <div class="arrowpanel">
+                <img (click)="showselectedpanel('selectedrange')" src="../../../assets/assets_workdesk/arrow.svg" alt="">
+            </div>
+        </div>
+        <div class="filterpanel">
+        <div class="informationpanel ">
+            <p class="selectedpanel location">Location</p>
+        </div>
+        <div class="arrowpanel">
+            <img src="../../../assets/assets_workdesk/arrow.svg" alt="">
+        
+        </div>
+        </div>
+        <div class="filterpanel">
+          <div class="informationpanel">
+            <p class="selectedpanel">Language</p>
+            <p class="selecteddaterange">English</p> 
+        
+         </div>
+         <div class="arrowpanel">
+            <img src="../../../assets/assets_workdesk/arrow.svg" alt="">
+        
+         </div>
+        </div>
+        <div  class="clearallfilterpanel">
+        <div class="informationpanel clear">
+            <p [mat-dialog-close]="true" cdkFocusInitial class="clearall">Clear all filters</p>
+        </div>
+        </div>
+    </div>
+
+    <!-- show selected range -->
+    <div [hidden]="showselectedrange">
+  <div class="selecteddaterangepanel">
+       <div class="showdatemainpanel">
+           <div class="arrowpanel daterange">
+            <img (click)="showselectedpanel('main')" src="../../../assets/assets_workdesk/arrow_left.svg" alt="" srcset="">
+           </div>
+           <div class="showdateheadingpanel">
+            <p class="datemainheading">Select date range</p>
+           </div>
+      </div>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">Today</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">Yesterday</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">This week</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">Last week</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">This month</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">Last month</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">This year</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">Last year</p>
+   </div>
+   <div class="selectedtabspanel custom">
+    <p (click)="showselectedpanel('main')" class="selecteddate">Custom</p>
+   </div>
+    </div>
+</div>

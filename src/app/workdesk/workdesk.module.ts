@@ -29,10 +29,11 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSliderModule} from '@angular/material/slider';
 import { DragDirective } from './agents/croppicture/dragdroppic';
 import { agentsocketapi } from '../service/agentsocketapi';
+import { MobilefilterspopupComponent } from './mobilefilterspopup/mobilefilterspopup.component';
 
 
 @NgModule({
-  declarations: [DragDirective,percentcolorpipe,getloadpictures, AgentComponent, ChatComponent, ViewchatComponent, ActivechatComponent, EditformComponent, AddagentComponent, DashboardComponent, InviteagentComponent, AgentsettingsComponent, DeleteagentpopupComponent, UpdatepasswordComponent, CroppictureComponent],
+  declarations: [MobilefilterspopupComponent, DragDirective,percentcolorpipe,getloadpictures, AgentComponent, ChatComponent, ViewchatComponent, ActivechatComponent, EditformComponent, AddagentComponent, DashboardComponent, InviteagentComponent, AgentsettingsComponent, DeleteagentpopupComponent, UpdatepasswordComponent, CroppictureComponent, MobilefilterspopupComponent],
   imports: [  Ng2SearchPipeModule,  BrowserModule,  ImageCropperModule,
     BsDatepickerModule.forRoot(),
     ChartsModule,

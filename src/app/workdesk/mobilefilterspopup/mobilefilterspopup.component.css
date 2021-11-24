@@ -159,6 +159,14 @@ letter-spacing: 0.02em;
 
 color: #162741;
 }
+.scrollpanelforlanguagelist{
+    min-height: 146px;
+    max-height: 146px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 95%;
+    margin-top: 6px;
+}
 .scrollpanelforcountrylist{
     min-height: 203px;
     max-height: 212px;
@@ -185,6 +193,15 @@ display: block;
     position: relative !important;
 
 }
+.dropdown-menu.show.langauges{
+    width: 100%;
+    margin-top: -40px;
+    min-height: 165px;
+    max-height: 165px;
+    padding: 0px;
+    position: relative !important;
+
+}
 .dropdownlistitem1{ font-family: "Roboto",sans-serif;
     font-style: normal;
    font-weight: normal;
@@ -199,14 +216,14 @@ display: block;
    vertical-align: bottom;
    height: 24px;
   }
-.scrollpanelforcountrylist::-webkit-scrollbar{
+.scrollpanelforlanguagelist::-webkit-scrollbar,.scrollpanelforcountrylist::-webkit-scrollbar{
     width: 8px;
     height: 138px;
     background: #EDEDF0;
     border-radius: 8px;
 
 }
-.scrollpanelforcountrylist::-webkit-scrollbar-thumb {
+.scrollpanelforlanguagelist::-webkit-scrollbar-thumb, .scrollpanelforcountrylist::-webkit-scrollbar-thumb {
   border-radius: 8px;
   background: #616B7B;
   height: 74px;
@@ -214,7 +231,7 @@ display: block;
   background-clip: padding-box;
 
 }
-.scrollpanelforcountrylist::-webkit-scrollbar-track{
+.scrollpanelforlanguagelist::-webkit-scrollbar-track, .scrollpanelforcountrylist::-webkit-scrollbar-track{
   padding: 10px;
  
   width: 8px;
@@ -265,6 +282,14 @@ input[type="checkbox"]  {
         min-height: 300px;
         max-height: 300px;
     }
+    .selectlanguagepanel{
+        display: block;
+        width: 100%;
+        padding-right: 26px;
+        padding-left: 26px;
+        min-height: 240px;
+        max-height: 240px;
+    }
     .selectedlocationname{
         font-family: "Roboto",sans-serif;
         font-style: normal;
@@ -293,8 +318,9 @@ input[type="checkbox"]  {
     .applybtnpanel{
         width: 100%;
         display: block;
+        padding-top: 13px;
         padding-left: 26px;
-        padding-right: 26px;
+        padding-right: 13px;
         height: 76px;
         text-align: right;
         border-top: 1px solid rgba(208, 208, 222, 0.6);

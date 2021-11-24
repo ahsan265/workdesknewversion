@@ -25,7 +25,7 @@
         
          </div>
          <div class="arrowpanel">
-            <img src="../../../assets/assets_workdesk/arrow.svg" alt="">
+            <img (click)="showselectedpanel('languages')" src="../../../assets/assets_workdesk/arrow.svg" alt="">
         
          </div>
         </div>
@@ -129,7 +129,7 @@
     <div class="headingpanel">
         <p class="mainheading">Select language:</p>
     </div>
-    <div class="selectlocationpanel">
+    <div class="selectlanguagepanel">
         <div class="dropdown country">
             <li style="height:50px; list-style: none;">
             <a class="selectedlocationname"   data-toggle="dropdown" aria-expanded="false">
@@ -138,8 +138,8 @@
                  <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
                  </svg>
             </a>  
-              <ul class="dropdown-menu country" style="transform: translate3d(0px, 23px, 0px);">
-                <div class=" scrollpanelforcountrylist">
+              <ul class="dropdown-menu langauges" style="transform: translate3d(0px, 23px, 0px);">
+                <div class="scrollpanelforlanguagelist">
                   <li class="listitem user"   *ngFor="let count of this.lang" [ngValue]="count.name" > <input   #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name" [attr.id]="count.name"> <label class="dropdownlistitem1"  [for]="count.name"> 
                     {{count.name}}
                    </label></li> </div>

@@ -11,7 +11,7 @@
         </div>
         <div class="filterpanel">
         <div class="informationpanel ">
-            <p class="selectedpanel location">Location</p>
+            <p  (click)="showselectedpanel('location')" class="selectedpanel location">Location</p>
         </div>
         <div class="arrowpanel">
             <img src="../../../assets/assets_workdesk/arrow.svg" alt="">
@@ -20,8 +20,8 @@
         </div>
         <div class="filterpanel">
           <div class="informationpanel">
-            <p class="selectedpanel">Language</p>
-            <p class="selecteddaterange">English</p> 
+            <p (click)="showselectedpanel('languages')" class="selectedpanel">Language</p>
+            <p  (click)="showselectedpanel('languages')" class="selecteddaterange">English</p> 
         
          </div>
          <div class="arrowpanel">
@@ -37,7 +37,7 @@
     </div>
 
     <!-- show selected range -->
-    <div [hidden]="showselectedrange">
+<div [hidden]="showselectedrange">
   <div class="selecteddaterangepanel">
        <div class="showdatemainpanel">
            <div class="arrowpanel daterange">
@@ -75,5 +75,79 @@
    <div class="selectedtabspanel custom">
     <p (click)="showselectedpanel('main')" class="selecteddate">Custom</p>
    </div>
+    </div>
+</div>
+<!-- show location filter -->
+<div [hidden]="showlocationfilter">
+    <div class="selecteddaterangepanel">
+        <div class="showdatemainpanel">
+            <div class="arrowpanel daterange">
+             <img (click)="showselectedpanel('main')" src="../../../assets/assets_workdesk/arrow_left.svg" alt="" srcset="">
+            </div>
+            <div class="showdateheadingpanel">
+             <p class="datemainheading">Select location</p>
+            </div>
+       </div>
+    </div>
+    <div class="headingpanel">
+        <p class="mainheading">Select location:</p>
+    </div>
+    <div class="selectlocationpanel">
+        <div class="dropdown country">
+            <li style="height:50px; list-style: none;">
+            <a class="selectedlocationname"   data-toggle="dropdown" aria-expanded="false">
+                Moscow
+                <svg  class="arrowdownicon1" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                 </svg>
+            </a>  
+              <ul class="dropdown-menu country" style="transform: translate3d(0px, 23px, 0px);">
+                <div class=" scrollpanelforcountrylist">
+                  <li class="listitem user"   *ngFor="let count of this.countrylist" [ngValue]="count.name" > <input   #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name" [attr.id]="count.name"> <label class="dropdownlistitem1"  [for]="count.name"> 
+                    {{count.name}}
+                   </label></li> </div>
+              </ul>          
+             </li>
+       </div>
+    </div>
+    <div class="applybtnpanel">
+        <button [mat-dialog-close]="true" cdkFocusInitial class="applybtn">Apply</button>
+    </div>
+</div>
+<!-- show language filter -->
+<div [hidden]="showlanguagefilter">
+    <div class="selecteddaterangepanel">
+        <div class="showdatemainpanel">
+            <div class="arrowpanel daterange">
+             <img (click)="showselectedpanel('main')" src="../../../assets/assets_workdesk/arrow_left.svg" alt="" srcset="">
+            </div>
+            <div class="showdateheadingpanel">
+             <p class="datemainheading">Select language</p>
+            </div>
+       </div>
+    </div>
+    <div class="headingpanel">
+        <p class="mainheading">Select language:</p>
+    </div>
+    <div class="selectlocationpanel">
+        <div class="dropdown country">
+            <li style="height:50px; list-style: none;">
+            <a class="selectedlocationname"   data-toggle="dropdown" aria-expanded="false">
+                English (US)
+                <svg  class="arrowdownicon1" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                 </svg>
+            </a>  
+              <ul class="dropdown-menu country" style="transform: translate3d(0px, 23px, 0px);">
+                <div class=" scrollpanelforcountrylist">
+                  <li class="listitem user"   *ngFor="let count of this.lang" [ngValue]="count.name" > <input   #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name" [attr.id]="count.name"> <label class="dropdownlistitem1"  [for]="count.name"> 
+                    {{count.name}}
+                   </label></li> </div>
+              </ul>          
+             </li>
+       </div>
+    </div>
+    <div class="applybtnpanel">
+        <button  [mat-dialog-close]="true" cdkFocusInitial class="applybtn">Apply</button>
     </div>
 </div>

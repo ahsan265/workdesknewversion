@@ -138,3 +138,181 @@ letter-spacing: 0.02em;
 color: #162741;
 cursor: pointer;
 }
+.headingpanel{
+    display: block;
+    width: 100%;
+    padding-left: 26px;
+    padding-right: 26px;
+    padding-top: 26px;
+}
+.mainheading{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 48px;
+/* identical to box height, or 24px */
+
+display: flex;
+align-items: center;
+letter-spacing: 0.02em;
+
+color: #162741;
+}
+.scrollpanelforcountrylist{
+    min-height: 203px;
+    max-height: 212px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 95%;
+    margin-top: 6px;
+}
+.country.dropdown{
+ width: 100%;
+background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px;
+display: block;
+}
+
+.dropdown-menu.show.country{
+    width: 100%;
+    margin-top: -40px;
+    min-height: 226px;
+    max-height: 226px;
+    padding: 0px;
+    position: relative !important;
+
+}
+.dropdownlistitem1{ font-family: "Roboto",sans-serif;
+    font-style: normal;
+   font-weight: normal;
+   font-size: 12px;
+   line-height: 20px;
+   display: inline-block;
+   width: 45px;
+    /* overflow: hidden; */
+    white-space: nowrap;
+    text-overflow: inherit;
+   color: #292F58;
+   vertical-align: bottom;
+   height: 24px;
+  }
+.scrollpanelforcountrylist::-webkit-scrollbar{
+    width: 8px;
+    height: 138px;
+    background: #EDEDF0;
+    border-radius: 8px;
+
+}
+.scrollpanelforcountrylist::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #616B7B;
+  height: 74px;
+  width: 7px;
+  background-clip: padding-box;
+
+}
+.scrollpanelforcountrylist::-webkit-scrollbar-track{
+  padding: 10px;
+ 
+  width: 8px;
+
+}
+input[type="checkbox"]  {
+    height: 18px;
+    width: 18px;
+    margin-left: 12px;
+    margin-right: 0px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    background: #FFFFFF;
+    border: 0.5px solid rgba(166, 168, 186, 0.5);
+    box-sizing: border-box;
+    border-radius: 4px;
+    vertical-align: middle;
+    appearance: inherit;
+    cursor: pointer;
+    }
+    
+    input[type=checkbox]:before{
+    background-color: #FFFFFF; 
+    border-bottom:none;
+    
+    }
+    input[type=checkbox]:checked{
+      background-image: url(../../../assets/assets_workdesk/checkbox_icon.svg);
+      background-repeat: no-repeat;
+      background-size: 19px 21px;
+      background-position: center;
+    border-bottom:none;
+    }
+    
+    input[type=checkbox]:checked:after {
+    content: " ";
+    margin-left: 2px;
+    margin-top: 0px;
+    position: absolute;
+    color: #FFFFFF;
+    border-bottom:none;
+    }
+    .selectlocationpanel{
+        display: block;
+        width: 100%;
+        padding-right: 26px;
+        padding-left: 26px;
+        min-height: 300px;
+        max-height: 300px;
+    }
+    .selectedlocationname{
+        font-family: "Roboto",sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 48px;
+        padding-left: 11px;
+        text-align: left;
+        display: inline-block;
+        vertical-align: sub;
+        width: 95%;
+        align-items: center;
+        letter-spacing: 0.02em;
+        color: #162741;
+        }
+    .arrowdownicon1{
+        float: right;
+        line-height: 34px;
+        display: flex;
+        margin-right: 6px;
+        margin-top: 22px;
+        cursor: pointer;
+        color: #292F58;
+    
+    }
+    .applybtnpanel{
+        width: 100%;
+        display: block;
+        padding-left: 26px;
+        padding-right: 26px;
+        height: 76px;
+        text-align: right;
+        border-top: 1px solid rgba(208, 208, 222, 0.6);
+        box-sizing: border-box;
+        border-radius: 0px 0px 4px 4px;
+    }
+ .applybtn{
+width: 83px;
+height: 50px;
+bottom: 13px;
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 48px;
+align-items: center;
+letter-spacing: 0.02em;
+color: #FFFFFF;
+background: #1C54DB;
+border-radius: 3px;
+    }

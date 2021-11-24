@@ -18,7 +18,7 @@ export class MobilefilterspopupComponent implements OnInit {
   constructor(private messageservie:MessageService,private gigaaaservice:GigaaaApiService) { }
 
   ngOnInit(): void {
-    this.showselectedpanel("location");
+    this.showselectedpanel("main");
     this.getallthecountries();
     this.getlllangugaes();
   }

@@ -300,7 +300,7 @@ form = new FormGroup({
     await  this.gigaaaapi.resendinvitation(accesstoken,subsid,intg_id?.int_id,this.agentsettingdata?.agentuuid);
       this.sharedres.getrefreshagentlist(1);
       this.sharedres.getagentsettingview("teams");
-      this.message.setSuccessMessage("Agent invitation resend");
+      this.message.setSuccessMessage("Agent Invitation has been resent.");
     
     }
     catch(err)
@@ -402,14 +402,20 @@ public async updateagentprofile(): Promise<any>
       const intg_id = JSON.parse(localStorage.getItem('intgid'))
     try{
       var data={"display_name": this.form.controls.display_name.value, "language_ids": this.idsoflanguages, "first_name": this.form.controls.first_name.value, "last_name": this.form.controls.last_name.value, "admin": !this.form.controls.is_admin.value}
-     console.log(data);
-      await  this.gigaaaapi.updateagentsettings(accesstoken,subsid,intg_id.int_id,this.agentsettingdata?.agentuuid,data);
-      this.valuechanges=true;
-      this.message.setSuccessMessage("All Changes Saved");
+      if(data?.first_name==""||data?.last_name=="")
+      {
+        this.message.setErrorMessage("Please fill out fields.");
+
+      } else{
+        await  this.gigaaaapi.updateagentsettings(accesstoken,subsid,intg_id.int_id,this.agentsettingdata?.agentuuid,data);
+        this.valuechanges=true;
+        this.message.setSuccessMessage("All Changes Saved");
+      }
+ 
     
     }
     catch(err)
-    {      console.log(err)
+    {     
 
       this.message.setErrorMessage(err.error.error);
     }

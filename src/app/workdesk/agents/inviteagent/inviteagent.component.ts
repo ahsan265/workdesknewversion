@@ -174,7 +174,7 @@ getinviteagentvalidation()
 {
  if(this.form.get("emailgroup").invalid)
  {
-   this.messageService.setErrorMessage("Please enter valid email and languages")
+   this.messageService.setErrorMessage("Please enter valid information.")
  }
 
   else
@@ -354,7 +354,7 @@ checkhowmanyselected(val)
     try{
       await   this.gigaaaApiService.getinviteagent(accesstoken,subsid,intid?.int_id,data);
       this.sharedres.getrefreshagentlist(1);
-      this.messageService.setSuccessMessage("Agent Created")
+      this.messageService.setSuccessMessage("Agent Invitation has been sent.")
 
 
     }

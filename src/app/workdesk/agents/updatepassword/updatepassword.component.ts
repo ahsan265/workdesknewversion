@@ -111,13 +111,13 @@ export class UpdatepasswordComponent implements OnInit {
   {
     try{
       if (this.form.get('oldpassword').invalid) {
-        this.message.setErrorMessage("Old Password field is required")
+        this.message.setErrorMessage("Current Password field is required")
       }
       else  if (this.form.get('newpassword').invalid) {
         this.message.setErrorMessage("New Password field  is required")
       }
       else  if (this.form.get('confirmpassword').invalid) {
-        this.message.setErrorMessage("Comfirm  New Password field  is required")
+        this.message.setErrorMessage("Comfirm New Password")
       } 
       else{
         const subsiddata = JSON.parse(localStorage.getItem('gigaaa-subscription'))

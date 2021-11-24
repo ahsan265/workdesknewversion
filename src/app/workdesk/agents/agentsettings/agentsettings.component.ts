@@ -86,7 +86,7 @@ form = new FormGroup({
       {
           this.selectedlanguages="All Selected"
           this.allselectedtag=true;
-          this.updateagentprofile()
+       //   this.updateagentprofile()
         this.sharedres.getrefreshagentlist(1);
       }
     
@@ -105,7 +105,7 @@ form = new FormGroup({
       this.allselectedtag=false;
       if(this.idsoflanguages.length!=0)
       { 
-        this.updateagentprofile()
+        //this.updateagentprofile()
         console.log("hello language")
         //this.sharedres.getrefreshagentlist(1);
   
@@ -131,7 +131,7 @@ form = new FormGroup({
        }
        if(this.idsoflanguages.length!=null)
     {
-      this.updateagentprofile()
+     // this.updateagentprofile()
    //   this.sharedres.getrefreshagentlist(1);
 
     }
@@ -141,7 +141,7 @@ form = new FormGroup({
       var index = this.idsoflanguages.indexOf(id);
       if (index !== -1) {
         this.idsoflanguages.splice(index, 1);
-        this.updateagentprofile()
+       // this.updateagentprofile()
 
       }
       
@@ -163,10 +163,9 @@ form = new FormGroup({
 
    getbacktoteams()
    {   
-     if(this.valuechanges==true)
-     {
-       this.message.setSuccessMessage("All Changes Saved");
-     }    
+    //  if(this.valuechanges==true)
+    //  {
+    //  }    
       this.idsoflanguages.length=0;
       // this.selectedlanguages=null;
       this.sharedres.getrefreshagentlist(1);
@@ -389,7 +388,7 @@ form = new FormGroup({
      // console.log(data)
      if(this.idsoflanguages.length!=0)
      {
-    this.updateagentprofile()
+  
      }
       
     })
@@ -406,7 +405,7 @@ public async updateagentprofile(): Promise<any>
      console.log(data);
       await  this.gigaaaapi.updateagentsettings(accesstoken,subsid,intg_id.int_id,this.agentsettingdata?.agentuuid,data);
       this.valuechanges=true;
-      console.log(this.valuechanges)
+      this.message.setSuccessMessage("All Changes Saved");
     
     }
     catch(err)

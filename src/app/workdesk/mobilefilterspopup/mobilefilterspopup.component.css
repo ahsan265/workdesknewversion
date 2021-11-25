@@ -342,3 +342,40 @@ color: #FFFFFF;
 background: #1C54DB;
 border-radius: 3px;
     }
+.dateviewpanel{
+        display: block;
+        width: 100%;
+        padding-left: 26px;
+        padding-right: 26px;
+        height: 76px;
+        border-bottom: 1px solid rgba(208, 208, 222, 0.6);
+        box-sizing: border-box;
+        border-radius: 0px;
+        padding-top: 12px;
+}
+.dateview{
+    display: inline-block;
+    width: 104px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 1px solid rgba(208, 208, 222, 0.6);
+    box-sizing: border-box;
+    border-radius: 4px;
+}    
+.datetext{
+    font-family: "Roboto";
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 44px;
+text-align: center;
+display: block;
+align-items: center;
+letter-spacing: 0.02em;
+color: rgba(22, 39, 65, 0.8);
+}
+.calenderview{
+    height: 293px;
+    border-bottom: 1px solid rgba(208, 208, 222, 0.6);
+
+}

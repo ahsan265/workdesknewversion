@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker';
 import { GigaaaApiService } from 'src/app/service/gigaaaapi.service';
 import { gigaaasocketapi } from 'src/app/service/gigaaasocketapi.service';
 import { MessageService } from 'src/app/service/messege.service';
-
+interface IRange {
+  value: Date[];
+  label: string;
+}
 @Component({
   selector: 'app-mobilefilterspopup',
   templateUrl: './mobilefilterspopup.component.html',
@@ -13,12 +17,66 @@ export class MobilefilterspopupComponent implements OnInit {
   showselectedrange:boolean=false;
   showlocationfilter:boolean=false;
   showlanguagefilter:boolean=false;
+  showcustomdatefilter:boolean=false;
   countrylist:any;
   lang:any;
+   // get last week days 
+   beforeOneWeek = new Date(new Date().getTime() - 60 * 60 * 24 * 7 * 1000)
+   day = this.beforeOneWeek.getDay()
+   diffToMonday = this.beforeOneWeek.getDate() - this.day + (this.day === 0 ? -6 : 1)
+   lastMonday = new Date(this.beforeOneWeek.setDate(this.diffToMonday))
+   lastSunday = new Date(this.beforeOneWeek.setDate(this.diffToMonday + 6));
+  ranges: IRange[] = [
+    {
+      value: [new Date(new Date().setDate(new Date().getDate())),new Date()],
+      label: 'Today'
+    }
+    ,{
+      value: [new Date(new Date().setDate(new Date().getDate() - 1)),new Date(new Date().setDate(new Date().getDate() - 1))],
+      label: 'Yesterday'
+    },{
+    value: [new Date(new Date().setDate(new Date().getDate()-new Date().getDay()+1)),new Date(new Date().setDate(new Date().getDate()-new Date().getDay()+7))],
+    label: 'This week'
+  }, {
+    value: [this.lastMonday,this.lastSunday],
+    label: 'Last week'
+  }, {
+    value: [new Date(new Date().getFullYear(), new Date().getMonth(), 1),  new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0)],
+    label: 'This Month'
+  },
+  {
+    value: [new Date(new Date().getFullYear(), new Date().getMonth()-1, 1),  new Date(new Date().getFullYear(), new Date().getMonth(), 0)],
+    label: 'Last Month'
+  },
+  {
+    value: [new Date(new Date().getFullYear(), 0, 1), new Date(new Date().getFullYear(), 11, 31)],
+    label: 'This year'
+  },
+  {
+    value: [new Date(new Date().getFullYear()-1, 0, 1), new Date(new Date().getFullYear()-1, 11, 31)],
+    label: 'Last year'
+  }];
+  bsValue=this.ranges[0].value
+  @ViewChild(BsDaterangepickerDirective, { static: false }) dateRangePicker: BsDaterangepickerDirective;
+ date=new Date(new Date().setDate(new Date().getDate()))
+  bsConfig={
+    containerClass:"theme-white",
+    displayOneMonthRange:false,
+    showWeekNumbers:false ,
+    adaptivePosition: true,
+    dateInputFormat: 'YYYY-MM-DD',
+    ranges: this.ranges,
+    todayHighlight: true,
+    preventChangeToNextMonth: false,  
+    startView:2,
+    customTodayClass:'custom-today-class',
+    showPreviousMonth: false,
+    returnFocusToInput: false 
+  };
   constructor(private messageservie:MessageService,private gigaaaservice:GigaaaApiService) { }
 
   ngOnInit(): void {
-    this.showselectedpanel("main");
+    this.showselectedpanel("custom");
     this.getallthecountries();
     this.getlllangugaes();
   }
@@ -30,12 +88,15 @@ showselectedpanel(val)
     this.showselectedrange=true;
     this.showlocationfilter=true;
     this.showlanguagefilter=true;
+    this.showcustomdatefilter=true;
   }
   else if(val=="selectedrange"){
     this.showmainfilters=true;
     this.showselectedrange=false;
     this.showlocationfilter=true;
     this.showlanguagefilter=true;
+    this.showcustomdatefilter=true;
+
   }
   else if(val=="location")
   {
@@ -43,6 +104,8 @@ showselectedpanel(val)
     this.showselectedrange=true;
     this.showlocationfilter=false;
     this.showlanguagefilter=true;
+    this.showcustomdatefilter=true;
+
   }
   else if(val=="languages")
   {
@@ -50,6 +113,16 @@ showselectedpanel(val)
     this.showselectedrange=true;
     this.showlocationfilter=true;
     this.showlanguagefilter=false;
+    this.showcustomdatefilter=true;
+
+  }
+  else if(val=="custom")
+  {
+    this.showmainfilters=true;
+    this.showselectedrange=true;
+    this.showlocationfilter=true;
+    this.showlanguagefilter=true;
+    this.showcustomdatefilter=false;
   }
 }
  // get all country 

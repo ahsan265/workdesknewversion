@@ -1902,10 +1902,19 @@ body .bs-datepicker span.in-range{
     background: #EDEDF7;    
     border-radius: 0px;
     color:  rgba(22, 39, 65, 0.8);
+    box-shadow: 0px 0 0px  0px #ededf7;
 }
-.bs-datepicker-body table td:before{
+body .bs-datepicker-container .bs-datepicker-body table td:before{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 6px;
+    bottom: 6px;
     left: 0px;
     right: 0px;
+    box-sizing: content-box;
+    background: transparent;
 }
   body .bs-datepicker-container  .bs-datepicker-head {
     background-color: #ffffff;
@@ -1950,22 +1959,21 @@ body .bs-datepicker-container .bs-datepicker-body table td span.select-start
 {
     color: #ffffff;
     border-radius: 0px;
-    border-radius: 50%;
-    /* border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px; */
+  
+    /* border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px; */
 
 }
 body .bs-datepicker-container .bs-datepicker-body table td span.select-end
 {   border-radius: 0px;
-    border-radius: 50%;
+    
 
-    /* border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px; */
+    /* border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px; */
 }
 body .bs-datepicker-body table td span.is-other-month, .bs-datepicker-body table td.is-other-month span.is-other-month 
 {
     color:   rgba(115, 125, 141, 0.45);
-
 }
 body .bs-datepicker-container .bs-datepicker-multiple{
 padding-right: 60px;
@@ -2013,6 +2021,7 @@ body .bs-datepicker-predefined-btns button{
 body .bs-datepicker-predefined-btns button:hover{
     color:  rgba(22, 39, 65, 0.8);
     background-color: #EDEDF7;
+    border-radius: 4px;
 
 }
 body .bs-datepicker-predefined-btns button.selected{
@@ -2446,7 +2455,7 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
     }
     body .bs-datepicker{
         width: auto;
-        right: -2px;
+        right: -33px;
         height: 100%;
         background: transparent;
     }
@@ -2467,7 +2476,7 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
         padding-right: 34px;
     }
     body .bs-datepicker-container .bs-datepicker-multiple {
-     padding-right: 60px;
+     padding-right: 0px;
     }
     body .bs-datepicker-custom-range {
         position: relative;

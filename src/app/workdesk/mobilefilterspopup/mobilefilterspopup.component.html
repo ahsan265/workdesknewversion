@@ -73,7 +73,7 @@
     <p class="selecteddate">Last year</p>
    </div>
    <div class="selectedtabspanel custom">
-    <p (click)="showselectedpanel('main')" class="selecteddate">Custom</p>
+    <p (click)="showselectedpanel('custom')" class="selecteddate">Custom</p>
    </div>
     </div>
 </div>
@@ -146,6 +146,44 @@
               </ul>          
              </li>
        </div>
+    </div>
+    <div class="applybtnpanel">
+        <button  [mat-dialog-close]="true" cdkFocusInitial class="applybtn">Apply</button>
+    </div>
+</div>
+<!-- custom date filter -->
+<div [hidden]="showcustomdatefilter">
+    <div class="selecteddaterangepanel">
+        <div class="showdatemainpanel">
+            <div class="arrowpanel daterange">
+             <img (click)="showselectedpanel('selectedrange')" src="../../../assets/assets_workdesk/arrow_left.svg" alt="" srcset="">
+            </div>
+            <div class="showdateheadingpanel">
+             <p class="datemainheading">Select custom range</p>
+            </div>
+       </div>
+    </div>
+    <div class="dateviewpanel">
+       <div class="dateview">
+        <p class="datetext">29/08/2021</p>
+       </div> 
+       <svg style="margin-left: 24.5px;
+       margin-right: 24.5px;" width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.2383 1.73828H0.761719V0.261719H11.2383V1.73828Z" fill="#162741"/>
+        </svg>
+        
+       <div class="dateview" style="float: right;">
+        <p class="datetext">04/09/2021</p>
+       </div>
+    </div>
+    <div class="calenderview">
+        <bs-daterangepicker-inline style=" margin: 0px;
+        display: contents;"  type="text"
+        bsDaterangepicker
+        placement="bottom"
+        [bsValue]="bsValue"
+        [bsConfig]="bsConfig">
+      </bs-daterangepicker-inline>
     </div>
     <div class="applybtnpanel">
         <button  [mat-dialog-close]="true" cdkFocusInitial class="applybtn">Apply</button>

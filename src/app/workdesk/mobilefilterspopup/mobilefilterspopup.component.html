@@ -100,8 +100,8 @@
                 <svg  class="arrowdownicon1" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
                  </svg>
-            </a>  
-              <ul class="dropdown-menu country" style="transform: translate3d(0px, 23px, 0px);">
+               </a>  
+               <ul class="dropdown-menu country" style="transform: translate3d(0px, 23px, 0px);">
                 <div class=" scrollpanelforcountrylist">
                   <li class="listitem user"   *ngFor="let count of this.countrylist" [ngValue]="count.name" > <input   #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name" [attr.id]="count.name"> <label class="dropdownlistitem1"  [for]="count.name"> 
                     {{count.name}}
@@ -165,7 +165,7 @@
     </div>
     <div class="dateviewpanel">
        <div class="dateview">
-        <p class="datetext">29/08/2021</p>
+        <p class="datetext">{{datepreviewstart}}</p>
        </div> 
        <svg style="margin-left: 24.5px;
        margin-right: 24.5px;" width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -173,7 +173,7 @@
         </svg>
         
        <div class="dateview" style="float: right;">
-        <p class="datetext">04/09/2021</p>
+        <p class="datetext">{{datepreviewend}}</p>
        </div>
     </div>
     <div class="calenderview">
@@ -182,6 +182,7 @@
         bsDaterangepicker
         placement="bottom"
         [bsValue]="bsValue"
+        (bsValueChange)="onDateChange($event)"
         [bsConfig]="bsConfig">
       </bs-daterangepicker-inline>
     </div>

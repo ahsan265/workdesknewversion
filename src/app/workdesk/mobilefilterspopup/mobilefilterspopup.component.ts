@@ -19,6 +19,9 @@ export class MobilefilterspopupComponent implements OnInit {
   showlanguagefilter:boolean=false;
   showcustomdatefilter:boolean=false;
   countrylist:any;
+  rangeSelected:any;
+  datepreviewstart:any;
+  datepreviewend:any;
   lang:any;
    // get last week days 
    beforeOneWeek = new Date(new Date().getTime() - 60 * 60 * 24 * 7 * 1000)
@@ -76,9 +79,11 @@ export class MobilefilterspopupComponent implements OnInit {
   constructor(private messageservie:MessageService,private gigaaaservice:GigaaaApiService) { }
 
   ngOnInit(): void {
-    this.showselectedpanel("custom");
+    this.showselectedpanel("main");
     this.getallthecountries();
     this.getlllangugaes();
+    this.onDateChange([this.ranges[0].value[0],this.ranges[0].value[1]]);
+
   }
 showselectedpanel(val)
 {
@@ -172,4 +177,94 @@ showselectedpanel(val)
     this.messageservie.setErrorMessage(err.error.error)
   }
 }
+ //selectionpanel for selecting the panes
+ onDateChange(event: Array<Date>)
+ { 
+       console.log(event)
+       var ismatched=false;
+       var d = new Date(event[0]);
+       var d1 = new Date(event[1]);
+     this.ranges.filter(x=>{
+     if(x.value[0].toDateString()==d.toDateString()&&x.value[1].toDateString()==d1.toDateString())
+       {
+         this.rangeSelected=x.label
+         var  month = '' + (d.getMonth() + 1);
+         var   day = '' +(d.getDate());
+         var  year = d.getFullYear();
+   
+       if (month.length < 2) 
+        {
+         month = '0' + month;
+   
+        }
+       if (day.length < 2) 
+         {
+           day = '0' + day;
+   
+         }
+         var dateStart1= [day,month,year].join('/');
+         var  month1 = '' + (d1.getMonth() + 1);
+       var   day1 = '' +( d1.getDate());
+       var  year1 = d1.getFullYear();
+ 
+     if (month1.length < 2) 
+      {
+       month1 = '0' + month1;
+ 
+      }
+     if (day1.length < 2) 
+       {
+         day1 = '0' + day1;
+ 
+       }
+       var dateEnd1= [day1,month1,year1].join('/');
+         this.datepreviewstart=dateStart1;
+         this.datepreviewend=dateEnd1;
+         ismatched=true;
+        
+        //   $('.btn').addClass('.selected');
+       
+       }
+     })
+     if(ismatched==false)
+     {
+       var  month = '' + (d.getMonth() + 1);
+       var   day = '' +(d.getDate());
+       var  year = d.getFullYear();
+ 
+     if (month.length < 2) 
+      {
+       month = '0' + month;
+ 
+      }
+     if (day.length < 2) 
+       {
+         day = '0' + day;
+ 
+       }
+       var dateStart= [day,month,year].join('/');
+ 
+       var  month1 = '' + (d1.getMonth() + 1);
+       var   day1 = '' +( d1.getDate());
+       var  year1 = d1.getFullYear();
+ 
+     if (month1.length < 2) 
+      {
+       month1 = '0' + month1;
+ 
+      }
+     if (day1.length < 2) 
+       {
+         day1 = '0' + day1;
+ 
+       }
+       var dateEnd= [day1,month1,year1].join('/');
+ 
+       this.rangeSelected= dateStart+ " -"+ dateEnd;
+       this.datepreviewstart=dateStart;
+       this.datepreviewend=dateEnd;
+           
+     }
+
+ }
 }

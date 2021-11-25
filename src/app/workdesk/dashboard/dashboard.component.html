@@ -35,41 +35,7 @@
 
 
           <div class="datepickerpanel desktop">
-            <div class="datepicker" >
-              <div style="height: 36px; list-style: none;" class="calander dropdown" data-toggle="dropdown">
-              <p   #dp class="calhead">{{rangeSelected}}</p>  
-              <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
-                </svg>
-              <div class="calander dropdown-menu dropdown-menu-right">
-                 <div class="selectionpanel">
-              </div>
-                <bs-daterangepicker-inline style=" margin: 0px;
-                display: contents;"  type="text"
-                bsDaterangepicker
-                placement="bottom"
-                [bsValue]="bsValue"
-                (bsValueChange)="onDateChange($event)"
-                [bsConfig]="bsConfig">
-              </bs-daterangepicker-inline>
-              <div class="datepreviewpanel">
-                <div class="previewmain">
-                  <p class="selectedvalue">{{datepreviewstart}}</p><span><svg style="margin: 9px;" width="12" height="3" viewBox="0 0 12 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11.2383 2.23828H0.761719V0.761719H11.2383V2.23828Z" fill="#162741"/>
-                    </svg>
-                    </span><p  class="selectedvalue">{{datepreviewend}}</p> 
-                </div>
-
-                <div class="buttonpanelfordate">
-                  <button (click)="canceldaterange()" class="cancel">Cancel</button>
-                  <button class="applybtn">Apply</button>
-
-                </div>
-              </div>
-            </div>
-        
-          </div>
-          </div>
+          
             <div class="dropdown country">
               <li style="height: 34px; list-style: none;">
               <a class="selecteddashboardname"   data-toggle="dropdown" aria-expanded="false">
@@ -104,7 +70,41 @@
               </ul>
                </li>
                 </div>
-         
+                <div class="datepicker" >
+                  <div style="height: 36px; list-style: none;" class="calander dropdown" data-toggle="dropdown">
+                  <p   #dp class="calhead">{{rangeSelected}}</p>  
+                  <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                    </svg>
+                  <div class="calander dropdown-menu dropdown-menu-right">
+                     <div class="selectionpanel">
+                  </div>
+                    <bs-daterangepicker-inline style=" margin: 0px;
+                    display: contents;"  type="text"
+                    bsDaterangepicker
+                    placement="bottom"
+                    [bsValue]="bsValue"
+                    (bsValueChange)="onDateChange($event)"
+                    [bsConfig]="bsConfig">
+                  </bs-daterangepicker-inline>
+                  <div class="datepreviewpanel">
+                    <div class="previewmain">
+                      <p class="selectedvalue">{{datepreviewstart}}</p><span><svg style="margin: 9px;" width="12" height="3" viewBox="0 0 12 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.2383 2.23828H0.761719V0.761719H11.2383V2.23828Z" fill="#162741"/>
+                        </svg>
+                        </span><p  class="selectedvalue">{{datepreviewend}}</p> 
+                    </div>
+    
+                    <div class="buttonpanelfordate">
+                      <button (click)="canceldaterange()" class="cancel">Cancel</button>
+                      <button class="applybtn">Apply</button>
+    
+                    </div>
+                  </div>
+                </div>
+            
+              </div>
+              </div>
           
              
              

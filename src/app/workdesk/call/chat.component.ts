@@ -326,9 +326,9 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
     }, 250);
     this.getlllangugaes();    
 
-  //   $(document).ready(function() {
-  //     $(document).foundation();
-  //  })
+    $(document).ready(function() {
+      $(document).foundation();
+   })
 
   }
 

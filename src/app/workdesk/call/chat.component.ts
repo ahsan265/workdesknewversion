@@ -171,7 +171,7 @@ call:any;
   allselectedcall3:boolean;
   allselectedcall4:boolean;
 
-
+   data=[{},{},{},{},{}]
 
   listuser:any;
   private destroyed$ = new Subject();
@@ -326,9 +326,9 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
     }, 250);
     this.getlllangugaes();    
 
-    $(document).ready(function() {
-      $(document).foundation();
-   })
+  //   $(document).ready(function() {
+  //     $(document).foundation();
+  //  })
 
   }
 
@@ -484,22 +484,22 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
   {
    if(val=="en")
    {
- return this.langurl='../../../assets/assets_workdesk/united-kingdom.svg'
+ return this.langurl='../../../assets/assets_workdesk/Flags/Eng.svg'
    }
    else if(val=="de") {
-    return this.langurl='../../../assets/Wikipedia-Flags-DE-Germany-Flag_27.svg'
+    return this.langurl='../../../assets/assets_workdesk//Flags/German.svg'
 
    }
    else if(val=="ar") {
-    return this.langurl='../../../assets/assets_workdesk/spain.svg'
+    return this.langurl='../../../assets/assets_workdesk/Flags/Spain.svg'
 
   }
   else if(val=="es") {
-    return this.langurl='../../../assets/assets_workdesk/italy.svg'
+    return this.langurl='../../../assets/Flagsassets_workdesk/Flags/italy.svg'
 
   }
   else if(val=="ru") {
-    return this.langurl='../../../assets/assets_workdesk/russia.svg'
+    return this.langurl='../../../assets/assets_workdesk/Flags/Russia.svg'
 
   }
   else if(val=="tr") {
@@ -517,32 +517,32 @@ changebrowser(val)
 {
  if(val=="Chrome")
  {
-  return this.browserurl="../../../assets/Google-chrome-logo-in-flat-design-on-transparent-PNG_1.svg";
+  return this.browserurl="../../../assets/assets_workdesk/browsers/chrome.svg";
  }
  else if(val=="Firefox")
  {
-  return this.browserurl="../../../assets/Firefox_Project_Logo_2019_1.svg";
+  return this.browserurl="../../../assets/assets_workdesk/browsers/mozilla.svg";
  }
  else if(val=="Safari") {
-  return this.browserurl="../../../assets/assets_workdesk/safari.svg";
+  return this.browserurl="../../../assets/assets_workdesk/browsers/safari.svg";
  }
  else if(val=="Opera") {
-  return this.browserurl="../../../assets/assets_workdesk/opera.svg";
+  return this.browserurl="../../../assets/assets_workdesk/browsers/opera.svg";
 }
  else if(val=="Opera Touch") {
-  return this.browserurl="../../../assets/assets_workdesk/opera.svg";
+  return this.browserurl="../../../assets/assets_workdesk/browsers/opera.svg";
 }
 else if(val=="edge") {
-  return  this.browserurl="../../../assets/assets_workdesk/internet-explorer.svg";
+  return  this.browserurl="../../../assets/assets_workdesk/browsers/default.svg";
 }
 else if(val==null)
 {
-  return this.browserurl="../../../assets/assets_workdesk/browser.svg";
+  return this.browserurl="../../../assets/assets_workdesk/browsers/default.svg";
 }
 else
 
   {
-    return this.browserurl="../../../assets/assets_workdesk/browser.svg";
+    return this.browserurl="../../../assets/assets_workdesk/browsers/default.svg";
   }
 
 }
@@ -551,11 +551,11 @@ changedevicetype(val)
 {
  if(val==true)
  {
-  return this.deviceurl="../../../assets/Group_97.svg";
+  return this.deviceurl="../../../assets/assets_workdesk/device/desktop.svg";
  }
 else
 {
-  return this.deviceurl="../../../assets/Group_96_1.svg";
+  return this.deviceurl="../../../assets/assets_workdesk/device/mobile.svg";
 }
 }
 
@@ -564,25 +564,25 @@ changeoperatingsystem(val)
 {
  if(val=="macOS")
  {
-  return this.operatsystemnurl="../../../assets/Group_99.svg";
+  return this.operatsystemnurl="../../../assets/assets_workdesk/os/Apple.svg";
  }
  else if(val=="iOS")
  {
-  return this.operatsystemnurl="../../../assets/Group_99.svg";
+  return this.operatsystemnurl="../../../assets/assets_workdesk/os/Apple.svg";
  }
  else if(val=="Windows") {
-  return this.operatsystemnurl="../../../assets/Group_98.svg";
+  return this.operatsystemnurl="../../../assets/assets_workdesk/os/Windows.svg";
  }
  else if(val=="Android") {
-  return this.operatsystemnurl="../../../assets/android.svg";
+  return this.operatsystemnurl="../../../assets/assets_workdesk/os/Android.svg";
  }
 else if(val==null)
 {
-  return this.operatsystemnurl="../../../assets/Group_98.svg";
+  return this.operatsystemnurl="../../../assets/assets_workdesk/os/Windows.svg";
 }
 else{
   {
-    return this.operatsystemnurl="../../../assets/Group_98.svg";
+    return this.operatsystemnurl="../../../assets/assets_workdesk/os/Windows.svg";
   }
 }
 }
@@ -609,18 +609,18 @@ selectsubscription(val){
 changecalltype(val)
 {
 if(val==false)
-return "Audio";
+return "Audio Call";
 else  if(val==true){
-  return "Video";
+  return "Video Call";
 }
 }
 changecalltypeicon(val)
 {
 if(val==false)
-return this.calltype="../../../assets/telephone_1.svg";
+return this.calltype="../../../assets/assets_workdesk/request_type/audio.svg";
 
 else if (val==true){
-  return this.calltype="../../../assets/video-player_1.svg";
+  return this.calltype="../../../assets/assets_workdesk/request_type/video.svg";
 }
 }
 

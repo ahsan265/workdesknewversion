@@ -1,7 +1,76 @@
+::marker{
+  margin: 0px;
+}
 .callsarea{
   display: block;
   padding-left: 30px;
   padding-right: 30px;
+}
+.topheadingpanel{
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.dropdownpanels{
+  width: 100%;
+  display: block;
+}
+.languagepanel{
+  display: inline-block;
+  text-align: left;
+  width: 25%;
+}
+.secondpanel{
+  display: inline-block;
+  width: 75%;
+  text-align: right;
+}
+.dropdown.languages{
+  width: 185.55px;
+  height: 34px;
+  background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px;
+display: inline-block;
+margin-right: 20px;
+}
+.dropdown.calltype{
+  width: 107px;
+  height: 34px;
+  background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px;
+display: inline-block;
+margin-right: 20px;
+}
+.dropdown-menu.show.languages{
+  min-width:  107px;
+  max-width:  107px;
+}
+.dropdown-menu.show.calltype{
+  min-width:  185.55px;
+  max-width:  185.55px;
+}
+.mainheading{
+  font-family: "Roboto";
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 22px;
+align-items: center;
+letter-spacing: 0.02em;
+color: #162741;
+}
+.tabspanel{
+display: block;
+width: 100%;
+padding-left: 30px;
+padding-right: 30px;
 }
 .calander{
   background: #FFFFFF;
@@ -94,13 +163,13 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
   {
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 12px;
+    line-height: 16px;
     display: flex;
     align-items: center;
-    color: #292F58;   
-    background-color: #FFFFFF;
-    border-bottom: 2px solid #E5E5E5;
+    color: #162741;   
+    background-color: #FAFAFD;
+    border-bottom: 0px solid #FEFEFF;
     margin-bottom: -2px;
     padding-left: 0px;
     padding-right: 0px;
@@ -112,28 +181,40 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
   {
 
     border-bottom: 2px solid #715DFF;
-  
+    font-weight: 500;
   }
   .tabs
   {
     border: none;
+    background-color: #FAFAFD;
+
   }
 
   .form_input{
   
-    height: 36px;
+    height: 34px;
     text-align: left;
-    width: 100%;
+    width: 245px;
     position: relative;
     color: #293059;
     border: 0;
     outline: 0;
+    display: inline-block;
     background: #FFFFFF;
     border: 0.5px solid rgba(166, 168, 186, 0.5);
     box-sizing: border-box;
     border-radius: 4px;
-    font-size: 16px;
-    line-height: 19px;
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 120%;
+    
+    align-items: center;
+    letter-spacing: 0.02em;
+    
+    color: #7D8696;
+    
     cursor: text;
     cursor: default;
   }
@@ -191,7 +272,20 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
   align-items: center;
   color: #292F58;
 }
-
+.numberofcalls{
+  margin-left: 8px;
+  height: 14px;
+  width: 14px;
+  text-align: center;
+  background: #1C54DB;
+  border-radius: 50%;
+  line-height: 15px;
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+color: #FFFFFF;
+}
 .tagiconnn
 {
     color: #A6A8BA;
@@ -199,7 +293,8 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
     float: right;
     line-height: 34px;
     display: block;
-    margin-top: -12px;
+    margin-top: 0px;
+    margin-right: 14px;
     height: 12px;
     width: 7px;
     
@@ -210,35 +305,35 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
 }
 
 thead, tbody tr:nth-child(even){
-    background:none;
+    background:#FAFAFD;
     border: none;
-    border-bottom: 1px solid rgba(229, 229, 229, 0.5);;
+    border-bottom: 1px solid #E1E1EA;
 
 }
 thead tr{
-    border: none;
     margin-top: 3px;
-    border-bottom: 1px solid rgba(229, 229, 229, 0.5);;
-
+    background: #FFFFFF;
+    height: 50px;
+    border-bottom: 1px solid  #E1E1EA;
 }
 table,tbody
 {
-    background:none;
-    border: none; 
-    /* background: #FFFFFF;
-   box-shadow: 0px 1px 5px 2px rgba(166, 168, 186, 0.1);
-   border-radius: 20px 20px 0px 0px; */
+  background: #FFFFFF;
+  border: 1px solid #E1E1EA;
+  box-sizing: border-box;
+  border-radius: 4px 4px 0px 0px;
+  border-radius: 4px;
 }
 th{
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     /* or 357% */
     width: 20%;
     align-items: center;
     font-family: "Roboto",sans-serif;
     border-bottom: 1px solid rgba(166, 168, 186, 0.1);
-    color: #A6A8BA;
+    color: rgba(22, 39, 65, 0.6);
     margin-bottom: 6px;
     height: 48px;
     padding-bottom: 0px;
@@ -264,13 +359,13 @@ height: 24px;
 }
 .languagetext{
   font-family: "Roboto",sans-serif;
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 16px;
-align-items: center;
-
-color: #292F58;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height:34px;
+  align-items: center;
+  letter-spacing: 0.02em;
+  color: rgba(22, 39, 65, 0.8);
 }
 .dropdownlistitem{ font-family: "Roboto",sans-serif;
   font-style: normal;
@@ -286,15 +381,49 @@ color: #292F58;
  vertical-align: bottom;
  height: 24px;
 }
-td,td p {   font-family: "Roboto",sans-serif;
+td  {   font-family: "Roboto",sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 12px;
+    line-height: 17px;
     align-items: center;
-    color: #292F58;
+    color: #162741;
     padding-bottom: 0px;
     padding-top: 0px;
+}
+.username{
+  font-weight: 500;
+  font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 17px;
+    align-items: center;
+    color: #162741;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+.id{
+  font-weight: normal;
+  font-family: "Roboto",sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 17px;
+  align-items: center;
+  color: #162741;
+  padding-bottom: 0px;
+  padding-top: 0px;
+
+}
+.call_type{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 17px;
+align-items: center;
+letter-spacing: 0.02em;
+color: #445167;
+
 }
 td.expd{
     padding-bottom: 12px;
@@ -332,7 +461,7 @@ tr.mainlist{
     padding-bottom: 12px;
     padding-left: 12px;
     padding-right: 12px;
-    height: 70px;
+    height: 50px;
 }
 .userinfoicon{
 margin: 5px;
@@ -454,9 +583,9 @@ tr.mainlist{
  padding-right: 0px;  
 }
 .datatable{
-  display: block;
-    width: inherit;
-    overflow-x: auto;
+display: block;
+width: 100%;
+overflow-x: auto;
 }
 table{
   width: 768px;

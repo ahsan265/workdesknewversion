@@ -47,6 +47,7 @@ box-sizing: border-box;
 border-radius: 4px;
 display: inline-block;
 margin-right: 20px;
+text-align: left;
 }
 .dropdown-menu{
   margin-right: -11px;
@@ -295,7 +296,7 @@ color: #FFFFFF;
     cursor: pointer;
     float: right;
     line-height: 34px;
-    display: block;
+    display: flex;
     margin-top: 0px;
     margin-right: 14px;
     height: 12px;
@@ -370,6 +371,7 @@ height: 24px;
   line-height:34px;
   align-items: center;
   letter-spacing: 0.02em;
+  margin-left: -10px;
   color: rgba(22, 39, 65, 0.8);
 }
 .dropdownlistitem{ font-family: "Roboto",sans-serif;

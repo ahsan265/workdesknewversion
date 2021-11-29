@@ -10,11 +10,11 @@
     font-size: 18px;
     line-height: 19px;
     padding-left: 30px;
-    margin-top: 26px;
+    padding-top: 26px;
     display: flex;
     align-items: center;
     color: #162741;
-    margin-bottom: 25px;
+    padding-bottom: 25px;
 }
 table{
   border: 1px solid rgba(208, 208, 222, 0.6);

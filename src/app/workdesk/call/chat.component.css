@@ -11,10 +11,11 @@
 .topheadingpanel{
   display: block;
   width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   padding-left: 30px;
   padding-right: 30px;
+  background: #FAFAFD;
 }
 .dropdownpanels{
   width: 100%;
@@ -48,7 +49,7 @@ border: 1px solid rgba(208, 208, 222, 0.6);
 box-sizing: border-box;
 border-radius: 4px;
 display: inline-block;
-margin-right: 20px;
+
 text-align: left;
 }
 .dropdown-menu{
@@ -83,6 +84,7 @@ display: block;
 width: 100%;
 padding-left: 30px;
 padding-right: 30px;
+background: #FAFAFD;
 }
 .calander{
   background: #FFFFFF;

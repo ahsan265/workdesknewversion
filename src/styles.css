@@ -1372,7 +1372,7 @@ a.article, a.article:hover {
     position: absolute;
     right: 0;
     z-index: 1;
-    background: #FAFAFD;
+    /* background: #FAFAFD; */
 }
 #content.active {
     width: calc(100% -  4.6rem);

@@ -88,6 +88,13 @@ padding-left: 30px;
 padding-right: 30px;
 background: #FAFAFD;
 }
+.dropdown-menu.show.calander{
+  display: inline-flex;
+  width: 776px;
+height: 386px;
+padding: 0px;
+margin-top: 7px;
+}
 .calander{
   background: #FFFFFF;
   border: 1px solid rgba(166, 168, 186, 0.5);
@@ -191,7 +198,7 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
     align-items: center;
     color:  rgba(22, 39, 65, 0.66); 
     background-color: #FAFAFD;
-    border-bottom: 0px solid #FAFAFD;
+    border-bottom: 2px solid #E1E1EA;
     margin-bottom: -2px;
     padding-left: 0px;
     padding-right: 0px;
@@ -205,6 +212,8 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
     border-bottom: 2px solid #1C54DB;
     font-weight: 500;
     color: #162741;
+    margin-bottom: -2px;
+
   }
   .tabs
   {
@@ -297,9 +306,10 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
   color: #292F58;
 }
 .numberofcalls{
-  margin-left: 8px;
+  margin-left:8px;
   height: 14px;
   width: 14px;
+  display: inline-block;
   text-align: center;
   background: #1C54DB;
   border-radius: 50%;

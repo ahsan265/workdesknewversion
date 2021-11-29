@@ -20,6 +20,8 @@
 .dropdownpanels{
   width: 100%;
   display: block;
+  height: 34px;
+  margin-bottom: 30px;
 }
 .languagepanel{
   display: inline-block;
@@ -130,16 +132,28 @@ cursor: pointer;
 
 
     }
+    .calanderheadingpanel{
+      width: 200px;
+      display: inline-block;
+      text-align: left;
+      background: #FFFFFF;
+      border: 1px solid rgba(208, 208, 222, 0.6);
+      box-sizing: border-box;
+      border-radius: 4px;
+      height: 34px;
+    }
   .calhead{
     font-family: "Roboto",sans-serif;
     font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 36px;
-    margin-left: 8px;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 34px;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: rgba(22, 39, 65, 0.8);
+    margin-left: 11px;
     display: inline-block;
     vertical-align: middle;
-    color: #292F58;
 }
 .calhead:hover{
   cursor: default;
@@ -600,6 +614,23 @@ align-items: center;
 
 color: #292F58;
 
+}
+.callindicationpanel{
+  display: block;
+  width: 100%;  
+  padding-top: 20px;
+}
+.numberofvailablerequest{
+  font-family: "Roboto";
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 120%;
+/* or 14px */
+align-items: center;
+letter-spacing: 0.02em;
+
+color: #7D8696;
 }
 .imagetag{
   width: 20%;

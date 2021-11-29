@@ -2,7 +2,7 @@
 <div class="topheadingpanel">
 <p class="mainheading">Requests</p>
 </div>
-<div class="tabspanel" style="z-index: 1; border-bottom: 2px solid #E1E1EA; padding-top: 35px;">
+<div class="tabspanel" style="z-index: 1; border-bottom: 2px solid #E1E1EA; padding-top: 20px;">
       <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
           <li  class="tabs-title is-active"><a (click)="getpanalview('incoming')"   href="#one" >Incoming <span class="numberofcalls">{{size_incoming_call}}</span> </a></li>
           <li  class="tabs-title"><a (click)="getpanalview('outgoing')"  href="#twp">Ongoing <span class="numberofcalls">{{size_ougoing_call}}</span></a></li>
@@ -13,7 +13,7 @@
 <div class="callsarea">
 <div [hidden]="!incoming">
     <div class="dropdownpanels" style="margin-top: 34px;">
-      <div class="languagepanel">
+      
         <div class="dropdown languages">  
           <li style="height: 36px;">
           <a class="languagetext"  data-toggle="dropdown" aria-expanded="false">
@@ -31,8 +31,6 @@
       
            </li>
         </div>
-      </div>
-     
         <div class="secondpanel">
         <div class="dropdown calltype">  
           <li style="height: 36px;">
@@ -61,7 +59,7 @@
      </div>
       </div>
     
-    </div>
+    </div> 
       <div class="datatable" >
         <table [hidden]="showincoming">
           <thead>
@@ -70,7 +68,7 @@
               <th  style="width:25%;">FULL NAME & ID</th>
               <th class="imagetag">USER INFO</th>
               <th style="width:15%;">CALL TYPE</th>
-              <th class="waitingtime">WAITING TIME</th>
+              <th class="waitingtime" style=" text-align: center;">WAITING TIME</th>
               <th style="width: 20%;"></th>
  </tr>
 </thead>
@@ -98,7 +96,10 @@
           <p class="call-status">There is no Incoming requests yet.</p>
   </div>
  </div>
+ 
 </div>
+
+
   <div [hidden]="!outgoing">
     <div class="dropdownpanels" style="margin-top: 34px;">
       <div class="languagepanel">
@@ -119,9 +120,9 @@
       
            </li>
           </div>
-      </div>
+        </div>
+
       <div class="secondpanel">
-       
         <ul class="dropdown calltype" >  
           <li style="height: 36px;">
           <a class="languagetext" data-toggle="dropdown" aria-expanded="false" style="margin-left: 9px;">
@@ -147,17 +148,16 @@
             </svg>
         <Input (keyup)="search($event.target.value,'ongoing')"  type="text" class="form_input" placeholder="Search by name or user id"/>
         </div>
-
       </div> 
       </div>
-    <div class="grid-x datatable" >
+    <div class="datatable" >
       <table [hidden]="showongoing">
         <thead>
           <tr>
-            <th  style="width:20%;">FULL NAME & ID</th>
+            <th  style="width:20%; padding-left: 30px;">FULL NAME & ID</th>
             <th class="imagetag">USER INFO</th>
             <th style="width:20%;">CALL TYPE</th>
-            <th style="width:20%;">DURATION</th>
+            <th style="width:20%; text-align: center;">DURATION</th>
             <th style="width:20%;">AGENT NAME</th>
     
        
@@ -165,7 +165,7 @@
         </thead>
         <tbody>
           <tr class="mainlist" *ngFor="let data of  ougoing_call">
-            <td><p>{{data?.name}}</p>
+            <td style=" padding-left: 30px;"><p class="username">{{data?.name}}</p>
             <p>{{data?.user_id}}</p></td>
             <td><img class="userinfoicon" height="16" width="24" [src]="changecountryflag(data?.language_icon)" alt="">
               <img  class="userinfoicon" height="26" width="26" [src]="changebrowser(data?.browser)" alt="">
@@ -175,7 +175,7 @@
             <td>
               <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 6px;" alt=""> {{changecalltype(data?.is_video)}}
               </td>
-              <td>{{ongoingcalltime(data?.call_started_at)}}</td>
+              <td style=" text-align: center;">{{ongoingcalltime(data?.call_started_at)}}</td>
             <td> 
               <img class="agentpic" height="36p" width="36" src="../../../assets/gigaaa_logo.png" alt="">
             <div style="
@@ -190,19 +190,7 @@
             </td>
             <td style="text-align: right;">
              
-                <!-- <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13.8782 2.08696V0.52174C13.8782 0.23356 13.6446 0 13.3565 0C13.0683 0 12.8347 0.23356 12.8347 0.52174V2.08696C12.8347 2.37514 13.0683 2.6087 13.3565 2.6087C13.6446 2.6087 13.8782 2.37514 13.8782 2.08696Z" fill="#64DFDF"/>
-                  <path d="M13.8782 23.4783V21.9131C13.8782 21.6249 13.6446 21.3913 13.3565 21.3913C13.0683 21.3913 12.8347 21.6249 12.8347 21.9131V23.4783C12.8347 23.7665 13.0683 24 13.3565 24C13.6446 24 13.8782 23.7665 13.8782 23.4783Z" fill="#64DFDF"/>
-                  <path d="M7.3564 1.60738C7.10694 1.75147 7.02135 2.07063 7.16544 2.32009L7.94805 3.67621C8.09275 3.92709 8.41231 4.01065 8.66075 3.86717C8.91021 3.72329 8.99581 3.40413 8.85172 3.15447L8.06911 1.79855C7.92522 1.54889 7.60606 1.4635 7.3564 1.60738Z" fill="#64DFDF"/>
-                  <path d="M19.3565 22.3926C19.6062 22.2485 19.6916 21.9295 19.5477 21.6799L18.7651 20.324C18.621 20.0743 18.3019 19.9887 18.0524 20.1328C17.8027 20.2769 17.7171 20.5958 17.8612 20.8455L18.6438 22.2014C18.7885 22.4523 19.1081 22.5359 19.3565 22.3926Z" fill="#64DFDF"/>
-                  <path d="M18.6438 1.79855L17.8612 3.15447C17.7171 3.40413 17.8027 3.72329 18.0524 3.86717C18.3035 4.01228 18.6218 3.92424 18.7651 3.67621L19.5477 2.32009C19.6916 2.07063 19.6062 1.75147 19.3565 1.60738C19.1069 1.4635 18.7879 1.54889 18.6438 1.79855Z" fill="#64DFDF"/>
-                  <path d="M8.06911 22.2014L8.85172 20.8455C8.99581 20.5958 8.91021 20.2769 8.66075 20.1328C8.41109 19.9887 8.09214 20.0743 7.94805 20.324L7.16544 21.6799C7.02135 21.9295 7.10694 22.2485 7.3564 22.3926C7.60749 22.5375 7.92603 22.4495 8.06911 22.2014Z" fill="#64DFDF"/>
-                  <path d="M15.4435 9.39133C15.4435 8.24065 14.5074 7.30437 13.3565 7.30437C12.2058 7.30437 11.2695 8.24065 11.2695 9.39133C11.2695 10.5422 12.2058 11.4783 13.3565 11.4783C14.5074 11.4783 15.4435 10.5422 15.4435 9.39133ZM13.3565 10.4348C12.7812 10.4348 12.313 9.96667 12.313 9.39133C12.313 8.81599 12.7812 8.34785 13.3565 8.34785C13.9318 8.34785 14.4 8.81599 14.4 9.39133C14.4 9.96667 13.9318 10.4348 13.3565 10.4348Z" fill="#715DFF"/>
-                  <path d="M10.2261 14.6087V15.1305C10.2261 15.4187 10.4596 15.6522 10.7478 15.6522H15.9652C16.2534 15.6522 16.487 15.4187 16.487 15.1305V14.6087C16.487 12.8827 15.0827 11.4783 13.3565 11.4783C11.6305 11.4783 10.2261 12.8827 10.2261 14.6087ZM13.3565 12.5218C14.5074 12.5218 15.4435 13.4581 15.4435 14.6087H11.2696C11.2696 13.4581 12.2058 12.5218 13.3565 12.5218Z" fill="#715DFF"/>
-                  <path d="M13.8782 5.73915C13.8782 6.02733 13.6446 6.26089 13.3565 6.26089C13.0683 6.26089 12.8347 6.02733 12.8347 5.73915C12.8347 5.45097 13.0683 5.21741 13.3565 5.21741C13.6446 5.21741 13.8782 5.45097 13.8782 5.73915Z" fill="#715DFF"/>
-                  <path d="M15.7917 5.45583C15.6517 5.42872 15.5066 5.46031 15.3904 5.54326C15.142 5.72037 15.1766 5.99163 15.1469 6.10393C15.1126 6.34279 15.2467 6.5739 15.4709 6.66276C17.6728 7.53586 19.0956 9.63097 19.0956 12C19.0956 15.1647 16.5211 17.7391 13.3565 17.7391C10.192 17.7391 7.61734 15.1647 7.61734 12C7.61734 9.63097 9.04009 7.53586 11.2422 6.66276C11.4664 6.5739 11.6005 6.34279 11.5662 6.10393C11.5357 5.98898 11.572 5.72098 11.3227 5.54326C11.2065 5.46052 11.0614 5.42893 10.9212 5.45583C6.71734 6.26412 2.3545 9.30243 0.142612 11.6415C-0.0475373 11.8426 -0.0475373 12.1573 0.142612 12.3585C3.13527 15.5232 8.49288 18.7826 13.3565 18.7826C18.2414 18.7826 23.6072 15.4918 26.5705 12.3585C26.7607 12.1573 26.7607 11.8426 26.5705 11.6415C24.667 9.62852 20.3408 6.33056 15.7917 5.45583ZM1.26313 12.0006C2.22284 11.0841 4.99764 8.62988 8.51693 7.24646C7.30083 8.48681 6.57386 10.167 6.57386 12C6.57386 13.8495 7.31774 15.5282 8.52223 16.7529C5.874 15.7168 3.25837 13.9117 1.26313 12.0006ZM18.1893 16.7545C19.3946 15.5295 20.1391 13.8501 20.1391 12C20.1391 10.1686 19.4131 8.48783 18.196 7.24646C21.7149 8.62967 24.4897 11.0835 25.4494 12.0002C24.4899 12.9171 21.7157 15.3707 18.1893 16.7545Z" fill="#292F58"/>
-                  </svg>
-                   -->
+             
               </td>
           </tr>
          
@@ -218,16 +206,15 @@
   </div>
   
   <div [hidden]="!missed">
-    <div class="grid-x " style="margin-top: 24px;margin-right: 0px;" >
-      <div class="cell large-9 grid-x grid-margin-x withdatefilter" style=" margin-right: 0px;">
-        <div class="cell large-4 mobiledropdown">
-          <ul class="vertical menu form_input " data-accordion-menu data-submenu>  
+    <div  class="dropdownpanels" style="margin-top: 34px;" >
+      <div class="languagepanel">
+        <div class="dropdown languages ">
             <li style="height: 36px;">
-            <a class="languagetext">
+            <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
               {{selectedlanguagesmiss}}
               <i class="tagiconnn fa fa-chevron-down" aria-hidden="true"></i>
             </a>  
-            <ul class="menu vertical  submenu  nested submenuu" >
+            <ul class="dropdown-menu languages" >
                 <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="user" [checked]="allselectedtagmiss" (change)="getalllanguage($event.target.checked,'missed',0)" type="checkbox" id="count"> <label class="dropdownlistitem"  for="count"> 
                     Select all languages
                    </label></li>
@@ -237,55 +224,60 @@
             </ul>
         
              </li>
-          </ul>
         </div>
-        <div class="cell large-4 mobiledropdown">
+      </div>
+        <div class="secondpanel">
          
-          <ul class="vertical menu form_input " data-accordion-menu data-submenu>  
+          <div class="dropdown calltype" style="margin-right: 10px;">  
             <li style="height: 36px;">
-            <a class="languagetext">
+            <a class="languagetext"  data-toggle="dropdown" aria-expanded="false" >
                {{totalsizeofcalltype3}}
             <i class="tagiconnn fa fa-chevron-down" aria-hidden="true"></i>
             </a>  
-            <ul class="menu vertical  submenu  nested submenuu" >
-                <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall3" (change)="selectallcalltype($event.target.checked,'missed',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call"> 
+            <ul class="dropdown-menu calltype" >
+                <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall3" (change)="selectallcalltype($event.target.checked,'missed',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call"> 
                     Select all call types
-                   </label></li>
+                   </label></li> -->
                 <li class="listitem"   *ngFor="let count of this.call3" [ngValue]="count.name" > <input (click)="selectcalltypeonebyone($event.target.checked,count.name)"   [checked]="count.status" name="call"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
                     {{count.name}}
                    </label></li>
              </ul>
              </li>
-          </ul>
-        </div>
-        <div class="cell large-4 mobiledropdown" >
-          <div  #dp class="form_input dropdown"  data-toggle="dropdown">
-       
-            <svg    class="caland" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            </div>
+
+            <div   class="dropdown calanderheadingpanel"  data-toggle="dropdown" aria-expanded="false">
+             <p  class="calhead">{{rangeSelected1}}</p>  <i  class="arrowdownicon fa fa-chevron-down"></i> 
+          
+             <svg   #dp class="caland" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4H7V2H9V4H15V2H17V4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22ZM5 10V20H19V10H5ZM5 6V8H19V6H5ZM17 18H15V16H17V18ZM13 18H11V16H13V18ZM9 18H7V16H9V18ZM17 14H15V12H17V14ZM13 14H11V12H13V14ZM9 14H7V12H9V14Z" fill="#292F58"/>
               </svg>
-           <p class="calhead">{{rangeSelected1}}</p>  <i class="arrowdownicon fa fa-chevron-down"></i> 
-        
-          
-           <div class="dropdown-menu dropdown-menu-right">
-             <div class="selectionpanel">
-           </div>
-            <bs-daterangepicker-inline style=" margin: 0px;
-            display: contents;"  type="text"
-            bsDaterangepicker
-            placement="bottom|right"
-            [bsValue]="bsValue"
-            (bsValueChange)="onDateChange($event,'missed_date')"
-            [bsConfig]="bsConfig">
             
-          </bs-daterangepicker-inline>
-        </div> </div>
+             <div class="dropdown-menu dropdown-menu-right">
+               <div class="selectionpanel">
+             </div>
+              <bs-daterangepicker-inline style=" margin: 0px;
+              display: contents;"  type="text"
+              bsDaterangepicker
+              placement="bottom|right"
+              [bsValue]="bsValue"
+              (bsValueChange)="onDateChange($event,'missed_date')"
+              [bsConfig]="bsConfig">
+              
+            </bs-daterangepicker-inline>
+          </div> </div>
+          <div  style="display: inline-block;">
+            <svg style="position: relative;
+            display: inline;
+            z-index: 5;
+            left: 30px;" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.77344 8.08588C3.5026 8.81504 4.38802 9.17963 5.42969 9.17963C6.47135 9.17963 7.35677 8.81504 8.08594 8.08588C8.8151 7.35671 9.17969 6.47129 9.17969 5.42963C9.17969 4.38796 8.8151 3.50254 8.08594 2.77338C7.35677 2.04421 6.47135 1.67963 5.42969 1.67963C4.38802 1.67963 3.5026 2.04421 2.77344 2.77338C2.04427 3.50254 1.67969 4.38796 1.67969 5.42963C1.67969 6.47129 2.04427 7.35671 2.77344 8.08588ZM10.4297 9.17963L14.5703 13.3203L13.3203 14.5703L9.17969 10.4296V9.76556L8.94531 9.53119C7.95573 10.3906 6.78385 10.8203 5.42969 10.8203C3.91927 10.8203 2.63021 10.2994 1.5625 9.25775C0.520833 8.21608 0 6.94004 0 5.42963C0 3.91921 0.520833 2.64317 1.5625 1.6015C2.63021 0.533793 3.91927 -6.10352e-05 5.42969 -6.10352e-05C6.9401 -6.10352e-05 8.21615 0.533793 9.25781 1.6015C10.2995 2.64317 10.8203 3.91921 10.8203 5.42963C10.8203 6.78379 10.3906 7.95567 9.53125 8.94525L9.76562 9.17963H10.4297Z" fill="#7D8696"/>
+              </svg>
+            <Input type="text" (keyup)="search($event.target.value,'missed')" class="form_input" placeholder="Search by name or user id"/>
+          </div>
         </div>
-      </div>
-      
-      <div class="cell large-3 " style="margin-right: 0px;"> 
-      <Input type="text" (keyup)="search($event.target.value,'missed')" class="form_input" placeholder="Search by name or user id"/>
-      </div>
+        
+     
+
       </div>
     <div class="grid-x datatable" >
       <table [hidden]="showmissed">
@@ -294,8 +286,8 @@
             <th  class="fullnamecol"  style="padding-left: 30px;">Full Name & ID</th>
             <th class="imagetag" >User Info</th>
             <th style="width:15%;">Call Type</th>
-            <th style="width:15%;">Called At</th>
-            <th style="width:15%;">Wait Time</th>
+            <th style="width:15%; text-align: center;">Called At</th>
+            <th style="width:15%; text-align: center;">Wait Time</th>
             <th style="width:15%;">Reason</th>
             <th style="width: 5%;"></th>
     
@@ -314,8 +306,8 @@
             <td class="calltype">
               <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 17px;" alt=""> {{changecalltype(data?.is_video)}}
               </td>
-              <td>{{gettimeduration(data?.missed_at)}}</td>
-              <td>{{calculatetime(data?.wait_time)}}</td>
+              <td style="text-align: center;">{{gettimeduration(data?.missed_at)}}</td>
+              <td style="text-align: center;">{{calculatetime(data?.wait_time)}}</td>
               <td class="reason"> 
              {{getreasonformissedcall(data?.reason)}}
             </td>
@@ -481,6 +473,8 @@
     
   </div>
   
-  
+  <div class="callindicationpanel">
+<p class="numberofvailablerequest">5 requests</p>
+  </div> 
   
 </div>

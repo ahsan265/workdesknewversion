@@ -171,7 +171,7 @@ call:any;
   allselectedcall3:boolean;
   allselectedcall4:boolean;
 
-   data=[{},{},{},{},{}]
+   data1=[{},{},{},{},{}]
 
   listuser:any;
   private destroyed$ = new Subject();

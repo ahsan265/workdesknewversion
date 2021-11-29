@@ -168,11 +168,12 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
     font-weight: normal;
     font-size: 12px;
     line-height: 16px;
+    height: 16px;
     display: flex;
     align-items: center;
-    color: #162741;   
+    color:  rgba(22, 39, 65, 0.66); 
     background-color: #FAFAFD;
-    border-bottom: 0px solid #FEFEFF;
+    border-bottom: 0px solid #FAFAFD;
     margin-bottom: -2px;
     padding-left: 0px;
     padding-right: 0px;
@@ -185,6 +186,7 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
 
     border-bottom: 2px solid #715DFF;
     font-weight: 500;
+    color: #162741;
   }
   .tabs
   {
@@ -290,6 +292,24 @@ font-weight: 500;
 font-size: 10px;
 color: #FFFFFF;
 }
+.dialcallbtn{
+  width: 59px;
+height: 25px;
+background: #1C54DB;
+border-radius: 4px;
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 120%;
+cursor: pointer;
+/* or 14px */
+
+align-items: center;
+letter-spacing: 0.02em;
+
+color: #FFFFFF;
+}
 .tagiconnn
 {
     color: #A6A8BA;
@@ -309,7 +329,7 @@ color: #FFFFFF;
 }
 
 thead, tbody tr:nth-child(even){
-    background:#FAFAFD;
+    background:#FFFFFF;
     border: none;
     border-bottom: 1px solid #E1E1EA;
 
@@ -330,7 +350,7 @@ table,tbody
 }
 th{
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 12px;
     /* or 357% */
     width: 20%;
@@ -468,9 +488,10 @@ tr.mainlist{
     padding-left: 12px;
     padding-right: 12px;
     height: 50px;
+    background: #FAFAFD;
 }
 .userinfoicon{
-margin: 5px;
+margin-right: 10px;
 
 }
 
@@ -586,7 +607,7 @@ color: #292F58;
   width: 20%;
 }
 .waitingtime{
-  width: 10%;
+  width: 8%;
 }
 @media (max-width: 768px){
   .tabs-title > a

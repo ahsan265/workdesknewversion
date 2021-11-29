@@ -13,8 +13,9 @@
 .mainheadingpanel{
     display: block;
     width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    background: #FAFAFD;
+    padding-top: 20px;
+    padding-bottom: 20px;
     padding-left: 30px;
     padding-right: 30px;
 

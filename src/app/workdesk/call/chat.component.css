@@ -48,13 +48,22 @@ border-radius: 4px;
 display: inline-block;
 margin-right: 20px;
 }
+.dropdown-menu{
+  margin-right: -11px;
+}
 .dropdown-menu.show.languages{
-  min-width:  107px;
-  max-width:  107px;
+  min-width: 185.55px;
+  max-width: 185.55px;
+  display: block;
+  transform: none !important;
+  margin-top: 40px
 }
 .dropdown-menu.show.calltype{
-  min-width:  185.55px;
-  max-width:  185.55px;
+  min-width:  107px;
+  max-width:  107px;
+  display: block;
+  transform: none !important;
+  margin-top: 40px
 }
 .mainheading{
   font-family: "Roboto";
@@ -132,14 +141,7 @@ cursor: pointer;
 }
 
 
-.dropdown-menu.show{
-  display: inline-flex;
-  width: 668px;
-height: 288px;
-padding: 0px;
 
-
-}
 
 .selectionpanel{
   /* background: #FFFFFF;
@@ -194,6 +196,7 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
   
     height: 34px;
     text-align: left;
+    padding-left: 40px;
     width: 245px;
     position: relative;
     color: #293059;
@@ -340,8 +343,10 @@ th{
     padding-top: 0px;
 }
 li.listitem{
-  margin: 6px;
+  margin: 4px;
   border-radius: 4px;
+  display: block;
+  width: 95%;
 }
 .dropdownlistitem1{ font-family: "Roboto",sans-serif;
 font-style: normal;
@@ -371,14 +376,13 @@ height: 24px;
   font-style: normal;
  font-weight: normal;
  font-size: 14px;
- line-height: 16px;
+ line-height: 24px;
  display: inline-block;
- width: 150px;
  overflow: hidden;
  white-space: nowrap;
  text-overflow: ellipsis;
  color: #292F58;
- vertical-align: bottom;
+ vertical-align: middle;
  height: 24px;
 }
 td  {   font-family: "Roboto",sans-serif;
@@ -476,41 +480,86 @@ display: inline-block;
 position: relative;
 }
 
-input[type="checkbox"]  {
-  height: 24px;
-  width: 24px;
+input[type="radio"]  {
+  height: 18px;
+  width: 18px;
+  margin-left: 12px;
+  margin-right: 0px;
+  border-radius: 50%;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  background: #FFFFFF;
+  border: 0.5px solid rgba(166, 168, 186, 0.5);
+  box-sizing: border-box;
+  vertical-align: middle;
+  appearance: inherit;
+  cursor: pointer;
+  }
+  
+  input[type=radio]:before{
+  background-color: #FFFFFF; 
+  border-bottom:none;
+  
+  }
+  input[type=radio]:checked{
+    background-image: url(../../../assets/assets_workdesk/checkbox_icon.svg);
+    background-repeat: no-repeat;
+    background-size: 19px 21px;
+    background-position: center;
+    border-bottom:none;
+  
+  }
+  
+  input[type=radio]:checked:after {
+  content: "";
+  margin-left: 2px;
+  margin-top: 0px;
+  position: absolute;
+  color: #FFFFFF;
+  border-bottom:none;
+  }
+  /* input[type=radio]:checked:after {
+  background: #64DFDF;
+  } */
+  
+   
+  input[type="checkbox"]  {
+  height: 18px;
+  width: 18px;
   margin-left: 12px;
   margin-right: 0px;
   margin-top: 6px;
   margin-bottom: 6px;
   background: #FFFFFF;
-border: 0.5px solid rgba(166, 168, 186, 0.5);
-box-sizing: border-box;
-border-radius: 4px;
- vertical-align: middle;
- appearance: inherit;
- cursor: pointer;
-}
-
-input[type=checkbox]:before{
-background-color: #FFFFFF; 
-border-bottom:none;
-
-}
-input[type=checkbox]:checked{
-  background-color: #64DFDF; 
+  border: 0.5px solid rgba(166, 168, 186, 0.5);
+  box-sizing: border-box;
+  border-radius: 4px;
+  vertical-align: middle;
+  appearance: inherit;
+  cursor: pointer;
+  }
+  
+  input[type=checkbox]:before{
+  background-color: #FFFFFF; 
   border-bottom:none;
   
   }
-
-input[type=checkbox]:checked:after {
-  content: "\2714";
-  margin-left: 4px;
-  margin-top: 2px;
+  input[type=checkbox]:checked{
+    background-image: url(../../../assets/assets_workdesk/checkbox_icon.svg);
+    background-repeat: no-repeat;
+    background-size: 19px 21px;
+    background-position: center;
+  border-bottom:none;
+  }
+  
+  input[type=checkbox]:checked:after {
+  content: " ";
+  margin-left: 2px;
+  margin-top: 0px;
   position: absolute;
   color: #FFFFFF;
   border-bottom:none;
-}
+  }
 .call-status{
   font-family: "Roboto",sans-serif;
 font-style: normal;
@@ -602,8 +651,6 @@ img{
 .calltype{
   width: max-content;
   display: block;
-  line-height: 64px;
-  
 }
 .imagetag{
 width: 10%;

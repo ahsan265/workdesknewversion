@@ -14,8 +14,8 @@
     display: block;
     width: 100%;
     background: #FAFAFD;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     padding-left: 30px;
     padding-right: 30px;
 
@@ -44,7 +44,7 @@ font-style: normal;
 font-weight: 500;
 font-size: 18px;
 line-height: 22px;
-display: "flex";
+display: block;
 align-items: center;
 letter-spacing: 0.02em;
 color: #162741;
@@ -52,8 +52,8 @@ color: #162741;
     .maindropdownpanel{
         display: block;
         width: 100%;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 30px;
+        margin-bottom: 30px;
 
     }
     .dashboardtypepanel{
@@ -106,12 +106,11 @@ color: #162741;
     .location.dropdown{
         width: 200px;
         background: #FFFFFF;
-border: 1px solid rgba(208, 208, 222, 0.6);
-box-sizing: border-box;
-border-radius: 4px;
-display: inline-block;
-margin-right: 5px;
-margin-left: 5px;
+        border: 1px solid rgba(208, 208, 222, 0.6);
+        box-sizing: border-box;
+        border-radius: 4px;
+        display: inline-block;
+        margin-left: 5px;
     }
     .scrollpanelforcountrylist{
         min-height: 203px;

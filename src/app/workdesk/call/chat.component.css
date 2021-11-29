@@ -11,8 +11,8 @@
 .topheadingpanel{
   display: block;
   width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   padding-left: 30px;
   padding-right: 30px;
   background: #FAFAFD;
@@ -442,7 +442,7 @@ td  {   font-family: "Roboto",sans-serif;
     font-size: 12px;
     line-height: 17px;
     align-items: center;
-    color: #162741;
+    color: #445167;
     padding-bottom: 0px;
     padding-top: 0px;
 }
@@ -491,7 +491,7 @@ td .first{    font-family: "Roboto",sans-serif;
     line-height: 16px;
     padding-left: 0px;
     padding-right: 0px;
-    color: rgba(41, 47, 88, 0.8);
+    color: #445167;
     
 }
 td .second{    font-family: "Roboto",sans-serif;

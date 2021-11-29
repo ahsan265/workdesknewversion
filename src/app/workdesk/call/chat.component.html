@@ -65,7 +65,7 @@
     
     </div>
       <div class="datatable" >
-        <table [hidden]="showincoming">
+        <table [hidden]="!showincoming">
           <thead>
             <tr>
               <th style="width:10%; padding-left: 30px">QUEUE</th>
@@ -78,7 +78,7 @@
 </thead>
 <tbody>
 <tr class="mainlist" *ngFor="let data of incoming_call; let i=index">
-              <td><span style="padding-left: 4px; padding-right: 20px;">#</span> {{i+1}}</td>
+              <td><span style="padding-left: 4px; padding-right: 20px; color: #949CA8;">#</span> {{i+1}}</td>
               <td><p class="username">{{data.name}}</p>
               <p class="id">{{data.user_id}}</p></td>
               <td><img class="userinfoicon" height="16" width="24" [src]="changecountryflag(data?.language_icon)" alt="">

@@ -184,7 +184,7 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
   .tabs-title.is-active > a
   {
 
-    border-bottom: 2px solid #715DFF;
+    border-bottom: 2px solid #1C54DB;
     font-weight: 500;
     color: #162741;
   }
@@ -350,7 +350,7 @@ table,tbody
 }
 th{
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 12px;
     /* or 357% */
     width: 20%;
@@ -607,7 +607,7 @@ color: #292F58;
   width: 20%;
 }
 .waitingtime{
-  width: 8%;
+  width: 10%;
 }
 @media (max-width: 768px){
   .tabs-title > a

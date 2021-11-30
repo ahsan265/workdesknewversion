@@ -476,7 +476,7 @@
          
         </tbody>
       </table>
-      <div class="callindicationpanel"[hidden]="showanswered_message">
+      <div class="callindicationpanel"[hidden]="!showanswered_message">
         <p class="numberofvailablerequest">{{size_answered_call}} missed requests</p>
           </div>
       <div class="cell large-12" [hidden]="showanswered_message">

@@ -28,6 +28,10 @@ interface IRange {
 })
 
 export class ChatComponent implements OnInit {
+  datepreviewstart:any;
+  datepreviewend:any;
+  datepreviewstart1:any;
+  datepreviewend1:any;
   showincoming_message:boolean=true;
   showongoing_message:boolean=true;
   showmissed_message:boolean=true;
@@ -406,7 +410,7 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
     // this.onDateChange([this.date_one_selected,this.date_two_selected],this.defaultab_selected);
     })
   }
-
+  
 
   getsocketapidata()
   {
@@ -1463,7 +1467,11 @@ this.allselectedcall2=status;
 
   }
  }
+ canceldaterange(val)
+ {
+   this.onDateChange([this.ranges[0].value[0],this.ranges[0].value[1]],val)
 
+ }
  onDateChange(event: Array<Date>,tabsname:any )
  { 
     
@@ -1481,7 +1489,41 @@ this.allselectedcall2=status;
       date2= new Date(date2.getTime() - userTimezoneOffset1);
       this.date_one_selected=date1.toISOString();
       this.date_two_selected=date2.toISOString();
-      this.defaultab_selected=tabsname
+      this.defaultab_selected=tabsname;
+
+      if(ismatched==false)
+      {
+        var  month = '' + (d.getMonth() + 1);
+        var   day = '' +(d.getDate());
+        var  year = d.getFullYear();
+  
+      if (month.length < 2) 
+       {
+        month = '0' + month;
+  
+       }
+      if (day.length < 2) 
+        {
+          day = '0' + day;
+  
+        }
+        var dateStart= [day,month,year].join('/');
+  
+        var  month1 = '' + (d1.getMonth() + 1);
+        var   day1 = '' +( d1.getDate());
+        var  year1 = d1.getFullYear();
+  
+      if (month1.length < 2) 
+       {
+        month1 = '0' + month1;
+  
+       }
+      if (day1.length < 2) 
+        {
+          day1 = '0' + day1;
+  
+        }
+        var dateEnd= [day1,month1,year1].join('/');
      this.ranges.filter(x=>{
 
 
@@ -1492,12 +1534,16 @@ this.allselectedcall2=status;
          if(tabsname=="missed_date")
          {
           this.rangeSelected1=x.label
-                  this.gigaaasocketapi.send_daterange_params({tab:tabsname,start_date:date1.toISOString(),end_date:date2.toISOString()})
-
+            this.datepreviewstart=dateStart;
+            this.datepreviewend=dateEnd;
+            this.gigaaasocketapi.send_daterange_params({tab:tabsname,start_date:date1.toISOString(),end_date:date2.toISOString()})
+            
          }
          else if(tabsname=="finished_date")
          {
           this.rangeSelected2=x.label
+          this.datepreviewstart1=dateStart;
+          this.datepreviewend1=dateEnd;
           this.gigaaasocketapi.send_daterange_params({tab:tabsname,start_date:date1.toISOString(),end_date:date2.toISOString()})
 
          }
@@ -1544,11 +1590,15 @@ this.allselectedcall2=status;
        if(tabsname=="missed_date")
        {
         this.rangeSelected1= dateStart+ " -"+ dateEnd;
+        this.datepreviewstart=dateStart;
+            this.datepreviewend=dateEnd;
         this.gigaaasocketapi.send_daterange_params({tab:tabsname,start_date:date1.toISOString(),end_date:date2.toISOString()})
       }
        else if(tabsname=="finished_date")
        {
         this.rangeSelected2= dateStart+ " -"+ dateEnd;
+        this.datepreviewstart1=dateStart;
+        this.datepreviewend1=dateEnd;
         this.gigaaasocketapi.send_daterange_params({tab:tabsname,start_date:date1.toISOString(),end_date:date2.toISOString()})
 
       }
@@ -1556,6 +1606,7 @@ this.allselectedcall2=status;
      }
 
  }
+}
 }
 
 

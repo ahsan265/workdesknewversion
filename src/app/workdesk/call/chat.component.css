@@ -54,9 +54,9 @@ display: inline-block;
 
 text-align: left;
 }
-.dropdown-menu{
+/* .dropdown-menu{
   margin-right: -11px;
-}
+} */
 .dropdown-menu.show.languages{
   min-width: 185.55px;
   max-width: 185.55px;
@@ -93,17 +93,23 @@ background: #FAFAFD;
   width: 776px;
 height: 386px;
 padding: 0px;
-margin-top: 7px;
+margin-top: 12px;
 }
 .calander{
   background: #FFFFFF;
-  border: 1px solid rgba(166, 168, 186, 0.5);
-  box-sizing: border-box;
-  border-radius: 6px;
-  /* width: 238px; */
-height: 44px;
-padding: 0px;
-cursor: pointer;
+        border: 1px solid rgba(208, 208, 222, 0.6);
+        box-sizing: border-box;
+        border-radius: 4px;
+        height: 34px;
+        padding: 0px;
+        cursor: pointer;
+        text-align: left;
+        margin-left: 14px;
+}
+.datepicker{
+  width: 200px;
+  height: 34px;
+  display: inline-block;
 }
 .caland{
 
@@ -114,25 +120,24 @@ cursor: pointer;
   .caland:hover{
     cursor: pointer;
   }
-  svg{
+  /* svg{
     position: relative;
     display: inline-block;
     vertical-align: middle;
     margin-left: 12px;
     color:  #C4C4C4;
     cursor: pointer;
-    }
+    } */
     .arrowdownicon{
       float: right;
-      line-height: 34px;
+      line-height: 40px;
       display: flex;
-      margin-right: 16px;
+      margin-right: 12px;
+      margin-top: 14px;
       cursor: pointer;
-      height: 12px;
-      width: 7px;
-      color:  #A6A8BA;
-
-    }
+      color: #292F58;
+  
+  }
     .arrowdownicon:hover{
       color:  #A6A8BA;
       cursor: pointer;
@@ -155,15 +160,17 @@ cursor: pointer;
     font-weight: normal;
     font-size: 12px;
     line-height: 34px;
-    align-items: center;
-    letter-spacing: 0.02em;
-    color: rgba(22, 39, 65, 0.8);
-    margin-left: 11px;
-    display: inline-block;
+    width: 174px;
     vertical-align: middle;
+    align-items: center;
+    display: inline-block;
+    text-align: left;
+    letter-spacing: 0.02em;
+    padding-left: 10px;
+    color: rgba(22, 39, 65, 0.8);
 }
 .calhead:hover{
-  cursor: default;
+  cursor: pointer;
 }
 
 
@@ -172,11 +179,11 @@ cursor: pointer;
 .selectionpanel{
   /* background: #FFFFFF;
 box-shadow: 0px 15px 35px rgba(37, 51, 66, 0.15); */
-width: 121px;
-height: 288px;
+width: 153px;
+height: 386px;
 text-align: center;
 display: inline-block;
-border-right: 2px solid rgba(166, 168, 186, 0.3);
+border-right: 1px solid rgba(166, 168, 186, 0.3);
 }
 *:hover{
   cursor: default;
@@ -221,7 +228,80 @@ border-right: 2px solid rgba(166, 168, 186, 0.3);
     background-color: #FAFAFD;
 
   }
+  .datepreviewpanel{
+    display: block;
+    width: 622px;
+    z-index: 1;
+    bottom: 0;
+    position: absolute;
+    height: 65px;
+    left: 153px;
+    border-top: 1px solid rgba(208, 208, 222, 0.6);
 
+}
+.previewmain{
+    display: inline-block;
+    padding-left: 42px;
+    padding-top: 14px;
+    width: 50%;
+
+}
+.buttonpanelfordate{
+ display: inline-block;
+ width: 50%;
+ text-align: right;
+ padding-right: 51px;
+}
+.cancel{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 120%;
+/* or 14px */
+cursor: pointer;
+display: inline-block;
+align-items: center;
+letter-spacing: 0.02em;
+
+color: #706F6F;
+}
+.applybtn{
+    background: #1C54DB;
+border-radius: 4px;
+width: 65px;
+height: 34px;
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 120%;
+display: inline-block;
+cursor: pointer;
+margin-left: 26px;
+align-items: center;
+letter-spacing: 0.02em;
+color: #FFFFFF;
+
+}
+.selectedvalue{
+  background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px;
+width: 86px;
+height: 34px;
+font-family: "Roboto";
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 34px;
+display: inline-block;
+align-items: center;
+text-align: center;
+letter-spacing: 0.02em;
+color: rgba(22, 39, 65, 0.8);
+}
   .form_input{
   
     height: 34px;
@@ -376,6 +456,7 @@ table,tbody
   box-sizing: border-box;
   border-radius: 4px 4px 0px 0px;
   border-radius: 4px;
+  margin: 0px;
 }
 th{
     font-style: normal;
@@ -629,7 +710,7 @@ color: #292F58;
 .callindicationpanel{
   display: block;
   width: 100%;  
-  padding-top: 10px;
+  padding-top: 20px;
 }
 .form_input.search{
   background: url(../../../assets/search.svg) no-repeat scroll 10px 9px;

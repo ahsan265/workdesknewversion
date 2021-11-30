@@ -139,6 +139,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
     var accesstoken=getdata.access_token;
     var uuid=getdata.subscription_id.subsid.uuid;
     this.gigaaaapi.getallintegration(accesstoken,uuid).subscribe(data=>{
+      console.log(data)
     this.integration=data;
     this.integration.forEach(element => {
       if(element.last_used===true)

@@ -303,10 +303,10 @@ export class DashboardComponent implements OnInit {
       const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
       // var accesstoken=getdata.access_token;
 
-      // This is how you can get token
+      // This is how you can get token and please use const instend of va
       const accesstoken = this.authService.token;
 
-      var subsid=getdata.subscription_id.subsid.uuid;
+      var subsid=getdata.subscription_id?.subsid?.uuid;
       const intid = JSON.parse(localStorage.getItem('intgid'))
       try{
        var languagee=[{name:'Arabic' ,status:false},

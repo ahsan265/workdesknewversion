@@ -19,6 +19,7 @@ export class GigaaaApiService  {
   private agentdatasubject = new Subject<any>();
 
   protected API_URL = `${environment.apiUrl}`;
+  protected oauthUrl = `${environment.oauth_url}`;
 
   private apiUrl = 'https://gigaaa-core.westeurope.cloudapp.azure.com/api/v1/';
   private authurl='https://api.gigaaa.link/oauth/token';
@@ -45,8 +46,17 @@ getHeaders() {
   }
 }
 
-public getCurrentUser(): Observable<User> {
+getCurrentUser(token):Observable<User> {
   return this.http.get<User>(`${this.API_URL}/current-user`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }})
+}
+
+public getAllUsers(): Observable<any> {
+  return this.http.get<any>(`${this.oauthUrl}/accounts`, {
     headers: this.getHeaders(),
   });
 }

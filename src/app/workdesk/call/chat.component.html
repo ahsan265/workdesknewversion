@@ -1,465 +1,544 @@
-
 <div class="topheadingpanel">
-<p class="mainheading">Requests</p>
+  <p class="mainheading">Requests</p>
 </div>
 <div class="tabspanel" style="z-index: 1; border-bottom: 2px solid #E1E1EA;">
-      <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
-          <li  class="tabs-title is-active"><a (click)="getpanalview('incoming')"   href="#one" >Incoming <span class="numberofcalls">{{size_incoming_call}}</span> </a></li>
-          <li  class="tabs-title"><a (click)="getpanalview('outgoing')"  href="#twp">Ongoing <span class="numberofcalls">{{size_ougoing_call}}</span></a></li>
-          <li  class="tabs-title"><a  (click)="getpanalview('missed')" href="#three">Missed</a></li>
-          <li  class="tabs-title"><a (click)="getpanalview('answered')"  href="#founr">Answered</a></li>
-        </ul>
+  <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
+    <li class="tabs-title is-active"><a (click)="getpanalview('incoming')" href="#one">Incoming <span
+          class="numberofcalls">{{size_incoming_call}}</span> </a></li>
+    <li class="tabs-title"><a (click)="getpanalview('outgoing')" href="#twp">Ongoing <span
+          class="numberofcalls">{{size_ougoing_call}}</span></a></li>
+    <li class="tabs-title"><a (click)="getpanalview('missed')" href="#three">Missed</a></li>
+    <li class="tabs-title"><a (click)="getpanalview('answered')" href="#founr">Answered</a></li>
+  </ul>
 </div>
 <div class="callsarea">
-<div [hidden]="!incoming">
+  <div [hidden]="!incoming">
     <div class="dropdownpanels" style="margin-top: 30px;">
       <div class="languagepanel">
 
-        <div class="dropdown languages">  
+        <div class="dropdown languages">
           <li style="height: 36px;">
-          <a class="languagetext"  data-toggle="dropdown" aria-expanded="false">
-            {{selectedlanguagesincom}}
-            <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+            <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
+              {{selectedlanguagesincom}}
+              <svg class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z"
+                  fill="#162741" />
               </svg>
-          </a>  
-          <ul class="dropdown-menu languages">
-              <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="incoming" [checked]="allselectedtagincom" (change)="getalllanguage($event.target.checked,'incoming',0)" type="checkbox" id="incoming"> <label class="dropdownlistitem"  for="incoming"> 
+            </a>
+            <ul class="dropdown-menu languages">
+              <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="incoming" [checked]="allselectedtagincom" (change)="getalllanguage($event.target.checked,'incoming',0)" type="checkbox" id="incoming"> <label class="dropdownlistitem"  for="incoming">
                   Select all languages
                  </label></li> -->
-              <li class="listitem"  *ngFor="let count of this.lang1" [ngValue]="count.name" > <input (click)="selectlanguageonebyone($event.target.checked,count.id)"  #i (change)="!i['checked']" [checked]="count.status" name="incoming"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
+              <li class="listitem" *ngFor="let count of this.lang1" [ngValue]="count.name"> <input
+                  (click)="selectlanguageonebyone($event.target.checked,count.id)" #i (change)="!i['checked']"
+                  [checked]="count.status" name="incoming" type="checkbox" [value]="count.name"
+                  [attr.id]="count.name+1"> <label class="dropdownlistitem" [for]="count.name+1">
                   {{count.name}}
-                 </label></li>
-          </ul>
-      
-           </li>
+                </label></li>
+            </ul>
+
+          </li>
         </div>
-        </div>
-        <div class="secondpanel">
-        <div class="dropdown calltype">  
+      </div>
+      <div class="secondpanel">
+        <div class="dropdown calltype">
           <li style="height: 36px;">
-          <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
-             {{totalsizeofcalltype1}}
-             <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+            <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
+              {{totalsizeofcalltype1}}
+              <svg class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z"
+                  fill="#162741" />
               </svg>
-          </a>  
-          <ul class="dropdown-menu calltype" >
-              <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall1" (change)="selectallcalltype($event.target.checked,'incoming',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call"> 
+            </a>
+            <ul class="dropdown-menu calltype">
+              <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall1" (change)="selectallcalltype($event.target.checked,'incoming',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call">
                   Select all call types
                  </label></li> -->
-              <li class="listitem"   *ngFor="let count of this.call1" [ngValue]="count.name" > <input (click)="selectcalltypeonebyone($event.target.checked,count.name)"   [checked]="count.status" name="call"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
+              <li class="listitem" *ngFor="let count of this.call1" [ngValue]="count.name"> <input
+                  (click)="selectcalltypeonebyone($event.target.checked,count.name)" [checked]="count.status"
+                  name="call" type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label
+                  class="dropdownlistitem" [for]="count.name+1">
                   {{count.name}}
-                 </label></li>
-           </ul>
-           </li>
-          </div>
-     <div style="display: inline-block;margin-left: 10px;">
-   
-      <Input type="text" (keyup)="search($event.target.value,'incoming')" class="form_input search" placeholder="Search by name or user id"/>
-     </div>
+                </label></li>
+            </ul>
+          </li>
+        </div>
+        <div style="display: inline-block;margin-left: 10px;">
+
+          <Input type="text" (keyup)="search($event.target.value,'incoming')" class="form_input search"
+            placeholder="Search by name or user id" />
+        </div>
       </div>
-    </div> 
-      <div class="datatable" >
-        <table [hidden]="showincoming">
-          <thead>
-            <tr>
-              <th style="width:10%; padding-left: 30px">QUEUE</th>
-              <th  style="width:25%;">FULL NAME & ID</th>
-              <th class="imagetag">USER INFO</th>
-              <th style="width:15%;">CALL TYPE</th>
-              <th class="waitingtime" style=" text-align: center;">WAITING TIME</th>
-              <th style="width: 20%;"></th>
- </tr>
-</thead>
-<tbody>
-<tr class="mainlist" *ngFor="let data of incoming_call; let i=index">
-              <td><span style="padding-left: 4px; padding-right: 20px; color: #949CA8;">#</span> {{i+1}}</td>
-              <td><p class="username">{{data.name}}</p>
-              <p class="id">{{data.user_id}}</p></td>
-              <td><img class="userinfoicon" height="16" width="24" [src]="changecountryflag(data?.language_icon)" alt="">
-                <img  class="userinfoicon" height="26" width="26" [src]="changebrowser(data?.browser)" alt="">
-                <img  class="userinfoicon" height="24" width="24" [src]="changedevicetype(data?.mobile)" alt="">
-                <img  class="userinfoicon" height="24" width="24" [src]="changeoperatingsystem(data?.operating_system)" alt="">
-              </td>
-              <td>
-              <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 6px;" alt=""> {{changecalltype(data?.is_video)}}
-              </td>
-              <td style="text-align: center;">{{getElapsedTime(data?.waiting_started_at)}}</td>
-              <td style="text-align: right; padding-right: 30px;"><button  class="dialcallbtn" (click)="dialcall(data?.call_uuid)" >Answer
-                </button>
-                </td>
-            </tr>
-          </tbody>
-        </table>
-        <div [hidden]="showincoming_message">
-          <p class="call-status">There is no Incoming requests yet.</p>
+    </div>
+    <div class="datatable">
+      <table [hidden]="showincoming">
+        <thead>
+          <tr>
+            <th style="width:10%; padding-left: 30px">QUEUE</th>
+            <th style="width:25%;">FULL NAME & ID</th>
+            <th class="imagetag">USER INFO</th>
+            <th style="width:15%;">CALL TYPE</th>
+            <th class="waitingtime" style=" text-align: center;">WAITING TIME</th>
+            <th style="width: 20%;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="mainlist" *ngFor="let data of incoming_call; let i=index">
+            <td><span style="padding-left: 4px; padding-right: 20px; color: #949CA8;">#</span> {{i+1}}</td>
+            <td>
+              <p class="username">{{data.name}}</p>
+              <p class="id">{{data.user_id}}</p>
+            </td>
+            <td><img class="userinfoicon" height="16" width="24" [src]="changecountryflag(data?.language_icon)" alt="">
+              <img class="userinfoicon" height="26" width="26" [src]="changebrowser(data?.browser)" alt="">
+              <img class="userinfoicon" height="24" width="24" [src]="changedevicetype(data?.mobile)" alt="">
+              <img class="userinfoicon" height="24" width="24" [src]="changeoperatingsystem(data?.operating_system)"
+                alt="">
+            </td>
+            <td>
+              <img [src]="changecalltypeicon(data?.is_video)" style="margin-right: 6px;" alt="">
+              {{changecalltype(data?.is_video)}}
+            </td>
+            <td style="text-align: center;">{{getElapsedTime(data?.waiting_started_at)}}</td>
+            <td style="text-align: right; padding-right: 30px;"><button class="dialcallbtn"
+                (click)="dialcall(data?.call_uuid)">Answer
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div [hidden]="showincoming_message">
+        <p class="call-status">There is no Incoming requests yet.</p>
+      </div>
+    </div>
+
   </div>
- </div>
- 
-</div>
 
 
   <div [hidden]="!outgoing">
     <div class="dropdownpanels" style="margin-top: 30px;">
       <div class="languagepanel">
-        <div class="dropdown languages ">  
+        <div class="dropdown languages ">
           <li style="height: 36px;">
-          <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
-            {{selectedlanguagesongo}}
-            <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+            <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
+              {{selectedlanguagesongo}}
+              <svg class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z"
+                  fill="#162741" />
               </svg>
-          </a>  
-          <ul class="dropdown-menu languages" >
-              <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="user" [checked]="allselectedtagiongo" (change)="getalllanguage($event.target.checked,'ongoing',0)" type="checkbox" id="count"> <label class="dropdownlistitem"  for="count"> 
+            </a>
+            <ul class="dropdown-menu languages">
+              <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="user" [checked]="allselectedtagiongo" (change)="getalllanguage($event.target.checked,'ongoing',0)" type="checkbox" id="count"> <label class="dropdownlistitem"  for="count">
                   Select all languages
                  </label></li> -->
-              <li class="listitem"  *ngFor="let count of this.lang2" [ngValue]="count.name" > <input (click)="selectlanguageonebyone($event.target.checked,count.id)"  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
+              <li class="listitem" *ngFor="let count of this.lang2" [ngValue]="count.name"> <input
+                  (click)="selectlanguageonebyone($event.target.checked,count.id)" #i (change)="!i['checked']"
+                  [checked]="count.status" name="user" type="checkbox" [value]="count.name" [attr.id]="count.name+1">
+                <label class="dropdownlistitem" [for]="count.name+1">
                   {{count.name}}
-                 </label></li>
-          </ul>
-      
-           </li>
-          </div>
+                </label>
+              </li>
+            </ul>
+
+          </li>
         </div>
+      </div>
 
       <div class="secondpanel">
-        <ul class="dropdown calltype" >  
+        <ul class="dropdown calltype">
           <li style="height: 36px;">
-          <a class="languagetext" data-toggle="dropdown" aria-expanded="false" style="margin-left: 9px;">
-             {{totalsizeofcalltype2}}
-             <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+            <a class="languagetext" data-toggle="dropdown" aria-expanded="false" style="margin-left: 9px;">
+              {{totalsizeofcalltype2}}
+              <svg class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z"
+                  fill="#162741" />
               </svg>
-          </a>  
-          <ul class="dropdown-menu calltype" >
-              <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall2" (change)="selectallcalltype($event.target.checked,'ongoing',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call"> 
+            </a>
+            <ul class="dropdown-menu calltype">
+              <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall2" (change)="selectallcalltype($event.target.checked,'ongoing',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call">
                   Select all call types
                  </label></li> -->
-              <li class="listitem"   *ngFor="let count of this.call2" [ngValue]="count.name" > <input (click)="selectcalltypeonebyone($event.target.checked,count.name)"   [checked]="count.status" name="call"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
+              <li class="listitem" *ngFor="let count of this.call2" [ngValue]="count.name"> <input
+                  (click)="selectcalltypeonebyone($event.target.checked,count.name)" [checked]="count.status"
+                  name="call" type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label
+                  class="dropdownlistitem" [for]="count.name+1">
                   {{count.name}}
-                 </label></li>
-           </ul>
-           </li>
+                </label></li>
+            </ul>
+          </li>
         </ul>
         <div style="display: inline-block;margin-left: 10px;">
-        
-        <Input (keyup)="search($event.target.value,'ongoing')"  type="text" class="form_input search" placeholder="Search by name or user id"/>
+
+          <Input (keyup)="search($event.target.value,'ongoing')" type="text" class="form_input search"
+            placeholder="Search by name or user id" />
         </div>
-      </div> 
       </div>
-    <div class="datatable" >
+    </div>
+    <div class="datatable">
       <table [hidden]="showongoing">
         <thead>
           <tr>
-            <th  style="width:20%; padding-left: 30px;">FULL NAME & ID</th>
+            <th style="width:20%; padding-left: 30px;">FULL NAME & ID</th>
             <th class="imagetag">USER INFO</th>
             <th style="width:20%;">CALL TYPE</th>
             <th style="width:20%; text-align: center;">DURATION</th>
             <th style="width:20%;">AGENT NAME</th>
-    
-       
+
+
           </tr>
         </thead>
         <tbody>
           <tr class="mainlist" *ngFor="let data of  ougoing_call">
-            <td style=" padding-left: 30px;"><p class="username">{{data?.name}}</p>
-            <p>{{data?.user_id}}</p></td>
+            <td style=" padding-left: 30px;">
+              <p class="username">{{data?.name}}</p>
+              <p>{{data?.user_id}}</p>
+            </td>
             <td><img class="userinfoicon" height="16" width="24" [src]="changecountryflag(data?.language_icon)" alt="">
-              <img  class="userinfoicon" height="26" width="26" [src]="changebrowser(data?.browser)" alt="">
-              <img  class="userinfoicon" height="24" width="24" [src]="changedevicetype(data?.is_mobile)" alt="">
-              <img  class="userinfoicon" height="24" width="24" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+              <img class="userinfoicon" height="26" width="26" [src]="changebrowser(data?.browser)" alt="">
+              <img class="userinfoicon" height="24" width="24" [src]="changedevicetype(data?.is_mobile)" alt="">
+              <img class="userinfoicon" height="24" width="24" [src]="changeoperatingsystem(data?.operating_system)"
+                alt="">
             </td>
             <td>
-              <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 6px;" alt=""> {{changecalltype(data?.is_video)}}
-              </td>
-              <td style=" text-align: center;">{{ongoingcalltime(data?.call_started_at)}}</td>
-            <td> 
+              <img [src]="changecalltypeicon(data?.is_video)" style="margin-right: 6px;" alt="">
+              {{changecalltype(data?.is_video)}}
+            </td>
+            <td style=" text-align: center;">{{ongoingcalltime(data?.call_started_at)}}</td>
+            <td>
               <img class="agentpic" height="36p" width="36" src="../../../assets/gigaaa_logo.png" alt="">
-            <div style="
+              <div style="
             width: 100px;
             white-space: nowrap;
             display: inline-block;
             vertical-align: inherit;
             margin-left: 16px;">
-               <p class="username">{{data?.agent?.display_name}}</p>
-               <!-- <p>{{data?.agent.agent_id}}</p> -->
-            </div>
+                <p class="username">{{data?.agent?.display_name}}</p>
+                <!-- <p>{{data?.agent.agent_id}}</p> -->
+              </div>
             </td>
             <td style="text-align: right;">
-             
-             
-              </td>
+
+
+            </td>
           </tr>
-         
-      
+
+
         </tbody>
       </table>
-      <div  [hidden]="showongoing_message">
+      <div [hidden]="showongoing_message">
         <p class="call-status">There is no Oncoming requests yet.</p>
       </div>
     </div>
-    
-    
+
+
   </div>
-  
+
   <div [hidden]="!missed">
-    <div  class="dropdownpanels" style="margin-top: 30px;" >
+    <div class="dropdownpanels" style="margin-top: 30px;">
       <div class="languagepanel">
         <div class="dropdown languages ">
-            <li style="height: 36px;">
+          <li style="height: 36px;">
             <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
               {{selectedlanguagesmiss}}
-              <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
-                </svg>
-            </a>  
-            <ul class="dropdown-menu languages" >
-                <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="user" [checked]="allselectedtagmiss" (change)="getalllanguage($event.target.checked,'missed',0)" type="checkbox" id="count"> <label class="dropdownlistitem"  for="count"> 
+              <svg class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z"
+                  fill="#162741" />
+              </svg>
+            </a>
+            <ul class="dropdown-menu languages">
+              <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="user" [checked]="allselectedtagmiss" (change)="getalllanguage($event.target.checked,'missed',0)" type="checkbox" id="count"> <label class="dropdownlistitem"  for="count">
                     Select all languages
                    </label></li> -->
-                <li class="listitem"  *ngFor="let count of this.lang3" [ngValue]="count.name" > <input (click)="selectlanguageonebyone($event.target.checked,count.id)"  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
-                    {{count.name}}
-                   </label></li>
+              <li class="listitem" *ngFor="let count of this.lang3" [ngValue]="count.name"> <input
+                  (click)="selectlanguageonebyone($event.target.checked,count.id)" #i (change)="!i['checked']"
+                  [checked]="count.status" name="user" type="checkbox" [value]="count.name" [attr.id]="count.name+1">
+                <label class="dropdownlistitem" [for]="count.name+1">
+                  {{count.name}}
+                </label>
+              </li>
             </ul>
-        
-             </li>
+
+          </li>
         </div>
       </div>
-        <div class="secondpanel">
-         
-          <div class="dropdown calltype" style="margin-right: 10px;">  
-            <li style="height: 36px;">
-            <a class="languagetext"  data-toggle="dropdown" aria-expanded="false" >
-               {{totalsizeofcalltype3}}
-               <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
-                </svg>
-            </a>  
-            <ul class="dropdown-menu calltype" >
-                <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall3" (change)="selectallcalltype($event.target.checked,'missed',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call"> 
+      <div class="secondpanel">
+
+        <div class="dropdown calltype" style="margin-right: 10px;">
+          <li style="height: 36px;">
+            <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
+              {{totalsizeofcalltype3}}
+              <svg class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z"
+                  fill="#162741" />
+              </svg>
+            </a>
+            <ul class="dropdown-menu calltype">
+              <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall3" (change)="selectallcalltype($event.target.checked,'missed',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call">
                     Select all call types
                    </label></li> -->
-                <li class="listitem"   *ngFor="let count of this.call3" [ngValue]="count.name" > <input (click)="selectcalltypeonebyone($event.target.checked,count.name)"   [checked]="count.status" name="call"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
-                    {{count.name}}
-                   </label></li>
-             </ul>
-             </li>
-            </div>
-            <div class="datepicker">
-            <div   class="dropdown calanderheadingpanel" data-toggle="dropdown"  >
-             <p #dp  class="calhead">{{rangeSelected1}}</p> 
-             <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
-              </svg>          
-           
-             <div class="calander dropdown-menu dropdown-menu-right">
-               <div class="selectionpanel">
-             </div>
-              <bs-daterangepicker-inline style=" margin: 0px;
-              display: contents;"  type="text"
-              bsDaterangepicker
-              placement="bottom|right"
-              [bsValue]="bsValue"
-              (bsValueChange)="onDateChange($event,'missed_date')"
-              [bsConfig]="bsConfig">
-              
-            </bs-daterangepicker-inline>
-            <div class="datepreviewpanel">
-              <div class="previewmain">
-                <p class="selectedvalue">{{datepreviewstart}}</p><span><svg style="margin: 9px;" width="12" height="3" viewBox="0 0 12 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M11.2383 2.23828H0.761719V0.761719H11.2383V2.23828Z" fill="#162741"/>
-                  </svg>
-                  </span><p  class="selectedvalue">{{datepreviewend}}</p> 
-              </div>
+              <li class="listitem" *ngFor="let count of this.call3" [ngValue]="count.name"> <input
+                  (click)="selectcalltypeonebyone($event.target.checked,count.name)" [checked]="count.status"
+                  name="call" type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label
+                  class="dropdownlistitem" [for]="count.name+1">
+                  {{count.name}}
+                </label></li>
+            </ul>
+          </li>
+        </div>
+        <div class="datepicker">
+          <div class="dropdown calanderheadingpanel" data-toggle="dropdown">
+            <p #dp class="calhead">{{rangeSelected1}}</p>
+            <svg class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z"
+                fill="#162741" />
+            </svg>
 
-              <div class="buttonpanelfordate">
-                <button (click)="canceldaterange('missed_date')" class="cancel">Cancel</button>
-                <button class="applybtn">Apply</button>
+            <div class="calander dropdown-menu dropdown-menu-right">
+              <div class="selectionpanel">
               </div>
+              <bs-daterangepicker-inline style=" margin: 0px;
+              display: contents;" type="text" bsDaterangepicker placement="bottom|right" [bsValue]="bsValue"
+                (bsValueChange)="onDateChange($event,'missed_date')" [bsConfig]="bsConfig">
+
+              </bs-daterangepicker-inline>
+              <div class="datepreviewpanel">
+                <div class="previewmain">
+                  <p class="selectedvalue">{{datepreviewstart}}</p><span><svg style="margin: 9px;" width="12" height="3"
+                      viewBox="0 0 12 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.2383 2.23828H0.761719V0.761719H11.2383V2.23828Z" fill="#162741" />
+                    </svg>
+                  </span>
+                  <p class="selectedvalue">{{datepreviewend}}</p>
+                </div>
+
+                <div class="buttonpanelfordate">
+                  <button (click)="canceldaterange('missed_date')" class="cancel">Cancel</button>
+                  <button class="applybtn">Apply</button>
+                </div>
               </div>
             </div>
-          </div> </div>
-          <div  style="display: inline-block;margin-left: 10px;height: 34px;">
-          
-            <Input type="text" (keyup)="search($event.target.value,'missed')" class="form_input search" placeholder="Search by name or user id"/>
           </div>
         </div>
-       
-     
+        <div style="display: inline-block;margin-left: 10px;height: 34px;">
 
+          <Input type="text" (keyup)="search($event.target.value,'missed')" class="form_input search"
+            placeholder="Search by name or user id" />
+        </div>
       </div>
-    <div class="datatable" >
+
+
+
+    </div>
+    <div class="datatable">
       <table [hidden]="showmissed">
         <thead>
           <tr>
-            <th  class="fullnamecol"  style="padding-left: 30px;">FULL NAME & ID</th>
-            <th class="imagetag" >USER INFO</th>
+            <th class="fullnamecol" style="padding-left: 30px;">FULL NAME & ID</th>
+            <th class="imagetag">USER INFO</th>
             <th style="width:15%;">CALL TYPE</th>
             <th style="width:15%; text-align: center;">CALLED AT</th>
             <th style="width:15%; text-align: center;">WAIT TIME</th>
             <th style="width:15%;">REASON</th>
             <th style="width: 5%;"></th>
-    
-       
+
+
           </tr>
         </thead>
         <tbody>
           <tr class="mainlist" *ngFor="let data of  missed_call">
-            <td style="padding-left: 30px;"><p class="username">{{data?.name}}</p>
-            <p class="id">{{data?.user_id}}</p></td>
-            <td ><img class="userinfoicon" height="16" width="24" [src]="changecountryflag(data?.language_icon)" alt="">
-              <img  class="userinfoicon" height="26" width="26" [src]="changebrowser(data?.browser)" alt="">
-              <img  class="userinfoicon" height="24" width="24" [src]="changedevicetype(data?.is_mobile)" alt="">
-              <img  class="userinfoicon" height="24" width="24" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+            <td style="padding-left: 30px;">
+              <p class="username">{{data?.name}}</p>
+              <p class="id">{{data?.user_id}}</p>
+            </td>
+            <td><img class="userinfoicon" height="16" width="24" [src]="changecountryflag(data?.language_icon)" alt="">
+              <img class="userinfoicon" height="26" width="26" [src]="changebrowser(data?.browser)" alt="">
+              <img class="userinfoicon" height="24" width="24" [src]="changedevicetype(data?.is_mobile)" alt="">
+              <img class="userinfoicon" height="24" width="24" [src]="changeoperatingsystem(data?.operating_system)"
+                alt="">
             </td>
             <td class="calltype">
-              <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 17px;" alt=""> {{changecalltype(data?.is_video)}}
-              </td>
-              <td style="text-align: center;">{{gettimeduration(data?.missed_at)}}</td>
-              <td style="text-align: center;">{{calculatetime(data?.wait_time)}}</td>
-              <td class="reason"> 
-             {{getreasonformissedcall(data?.reason)}}
+              <img [src]="changecalltypeicon(data?.is_video)" style="margin-right: 17px;" alt="">
+              {{changecalltype(data?.is_video)}}
+            </td>
+            <td style="text-align: center;">{{gettimeduration(data?.missed_at)}}</td>
+            <td style="text-align: center;">{{calculatetime(data?.wait_time)}}</td>
+            <td class="reason">
+              {{getreasonformissedcall(data?.reason)}}
             </td>
             <td style="text-align: right;">
-              </td>
+            </td>
           </tr>
-          
-      
+
+
         </tbody>
       </table>
       <div class="callindicationpanel" [hidden]="!showmissed_message">
         <p class="numberofvailablerequest">{{size_missed_call}} missed requests</p>
-          </div>
+      </div>
       <div [hidden]="showmissed_message">
         <p class="call-status">There is no Missed requests yet.</p>
 
       </div>
     </div>
   </div>
-  
+
   <div [hidden]="!answered">
-    <div  class="dropdownpanels" style="margin-top: 30px;" >
+    <div class="dropdownpanels" style="margin-top: 30px;">
       <div class="languagepanel">
         <div class="dropdown languages ">
-            <li style="height: 36px;">
+          <li style="height: 36px;">
             <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
               {{selectedlanguagesfinish}}
-              <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
-                </svg>
-            </a>  
-            <ul class="dropdown-menu languages" >
-                <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="user" [checked]="allselectedtagfinish" (change)="getalllanguage($event.target.checked,'finished',0)" type="checkbox" id="count"> <label class="dropdownlistitem"  for="count"> 
+              <svg class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z"
+                  fill="#162741" />
+              </svg>
+            </a>
+            <ul class="dropdown-menu languages">
+              <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="user" [checked]="allselectedtagfinish" (change)="getalllanguage($event.target.checked,'finished',0)" type="checkbox" id="count"> <label class="dropdownlistitem"  for="count">
                     Select all languages
                    </label></li> -->
-                <li class="listitem"  *ngFor="let count of this.lang4" [ngValue]="count.name" > <input (click)="selectlanguageonebyone($event.target.checked,count.id)"  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
-                    {{count.name}}
-                   </label></li>
+              <li class="listitem" *ngFor="let count of this.lang4" [ngValue]="count.name"> <input
+                  (click)="selectlanguageonebyone($event.target.checked,count.id)" #i (change)="!i['checked']"
+                  [checked]="count.status" name="user" type="checkbox" [value]="count.name" [attr.id]="count.name+1">
+                <label class="dropdownlistitem" [for]="count.name+1">
+                  {{count.name}}
+                </label>
+              </li>
             </ul>
-        
-             </li>
+
+          </li>
         </div>
       </div>
-        <div class="secondpanel">
-         
-          <div class="dropdown calltype" style="margin-right: 10px;">  
-            <li style="height: 36px;">
-            <a class="languagetext"  data-toggle="dropdown" aria-expanded="false" >
-               {{totalsizeofcalltype4}}
-               <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
-                </svg>
-            <!-- <i class="tagiconnn fa fa-chevron-down" aria-hidden="true"></i> -->
-            </a>  
-            <ul class="dropdown-menu calltype" >
-                <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall3" (change)="selectallcalltype($event.target.checked,'finished',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call"> 
+      <div class="secondpanel">
+
+        <div class="dropdown calltype" style="margin-right: 10px;">
+          <li style="height: 36px;">
+            <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
+              {{totalsizeofcalltype4}}
+              <svg class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z"
+                  fill="#162741" />
+              </svg>
+              <!-- <i class="tagiconnn fa fa-chevron-down" aria-hidden="true"></i> -->
+            </a>
+            <ul class="dropdown-menu calltype">
+              <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall3" (change)="selectallcalltype($event.target.checked,'finished',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call">
                     Select all call types
                    </label></li> -->
-                <li class="listitem"   *ngFor="let count of this.call4" [ngValue]="count.name" > <input (click)="selectcalltypeonebyone($event.target.checked,count.name)"   [checked]="count.status" name="call"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
-                    {{count.name}}
-                   </label></li>
-             </ul>
-             </li>
-            </div>
-              <div class="datepicker">
-            <div style="height: 34px; list-style: none;"  class="dropdown calanderheadingpanel" data-toggle="dropdown"  >
-             
-            <p  #dp  class="calhead">{{rangeSelected2}}</p> 
-            <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
-              </svg>            <div class="calander dropdown-menu dropdown-menu-right">
-               <div class="selectionpanel">
-            </div>
+              <li class="listitem" *ngFor="let count of this.call4" [ngValue]="count.name"> <input
+                  (click)="selectcalltypeonebyone($event.target.checked,count.name)" [checked]="count.status"
+                  name="call" type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label
+                  class="dropdownlistitem" [for]="count.name+1">
+                  {{count.name}}
+                </label></li>
+            </ul>
+          </li>
+        </div>
+        <div class="datepicker">
+          <div style="height: 34px; list-style: none;" class="dropdown calanderheadingpanel" data-toggle="dropdown">
+
+            <p #dp class="calhead">{{rangeSelected2}}</p>
+            <svg class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z"
+                fill="#162741" />
+            </svg>
+            <div class="calander dropdown-menu dropdown-menu-right">
+              <div class="selectionpanel">
+              </div>
               <bs-daterangepicker-inline style=" margin: 0px;
-              display: contents;"  type="text"
-              bsDaterangepicker
-              placement="bottom"
-              [bsValue]="bsValue"
-              (bsValueChange)="onDateChange($event,'finished_date')"
-              [bsConfig]="bsConfig">
-              
-            </bs-daterangepicker-inline>
-            <div class="datepreviewpanel">
-              <div class="previewmain">
-                <p class="selectedvalue">{{datepreviewstart1}}</p><span><svg style="margin: 9px;" width="12" height="3" viewBox="0 0 12 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M11.2383 2.23828H0.761719V0.761719H11.2383V2.23828Z" fill="#162741"/>
-                  </svg>
-                  </span><p  class="selectedvalue">{{datepreviewend1}}</p> 
-              </div>
+              display: contents;" type="text" bsDaterangepicker placement="bottom" [bsValue]="bsValue"
+                (bsValueChange)="onDateChange($event,'finished_date')" [bsConfig]="bsConfig">
 
-              <div class="buttonpanelfordate">
-                <button (click)="canceldaterange('finished_date')" class="cancel">Cancel</button>
-                <button class="applybtn">Apply</button>
+              </bs-daterangepicker-inline>
+              <div class="datepreviewpanel">
+                <div class="previewmain">
+                  <p class="selectedvalue">{{datepreviewstart1}}</p><span><svg style="margin: 9px;" width="12"
+                      height="3" viewBox="0 0 12 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.2383 2.23828H0.761719V0.761719H11.2383V2.23828Z" fill="#162741" />
+                    </svg>
+                  </span>
+                  <p class="selectedvalue">{{datepreviewend1}}</p>
+                </div>
 
+                <div class="buttonpanelfordate">
+                  <button (click)="canceldaterange('finished_date')" class="cancel">Cancel</button>
+                  <button class="applybtn">Apply</button>
+
+                </div>
               </div>
             </div>
-          </div>  </div> </div>
-          <div  style="display: inline-block; margin-left: 10px;height: 34px;">
-           
-            <Input type="text" (keyup)="search($event.target.value,'finished')" class="form_input search" placeholder="Search by name or user id"/>
           </div>
         </div>
+        <div style="display: inline-block; margin-left: 10px;height: 34px;">
+
+          <Input type="text" (keyup)="search($event.target.value,'finished')" class="form_input search"
+            placeholder="Search by name or user id" />
+        </div>
       </div>
-    <div class="datatable" >
+    </div>
+    <div class="datatable">
       <table [hidden]="showanswered">
         <thead>
           <tr>
-            <th  style="width:20%; padding-left: 30px;">FULL NAME & ID</th>
-            <th  class="imagetag" >USER INFO</th>
+            <th style="width:20%; padding-left: 30px;">FULL NAME & ID</th>
+            <th class="imagetag">USER INFO</th>
             <th style="width:20%;">CALL TYPE</th>
             <th style="width:20%; text-align: center;">CALLED AT</th>
-            <th class="agentnamecol" >AGENT NAME</th>
+            <th class="agentnamecol">AGENT NAME</th>
           </tr>
         </thead>
         <tbody>
           <tr class="mainlist" *ngFor="let data of  answered_call">
-            <td style="padding-left: 30px;"><p  class="username">{{data?.name}}</p>
-              <p class="id">{{data?.user_id}}</p></td>
+            <td style="padding-left: 30px;">
+              <p class="username">{{data?.name}}</p>
+              <p class="id">{{data?.user_id}}</p>
+            </td>
             <td><img class="userinfoicon" height="16" width="24" [src]="changecountryflag(data?.language_icon)" alt="">
-              <img  class="userinfoicon" height="26" width="26" [src]="changebrowser(data?.browser)" alt="">
-              <img  class="userinfoicon" height="24" width="24" [src]="changedevicetype(data?.is_mobile)" alt="">
-              <img  class="userinfoicon" height="24" width="24" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+              <img class="userinfoicon" height="26" width="26" [src]="changebrowser(data?.browser)" alt="">
+              <img class="userinfoicon" height="24" width="24" [src]="changedevicetype(data?.is_mobile)" alt="">
+              <img class="userinfoicon" height="24" width="24" [src]="changeoperatingsystem(data?.operating_system)"
+                alt="">
             </td>
             <td>
-              <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 6px;" alt=""> {{changecalltype(data?.is_video)}}
-              </td>
-              <td style="text-align: center;">{{gettimeduration(data?.call_started_at)}}</td>
-            <td> 
+              <img [src]="changecalltypeicon(data?.is_video)" style="margin-right: 6px;" alt="">
+              {{changecalltype(data?.is_video)}}
+            </td>
+            <td style="text-align: center;">{{gettimeduration(data?.call_started_at)}}</td>
+            <td>
               <img class="agentpic" height="36p" width="36" src="../../../assets/gigaaa_logo.png" alt="">
-            <div style="width: 100px;
+              <div style="width: 100px;
             white-space: nowrap;
             display: inline-block;
             vertical-align: inherit;
             margin-left: 15px;">
-               <p class="username">{{data?.agent?.display_name}}</p>
-               <!-- <p>{{data?.agent.agent_id}}</p> -->
-            </div>
+                <p class="username">{{data?.agent?.display_name}}</p>
+                <!-- <p>{{data?.agent.agent_id}}</p> -->
+              </div>
             </td>
             <td style="text-align: right;">
-             
-                <!-- <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+              <!-- <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M13.8782 2.08696V0.52174C13.8782 0.23356 13.6446 0 13.3565 0C13.0683 0 12.8347 0.23356 12.8347 0.52174V2.08696C12.8347 2.37514 13.0683 2.6087 13.3565 2.6087C13.6446 2.6087 13.8782 2.37514 13.8782 2.08696Z" fill="#64DFDF"/>
                   <path d="M13.8782 23.4783V21.9131C13.8782 21.6249 13.6446 21.3913 13.3565 21.3913C13.0683 21.3913 12.8347 21.6249 12.8347 21.9131V23.4783C12.8347 23.7665 13.0683 24 13.3565 24C13.6446 24 13.8782 23.7665 13.8782 23.4783Z" fill="#64DFDF"/>
                   <path d="M7.3564 1.60738C7.10694 1.75147 7.02135 2.07063 7.16544 2.32009L7.94805 3.67621C8.09275 3.92709 8.41231 4.01065 8.66075 3.86717C8.91021 3.72329 8.99581 3.40413 8.85172 3.15447L8.06911 1.79855C7.92522 1.54889 7.60606 1.4635 7.3564 1.60738Z" fill="#64DFDF"/>
@@ -471,24 +550,24 @@
                   <path d="M13.8782 5.73915C13.8782 6.02733 13.6446 6.26089 13.3565 6.26089C13.0683 6.26089 12.8347 6.02733 12.8347 5.73915C12.8347 5.45097 13.0683 5.21741 13.3565 5.21741C13.6446 5.21741 13.8782 5.45097 13.8782 5.73915Z" fill="#715DFF"/>
                   <path d="M15.7917 5.45583C15.6517 5.42872 15.5066 5.46031 15.3904 5.54326C15.142 5.72037 15.1766 5.99163 15.1469 6.10393C15.1126 6.34279 15.2467 6.5739 15.4709 6.66276C17.6728 7.53586 19.0956 9.63097 19.0956 12C19.0956 15.1647 16.5211 17.7391 13.3565 17.7391C10.192 17.7391 7.61734 15.1647 7.61734 12C7.61734 9.63097 9.04009 7.53586 11.2422 6.66276C11.4664 6.5739 11.6005 6.34279 11.5662 6.10393C11.5357 5.98898 11.572 5.72098 11.3227 5.54326C11.2065 5.46052 11.0614 5.42893 10.9212 5.45583C6.71734 6.26412 2.3545 9.30243 0.142612 11.6415C-0.0475373 11.8426 -0.0475373 12.1573 0.142612 12.3585C3.13527 15.5232 8.49288 18.7826 13.3565 18.7826C18.2414 18.7826 23.6072 15.4918 26.5705 12.3585C26.7607 12.1573 26.7607 11.8426 26.5705 11.6415C24.667 9.62852 20.3408 6.33056 15.7917 5.45583ZM1.26313 12.0006C2.22284 11.0841 4.99764 8.62988 8.51693 7.24646C7.30083 8.48681 6.57386 10.167 6.57386 12C6.57386 13.8495 7.31774 15.5282 8.52223 16.7529C5.874 15.7168 3.25837 13.9117 1.26313 12.0006ZM18.1893 16.7545C19.3946 15.5295 20.1391 13.8501 20.1391 12C20.1391 10.1686 19.4131 8.48783 18.196 7.24646C21.7149 8.62967 24.4897 11.0835 25.4494 12.0002C24.4899 12.9171 21.7157 15.3707 18.1893 16.7545Z" fill="#292F58"/>
                   </svg> -->
-                  
-              </td>
+
+            </td>
           </tr>
-         
+
         </tbody>
       </table>
-      <div class="callindicationpanel"[hidden]="!showanswered_message">
+      <div class="callindicationpanel" [hidden]="!showanswered_message">
         <p class="numberofvailablerequest">{{size_answered_call}} missed requests</p>
-          </div>
-      <div  [hidden]="showanswered_message">
+      </div>
+      <div [hidden]="showanswered_message">
         <p class="call-status">There is no Answered requests yet.</p>
       </div>
     </div>
-    
+
   </div>
-<!--   
+  <!--
   <div class="callindicationpanel">
 <p class="numberofvailablerequest">5 requests</p>
   </div>  -->
-  
+
 </div>

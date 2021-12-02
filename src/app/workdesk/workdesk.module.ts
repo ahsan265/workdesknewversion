@@ -22,7 +22,6 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CroppictureComponent } from './agents/croppicture/croppicture.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { BrowserModule } from '@angular/platform-browser';
 import { getloadpictures } from './Datapipes/datapipes';
 import { percentcolorpipe } from './Datapipes/percentcolor';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
@@ -34,7 +33,7 @@ import { MobilefilterspopupComponent } from './mobilefilterspopup/mobilefiltersp
 
 @NgModule({
   declarations: [MobilefilterspopupComponent, DragDirective,percentcolorpipe,getloadpictures, AgentComponent, ChatComponent, ViewchatComponent, ActivechatComponent, EditformComponent, AddagentComponent, DashboardComponent, InviteagentComponent, AgentsettingsComponent, DeleteagentpopupComponent, UpdatepasswordComponent, CroppictureComponent, MobilefilterspopupComponent],
-  imports: [  Ng2SearchPipeModule,  BrowserModule,  ImageCropperModule,
+  imports: [  Ng2SearchPipeModule,  ImageCropperModule,
     BsDatepickerModule.forRoot(),
     ChartsModule,
     CommonModule,
@@ -45,8 +44,8 @@ import { MobilefilterspopupComponent } from './mobilefilterspopup/mobilefiltersp
     CountUpModule,
     MatProgressBarModule,
     MatSliderModule,
-    
-    
+
+
   ],
   providers: [UserloginserviceService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],

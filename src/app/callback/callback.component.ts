@@ -44,11 +44,11 @@ export class CallbackComponent implements OnInit {
       ).subscribe(
         (res: any) => {
           this.authService.token = res;
-          this.apiService.getCurrentUser().subscribe((r) => {
+          this.apiService.getCurrentUser(res.access_token).subscribe((r) => {
             this.authService.user.next(r);
             this.cookie.set("gigaaa_user", JSON.stringify(r));
             this.cookie.set("access_token_active", JSON.stringify(res));
-            this.router.navigate(["/"]);
+            this.router.navigate(["/dashboard"]);
           });
         },
         err => console.log(err)

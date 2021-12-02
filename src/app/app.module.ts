@@ -11,7 +11,6 @@ import { SignupComponent } from './useraccount/signup/signup.component';
 import { SiginComponent } from './useraccount/sigin/sigin.component';
 import { FooterComponent } from './useraccount/footer/footer.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
-import { HomebarComponent } from './pages/homebar/homebar.component';
 import { WorkdeskModule } from './workdesk/workdesk.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -45,6 +44,8 @@ import { LoginBtnComponent } from './useraccount/landingpage/login-btn/login-btn
 import { LogoutComponent } from './logout/logout.component';
 import { CallbackComponent } from './callback/callback.component';
 import { environment } from 'src/environments/environment';
+import { GigaaaSidebarModule, GigaaaHeaderModule, GigaaaTableModule } from '@gigaaa/gigaaa-components';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -54,11 +55,11 @@ import { environment } from 'src/environments/environment';
     LandingpageComponent,
     FooterComponent,
     SidebarComponent,
-    HomebarComponent,
     LinkexpiredialogComponent,
     LoginBtnComponent,
     LogoutComponent,
-    CallbackComponent
+    CallbackComponent,
+    MainPageComponent
   ],
   imports: [
     ChartsModule,
@@ -83,9 +84,9 @@ import { environment } from 'src/environments/environment';
     MatListModule,
     MatSidenavModule,
     MatExpansionModule,
-    // GigaaaSidebarModule,
-    // GigaaaHeaderModule.forRoot(environment),
-    // GigaaaTableModule
+    GigaaaSidebarModule,
+    GigaaaHeaderModule.forRoot(environment),
+    GigaaaTableModule
   ],
   bootstrap: [AppComponent],
   providers: [gigaaasocketapi,agentsocketapi,UserloginserviceService,AuthService,GigaaaApiService,MessageService,sharedres_service,{

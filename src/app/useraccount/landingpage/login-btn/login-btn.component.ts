@@ -30,7 +30,7 @@ export class LoginBtnComponent implements OnInit {
     this.generateChallenge();
   }
 
-  generateChallenge() {
+  generateChallenge(action?: string) {
     let verify = this.generateCodeVerifier();
     let code = this.generateCodeChallenge(verify)
     let state = this.generateRandomString(30)
@@ -39,7 +39,7 @@ export class LoginBtnComponent implements OnInit {
       code, verify, state
     }
     localStorage.setItem('ch', JSON.stringify(this.challenge));
-    this.query = `response_type=code&client_id=${this.clientId}&code_challenge=${this.challenge.code}&state=${this.challenge.state}&code_challenge_method=S256&redirect_uri=${encodeURIComponent(this.redirectUri)}}`;
+    this.query = `response_type=code&client_id=${this.clientId}&code_challenge=${this.challenge.code}&state=${this.challenge.state}&code_challenge_method=S256&redirect_uri=${encodeURIComponent(this.redirectUri)}&action=${action}`;
     let url = `${this.oauthUrl}/authorize?` + this.query;
     location.href = url;
   }

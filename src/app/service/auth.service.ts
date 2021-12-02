@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
-import { User } from '../model/User';
 import { CanActivate } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { User } from '../model/User';
 
 @Injectable({
   providedIn: 'root'

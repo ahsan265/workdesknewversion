@@ -9,6 +9,7 @@ import { defineLocale, enGbLocale } from 'ngx-bootstrap/chronos';
 import { BsDaterangepickerDirective, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { element } from 'protractor';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/service/auth.service';
 import { GigaaaApiService } from 'src/app/service/gigaaaapi.service';
 import { MessageService } from 'src/app/service/messege.service';
 import { sharedres_service } from 'src/app/service/sharedres.service';
@@ -43,7 +44,7 @@ export class DashboardComponent implements OnInit {
    datepreviewstart:any;
    datepreviewend:any;
 
-  // get last week days 
+  // get last week days
     beforeOneWeek = new Date(new Date().getTime() - 60 * 60 * 24 * 7 * 1000)
    day = this.beforeOneWeek.getDay()
    diffToMonday = this.beforeOneWeek.getDate() - this.day + (this.day === 0 ? -6 : 1)
@@ -52,7 +53,7 @@ export class DashboardComponent implements OnInit {
 
    // get last current month days
 
-  
+
    ranges: IRange[] = [
     {
       value: [new Date(new Date().setDate(new Date().getDate())),new Date()],
@@ -94,11 +95,11 @@ export class DashboardComponent implements OnInit {
     dateInputFormat: 'YYYY-MM-DD',
     ranges: this.ranges,
     todayHighlight: true,
-    preventChangeToNextMonth: false,  
+    preventChangeToNextMonth: false,
     startView:2,
     customTodayClass:'custom-today-class',
     showPreviousMonth: false,
-    returnFocusToInput: false 
+    returnFocusToInput: false
   };
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -114,12 +115,12 @@ export class DashboardComponent implements OnInit {
       position:'top',
       align:'center'
     },
- 
+
      tooltips: {
       enabled: true,
       mode: 'nearest',
       displayColors: false,
-      
+
       callbacks: {
           title: function () {
               return null;
@@ -132,14 +133,14 @@ export class DashboardComponent implements OnInit {
       intersect: false
    },
     scales: {
-     
+
       xAxes: [{
           gridLines: {
               display:false
           },
-        
+
       },
-      
+
     ],
       yAxes: [{
           gridLines: {
@@ -151,10 +152,10 @@ export class DashboardComponent implements OnInit {
 
         },
       }],
-      
+
   }
   };
- 
+
   public barChartLabels: Label[] = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = false;
@@ -175,7 +176,7 @@ export class DashboardComponent implements OnInit {
         "#64DFDF", "#715DFF", "#64DFDF", "#715DFF", "#64DFDF","#715DFF","#64DFDF"
       ]
     },
-   
+
   ];
   newVar:any;
   answered:any;
@@ -197,7 +198,9 @@ export class DashboardComponent implements OnInit {
     private router:Router,
     private localeService: BsLocaleService,
     public dialog: MatDialog,
-     private gigaaaservice:GigaaaApiService,private messageservie:MessageService) { 
+     private gigaaaservice:GigaaaApiService,private messageservie:MessageService,
+    private authService: AuthService
+     ) {
       enGbLocale.weekdaysShort = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
       enGbLocale.week.dow = 1;
       defineLocale('en-gb', enGbLocale);
@@ -214,7 +217,7 @@ export class DashboardComponent implements OnInit {
             this.showtopticketedagent=true;
        }
       })
-      
+
      }
      getlistofdashboard(val)
      {
@@ -258,7 +261,7 @@ export class DashboardComponent implements OnInit {
         this.showticketsdashboard=false;
         this.showuserdashboard=true;
 
-        
+
     this.createtickettypechart();
     this.createprioritticketchart();
        }
@@ -274,7 +277,7 @@ export class DashboardComponent implements OnInit {
       this.selecteddashboard=val;
      }
 
-     // get all country 
+     // get all country
      public async getallthecountries(): Promise<void>
      {
       const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
@@ -292,13 +295,17 @@ export class DashboardComponent implements OnInit {
       catch(err){
         this.messageservie.setErrorMessage(err.error.error);
       }
-       
+
 
      }
      // getall languages
      public async getlllangugaes(): Promise<void>{
       const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
-      var accesstoken=getdata.access_token;
+      // var accesstoken=getdata.access_token;
+
+      // This is how you can get token
+      const accesstoken = this.authService.token;
+
       var subsid=getdata.subscription_id.subsid.uuid;
       const intid = JSON.parse(localStorage.getItem('intgid'))
       try{
@@ -308,14 +315,14 @@ export class DashboardComponent implements OnInit {
         {name:'Russian' ,status:false},
         {name:'Spanish' ,status:false},
         {name:'Turkish' ,status:false},
-  
+
       ];
       var  language= await this.gigaaaservice.getAllLanguages(accesstoken,subsid,intid.int_id)
         let updatearr = language.map((item, i) => Object.assign({}, item, languagee[i]));
           console.log(updatearr)
          this.lang=updatearr;
          // this.getalllanguage(false);
-  
+
       }
       catch(err){
         this.messageservie.setErrorMessage(err.error.error)
@@ -331,7 +338,7 @@ export class DashboardComponent implements OnInit {
       this.loadcallchartinit();
       this.getstatsonintg();
       this.getallthecountries();
-      this.getlllangugaes(); 
+      this.getlllangugaes();
 
     $(document).ready(function() {
       $(document).foundation();
@@ -340,7 +347,7 @@ export class DashboardComponent implements OnInit {
   }
 
   incomingbarchart(data,lebel)
-  {  
+  {
     if (typeof(this.myChart) != "undefined") {
       this.myChart.destroy();
       }
@@ -380,17 +387,17 @@ export class DashboardComponent implements OnInit {
           align:'center',
           display:false
         },
-     
+
          tooltips: {
           enabled: true,
           mode: 'nearest',
           displayColors: false,
-          
+
           callbacks: {
               title: function () {
                   return null;
               },
-    
+
           }
       },
       hover: {
@@ -398,14 +405,14 @@ export class DashboardComponent implements OnInit {
         intersect: false
      },
       scales: {
-       
+
         xAxes: [{
             gridLines: {
                 display:false
             },
-          
+
         },
-        
+
       ],
         yAxes: [{
             gridLines: {
@@ -419,10 +426,10 @@ export class DashboardComponent implements OnInit {
               maxTicksLimit: 4,
               padding: 14
 
-  
+
           },
         }],
-        
+
     }
     }
     });
@@ -469,17 +476,17 @@ export class DashboardComponent implements OnInit {
           align:'center',
           display:false
         },
-     
+
          tooltips: {
           enabled: true,
           mode: 'nearest',
           displayColors: false,
-          
+
           callbacks: {
               title: function () {
                   return null;
               },
-    
+
           }
       },
       hover: {
@@ -487,14 +494,14 @@ export class DashboardComponent implements OnInit {
         intersect: false
      },
       scales: {
-       
+
         xAxes: [{
             gridLines: {
                 display:false
             },
-          
+
         },
-        
+
       ],
         yAxes: [{
             gridLines: {
@@ -508,10 +515,10 @@ export class DashboardComponent implements OnInit {
               maxTicksLimit: 4,
               padding: 14
 
-  
+
           },
         }],
-        
+
     }
     }
     });
@@ -559,17 +566,17 @@ export class DashboardComponent implements OnInit {
           align:'center',
           display:false
         },
-     
+
          tooltips: {
           enabled: true,
           mode: 'nearest',
           displayColors: false,
-          
+
           callbacks: {
               title: function () {
                   return null;
               },
-    
+
           }
       },
       hover: {
@@ -577,14 +584,14 @@ export class DashboardComponent implements OnInit {
         intersect: false
      },
       scales: {
-       
+
         xAxes: [{
             gridLines: {
                 display:false
             },
-          
+
         },
-        
+
       ],
         yAxes: [{
             gridLines: {
@@ -598,10 +605,10 @@ export class DashboardComponent implements OnInit {
               maxTicksLimit: 4,
               padding: 14
 
-  
+
           },
         }],
-        
+
     }
     }
     });
@@ -648,17 +655,17 @@ export class DashboardComponent implements OnInit {
           align:'center',
           display:false
         },
-     
+
          tooltips: {
           enabled: true,
           mode: 'nearest',
           displayColors: false,
-          
+
           callbacks: {
               title: function () {
                   return null;
               },
-    
+
           }
       },
       hover: {
@@ -666,16 +673,16 @@ export class DashboardComponent implements OnInit {
         intersect: false
      },
       scales: {
-       
+
         xAxes: [{
             gridLines: {
                 display:false,
                 drawBorder: false,
 
             },
-          
+
         },
-        
+
       ],
         yAxes: [{
             gridLines: {
@@ -688,16 +695,16 @@ export class DashboardComponent implements OnInit {
               beginAtZero: true,
               maxTicksLimit: 4,
               padding: 14
-  
+
           },
         }],
-        
+
     }
     }
     });
       this.myChart3.update()
   }
-  // devices chart 
+  // devices chart
   createdevicechart()
   {
     var ctx = document.getElementById("devicechart") as HTMLCanvasElement;
@@ -718,18 +725,18 @@ export class DashboardComponent implements OnInit {
         responsive: false,
         tooltips: {
         displayColors: false,
-  
+
         callbacks: {
           title : () => null // or function () { return null; }
        }
      },
 
         legend:{
-          display:false,  
+          display:false,
           position:'top'
-           
+
         },
-      
+
         legendCallback: function(chart) {
           var text = [];
           text.push('<ul  style="list-style:none">');
@@ -746,14 +753,14 @@ export class DashboardComponent implements OnInit {
     });
 
     // call visitor
-    
+
     // generate HTML legend
    $("#devicechartlegend").html(myChart.generateLegend());
   }
   // visitor chart
   visitorchart1()
   {
-   
+
     var ctx = document.getElementById("visitortwo") as HTMLCanvasElement;
   var linchart= new Chart(ctx, {
       type: 'line',
@@ -790,39 +797,39 @@ export class DashboardComponent implements OnInit {
       },
       options:{ responsive: true,
         maintainAspectRatio: false,
-        
+
         legend:{
           position:"bottom",
           display:false
         },
-        
+
         scales: {
-       
+
           xAxes: [{
               gridLines: {
                   display:false,
                   drawBorder: false,
-  
+
               },
-            
+
           },
-          
+
         ],
           yAxes: [{
               gridLines: {
                   display:true,
                   drawBorder: false,
-  
+
               },
               ticks: {
                 display: true,
                 beginAtZero: true,
                 maxTicksLimit: 8,
                 padding: 14
-    
+
             },
           }],
-          
+
       },
       legendCallback: function(chart) {
         var text = [];
@@ -834,19 +841,19 @@ export class DashboardComponent implements OnInit {
           {
             text.push('<li style="color:#A6A8BA; display:inline; width:fit-content; margin-right:40px;">');
             text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
-            text.push('</li>'); 
+            text.push('</li>');
           }
           else{
             text.push('<li style="color:#A6A8BA; display:inline; width:fit-content;">');
             text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
             text.push('</li>');
           }
-      
+
         }
         text.push('</ul>');
         return text.join("") ;
       }}
- 
+
     });
     $("#visitorcharttwolegends").html(linchart.generateLegend());
 
@@ -873,7 +880,7 @@ export class DashboardComponent implements OnInit {
           pointHoverBorderColor: '#1C54DB',
           fill: false,
           lineTension: 0.0
-        
+
         },
         {
           data: [ 28, 48, 40, 19, 86, 27, 90 ],
@@ -896,16 +903,16 @@ export class DashboardComponent implements OnInit {
       legend:{position:'bottom',
     display:false},
       scales: {
-       
+
         xAxes: [{
             gridLines: {
                 display:false,
                 drawBorder: false,
 
             },
-          
+
         },
-        
+
       ],
         yAxes: [{
             gridLines: {
@@ -918,10 +925,10 @@ export class DashboardComponent implements OnInit {
               beginAtZero: true,
               maxTicksLimit: 8,
               padding: 14
-  
+
           },
         }],
-        
+
     },
     legendCallback: function(chart) {
       var text = [];
@@ -933,7 +940,7 @@ export class DashboardComponent implements OnInit {
         {
           text.push('<li style="color:#A6A8BA; display:inline; width:fit-content; margin-right:40px;">');
           text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
-          text.push('</li>'); 
+          text.push('</li>');
         }
         else{
           text.push('<li style="color:#A6A8BA; display:inline; width:fit-content;">');
@@ -945,7 +952,7 @@ export class DashboardComponent implements OnInit {
       return text.join("") ;
     }
     }
- 
+
     });
     $("#visitorchartonelegends").html(linchart.generateLegend());
 
@@ -955,7 +962,7 @@ export class DashboardComponent implements OnInit {
   // usercharts
   usercharts()
   {
-   
+
     var ctx = document.getElementById("userchart") as HTMLCanvasElement;
   var linchart= new Chart(ctx, {
       type: 'line',
@@ -1005,39 +1012,39 @@ export class DashboardComponent implements OnInit {
       },
       options:{ responsive: true,
         maintainAspectRatio: false,
-        
+
         legend:{
           position:"bottom",
           display:false
         },
-        
+
         scales: {
-       
+
           xAxes: [{
               gridLines: {
                   display:false,
                   drawBorder: false,
-  
+
               },
-            
+
           },
-          
+
         ],
           yAxes: [{
               gridLines: {
                   display:true,
                   drawBorder: false,
-  
+
               },
               ticks: {
                 display: true,
                 beginAtZero: true,
                 maxTicksLimit: 8,
                 padding: 14
-    
+
             },
           }],
-          
+
       },
       legendCallback: function(chart) {
         var text = [];
@@ -1056,18 +1063,18 @@ export class DashboardComponent implements OnInit {
             text.push('<span style="background-color:' + clk.pointBackgroundColor + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:45px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +clk.label);
             text.push('</li>');
           }
-        
+
         }
         text.push('</ul>');
         return text.join("") ;
       }}
- 
+
     });
     $("#userchartlegends").html(linchart.generateLegend());
 
    //   linchart.update()
   }
-  // priority ticket 
+  // priority ticket
   createprioritticketchart()
   {
     var ctx = document.getElementById("priorityticket") as HTMLCanvasElement;
@@ -1088,18 +1095,18 @@ export class DashboardComponent implements OnInit {
         responsive: false,
         tooltips: {
         displayColors: false,
-  
+
         callbacks: {
           title : () => null // or function () { return null; }
        }
      },
 
         legend:{
-          display:false,  
+          display:false,
           position:'top'
-           
+
         },
-      
+
         legendCallback: function(chart) {
           var text = [];
           text.push('<ul  style="list-style:none">');
@@ -1138,18 +1145,18 @@ export class DashboardComponent implements OnInit {
         responsive: false,
         tooltips: {
         displayColors: false,
-  
+
         callbacks: {
           title : () => null // or function () { return null; }
        }
      },
 
         legend:{
-          display:false,  
+          display:false,
           position:'top'
-           
+
         },
-      
+
         legendCallback: function(chart) {
           var text = [];
           text.push('<ul  style="list-style:none">');
@@ -1167,7 +1174,7 @@ export class DashboardComponent implements OnInit {
     // generate HTML legend
    $("#tickettypechartlegend").html(myChart.generateLegend());
   }
-   // browser chart 
+   // browser chart
    createbrowerschart()
    {
      var ctx = document.getElementById("browserchart") as HTMLCanvasElement;
@@ -1187,17 +1194,17 @@ export class DashboardComponent implements OnInit {
          responsive: false,
          tooltips: {
          displayColors: false,
-   
+
          callbacks: {
            title : () => null // or function () { return null; }
         }
       },
- 
+
          legend:{
-           display:false,  
-            
+           display:false,
+
          },
-       
+
          legendCallback: function(chart) {
            var text = [];
            text.push('<ul  style="list-style:none">');
@@ -1215,7 +1222,7 @@ export class DashboardComponent implements OnInit {
      // generate HTML legend
     $("#browserlegend").html(myChart.generateLegend());
    }
-// browser chart 
+// browser chart
 createoschart()
 {
   var ctx = document.getElementById("oschart") as HTMLCanvasElement;
@@ -1242,10 +1249,10 @@ createoschart()
    },
 
       legend:{
-        display:false,  
-         
+        display:false,
+
       },
-    
+
       legendCallback: function(chart) {
         var text = [];
         text.push('<ul  style="list-style:none">');
@@ -1262,7 +1269,7 @@ createoschart()
             text.push('<span style="background-color:' + ds.backgroundColor[i] + ';color: rgba(22, 39, 65, 0.8); margin-right:12px;height:14px; width:14px;border-radius:50%">' + '</span>' +'<span style="font-size:12px;line-height:14px;vertical-align: text-top;color: rgba(22, 39, 65, 0.8);">' +chart.data.labels[i]+'</span>'+'<span style="display:block;margin-left:25px; color: #162741; font-weight: 500;">'+ds.data[i] + '%'+'</span>');
             text.push('</li>');
           }
-          
+
         }
         text.push('</ul>');
         return text.join("") ;
@@ -1274,8 +1281,8 @@ createoschart()
 }
 
    getstatsonintg()
-  { 
-    try{ 
+  {
+    try{
     this.subscription=  this.sharedres.submitapplication$.subscribe(data=>{
       var status = JSON.parse(localStorage.getItem('user-status'))
     if(status?.is_online===null)
@@ -1283,7 +1290,7 @@ createoschart()
       this.getcallstats(data?.int_id)
       this.getcallcharts(data?.int_id)
     }
-    
+
     })
   // this.subscription.unsubscribe();
     }
@@ -1291,12 +1298,12 @@ createoschart()
     {
       this.messageservie.setErrorMessage(error);
     }
-    
+
   }
   // call stats
   getcallstats(intid)
-  { 
-    try 
+  {
+    try
     {
       const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
       var accesstoken=getdata?.access_token;
@@ -1322,21 +1329,21 @@ createoschart()
           this.answeredbyaiper=this.answeredbyaiper?.withsign;
           this.totalmissedper=this.totalmissedper?.withsign;
           this.totalincomingper=this.totalincomingper?.withsign;
-       
+
 
         })
     }
     catch (err){
-      
+
       this.messageservie.setErrorMessage(err.error.error);
     }
- 
+
   }
-  
+
   //  call charts
   getcallcharts(intid)
-  { 
-    try 
+  {
+    try
     {
       const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
       var accesstoken=getdata?.access_token;
@@ -1352,23 +1359,23 @@ createoschart()
       var labelforincoming1=this.getbarchartlabels(data['missed']);
       var labelforincoming2=this.getbarchartlabels(data['handed_to_ai']);
       var labelforincoming3=this.getbarchartlabels(data['incoming']);
-      
+
       this.incomingbarchart(dataforincoming,labelforincoming);
       this.missedbarchart(dataforincoming1,labelforincoming1);
       this.ansbyaibarchart(dataforincoming2,labelforincoming2);
       this.answeredbarchart(dataforincoming3,labelforincoming3);
- 
+
         })
     }
     catch (err){
       console.log(err)
       this.messageservie.setErrorMessage(err.error);
     }
- 
+
   }
   // get bar chart data
   getbarchartdata(val:Array<any>)
-  { 
+  {
     var data=[]
     val.forEach(element => {
       if(element.count==null)
@@ -1390,7 +1397,7 @@ createoschart()
     var date =new Date(element.date).toDateString();
     var update= date.substring(0, date.length-4)
         label.push(update)
-   
+
     });
     return label;
   }
@@ -1421,10 +1428,10 @@ createoschart()
       if(intg_id?.int_id!=null)
       {
       this.getcallstats(intg_id?.int_id)
-  
+
       }
     },500)
-    
+
   }
   loadcallchartinit()
   {
@@ -1433,10 +1440,10 @@ createoschart()
       if(intg_id?.int_id!=null)
       {
         this.getcallcharts(intg_id?.int_id)
-  
+
       }
     }, 500);
-    
+
   }
   generatecircleround()
   {Chart.defaults.doughnut    = Chart.helpers.clone(Chart.defaults.doughnut);
@@ -1448,29 +1455,29 @@ createoschart()
           var arcs          = this.getMeta().data;
           Chart.helpers.each(arcs, function(arc, i) {
               arc.transition(easingDecimal).draw();
-  
+
               var pArc   = arcs[i === 0 ? arcs.length - 1 : i - 1];
               var pColor = pArc._view.backgroundColor;
-  
+
               var vm         = arc._view;
               var radius     = (vm.outerRadius + vm.innerRadius) / 2;
               var thickness  = (vm.outerRadius - vm.innerRadius) / 2;
               var startAngle = Math.PI - vm.startAngle - Math.PI / 2;
               var angle      = Math.PI - vm.endAngle - Math.PI / 2;
-  
+
               ctx.save();
               ctx.translate(vm.x, vm.y);
-  
+
               ctx.fillStyle = i === 0 ? vm.backgroundColor : pColor;
               ctx.beginPath();
               ctx.arc(radius * Math.sin(startAngle), radius * Math.cos(startAngle), thickness, 0, 2 * Math.PI);
               ctx.fill();
-  
+
               ctx.fillStyle = vm.backgroundColor;
               ctx.beginPath();
               ctx.arc(radius * Math.sin(angle), radius * Math.cos(angle), thickness, 0, 2 * Math.PI);
               ctx.fill();
-  
+
               ctx.restore();
           });
       }
@@ -1484,7 +1491,7 @@ createoschart()
      var left, right, top, bottom, signX, signY, borderSkipped, radius;
      var borderWidth = vm.borderWidth;
      var cornerRadius = 4;
- 
+
      if (!vm.horizontal) {
          // bar
          left = vm.x - vm.width / 2;
@@ -1504,7 +1511,7 @@ createoschart()
          signY = 1;
          borderSkipped = vm.borderSkipped || 'left';
      }
- 
+
      // Canvas doesn't allow us to stroke inside the width so we can
      // adjust the sizes to fit if we're setting a stroke on the line
      if (borderWidth) {
@@ -1528,12 +1535,12 @@ createoschart()
              right = borderRight;
          }
      }
- 
+
      ctx.beginPath();
      ctx.fillStyle = vm.backgroundColor;
      ctx.strokeStyle = vm.borderColor;
      ctx.lineWidth = borderWidth;
- 
+
      // Corner points, from bottom-left to bottom-right clockwise
      // | 1 2 |
      // | 0 3 |
@@ -1543,45 +1550,45 @@ createoschart()
          [right, top],
          [right, bottom]
      ];
- 
+
      // Find first (starting) corner with fallback to 'bottom'
      var borders = ['bottom', 'left', 'top', 'right'];
      var startCorner = borders.indexOf(borderSkipped, 0);
      if (startCorner === -1) {
          startCorner = 0;
      }
- 
+
      function cornerAt(index) {
          return corners[(startCorner + index) % 4];
      }
- 
+
      // Draw rectangle from 'startCorner'
      var corner = cornerAt(0);
      ctx.moveTo(corner[0], corner[1]);
- 
+
      for (var i = 1; i < 4; i++) {
          corner = cornerAt(i);
        var  nextCornerId = i+1;
          if(nextCornerId == 4){
              nextCornerId = 0
          }
- 
+
          var nextCorner = cornerAt(nextCornerId);
- 
+
          var width = corners[2][0] - corners[1][0];
          var height = corners[0][1] - corners[1][1];
          var x = corners[1][0];
          var y = corners[1][1];
-         
+
           radius = cornerRadius;
-         
+
          // Fix radius being too large
          if(radius > height/2){
              radius = height/2;
          }if(radius > width/2){
              radius = width/2;
          }
- 
+
          ctx.moveTo(x + radius, y);
          ctx.lineTo(x + width - radius, y);
          ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
@@ -1591,19 +1598,19 @@ createoschart()
          ctx.quadraticCurveTo(x, y + height, x, y + height - 0);
          ctx.lineTo(x, y + radius);
          ctx.quadraticCurveTo(x, y, x + radius, y);
- 
+
      }
- 
+
      ctx.fill();
      if (borderWidth) {
          ctx.stroke();
      }
- }; 
+ };
   }
 
   //selectionpanel for selecting the panes
       onDateChange(event: Array<Date>)
-      { 
+      {
             console.log(event)
             var ismatched=false;
             var d = new Date(event[0]);
@@ -1615,39 +1622,39 @@ createoschart()
               var  month = '' + (d.getMonth() + 1);
               var   day = '' +(d.getDate());
               var  year = d.getFullYear();
-        
-            if (month.length < 2) 
+
+            if (month.length < 2)
              {
               month = '0' + month;
-        
+
              }
-            if (day.length < 2) 
+            if (day.length < 2)
               {
                 day = '0' + day;
-        
+
               }
               var dateStart1= [day,month,year].join('/');
               var  month1 = '' + (d1.getMonth() + 1);
             var   day1 = '' +( d1.getDate());
             var  year1 = d1.getFullYear();
-      
-          if (month1.length < 2) 
+
+          if (month1.length < 2)
            {
             month1 = '0' + month1;
-      
+
            }
-          if (day1.length < 2) 
+          if (day1.length < 2)
             {
               day1 = '0' + day1;
-      
+
             }
             var dateEnd1= [day1,month1,year1].join('/');
               this.datepreviewstart=dateStart1;
               this.datepreviewend=dateEnd1;
               ismatched=true;
-             
+
                 $('.btn').addClass('.selected');
-            
+
             }
           })
           if(ismatched==false)
@@ -1655,46 +1662,46 @@ createoschart()
             var  month = '' + (d.getMonth() + 1);
             var   day = '' +(d.getDate());
             var  year = d.getFullYear();
-      
-          if (month.length < 2) 
+
+          if (month.length < 2)
            {
             month = '0' + month;
-      
+
            }
-          if (day.length < 2) 
+          if (day.length < 2)
             {
               day = '0' + day;
-      
+
             }
             var dateStart= [day,month,year].join('/');
-      
+
             var  month1 = '' + (d1.getMonth() + 1);
             var   day1 = '' +( d1.getDate());
             var  year1 = d1.getFullYear();
-      
-          if (month1.length < 2) 
+
+          if (month1.length < 2)
            {
             month1 = '0' + month1;
-      
+
            }
-          if (day1.length < 2) 
+          if (day1.length < 2)
             {
               day1 = '0' + day1;
-      
+
             }
             var dateEnd= [day1,month1,year1].join('/');
-      
+
             this.rangeSelected= dateStart+ " -"+ dateEnd;
             this.datepreviewstart=dateStart;
             this.datepreviewend=dateEnd;
-                
+
           }
 
       }
       canceldaterange()
       {
         this.onDateChange([this.ranges[0].value[0],this.ranges[0].value[1]])
-  
+
       }
 
       // open mobile filterpopups

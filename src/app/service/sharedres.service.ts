@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { access } from 'node:fs';
+// import { access } from 'node:fs';
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { GigaaaApiService } from './gigaaaapi.service';
@@ -21,7 +21,7 @@ export class sharedres_service {
     private submitappsubject = new Subject<any>();
 
     agentrole$: Observable<any>;
-    private agentrolesubject = new Subject<any>(); 
+    private agentrolesubject = new Subject<any>();
 
     agentsetting$: Observable<any>;
     private agentsettingsubject = new Subject<any>();
@@ -67,8 +67,8 @@ var uuid=getdata?.subscription_id.subsid.uuid;
 if(accesstoken!=null &&uuid !=null)
 {
   try{
-    
-     
+
+
         const intid = JSON.parse(localStorage.getItem('intgid'))
         if(intid!=null)
         {
@@ -107,10 +107,10 @@ getinivationdetail()
     {
     this.gigaaaapi.getinvitationdetails(code).subscribe(data=>{
       console.log(data)
-       
+
           this.inviteduserdetailssubject.next(data);
-  
-        
+
+
     },err=>{
       this.message.setErrorMessage(err.error.error);
    this.inviteduserdetailssubject.next(null);
@@ -118,10 +118,10 @@ getinivationdetail()
     })
   }
   })
- 
+
 }
 
-// get run socket api 
+// get run socket api
 getcallsocketapi(val){
 this.runsocketapiusingint_idsubject.next(val)
 }

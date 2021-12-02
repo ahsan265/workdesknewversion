@@ -40,6 +40,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { agentsocketapi } from './service/agentsocketapi';
 
+//Auth imports
+import { LoginBtnComponent } from './useraccount/landingpage/login-btn/login-btn.component';
+import { LogoutComponent } from './logout/logout.component';
+import { CallbackComponent } from './callback/callback.component';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +56,9 @@ import { agentsocketapi } from './service/agentsocketapi';
     SidebarComponent,
     HomebarComponent,
     LinkexpiredialogComponent,
+    LoginBtnComponent,
+    LogoutComponent,
+    CallbackComponent
   ],
   imports: [
     ChartsModule,
@@ -74,8 +83,10 @@ import { agentsocketapi } from './service/agentsocketapi';
     MatListModule,
     MatSidenavModule,
     MatExpansionModule,
-    
-  ], 
+    // GigaaaSidebarModule,
+    // GigaaaHeaderModule.forRoot(environment),
+    // GigaaaTableModule
+  ],
   bootstrap: [AppComponent],
   providers: [gigaaasocketapi,agentsocketapi,UserloginserviceService,AuthService,GigaaaApiService,MessageService,sharedres_service,{
     provide: MatDialogRef,

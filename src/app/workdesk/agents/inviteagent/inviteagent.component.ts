@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/co
 import { async } from '@angular/core/testing';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { type } from 'node:os';
+// import { type } from 'node:os';
 import { element } from 'protractor';
 import { interval } from 'rxjs';
 import { GigaaaApiService } from 'src/app/service/gigaaaapi.service';
@@ -41,7 +41,7 @@ form: FormGroup;
     public dialogRef: MatDialogRef<InviteagentComponent>,
     private gigaaaApiService: GigaaaApiService,
     private messageService: MessageService) { }
-  
+
 
   ngOnInit(): void {
     interval(1000).subscribe(() => {
@@ -59,7 +59,7 @@ form: FormGroup;
     this.showlang=true;
     this.arraycounter=1;
     this.addmoreagents(1);
-  
+
 
   }
 
@@ -80,7 +80,7 @@ form: FormGroup;
       this.selectalllangstat=true
      }
     }
-    else{   
+    else{
       var index = this.selected_lang_ids.indexOf(id);
       if (index !== -1) {
         this.selected_lang_ids.splice(index, 1);
@@ -107,7 +107,7 @@ form: FormGroup;
       this.selected_lang_ids.push(element.id);
       //this.getlangselect(ind).push(new FormControl(element.id))
 
-    
+
    });
    if(this.selected_lang_ids.length==6)
    {
@@ -124,7 +124,7 @@ form: FormGroup;
       this.selected_lang_ids.splice(index, 1);
     }
     udpatedlang.push({name:element.name,status:false,id:element.id})
-      
+
  });
  if(this.selected_lang_ids.length==0)
  {
@@ -140,13 +140,13 @@ form: FormGroup;
   // add row for adding agent
   addmoreagents(val)
   {
-    
+
   //  this.addagentarray=Array(val)
-   
+
   }
 
   addmoreagentrow()
-  {   
+  {
     this.arraycounter++;
     this.addmoreagents(this.arraycounter)
 
@@ -154,8 +154,8 @@ form: FormGroup;
 
   // remove row for removing agent
   removeagentrow(val)
-  { 
-   
+  {
+
     const creds = this.form.controls.emailgroup as FormArray;
     creds.removeAt(val)
 
@@ -200,7 +200,7 @@ addinvitelist() {
         ],
       ],
       role:['agent', [Validators.required]],
-      language_ids:this.formBuilder.array(this.selected_lang_ids) 
+      language_ids:this.formBuilder.array(this.selected_lang_ids)
     })
   );
 console.log(creds.value)
@@ -223,7 +223,7 @@ console.log(creds.value)
 // }
 // addlang(index:number) {
 //   this.getlangselect(index).push(this.newlang());
-//  // 
+//  //
 // }
 
 removeandaddlang(e,empIndex:number,langindex:number,id) {
@@ -231,7 +231,7 @@ removeandaddlang(e,empIndex:number,langindex:number,id) {
   {
     this.getlangselect(empIndex).push(new FormControl(id))
     this.selectednumber=this.getlangselect(empIndex).length+"\xa0"+"Selected"
- 
+
   }
   else if(e.target.checked===false){
     console.log(langindex);
@@ -240,14 +240,14 @@ removeandaddlang(e,empIndex:number,langindex:number,id) {
 
  }
 
-  
-  
+
+
 }
 
 checkAll(e,empIndex:number) {
   if(e==true)
   {
-  
+
      // first remove all the languages
      this.lang.forEach((element )=> {
       let index = this.lang.indexOf(element.id);
@@ -260,7 +260,7 @@ checkAll(e,empIndex:number) {
       this.selectedonebyone=true;
      // this.getselectedonebyone();
     })
-   
+
   }
   else
   {
@@ -274,15 +274,15 @@ checkAll(e,empIndex:number) {
 
   }
 
- 
+
 
 }
 
 isRowSelected(i: any,j:any): boolean {
- 
+
     const existingFormControl = this.getlangselect(i).controls.find(c => c.value === j);
   return existingFormControl !== undefined
-  
+
 }
 
 checkhowmanyselected(val)
@@ -292,11 +292,11 @@ checkhowmanyselected(val)
       return "Not selected"
     }
     else if(val<6)
-    { 
+    {
       return val+"\xa0"+"Selected"
 
     }
-    
+
     else{
       return "All Selected"
 
@@ -305,7 +305,7 @@ checkhowmanyselected(val)
  setallcheckedbutton(val)
  {
   if(val==6)
-  {   
+  {
     return true;
   }
   else  if(val<6)
@@ -313,24 +313,24 @@ checkhowmanyselected(val)
     return false;
   }
  }
- 
+
  getselectedonebyone(val)
  {
-    
+
     if(val==6)
     {
       return true
     }
     else  if(val<=6){
-      return 
+      return
     }
 
-   
+
  }
 
 
 
-// invite agent endpoint 
+// invite agent endpoint
 
  Inviteagent(){
  var index;
@@ -338,7 +338,7 @@ checkhowmanyselected(val)
       var data=({"email":element.email,"role":element.role,"language_ids":element.language_ids})
       console.log(data)
         this.calladdgent(data);
-    
+
 
       });
       // this.sharedres.getrefreshagentlist(1);
@@ -360,11 +360,11 @@ checkhowmanyselected(val)
     }
     catch(err){
      this.messageService.setErrorMessage(err.error.error)
-    } 
-    
- 
+    }
+
+
       this.dialogRef.close();
-  
+
   }
   public async getlllangugaes(): Promise<void>{
     const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
@@ -377,11 +377,11 @@ checkhowmanyselected(val)
         console.log(updatearr)
         this.lang=updatearr;
       this.getalllanguage(false,0);
-    
+
     }
     catch(err){
       this.messageService.setErrorMessage(err.error.error)
     }
   }
-  
+
 }

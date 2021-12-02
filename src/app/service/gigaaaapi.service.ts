@@ -7,6 +7,8 @@ import { Subject } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Observer } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +17,8 @@ export class GigaaaApiService  {
   getagentdata$: Observable<any>;
 
   private agentdatasubject = new Subject<any>();
+
+  protected API_URL = `${environment.apiUrl}`;
 
   private apiUrl = 'https://gigaaa-core.westeurope.cloudapp.azure.com/api/v1/';
   private authurl='https://api.gigaaa.link/oauth/token';
@@ -26,11 +30,29 @@ export class GigaaaApiService  {
       'Accept': 'application/json'
     })
   };
- 
-  constructor(private http: HttpClient) { 
+
+  constructor(private http: HttpClient, private authService: AuthService) {
     this.getagentdata$ = this.agentdatasubject.asObservable().pipe();
 }
- 
+
+// Auth endpoint
+
+getHeaders() {
+  return {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Authorization: `Bearer ${this.authService.token.access_token}`
+  }
+}
+
+public getCurrentUser(): Observable<User> {
+  return this.http.get<User>(`${this.API_URL}/current-user`, {
+    headers: this.getHeaders(),
+  });
+}
+
+//
+
   public async loginUser(loginCredentials: LoginCredentials): Promise<any> {
     const apiUrl = this.apiUrl + 'auth/login';
     return await this.http.post(apiUrl, loginCredentials, this.httpOptions).toPromise()
@@ -148,13 +170,13 @@ export class GigaaaApiService  {
     .catch((err) => {
       throw (err);
     });
- 
+
   }
 
-  
+
   public  async getsubsid(accesstoken:any)
   {   const httpOptions: any = {
-   
+
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'application/json,*/*',
@@ -169,10 +191,10 @@ export class GigaaaApiService  {
    }
 
    public   getallagents(accesstoken:string,subsid:string,intid:string,show_active:number,show_invited:number,show_inactive:number,languages:any)
-   { 
+   {
    console.log(show_active,show_inactive,show_invited)
      const httpOptions: any = {
-    
+
      headers: new HttpHeaders({
        'Content-Type': 'application/json',
        'Accept': 'application/json,*/*',
@@ -182,13 +204,13 @@ export class GigaaaApiService  {
     const apiUrl = this.workdeskurl;
     console.log(this.http.get("https://gigaaa-customer-support.azurewebsites.net/private/agents?show_active="+show_active+"&show_invited="+show_invited+"&show_inactive="+show_inactive+"&languages="+languages+"&organization="+subsid+"&integration="+intid,httpOptions))
     return this.http.get("https://gigaaa-customer-support.azurewebsites.net/private/agents?show_active="+show_active+"&show_invited="+show_invited+"&show_inactive="+show_inactive+"&languages="+languages+"&organization="+subsid+"&integration="+intid,httpOptions)
-   
+
     }
 
 
     public   getallstats(accesstoken:string,subsid:string,intid:string)
     {   const httpOptions: any = {
-     
+
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Accept': 'application/json,*/*',
@@ -197,12 +219,12 @@ export class GigaaaApiService  {
     };
      const apiUrl = this.subsidurl;
      return  this.http.get(apiUrl+"/statistics?subscription="+subsid+"&integration="+intid,httpOptions)
-    
+
      }
 
      public   getalllistofqueueagent(accesstoken:string,orgid:string,intid:string)
      {   const httpOptions: any = {
-      
+
        headers: new HttpHeaders({
          'Content-Type': 'application/json',
          'Accept': 'application/json',
@@ -211,12 +233,12 @@ export class GigaaaApiService  {
      };
       const apiUrl = this.workdeskurl;
       return  this.http.get(apiUrl+"queue?organization="+orgid+"&integration="+intid+"&languages=",httpOptions)
-     
-      } 
+
+      }
 
       public   getagentinforusingid(accesstoken:string,subsid:string ,id:number)
       {   const httpOptions: any = {
-       
+
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Accept': 'application/json,*/*',
@@ -225,11 +247,11 @@ export class GigaaaApiService  {
       };
        const apiUrl = this.subsidurl;
        return  this.http.get(apiUrl+"/queue/"+id+"?subscription="+subsid,httpOptions)
-      
-       } 
+
+       }
        public   getallintegration(accesstoken:string,uuid:string)
        {   const httpOptions: any = {
-        
+
          headers: new HttpHeaders({
            'Content-Type': 'application/json',
            'Accept': 'application/json',
@@ -238,12 +260,12 @@ export class GigaaaApiService  {
        };
         const apiUrl = this.workdeskurl;
         return  this.http.get("https://gigaaa-customer-support.azurewebsites.net/private/integrations?organization="+uuid,httpOptions)
-       
-        } 
+
+        }
         public async updatelastusedintegration(accesstoken:string,uuid:string,integrationbody:any)
-       { 
+       {
           const httpOptions: any = {
-        
+
          headers: new HttpHeaders({
            'Content-Type': 'application/json',
            'Accept': 'application/json',
@@ -255,8 +277,8 @@ export class GigaaaApiService  {
         .catch((err) => {
           throw (err);
         });
-       
-        } 
+
+        }
 
    public  async assignrole(accesstoken:string,subsid:string,addrole:assignrole): Promise<any>
    {   const httpOptions: any = {
@@ -351,7 +373,7 @@ export class GigaaaApiService  {
      }
      public   getagentdislayname(accesstoken:string,subsid:string,intid:string)
      {   const httpOptions: any = {
-        
+
           headers: new HttpHeaders({
          'Content-Type': 'application/json',
          'Accept': 'application/json',
@@ -362,10 +384,10 @@ export class GigaaaApiService  {
       return  this.http.get(apiUrl+"/agent?subscription="+subsid+"&integration="+intid,httpOptions)
       }
 
-      //get visitors 
+      //get visitors
       public   getvisitorlist(accesstoken:string,orgid:string,intid:string)
       {   const httpOptions: any = {
-         
+
            headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -375,11 +397,11 @@ export class GigaaaApiService  {
        const apiUrl = this.workdeskurl;
        return  this.http.get("https://gigaaa-backend.azurewebsites.net/workdesk/visitors?organization="+orgid+"&integration="+intid,httpOptions)
        }
-       
-       //get visitors 
+
+       //get visitors
       public   getroleofagent(accesstoken:string,orgid:string,intid:string)
       {   const httpOptions: any = {
-         
+
            headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -391,10 +413,10 @@ export class GigaaaApiService  {
        }
 
 
-       // get token for agents socket api 
+       // get token for agents socket api
        public   getsockettoken(accesstoken:string,orgid:string,intid:string)
        {   const httpOptions: any = {
-        
+
             headers: new HttpHeaders({
            'Content-Type': 'application/json',
            'Accept': 'application/json',
@@ -455,7 +477,7 @@ export class GigaaaApiService  {
 
     // delete agents
     public async  deleteagent(accesstoken:string,orgid:string,intid:string,agentuuid:any): Promise<any>
-        {   
+        {
           console.log(orgid,intid);
           const httpOptions: any = {
             headers: new HttpHeaders({
@@ -469,8 +491,8 @@ export class GigaaaApiService  {
         .catch((err) => {
           throw (err);
         });
-        }   
-        
+        }
+
         // get agent online status
         public   getagentonlinestatus(accesstoken:string,orgid:string,intid:string)
         {   const httpOptions: any = {
@@ -502,9 +524,9 @@ export class GigaaaApiService  {
 
             // resend invitation
             public  async resendinvitation(accesstoken:string,orgid:string,intid:string,agentuuid:any): Promise<any>
-            {   
+            {
               const httpOptions: any = {
-         
+
               headers: new HttpHeaders({
              'Content-Type': 'application/json',
              'Accept': 'application/json',
@@ -521,9 +543,9 @@ export class GigaaaApiService  {
              // update agent settings
 
              public  async updateagentsettings(accesstoken:string,orgid:string,intid:string,agentuuid:any,agentbody:any): Promise<any>
-             {   
+             {
                const httpOptions: any = {
-          
+
                headers: new HttpHeaders({
               'Content-Type': 'application/json',
               'Accept': 'application/json',
@@ -563,8 +585,8 @@ export class GigaaaApiService  {
 
                  // get visitor stats
                  public   getcallchart(accesstoken:string,orgid:string,intid:string)
-                 { 
-                   console.log(orgid,intid)  
+                 {
+                   console.log(orgid,intid)
                    const httpOptions: any = {
                      headers: new HttpHeaders({
                       'Content-Type': 'application/json',
@@ -572,13 +594,13 @@ export class GigaaaApiService  {
                       'Authorization': `Bearer ${accesstoken}`
                   })
                   };
-       
+
                  return  this.http.get("https://gigaaa-customer-support.azurewebsites.net/private/analytics/call-chart?organization="+orgid+"&integration="+intid,httpOptions)
                  }
                  // get loggedin agent uuid
                  getloggedinagentuuid(accesstoken:string,orgid:string,intid:string)
                  {
-                  console.log(orgid,intid)  
+                  console.log(orgid,intid)
                   const httpOptions: any = {
                     headers: new HttpHeaders({
                      'Content-Type': 'application/json',
@@ -586,7 +608,7 @@ export class GigaaaApiService  {
                      'Authorization': `Bearer ${accesstoken}`
                  })
                  };
-      
+
                 return  this.http.get("https://gigaaa-customer-support.azurewebsites.net/private/agent?organization="+orgid+"&integration="+intid,httpOptions)
                  }
 }

@@ -9,11 +9,20 @@ import { GigaaaApiService } from './service/gigaaaapi.service';
 import { MessageService } from './service/messege.service';
 import { UserloginserviceService } from './service/userloginservice.service';
 import { agentsocketapi } from './service/agentsocketapi';
+import { CallbackComponent } from './callback/callback.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [  { path: 'dashboard', component: AppComponent},
 
 { path: 'workdesk', component: HomebarComponent},
-{ path: '', redirectTo: "dashboard",pathMatch: 'full'}];
+{ path: '', redirectTo: "dashboard",pathMatch: 'full'},
+{
+  path: "callback", component: CallbackComponent
+},
+{
+  path: "logout", component: LogoutComponent
+},
+];
 
 
 @NgModule({

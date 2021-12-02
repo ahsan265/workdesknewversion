@@ -11,12 +11,12 @@ import { UserloginserviceService } from './userloginservice.service';
 })
 
 export class AuthService implements CanActivate {
-  
+
   public user: BehaviorSubject<User>;
 
   constructor(private route: Router,
     private router: ActivatedRoute,private useraccountservice:UserloginserviceService,private message:MessageService,private gigaaaApiService: GigaaaApiService) {
-    
+
       this.user = new BehaviorSubject(this.getLoggedUser());
   }
 
@@ -29,7 +29,7 @@ export class AuthService implements CanActivate {
       expires_in: subtoken.expires_in,
       access_token:subtoken.access_token,
       refresh_token :subtoken.refresh_token};
-   
+
     localStorage.setItem('gigaaa-subscription', JSON.stringify(data))
     const token = JSON.parse(localStorage.getItem('gigaaa-subscription'))
 
@@ -48,16 +48,16 @@ export class AuthService implements CanActivate {
     console.log(token);
 
     localStorage.setItem('gigaaa-user', JSON.stringify(user));
-   
-   
+
+
 
     console.log(subsid)
     subsiddata['subscription_id']={subsid}
     localStorage.setItem('gigaaa-subscription', JSON.stringify(subsiddata))
     this.user.next(user);
-   
+
      this.message.setSuccessMessage("Logged In Successfully")
-  
+
     this.useraccountservice.getopendashboard(1);
 
     return user;
@@ -68,8 +68,8 @@ catch(err){
   // this.route.navigateByUrl('home');
   this.handleLoginRegisterError(err);
 }
-  
-  
+
+
   }
 
   private handleLoginRegisterError(response: any) {

@@ -24,6 +24,7 @@
     "@angular/router": "~9.1.11",
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.4",
+    "crypto-js": "^4.1.1",
     "foundation-sites": "^6.6.3",
     "google-libphonenumber": "^3.2.21",
     "jquery": "^3.5.1",

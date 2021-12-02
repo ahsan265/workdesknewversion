@@ -37,9 +37,9 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
 {name:"Console",url:'https://console.gigaaa.com/'},
 {name:"Messenger",url:'https://messenger.gigaaa.com/chat'}]
   constructor(private gigaaasocket:gigaaasocketapi,private sharedres:sharedres_service,private messege:MessageService,private gigaaaapi:GigaaaApiService,private route: Router,private useraccountservice:UserloginserviceService,
-    private AuthService:AuthService,private agentsocketapi:agentsocketapi) 
-    { 
-     
+    private AuthService:AuthService,private agentsocketapi:agentsocketapi)
+    {
+
     }
 
   ngOnInit(): void {
@@ -55,30 +55,30 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
  var icon1 = $(this).parent().find("#sidebarCollapse")
 
  if (icon1.hasClass('collapseicon1'))
-   
+
      icon1.removeClass('collapseicon1').addClass("collapseicon2");
  else
      icon1.removeClass('collapseicon2').addClass("collapseicon1");
 
  var icon = $(this).parent().find(".fas")
  if (icon.hasClass('fas fa-chevron-left'))
-   
+
      icon.removeClass('fas fa-chevron-left').addClass("fas fa-chevron-right");
  else
      icon.removeClass('fas fa-chevron-right').addClass("fas fa-chevron-left");
 });
-  // formobile 
+  // formobile
   $('.toggleicon').on('click', function () {
     $('#sidebar').toggleClass('topbar');
 
     var icon1 = $(this).parent().find("#toggleCollapse")
 
     if (icon1.hasClass('toggleicon1'))
-      
+
         icon1.removeClass('toggleicon1').addClass("toggleicon2");
     else
         icon1.removeClass('toggleicon2').addClass("toggleicon1");
-  
+
     });
     $('li.listitem').on('click', function () {
       $('#sidebar').toggleClass('topbar');
@@ -86,13 +86,14 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
       if(icon1){
         $('#toggleCollapse').removeClass('toggleicon2').addClass("toggleicon1");
     }
-    
-    
+
+
 
   });
    this.calltheagentsocket();
   }
   toggleSideBar(){
+    console.log('Brate moj');
     this.gigaaasocket.closewebsocketcalls();
     this.agentsocketapi.closeagentsocket();
     this.AuthService.logOff();
@@ -102,7 +103,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
 
  public async   getintegration(val,int_id)
     {
-   
+
       const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
       var accesstoken=getdata.access_token;
       var uuid=getdata.subscription_id.subsid.uuid;
@@ -114,7 +115,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
       this.sharedres.getuserole();
       this.sharedres.getcallsocketapi(1);
     }
-    
+
     setinetgration()
     {
     const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
@@ -123,7 +124,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
       const intg = JSON.parse(localStorage.getItem('intgid'))
       if(intg?.name!=null){
         this.defaultingt=intg.name;
-      //  this.showonlinetatus()         
+      //  this.showonlinetatus()
       }
       else{
         this.defaultingt="Select integration";
@@ -131,7 +132,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
       }
 
     }
-    
+
      getallintegrationlist()
     {
      try {
@@ -148,7 +149,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
         this.defaultingt=element.name;
         this.sharedres.getintegrationrelation(element.uuid);
        // this.getonlinestatus(accesstoken,uuid,element.uuid);
-          
+
        this.sharedres.getuserole();
        var intid = JSON.parse(localStorage.getItem('intgid'))
        this.gigaaaapi.getloggedinagentuuid(accesstoken,uuid,intid.int_id).subscribe(data=>{
@@ -157,20 +158,20 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
          this.sharedres.getcallsocketapi(1);
 
        });
-    
+
       }
-      
+
     });
-  
+
     })
-  
+
   } catch (error) {
     this.handleLoginRegisterError(error.error.error);
   }
  }
 
  calltheagentsocket()
- {    
+ {
   this.sharedres.runthesocketforagent$.subscribe(data=>{
     const status = JSON.parse(localStorage.getItem('user-status'))
     console.log(data);
@@ -201,7 +202,7 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/'},
 }
 
 getlanguage(name,flag)
-{  
+{
   var itemsToRemove = [name];
   this.languageflag=flag;
   this.languagetag=name;
@@ -234,11 +235,11 @@ getlanguage(name,flag)
 //     localStorage.setItem('user-status', JSON.stringify(data['is_online']));
 //     this.showonlinetatus(0);
 //   })
- 
+
 // }
  showonlinetatus(value:any){
   if(value==0)
-  { 
+  {
 
     this.online_status="Online"
     this.statusonline=true;
@@ -249,7 +250,7 @@ getlanguage(name,flag)
     this.statusonline=false;
 
   }
- 
+
  }
 
 // setonline status
@@ -269,8 +270,8 @@ public setonlinestatus(e)
       this.statusonline=false;
 
     }
-  
-   
+
+
     }
 // get agent role
 getagentrole()

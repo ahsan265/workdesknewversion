@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { add, defineLocale, enGbLocale } from 'ngx-bootstrap/chronos';
 import { BsDaterangepickerDirective, BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { off } from 'node:process';
+// import { off } from 'node:process';
 import { element, promise } from 'protractor';
 import { interval, Subject } from 'rxjs';
 import { GigaaaApiService } from 'src/app/service/gigaaaapi.service';
@@ -49,7 +49,7 @@ export class ChatComponent implements OnInit {
   date_two_selected:any;
   defaultab_selected:any;
 
-  // get last week days 
+  // get last week days
   beforeOneWeek = new Date(new Date().getTime() - 60 * 60 * 24 * 7 * 1000)
   day = this.beforeOneWeek.getDay()
   diffToMonday = this.beforeOneWeek.getDate() - this.day + (this.day === 0 ? -6 : 1)
@@ -96,10 +96,10 @@ export class ChatComponent implements OnInit {
      dateInputFormat: 'YYYY-MM-DD',
      ranges: this.ranges,
      todayHighlight: true,
-     preventChangeToNextMonth: true,  
+     preventChangeToNextMonth: true,
      startView:2,
      showPreviousMonth: false,
-     returnFocusToInput: true 
+     returnFocusToInput: true
    };
   alllanguage=[];
   idoflang=[];
@@ -196,38 +196,38 @@ call:any;
   option={
     duration:1000,
     startVal:1,
-  
+
   }
 
   ngOnDestroy() {
     this.destroyed$.next();
     this.destroyed$.complete();
   }
-  getElapsedTime(entry) { 
+  getElapsedTime(entry) {
     var myDate = new Date(entry);
     let totalSeconds = Math.floor((new Date().getTime() - myDate.getTime()) / 1000);
-  
+
     let hours = 0;
     let minutes = 0;
     let seconds = 0;
-  
+
     if (totalSeconds >= 3600) {
-      hours = Math.floor(totalSeconds / 3600);      
-      totalSeconds -= 3600 * hours;      
+      hours = Math.floor(totalSeconds / 3600);
+      totalSeconds -= 3600 * hours;
     }
-  
+
     if (totalSeconds >= 60) {
       minutes = Math.floor(totalSeconds / 60);
       totalSeconds -= 60 * minutes;
     }
-  
+
     seconds = totalSeconds;
-  
+
     return  0+":"+seconds
-   
+
   }
 
-  
+
   ////////////////////////////
   startTimer() {
     console.log("=====>");
@@ -247,8 +247,8 @@ call:any;
   pauseTimer() {
     clearInterval(this.interval);
   }
-  
-  ongoingcalltime(entry) { 
+
+  ongoingcalltime(entry) {
  // later record end time
  if(entry==null)
  {
@@ -303,7 +303,7 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
     //this.getalllanguage(true);
     this.getcalltype(true);
     this.getlistofoagentonappl();
-    
+
     this.getsocketapidata();
     this.getagentlist();
     this.selectedtabhold("incoming",true);
@@ -315,20 +315,20 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
     this.selectedtabholdcalltype("ongoing",true);
     this.selectedtabholdcalltype("missed",true);
     this.selectedtabholdcalltype("finished",true);
-    
+
     this.showselectednumberoflanguages("incoming","All Selected");
     this.showselectednumberoflanguages("ongoing","All Selected");
     this.showselectednumberoflanguages("missed","All Selected");
     this.showselectednumberoflanguages("finished","All Selected");
-   
+
     this.selectednumbercalls("incoming","All Selected");
     this.selectednumbercalls("ongoing","All Selected");
     this.selectednumbercalls("missed","All Selected");
     this.selectednumbercalls("finished","All Selected");
     setTimeout(()=>{
-      this.getlllangugaes();    
+      this.getlllangugaes();
     }, 250);
-    this.getlllangugaes();    
+    this.getlllangugaes();
 
     $(document).ready(function() {
       $(document).foundation();
@@ -341,7 +341,7 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
   }
 
 
-  
+
   // get call type
 
   getcalltype(val)
@@ -359,7 +359,7 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
  });
  }
  this.Call=udpatedlang;
-  
+
 }
 
 
@@ -403,14 +403,14 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
   }
 
   getagentlist()
-  {   
+  {
   this.sharedres.submitapplication$.subscribe(data=>{
     console.log(data)
     // this.gigaaasocketapi.sendfilterparams({"tab":this.defaultab_selected,"languages":this.idsoflanguages,"call_type":this.idsofcalltype});
     // this.onDateChange([this.date_one_selected,this.date_two_selected],this.defaultab_selected);
     })
   }
-  
+
 
   getsocketapidata()
   {
@@ -458,7 +458,7 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
         }
          if(this.size_answered_call==0)
         {
-           this.showanswered_message=false; 
+           this.showanswered_message=false;
            this.showanswered=true;
         }
         else if(this.size_answered_call!=0)
@@ -550,7 +550,7 @@ else
   }
 
 }
-// change device 
+// change device
 changedevicetype(val)
 {
  if(val==true)
@@ -609,7 +609,7 @@ selectsubscription(val){
    }
 });
 }
-// call type 
+// call type
 changecalltype(val)
 {
 if(val==false)
@@ -633,7 +633,7 @@ else if (val==true){
 
 
 gettimeduration(val)
-{  
+{
   this.getElapsedTime(val)
 
   var myDate = new Date(val);
@@ -666,7 +666,7 @@ public async dialcall(callid:any): Promise<void>
 
 calculatetime(totalSeconds)
 {
-  
+
   totalSeconds = Number(totalSeconds);
     var h = Math.floor(totalSeconds / 3600);
     var m = Math.floor(totalSeconds % 3600 / 60);
@@ -681,14 +681,14 @@ calculatetime(totalSeconds)
 
 }
 
-// get reason for missed call 
+// get reason for missed call
 
 getreasonformissedcall(val)
 {
 
- 
+
     return val
-  
+
 }
 
 search(term:string,column:any) {
@@ -712,13 +712,13 @@ search(term:string,column:any) {
   if(column=='finished')
   {
     this.answered_call=result;
-    
+
 
   }
   else if(column=='missed')
   {
     this.missed_call=result;
-    
+
 
   }
   else if(column=='incoming')
@@ -792,7 +792,7 @@ search(term:string,column:any) {
   }
    getalllanguage(val,tabs,signal)
    {
-     
+
       var udpatedlang=[];
       var languageid=[];
       this.lang.forEach(element=>{
@@ -803,22 +803,22 @@ search(term:string,column:any) {
       }
         })
       if(val==true)
-      {    
+      {
 
     this.lang.forEach(element => {
        udpatedlang.push({name:element.name,status:true,id:element.id})
        languageid.push(element.id)
     });
 
-    
-  
+
+
     this.showselectednumberoflanguages(this.selectedtabs,this.lang.length +"\xa0"+"Selected")
       if(this.lang.length==6)
       {
           this.showselectednumberoflanguages(this.selectedtabs,"All Selected")
           this.selectedtabhold(this.selectedtabs,true)
       }
-    
+
   }
   else if(val==false){
       this.lang.forEach(element => {
@@ -832,7 +832,7 @@ search(term:string,column:any) {
       this.showselectednumberoflanguages(this.selectedtabs,"Not Selected")
       this.selectedtabhold(this.selectedtabs,false)
 
-  
+
   }
 
 
@@ -897,21 +897,21 @@ search(term:string,column:any) {
    }
    // select languages one by one
    selectlanguageonebyone(e,id)
-   {      
+   {
      console.log(this.selectedtabs,e,id)
      if(this.selectedtabs=="incoming")
      {
       if(e==true)
       { var objIndex = this.lang1.findIndex((obj => obj.id == id));
-        
+
         this.lang1[objIndex].status = true;
        this.idsoflanguages1.push(id);
        if(this.idsoflanguages1.length==6)
        {
         this.showselectednumberoflanguages(this.selectedtabs,"All Selected")
-  
+
         this.selectedtabhold(this.selectedtabs,true)
-  
+
        }
        else{
         this.showselectednumberoflanguages(this.selectedtabs,this.idsoflanguages1.length +"\xa0"+"Selected")
@@ -921,7 +921,7 @@ search(term:string,column:any) {
      }
      else if(e==false)
      { var objIndex = this.lang1.findIndex((obj => obj.id == id));
-      
+
       this.lang1[objIndex].status = false;
       var index = this.idsoflanguages1.indexOf(id);
       if (index !== -1) {
@@ -938,13 +938,13 @@ search(term:string,column:any) {
       this.gigaaasocketapi.sendfilterparams({"tab":this.selectedtabs,"languages":this.idsoflanguages1,"call_type":this.idsofcalltype1});
 
      }
-    
+
      }
      else if(this.selectedtabs=="ongoing")
      {
       if(e==true)
     { var objIndex = this.lang2.findIndex((obj => obj.id == id));
-      
+
       this.lang2[objIndex].status = true;
      this.idsoflanguages2.push(id);
      if(this.idsoflanguages2.length==6)
@@ -961,13 +961,13 @@ search(term:string,column:any) {
    }
    else if(e==false)
    { var objIndex = this.lang2.findIndex((obj => obj.id == id));
-    
+
     this.lang2[objIndex].status = false;
     var index = this.idsoflanguages2.indexOf(id);
     if (index !== -1) {
       this.idsoflanguages2.splice(index, 1);
     }
-    
+
     if(this.idsoflanguages2.length==0)
     {
      this.showselectednumberoflanguages(this.selectedtabs,"Not Selected")
@@ -979,13 +979,13 @@ search(term:string,column:any) {
     this.gigaaasocketapi.sendfilterparams({"tab":this.selectedtabs,"languages":this.idsoflanguages2,"call_type":this.idsofcalltype2});
 
    }
-    
+
      }
      else if(this.selectedtabs=="missed")
      {
       if(e==true)
       { var objIndex = this.lang3.findIndex((obj => obj.id == id));
-        
+
         this.lang3[objIndex].status = true;
        this.idsoflanguages3.push(id);
        if(this.idsoflanguages3.length==6)
@@ -995,21 +995,21 @@ search(term:string,column:any) {
        }
        else{
         this.showselectednumberoflanguages(this.selectedtabs,this.idsoflanguages3.length +"\xa0"+"Selected")
-  
+
        }
        this.gigaaasocketapi.sendfilterparams({"tab":this.selectedtabs,"languages":this.idsoflanguages3,"call_type":this.idsofcalltype3});
 
      }
      else if(e==false)
      { var objIndex = this.lang3.findIndex((obj => obj.id == id));
-      
+
       this.lang3[objIndex].status = false;
       var index = this.idsoflanguages3.indexOf(id);
       if (index !== -1) {
         this.idsoflanguages3.splice(index, 1);
-  
+
       }
-      
+
       if(this.idsoflanguages3.length==0)
       {
        this.showselectednumberoflanguages(this.selectedtabs,"Not Selected")
@@ -1021,13 +1021,13 @@ search(term:string,column:any) {
       this.gigaaasocketapi.sendfilterparams({"tab":this.selectedtabs,"languages":this.idsoflanguages3,"call_type":this.idsofcalltype3});
 
      }
-    
+
      }
      else if(this.selectedtabs=="finished")
      {
       if(e==true)
       { var objIndex = this.lang4.findIndex((obj => obj.id == id));
-        
+
         this.lang4[objIndex].status = true;
        this.idsoflanguages4.push(id);
        if(this.idsoflanguages4.length==6)
@@ -1043,35 +1043,35 @@ search(term:string,column:any) {
      }
      else if(e==false)
      { var objIndex = this.lang4.findIndex((obj => obj.id == id));
-      
+
       this.lang4[objIndex].status = false;
       var index = this.idsoflanguages4.indexOf(id);
       if (index !== -1) {
         this.idsoflanguages4.splice(index, 1);
       }
-      
+
       if(this.idsoflanguages4.length==0)
       {
        this.showselectednumberoflanguages(this.selectedtabs,"Not Selected")
       }
       else{
        this.showselectednumberoflanguages(this.selectedtabs,this.idsoflanguages4.length +"\xa0"+"Selected")
-  
+
        this.selectedtabhold(this.selectedtabs,false)
-  
+
       }
       this.gigaaasocketapi.sendfilterparams({"tab":this.selectedtabs,"languages":this.idsoflanguages4,"call_type":this.idsofcalltype4});
 
      }
-    
+
      }
-   
+
 
 
  }
- // select call type 
+ // select call type
  selectallcalltype(e,tabs,signal)
- { 
+ {
    var updatecalltypes=[];
    var nameofcalltype=[];
    if(e==true)
@@ -1105,7 +1105,7 @@ search(term:string,column:any) {
 
    }
    console.log(nameofcalltype)
- 
+
 
    if(tabs=="incoming")
  {
@@ -1165,9 +1165,9 @@ search(term:string,column:any) {
 //  }
 
  }
- 
+
  selectcalltypeonebyone(e,name)
- { 
+ {
   if(this.selectedtabs=="incoming")
   {
     if(e==true)
@@ -1208,7 +1208,7 @@ search(term:string,column:any) {
      // this.totalsizeofcalltype="Not Selected";
       this.selectednumbercalls(this.selectedtabs,"Not Selected")
     }
-    else 
+    else
     {
      // this.totalsizeofcalltype= this.idsofcalltype.length +"\xa0"+"Selected";
       this.selectednumbercalls(this.selectedtabs,this.idsofcalltype1.length +"\xa0"+"Selected")
@@ -1218,7 +1218,7 @@ search(term:string,column:any) {
       }
       this.gigaaasocketapi.sendfilterparams({"tab":this.selectedtabs,"languages":this.idsoflanguages1,"call_type":this.idsofcalltype1});
 
-      
+
   }
   else if(this.selectedtabs=="ongoing")
   {
@@ -1260,7 +1260,7 @@ search(term:string,column:any) {
      // this.totalsizeofcalltype="Not Selected";
       this.selectednumbercalls(this.selectedtabs,"Not Selected")
     }
-    else 
+    else
     {
      // this.totalsizeofcalltype= this.idsofcalltype.length +"\xa0"+"Selected";
       this.selectednumbercalls(this.selectedtabs,this.idsofcalltype2.length +"\xa0"+"Selected")
@@ -1311,7 +1311,7 @@ else if(e==false)
    // this.totalsizeofcalltype="Not Selected";
     this.selectednumbercalls(this.selectedtabs,"Not Selected")
   }
-  else 
+  else
   {
    // this.totalsizeofcalltype= this.idsofcalltype.length +"\xa0"+"Selected";
     this.selectednumbercalls(this.selectedtabs,this.idsofcalltype3.length +"\xa0"+"Selected")
@@ -1362,7 +1362,7 @@ else if(e==false)
    // this.totalsizeofcalltype="Not Selected";
     this.selectednumbercalls(this.selectedtabs,"Not Selected")
   }
-  else 
+  else
   {
    // this.totalsizeofcalltype= this.idsofcalltype.length +"\xa0"+"Selected";
     this.selectednumbercalls(this.selectedtabs,this.idsofcalltype4.length +"\xa0"+"Selected")
@@ -1374,7 +1374,7 @@ else if(e==false)
     this.gigaaasocketapi.sendfilterparams({"tab":this.selectedtabs,"languages":this.idsoflanguages4,"call_type":this.idsofcalltype4});
 
   }
-   
+
      // this.gigaaasocketapi.sendfilterparams();
 
  }
@@ -1473,8 +1473,8 @@ this.allselectedcall2=status;
 
  }
  onDateChange(event: Array<Date>,tabsname:any )
- { 
-    
+ {
+
        var ismatched=false;
        var d = new Date(event[0])
        var d1 = new Date(event[1])
@@ -1496,48 +1496,48 @@ this.allselectedcall2=status;
         var  month = '' + (d.getMonth() + 1);
         var   day = '' +(d.getDate());
         var  year = d.getFullYear();
-  
-      if (month.length < 2) 
+
+      if (month.length < 2)
        {
         month = '0' + month;
-  
+
        }
-      if (day.length < 2) 
+      if (day.length < 2)
         {
           day = '0' + day;
-  
+
         }
         var dateStart= [day,month,year].join('/');
-  
+
         var  month1 = '' + (d1.getMonth() + 1);
         var   day1 = '' +( d1.getDate());
         var  year1 = d1.getFullYear();
-  
-      if (month1.length < 2) 
+
+      if (month1.length < 2)
        {
         month1 = '0' + month1;
-  
+
        }
-      if (day1.length < 2) 
+      if (day1.length < 2)
         {
           day1 = '0' + day1;
-  
+
         }
         var dateEnd= [day1,month1,year1].join('/');
      this.ranges.filter(x=>{
 
 
       if(x.value[0].toDateString()==d.toDateString()&&x.value[1].toDateString()==d1.toDateString())
-      { 
-     
-   
+      {
+
+
          if(tabsname=="missed_date")
          {
           this.rangeSelected1=x.label
             this.datepreviewstart=dateStart;
             this.datepreviewend=dateEnd;
             this.gigaaasocketapi.send_daterange_params({tab:tabsname,start_date:date1.toISOString(),end_date:date2.toISOString()})
-            
+
          }
          else if(tabsname=="finished_date")
          {
@@ -1550,7 +1550,7 @@ this.allselectedcall2=status;
          ismatched=true;
         // this.bsValue=[x.value[0].toDateString(),x.value[0].toDateString()],
            $('.btn').addClass('.selected');
-       
+
        }
      })
      if(ismatched==false)
@@ -1558,32 +1558,32 @@ this.allselectedcall2=status;
        var  month = '' + (d.getMonth() + 1);
        var   day = '' +(d.getDate());
        var  year = d.getFullYear();
- 
-     if (month.length < 2) 
+
+     if (month.length < 2)
       {
        month = '0' + month;
- 
+
       }
-     if (day.length < 2) 
+     if (day.length < 2)
        {
          day = '0' + day;
- 
+
        }
        var dateStart= [day,month,year].join('/');
- 
+
        var  month1 = '' + (d1.getMonth() + 1);
        var   day1 = '' +( d1.getDate());
        var  year1 = d1.getFullYear();
- 
-     if (month1.length < 2) 
+
+     if (month1.length < 2)
       {
        month1 = '0' + month1;
- 
+
       }
-     if (day1.length < 2) 
+     if (day1.length < 2)
        {
          day1 = '0' + day1;
- 
+
        }
        var dateEnd= [day1,month1,year1].join('/');
 
@@ -1602,7 +1602,7 @@ this.allselectedcall2=status;
         this.gigaaasocketapi.send_daterange_params({tab:tabsname,start_date:date1.toISOString(),end_date:date2.toISOString()})
 
       }
-           
+
      }
 
  }

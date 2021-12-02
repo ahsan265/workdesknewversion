@@ -42,7 +42,7 @@ export class HomebarComponent implements OnInit {
 
   //this.route.navigate(['dashboard']);
   }
-  
+
   changeRoute(dashboardName:any){
 
     this.dashBoardTitle=dashboardName;
@@ -56,6 +56,7 @@ getlanguagecode(val,img)
   this.languageflag=img;
  }
  logout(){
+   console.log('Idemo');
   this.AuthService.logOff();
     this.useraccountservice.getopendashboard(2);
     this.route.navigate(['/']);}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment } from '@angular/router';
-import { type } from 'node:os';
-import { runInThisContext } from 'node:vm';
+// import { type } from 'node:os';
+// import { runInThisContext } from 'node:vm';
 import { Observable, Observer } from 'rxjs';
 import { Subject } from 'rxjs';
 import { webSocket, WebSocketSubject } from "rxjs/webSocket";
@@ -16,19 +16,19 @@ export class gigaaasocketapi {
   tokenque:any;
   tokenvisit:any;
   closestate:any;
-  checksocketopen:boolean=false;  
+  checksocketopen:boolean=false;
    currentStateofcallsocket:any;
-  
+
   getlistofagentsinque$: Observable<any>;
   private getlistofagentsinquesubjecct = new Subject<any>();
    ws:  WebSocket;
   getlistofvisitor$: Observable<any>;
   private getlistofvisitorsubject = new Subject<any>();
 
-  constructor(private message:MessageService,private sharedres:sharedres_service) { 
+  constructor(private message:MessageService,private sharedres:sharedres_service) {
     this.getlistofagentsinque$ = this.getlistofagentsinquesubjecct.asObservable().pipe();
     this.getlistofvisitor$=this.getlistofvisitorsubject.asObservable().pipe();
-  
+
     this.getlistofliveque();
     this.callsocketapi_by_selecting_intgid();
   }
@@ -38,7 +38,7 @@ callsocketapi_by_selecting_intgid()
 
   this.sharedres.runsocketapiusingint_id$.subscribe(data=>{
     if(data==1 && socketvalue!=true)
-    {   
+    {
         this.getlistofliveque();
      //   this.checksocketopen=false;
     }
@@ -48,15 +48,15 @@ callsocketapi_by_selecting_intgid()
     //   this.checksocketopen=true;
 
     // }
-  
-    
+
+
   })
 
 }
 
 
    getlistofliveque()
-  {   
+  {
     var getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
     var accesstoken=getdata?.access_token;
       var uuid=getdata?.subscription_id.subsid.uuid;
@@ -64,11 +64,11 @@ callsocketapi_by_selecting_intgid()
       var integrationid=intid?.int_id;
   //  console.log(accesstoken,uuid,integrationid)
    if(accesstoken!=null&&uuid!=null&&integrationid!=null)
-     {   
+     {
 
       var  url="wss://websockets.gigaaa.com/customer-support/queue?organization="+uuid+"&integration="+integrationid+"&token="+accesstoken;
      this.ws = new WebSocket(url);
-   
+
      this.ws.onopen=(e)=>{
         this.message.setErrorMessage("socket-"+e.type);
         this.checksocketopen=true;
@@ -79,18 +79,18 @@ callsocketapi_by_selecting_intgid()
         //     this.sendfilterparams(this.currentStateofcallsocket);
         //     this.closestate=null;
         //   }
-          
+
       }
-    
+
        this.ws.onmessage = (e) => {
         console.log(e.data);
         if(e.data !="ping")
         {
           var data=JSON.parse(e.data)
           console.log(data);
-          this.getlistofagentsinquesubjecct.next(data);   
+          this.getlistofagentsinquesubjecct.next(data);
           const online = JSON.parse(localStorage.getItem('user-status'))
-       
+
           if(data['new_call']==true&&online['is_online']==true)
             {
               this.getdesktopnotification("Customer Support","Please connect call")
@@ -99,7 +99,7 @@ callsocketapi_by_selecting_intgid()
         else {
          this.ws.send("pong")
         }
-      
+
       };
 
       this.ws.onerror=(e)=>{
@@ -112,7 +112,7 @@ callsocketapi_by_selecting_intgid()
          this.getlistofliveque();
         }, 100);
       }
-   
+
       }
 
   }
@@ -129,10 +129,10 @@ callsocketapi_by_selecting_intgid()
             notification.close();
         },3000);
       }
-     
+
   });
   }
-  // send params to get filter calls data 
+  // send params to get filter calls data
    sendfilterparams(data:any)
   { console.log(data)
     this.currentStateofcallsocket=data;
@@ -140,14 +140,14 @@ callsocketapi_by_selecting_intgid()
     {
       this.ws.send(JSON.stringify(data))    }
   }
- 
-  // send params to get filter calls data 
+
+  // send params to get filter calls data
   send_daterange_params(data:any)
-  { 
+  {
       console.log(data)
     if(this.ws.readyState==this.ws.OPEN)
     {
-      this.ws.send(JSON.stringify(data))    
+      this.ws.send(JSON.stringify(data))
     }
     }
     closewebsocketcalls()
@@ -156,5 +156,5 @@ callsocketapi_by_selecting_intgid()
         this.ws.close();
       }
     }
- 
+
 }

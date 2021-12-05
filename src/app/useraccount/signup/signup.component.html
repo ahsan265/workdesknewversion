@@ -1,0 +1,174 @@
+
+
+  <div class="grid-x" style="text-align: center; ">
+    <div class="cell large-12" style="text-align: end;">
+      <span class="material-icons closebtn" mat-button [mat-dialog-close]="true" cdkFocusInitial>
+        close
+        </span>
+    </div>
+  </div>
+        
+        
+<div class="grid-x" style="margin-top: 40px;">
+    <div  class="cell large-12">
+     <p class="heading">Register</p>
+    </div>
+     </div>
+    <form  class="grid-x" name="form" [formGroup]="form" (ngSubmit)="registerUser()" >
+
+                            <div class="cell large-12" style="text-align: left; margin-top: 36px;">
+                            
+                              <input placeholder="First Name" type="text" class="form_input" formControlName="first_name" [ngClass]="{'is-invalid':form.get('first_name').touched && form.get('first_name').invalid}" required>
+                              <div *ngIf="form.get('first_name').touched && form.get('first_name').invalid"  class="invalid-feedback">
+                                <div *ngIf="form.get('first_name').errors.required">First Name is required</div>
+                              </div>
+                             </div>
+                             <div class="cell large-12" style="text-align: left;">
+                            
+                              <input placeholder="Last Name" type="text" class="form_input" formControlName="last_name" [ngClass]="{'is-invalid':form.get('last_name').touched && form.get('last_name').invalid}" required>
+                              <div *ngIf="form.get('last_name').touched && form.get('last_name').invalid"  class="invalid-feedback">
+                                <div *ngIf="form.get('last_name').errors.required">Last Name is required</div>
+                              </div>
+                             </div>
+                             <div class="cell large-12" style="text-align: left;">
+                            
+                              <input placeholder="E-mail Address" type="email" class="form_input" formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}" required>
+                              <div *ngIf="form.get('email').touched && form.get('email').invalid"  class="invalid-feedback">
+                                <div *ngIf="form.get('email').errors.required">Email Name is required</div>
+                                <div *ngIf="form.get('email').errors.email">Email must be a valid email Address</div>
+                              </div>
+                             </div>
+                             <div class="cell large-12">
+                              <input placeholder="Password" [type]="passType" spellcheck="false"  class="form_input"
+                              formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}" >
+                              
+                              <span class="passwordtoggle"><img (click)="changePasswordType('password')" [src]="srcpass1" alt="" srcset=""></span>
+                              <div *ngIf="form.get('password').touched && form.get('password').invalid"  class="invalid-feedback">
+                                <div *ngIf="form.get('password').errors.required">Password is required</div>
+                              </div>  
+                             </div>
+                            
+                             <div class="cell large-12">
+                              <input placeholder="Confirm Password" [type]="passType1" spellcheck="false"  class="form_input"
+                              formControlName="confirmPassword" [ngClass]="{'is-invalid':form.get('password').touched && form.get('confirmPassword').invalid}" >
+                  
+                              <span class="passwordtoggle"><img (click)="changePasswordType('confirmPassword')" [src]="srcpass2" alt="" srcset=""></span>
+                              <div *ngIf="form.get('confirmPassword').touched && form.get('confirmPassword').invalid"  class="invalid-feedback">
+                                <div *ngIf="form.get('confirmPassword').errors.required">Password is required</div>
+                                <div *ngIf="form.hasError('notSame')" >
+                                    Passwords do not match
+                                    </div>
+
+                              </div> 
+                             </div>
+                           
+                            
+                              <div class=" cell large-12"  style="margin-bottom: 24px; margin-top: 24px;">
+                                  <input type="checkbox" formControlName="privatePolicy"  required  style="margin-right: 12px;">
+                                  <span style="    display: inline-block;
+                                  vertical-align: super;"><p class="terms">
+                                    I agree to the gigaaa <span class="register">Terms of Use</span> and <span class="register">Privacy Policy</span> 
+                                  </p>
+                                     </span>
+                                     <div *ngIf="form.get('privatePolicy').touched && form.get('privatePolicy').invalid"  class="invalid-feedback">
+                                      <div *ngIf="form.get('privatePolicy').errors.required">Policy marked is required</div>
+                                    </div>
+                              </div>
+                                                      
+                              <div class="cell large-12" style="text-align: center;">
+                                <button   type="submit"  class="loginbtn">Create Account</button>
+                              </div>
+                        </form> 
+                       <div class="grid-x" style="margin-top: 24px;">
+                        <div class="cell large-12" style="text-align: center;">
+                          <p class="newtogiga">
+                            Already have an account?<span class="login" (click)="openDialogLogin()">Log in</span> 
+                          </p>
+                        </div>
+                       </div>
+          
+ 
+  
+   
+  
+  
+      
+  
+  
+
+
+    <!-- <div fxLayout="column" style="text-align: center; ">
+        <div style="text-align: end;">
+          <span class="material-icons closebtn" mat-button [mat-dialog-close]="true" cdkFocusInitial>
+            close
+            </span>
+        
+        </div>
+       
+            
+              <div fxLayout="column"   fxLayoutAlign="center center"  >
+                  <div fxLayout="row" fxLayoutAlign="center center">
+                      <img class="logo" src="../../../assets/gigaaa_logo.png" alt="">
+                  </div>
+                  <div  class="header" fxLayout="row" fxLayoutAlign="center center">
+         
+                    <p class="formtitle">Create New Account</p>
+                    </div>
+                <form [formGroup]="form" (ngSubmit)="registerUser()">
+                  
+              
+                      <div class="formlayout" >  
+                       <div style="text-align: left;">
+                        <label for="" class="labal">
+                          First Name
+                        </label>
+                        <input type="text" class="form_input" formControlName="first_name" [ngClass]="{'is-invalid':form.get('first_name').touched && form.get('first_name').invalid}" required>  
+                        <div *ngIf="form.get('first_name').touched && form.get('first_name').invalid"  class="invalid-feedback">
+                          <div *ngIf="form.get('first_name').errors.required">Firstname Name is required</div>
+                        </div>
+                        <label for="" class="labal">
+                          Last Name
+                        </label>
+                        <input type="text" class="form_input" formControlName="last_name" [ngClass]="{'is-invalid':form.get('last_name').touched && form.get('last_name').invalid}" required>
+                        <div *ngIf="form.get('last_name').touched && form.get('last_name').invalid"  class="invalid-feedback">
+                          <div *ngIf="form.get('last_name').errors.required">Lastname Name is required</div>
+                        </div>
+          
+                        <label for="" class="labal">
+                          E-Mail
+                        </label>
+                        <input type="text" class="form_input" formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}" required>
+                        <div *ngIf="form.get('email').touched && form.get('email').invalid"  class="invalid-feedback"  >
+                          <div *ngIf="form.get('email').errors.required">Email Name is required</div>
+                          <div *ngIf="form.get('email').errors.email">Email must be a valid email Address</div>
+                        </div>
+                        <label for="" class="labal">
+                          Password
+                        </label>
+                        <input type="password" spellcheck="false"  class="form_input" formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}">
+                       
+                        <span class="passwordtoggle">show</span>
+                        <div *ngIf="form.get('password').touched && form.get('password').invalid"  class="invalid-feedback">
+                          <div *ngIf="form.get('password').errors.required">Password is required</div>
+                        </div>   
+                               
+                       </div>
+                      </div>
+                      <span></span>
+                      <div class="form_input_checkbox">
+                          <input type="checkbox"  required formControlName="privatePolicy"  style="margin-right: 4px;" />
+                         I agree to the gigaaa <b>Terms of Use</b> and <b>Privacy Policy</b>
+                         <div *ngIf="form.get('privatePolicy').touched && form.get('privatePolicy').invalid"  class="invalid-feedback">
+                          <div *ngIf="form.get('privatePolicy').errors.required">Policy maarked is required</div>
+                        </div> 
+                      </div>
+                      <button  class="loginbtn">Sign Up</button>
+                      </form>
+                        <p class="footertext">
+                          Already have an account? <a (click)="openDialogLogin()" class="inforicon">Log In<mat-icon  style="margin-top: 5px; font-size: 15px; display: inline-block;" [inline]="true">arrow_right</mat-icon></a></p>
+              </div>
+
+            </div>
+             
+      
+       -->

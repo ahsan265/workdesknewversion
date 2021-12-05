@@ -1,0 +1,129 @@
+<div class="gigaaa-topbar" *ngIf="!this.authService.isLoggedIn()">
+  <div class="icon-image">
+
+  </div>
+</div>
+
+<div class="grid-x content-area">
+  <div class="cell large-8">
+    <div class="grid-x">
+      <div class="cell large-12">
+        <p class="descp">Automate your customer service and <br> offer an elevated customer experience <br> with <span
+            class="descp"> gigaaa AI Customer Support</span><br> solution.
+        <p class="mobiledescp">Automate your customer service<br> and offer an elevated customer<br> experience with
+          <span> gigaaa AI<br> Customer Support</span> solution.
+      </div>
+      <div class="cell large-12">
+        <p class="smallheading">MAKE EVERY CUSTOMER MORE SATISFIED BY GIVING THEM THE<br>
+          EXACT INFORMATION THEY NEED, RIGHT WHEN THEY NEED IT.</p>
+        <p class="mobilesmallheading">MAKE EVERY CUSTOMER MORE SATISFIED BY GIVING<br> THEM THE
+          EXACT INFORMATION THEY NEED, RIGHT<br> WHEN THEY NEED IT.</p>
+      </div>
+      <div class="cell large-12 signupalign">
+        <app-login-btn></app-login-btn>
+      </div>
+      <div class="cell large-12 grid-x gigaaa-iconspanels">
+        <div class="cell large auto iconslist">
+          <div class="imggicons">
+            <img style="margin-top: 1px; " class="gicons" src="../assets/cust_support_icon.svg" alt="">
+          </div>
+          <p class="icontext">Customer<br>
+            Support</p>
+        </div>
+        <div class="cell large auto iconslist">
+          <div class="imggicons">
+            <img style="margin-top: 1px; " class="gicons" src="../assets/24_7_icon.svg" alt="">
+          </div>
+          <p class="icontext">24/7</p>
+        </div>
+        <div class="cell large auto iconslist last">
+          <div class="imggicons">
+            <img style="margin-left: 1px; margin-top: 2px;" class="gicons" src="../assets/video_calls_icon.svg" alt="">
+          </div>
+          <p class="icontext">Video Calls</p>
+        </div>
+        <div class="cell large auto iconslist">
+          <div class="imggicons">
+            <img style="margin-top: 1px; " class="gicons" src="../assets/audio_calls_icon.svg" alt="">
+          </div>
+          <p class="icontext">Audio Calls</p>
+        </div>
+        <div class="cell large auto iconslist">
+          <div class="imggicons">
+            <img style="margin-top: 1px; " class="gicons" src="../assets/multilingual_icon.svg" alt="">
+          </div>
+          <p class="icontext">Multilingual</p>
+        </div>
+        <div class="cell large auto iconslist last">
+          <div class="imggicons">
+            <img style="margin-top: 1px; " class="gicons" src="../assets/ticketing_icon.svg" alt="">
+          </div>
+          <p class="icontext">Ticketing</p>
+        </div>
+        <div class="cell large auto iconslist last">
+          <div class="imggicons">
+            <img style="margin-top: 1px; " class="gicons" src="../assets/chats_icon.svg" alt="">
+          </div>
+          <p class="icontext">Chats</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="footer-columns first mfirst">
+    <p class="footerheadings">Company</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/about/')">About</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/press-media/')">Press & Media</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/job-opportunities/')">Job
+      Opportunities</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/blog/')">Blog</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/blog/')">Contact</p>
+  </div>
+  <div class=" footer-columns">
+    <p class="footerheadings">AI Assistance</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/mobile-app/')">gigaaa Mobile App</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/gigaaa-messenger/')">gigaaa Messenger
+    </p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/developer-console/')">Developer
+      Console</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/gig-service/')">GIG Service</p>
+  </div>
+  <div class=" footer-columns mfirst">
+    <p class="footerheadings">Partner Hub</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/partner-program/')">Partner program
+    </p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/investor-relations//')">Investor &
+      Relation</p>
+  </div>
+  <div class=" footer-columns last">
+    <p class="footerheadings">Solutions</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/gigaaa-rooms/')">gigaaa Room</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/gigaaa-plug-in/')">gigaaa Plug-in</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/gigaaa-inside/')">gigaaa Inside</p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/gigaaa-workdesk/')">gigaaa Workdesk
+    </p>
+    <p class="gigaaa-footer-text" (click)="tabslinksforfooter('https://gigaaa.com/gwallet/')">gWallet</p>
+  </div>
+  <div class="gigaaa-social-panel">
+    <div class="socialpacks">
+      <img (click)="getsociallinks('https://www.facebook.com/gigaaaAI')" class="gigaaa-social-icons"
+        src="../assets/fb.svg" alt="">
+      <img (click)="getsociallinks('https://www.instagram.com/gigaaa_ai/')" class="gigaaa-social-icons"
+        src="../assets/insta.svg" alt="">
+      <img (click)="getsociallinks('https://twitter.com/gigaaaAI')" class="gigaaa-social-icons" src="../assets/tw.svg"
+        alt="">
+      <img (click)="getsociallinks('https://www.youtube.com/c/gigaaaAIAssistant')" class="gigaaa-social-icons"
+        src="../assets/yt.svg" alt="">
+
+    </div>
+    <div class="privacy-panel">
+      <p (click)="tabslinksforfooter('https://gigaaa.com/privacy-policy/')" class="gigaaa-policy-text priv">Privacy
+        Policy</p>
+      <p (click)="tabslinksforfooter('https://gigaaa.com/terms-of-use/')" class="gigaaa-policy-text priv moblast">Terms
+        of Use</p>
+      <p class="gigaaa-policy-text mobile">Copyright © 2021 | gigaaa SA or its affiliates. All Rights Reserved.</p>
+
+    </div>
+  </div>
+</div>

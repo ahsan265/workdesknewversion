@@ -1,0 +1,81 @@
+<div class="grid-x grid-margin-x" >
+  <div class="allintegration cell large-4" >  
+    <a href="" class="languagetext" aria-expanded="false"  role="menu" data-toggle="dropdown">
+            
+       Integration: All
+        <i class="tagiconnn fas fa-sort-down" aria-hidden="true"></i>
+      </a>  
+      <ul  class="dropdown-menu languagetagdropdown " >
+        
+        <li *ngFor="let intg of this.integration"  class="dropdown-language" ><a  class="dropdown-item-dashboard-lang" > {{intg.intg}}</a></li>
+      
+    </ul>
+  </div>
+  <div class="alllanguages  cell large-4" >  
+  <a href="" class="languagetext" aria-expanded="false"  role="menu" data-toggle="dropdown">
+          Language: All
+      <i class="tagiconnn fas fa-sort-down" aria-hidden="true"></i>
+    </a>  
+    <ul  class="dropdown-menu languagetagdropdown " >
+      
+      <li *ngFor="let language of this.languages"  class="dropdown-language" ><a  class="dropdown-item-dashboard-lang" > {{language.name}}</a></li>
+    
+  </ul>
+ </div>
+ <div class="alllanguages  cell large-4" >  
+  <a href="" class="languagetext" aria-expanded="false"  role="menu" data-toggle="dropdown">
+          Agents: All
+      <i class="tagiconnn fas fa-sort-down" aria-hidden="true"></i>
+    </a>  
+    <ul  class="dropdown-menu languagetagdropdown " >
+      
+        <li  *ngFor="let agent of this.queueagent" class="dropdown-language" ><a  class="dropdown-item-dashboard-lang" >{{agent.agent.agent_display_name}}</a></li>
+    
+  </ul>
+ </div>
+ <div class="grid-x grid-margin-x" style="margin-top: 1rem;" >
+ <div class="cell large-12">
+  <table >
+    <thead>
+      <tr>
+        <th width="220">Name and Role</th>
+        <th width="220">Visitor</th>
+        <th width="220">Integration</th>
+        <th width="220">Request</th>
+        <th width="220">Duration</th>
+        <th width="220"></th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let agent of this.queueagent"> <td>
+        <img class="agentpic" height="60" width="60"  src="../../../assets/picface.jpeg" alt="">
+        <div style="display: inline-block; vertical-align: inherit;margin-left: 15px;"> 
+          <p class="gigaaausername">{{agent.agent.agent_display_name}}</p>
+          <p class="role">Agent</p>
+        </div> </td>
+     
+        <td> <img class="flagimg" height="15" width="18"  src="../../../assets/language/flag-of-Germany.png" alt=""> <p class="gigaaausername">{{agent.agent.agent_display_name}}</p>
+          <p class="gigaaaid ">{{agent.visible_id}}</p>
+            </td>
+            <td>
+                <p  class="integration">{{agent.integration_name}}</p>
+               </td>
+               <td>
+                <p class="requesttype">Agent</p> 
+               </td>
+               <td>
+                <p class="datetime">{{agent.duration}}</p> 
+               </td>
+               <td>
+                <a routerLink="/viewchat" class="viewchat">View Chat</a> 
+               </td>
+
+      </tr>
+      
+    </tbody>
+  </table>
+ </div>
+   
+
+</div>

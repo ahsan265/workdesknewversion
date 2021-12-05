@@ -1,0 +1,99 @@
+<div style="text-align: end;">
+    <span class="material-icons closebtn" mat-button [mat-dialog-close]="true" cdkFocusInitial>
+      close
+      </span>
+</div>
+  <div class="grid-x" style="display: block; text-align: center; margin-bottom: 2rem; ">
+  <p class="subheading">Invite a Human Agent</p>
+  </div>
+
+<div class="">
+  <div class="grid-x grid-margin-x addagenpanel" style="margin: auto;">
+    <form [formGroup]="form" class="grid-x" (ngSubmit)="assignrole()">
+       
+          <div class="cell large-12" style="text-align: left;">
+            <label for="" class="labal">
+              Invite via Email
+            </label>   
+            <input placeholder="Enter Email" type="email" formControlName="email" class="form_input" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}" required>
+                <div *ngIf="form.get('email').touched && form.get('email').invalid"  class="invalid-feedback"  >
+                  <div *ngIf="form.get('email').errors.required">Email Name is required</div>
+                  <div *ngIf="form.get('email').errors.email">Email must be a valid email Address</div>
+                </div>
+              </div>
+      
+     
+              <div class="cell large-12" style="text-align: left;">
+                  <p class="labal">Assign Role</p>
+
+              </div>
+             
+              <div class="cell large-12" style="margin-top: 1rem;" style="text-align: left;">
+                  <input class="radiobtn" formControlName="role" type="radio" id="Agent" name="role"  value="Agent">
+                  <label class="radio" for="male">Agent</label>
+                  <input class="radiobtn" formControlName="role" type="radio" id="Admin" name="role"  value="Admin">
+                  <label class="radio" for="male">Admin</label>
+                  <div *ngIf="form.get('role').touched && form.get('role').invalid"  class="invalid-feedback">
+                    <div *ngIf="form.get('role').errors.required">Lastname  is required</div>
+                  </div>
+              </div> 
+              <div class="cell large-12" style="text-align: left;">
+                <p class="labal">Select Languages for Agent</p>
+            </div>
+            <div class="cell large-12" style="margin-bottom: 1rem;" style="text-align: left;">
+                <div class="languagedrop"  >  
+                <img [src]="languageflag" class="imglanguage"  height="12" width="15" alt=""><a href=""   class="languagetext" aria-expanded="false"  role="menu" data-toggle="dropdown">
+                    {{this.languagetag}}
+                    <i class="tagiconn fas fa-sort-down" aria-hidden="true"></i>
+                  </a>  
+                  <ul    class="dropdown-menu languagetagdropdown" >
+                    
+                      <li *ngFor="let language of this.languages" (click)="getlanguage(language.name,language.image,language.id)" [value]="language.id" class="dropdown-language"  > <img [src]="language.image"  height="10" width="20" alt=""> <a [value]="language.name" class="dropdown-item-dashboard-lang" > {{language.name}}</a></li>
+                  
+                </ul>
+            </div>
+            
+            </div>
+          <div class="cell large-12" style="margin-bottom: 1rem; text-align: left;">
+             <div class="tagpanel"*ngFor="let tag of this.alllanguage">
+              <img class="languageimg" [src]="tag.image" height="15" width="18" alt="">
+              <p class="languagename">{{tag.name}}</p>
+                <i class="tagicon fas fa-times-circle" (click)="removealanguagefromarray(tag.id)"></i>
+             </div>
+          </div>
+              <div class="cell large-12" style="text-align: left;">
+                  <p class="labal">Select Integration to Work</p>
+              </div>
+            
+              <div class="cell large-12" style="text-align: left;">
+                  <div class="languagedrop" >  
+                  <a   href="" class="languagetext" aria-expanded="false"  role="menu" data-toggle="dropdown">
+                          
+                      {{this.intgg}}
+                      <i class="tagiconn fas fa-sort-down" aria-hidden="true"></i>
+                    </a>  
+                    <ul  class="dropdown-menu languagetagdropdown " >
+                      
+                        <li   *ngFor="let intg of this.integration"  (click)="getintegration(intg.name,intg.id)" class="dropdown-language" ><a  class="dropdown-item-dashboard-lang" > {{intg.name}}</a></li>
+                    
+                  </ul>
+              </div>
+              
+              </div>
+            <div class="cell large-12" style="text-align: justify;" style="text-align: left;">
+              <div class="tagpanel" *ngFor="let tag of this.allintegration">
+                 <p class="languagename">{{tag.name}}</p>
+                <i class="tagicon fas fa-times-circle" (click)="removeallintgfromarray(tag.id)"></i>
+               </div>
+     
+            </div>
+            <div class="cell large-12" style="
+            margin-top: 2.6rem; margin-bottom: 2rem; text-align: center;">
+             <button class="addd"  type="submit">Send Invite</button>
+            </div>
+       
+         
+    </form></div> 
+
+</div>
+    

@@ -1,0 +1,27 @@
+.mainContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.consoleWrap {
+  width: 100%;
+  background: white;
+  height: 100vh;
+  overflow: scroll;
+  border: 1px solid #d0d0de;
+  border-left: none;
+  box-sizing: border-box;
+}
+
+.consoleWrap::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (max-width: 480px) {
+  .mainContainer {
+    display: block;
+  }
+}

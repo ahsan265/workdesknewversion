@@ -1,0 +1,126 @@
+
+
+<div style="text-align: end;">
+      <span class="material-icons closebtn" mat-button [mat-dialog-close]="true" cdkFocusInitial>
+        close
+        </span>
+    
+</div>
+<div class="gird-x" style="margin-bottom: 2rem; ">
+
+   <p class="topheading">
+      Edit Human Agent
+   </p>
+</div>
+<div >
+
+      <div class="grid-x grid-margin-x editpanel" style="margin: auto;">
+         <form [formGroup]="form"  class="grid-x" (ngSubmit)="geteditdataofagent()">  
+
+          <div class="cell large-4">
+              <img src="../../../assets/gigaaa_logo.png" height="60" width="60" alt="" class="agentpic">
+           
+          </div>
+       <div class="cell large-8 grid-x" style="margin: auto; text-align: left;">
+          <div class="cell large-6">
+              <p class="agaentname">{{this.data.name}}</p>
+              <p class="typeofsuser">{{this.data.role}}</p>
+          </div>
+          <div class="cell large-6" >
+          <p class="agentid">Agent ID</p>
+          <p class="agentidtag">{{this.data.id}}</p>
+      
+          </div>
+      
+       </div>
+       <div class="cell large-12" style="margin-top: 1rem;">
+       <p class="subhead">Change Role to</p>
+       </div>
+      
+       <div class="cell large-12" style="margin-top: 1rem; text-align: left;">
+          <input type="radio" formControlName="role" id="age1" name="role" [checked]="this.agenttype" value="Agent">
+          <label class="radiobtn" for="age1">Agent</label>
+          <input type="radio" formControlName="role" id="age2" name="role" [checked]="this.agenttype" value="Admin">
+          <label class="radiobtn" for="age2">Admin</label> 
+          <div *ngIf="form.get('role').touched && form.get('role').invalid"  class="invalid-feedback">
+            <div *ngIf="form.get('role').errors.required">Lastname Name is required</div>
+          </div>
+       </div>
+       <div class="cell large-12" style="text-align: left;">
+          <label for="" class="labal">
+              Select Languages for Agent
+            </label>
+       </div>
+       <div class="cell large-12" >
+          <div class="languagedrop" >  
+              <img [src]="languageflag"   height="15" width="16" alt=""><a href="" class="languagetext" aria-expanded="false"  role="menu" data-toggle="dropdown">
+                  
+                  {{this.languagetag}}
+              <i class="tagiconn fas fa-sort-down" aria-hidden="true"></i>
+            </a>  
+            <ul  class="dropdown-menu languagetagdropdown " >
+              
+                <li *ngFor="let language of this.languages" (click)="getlanguage(language.name,language.image,language.id)" [value]="language.id"  class="dropdown-language" ><img [src]="language.image"  height="15" width="18" alt=""> <a  class="dropdown-item-dashboard-lang" > {{language.name}}</a></li>
+            
+          </ul>
+       </div>
+      
+          <!-- <button class="add">Add</button> -->
+       </div>
+       <div class="cell large-12" style="text-align: left;">
+          <div class="tagpanel" *ngFor="let lang of this.alllanguage">
+           <img class="languageimg" [src]="lang.image" height="15" width="18" alt="">
+           <p class="languagename">{{lang.name}}</p>
+             <i class="tagicon fas fa-times-circle" (click)="removealanguagefromarray(lang.id)"></i>
+          </div>
+       
+         
+        <!-- <div class="tagpanel">
+         <img class="languageimg" src="../../../assets/language/flag-of-Germany.png" height="15" width="18" alt="">
+                       <p class="languagename">English</p>
+         <i class="tagicon fas fa-times-circle"></i>
+        </div> -->
+       </div>
+       <div class="cell large-12" style="margin-top: 1rem; text-align: left;">
+          <p class="labal">Select Integration to Work</p>
+       </div>
+       <div class="cell large-12" >
+          <div class="languagedrop" >  
+          <a href="" class="languagetext" aria-expanded="false"  role="menu" data-toggle="dropdown">
+                  
+              {{this.intgg}}
+              <i class="tagiconn fas fa-sort-down" aria-hidden="true"></i>
+            </a>  
+            <ul  class="dropdown-menu languagetagdropdown " >
+              
+                <li *ngFor="let intg of this.allintegration"  class="dropdown-language" (click)="getintegration(intg.name,intg.id)" ><a class="dropdown-item-dashboard-lang" > {{intg.name}}</a></li>
+            
+          </ul>
+       </div>
+      
+          <!-- <button class="add">Add</button> -->
+       </div>
+       <div class="cell large-12" style="text-align: left;">
+          <div class="tagpanel" *ngFor="let tag of this.integration">
+             <p class="languagename">{{tag.name}}</p>
+            <i class="tagicon fas fa-times-circle" (click)="removeallintgfromarray(tag.id)"></i>
+           </div>
+        
+         
+             
+           <div class="cell large-12" style="margin-top: 2.6rem; margin-bottom: 2rem; text-align: center;">
+              <button class="udpate" type="submit">Update</button>
+             </div>  
+          </div> </form>
+
+        </div>
+        
+         
+        
+        
+            
+        
+        
+      
+      
+</div>

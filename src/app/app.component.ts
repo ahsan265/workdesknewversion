@@ -78,7 +78,8 @@ export class AppComponent implements OnInit {
     this.authService.user.subscribe((r: any) => {
       this.user = r;
       console.log('BILOOO STA');
-      
+      this.getallintegrationlist();
+
     });
 
     this.accessToken.subscribe((res: any) => {
@@ -91,7 +92,6 @@ export class AppComponent implements OnInit {
           this.authService.user.next(r);
           this.cookie.set('gigaaa_user', JSON.stringify(r));
           this.cookie.set('access_token_active', JSON.stringify(res));
-          this.getallintegrationlist();
           this.router.navigate(['/']);
         });
       }
@@ -142,9 +142,9 @@ export class AppComponent implements OnInit {
     {        
       localStorage.setItem('intgid', JSON.stringify({int_id:element.uuid,name:element.name}));
      // this.defaultingt=element.name;
-     // this.share_res.getintegrationrelation(element.uuid);
+      this.share_res.getintegrationrelation(element.uuid);
      // this.getonlinestatus(accesstoken,uuid,element.uuid);
-     //this.share_res.getuserole();
+     this.share_res.getuserole();
      var intid = JSON.parse(localStorage.getItem('intgid'))
      this.apiService.getloggedinagentuuid(accesstoken,uuid,intid.int_id).subscribe(data=>{
      console.log(data);

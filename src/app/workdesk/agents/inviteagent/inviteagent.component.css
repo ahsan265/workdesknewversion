@@ -422,6 +422,7 @@ text-align: center;
 
 color: #FFFFFF;
 }
+
 .initetext{
    text-align: left;
 }
@@ -440,11 +441,60 @@ color: #FFFFFF;
   display: none;
 }
 .hidde{
-  display: block;
+  display: none;
+}
+
+.deletepanel{
+  display: inline-block;
+  height: 35px;
+  margin-left: 5%;
+  margin-top: 8px;
+  vertical-align: middle;
+}
+.borderformobile{
+ display: none;
+}
+.sendinvitepanel{
+  text-align: right; 
+  bottom: 0; 
+  right: 0; 
+  padding: 20px; 
+  position: relative;
+}
+.cancel{
+  display: none;
 }
 @media (max-width: 768px){
-  .hidde{
+  .cancel{
+    display: inline-block;
+    height: 45px;
+    width: 110px;
+    border: 1px solid rgba(22, 39, 65, 0.2);
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 160%;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #162741;
+    
+    }
+  .fordesktop{
     display: none;
+  }
+  .closebutton{
+    display: none;
+  }
+  .hidde{
+    display: block;
+  }
+  .desp{
+    font-size: 16px;
+    line-height: 24px;
   }
   .initetext{
     padding: 0px;
@@ -463,14 +513,22 @@ color: #FFFFFF;
     color: #292F58;
     display: block;
     margin-bottom: 12px; 
-    margin-left: 36px;
+  }
+  .forfieldsformobile{
+    display: block !important;
+    width: 100% !important;
   }
   .mobilemargin{
     margin: 0px;
+    width: 100% !important;
+    display: block !important;
   }
   .langdropdown{
-    margin-left: 33px;
-    width: 216px;
+    margin-left: 0px;
+    width: 100%;
+  }
+  .inner{
+   width:  96.5%;
   }
 
   .addnewagentrowpanel{
@@ -481,5 +539,39 @@ color: #FFFFFF;
     padding: 0px;
     width: 100%;
   }
+  .deleteagenttext{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 35px;
+margin-left: 8px;
+display: inline-block;
+vertical-align: middle;
+align-items: center;
+letter-spacing: 0.02em;
+color: #616B7B;
 
+  }
+  .deletepanel{
+    margin-left: 0px;
+    margin: 0px;
+    vertical-align: middle;
+    display: inline-block;
+  }
+  .borderformobile{
+    display:block;
+    width: 100%; 
+    background: #D0D0DE; 
+    height: 1px; 
+    margin-bottom: 24px;
+    margin-top: 24px;
+      }
+  .sendinvitepanel{
+    padding: 0px;
+    margin-top: 24px;
+  }
+.form_input{
+  margin-bottom: 24px;
+}
 }

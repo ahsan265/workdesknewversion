@@ -273,3 +273,89 @@ box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.19);
   background-color: #D0D0DE;
 
 }
+.mobileversion{
+  display: none;
+}
+@media (max-width: 768px){
+  .mobileversion{
+    display: block;
+  }
+    .hideformobile{
+      display: none;
+    }
+    .mainpanel{
+      display: block;
+      width: 100%;
+    }
+    .takephotopanel{
+      display: block;
+      height: 50px;
+      background: #FFFFFF;
+      border: 1px solid rgba(208, 208, 222, 0.6);
+      box-sizing: border-box;
+      border-radius: 4px 4px 0px 0px;
+
+    }
+    .chosepicturepanel{
+      display: block;
+      height: 50px;
+      background: #EDEDF6;
+      border: 1px solid rgba(208, 208, 222, 0.6);
+      box-sizing: border-box;
+      border-radius: 0px 0px 4px 4px;
+    }
+    .picturetext{
+      font-family: "Roboto",sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height:50px;
+      align-items: center;
+      letter-spacing: 0.02em;
+      text-align: center;
+      color: #162741;
+    }
+    .cancelbtnpanel{
+      margin-top: 8px;
+      background: #FFFFFF;
+      border: 1px solid rgba(208, 208, 222, 0.6);
+      box-sizing: border-box;
+      border-radius: 4px;
+    }
+    .uploading{
+      width: 313px;
+      padding: 30px;
+      height: 241px;  
+      background: #FFFFFF;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.23);
+      border-radius: 4px;
+    }
+    .progresspanel{
+      padding-right: 0px;
+    }
+    .cropicturearea{
+      width: 313px;
+      padding: 30px;
+      height: 475px; 
+      background: #FFFFFF;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.23);
+      border-radius: 4px;
+    }
+    .picturearea{
+      width: 248px;
+      height: 248px;
+      padding: 30px;
+    }
+    mat-slider {
+      width: 200px;
+  }
+  .headingpanel{
+    width: 100%;
+  }
+  .heading{
+    font-size: 15px;
+  }
+  .closepanel{
+    display: none;
+  }
+}

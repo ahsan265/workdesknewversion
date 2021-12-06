@@ -17,7 +17,7 @@
   border-radius: 7px;
   padding-left: 30px;
   padding-right: 30px;
-  padding-bottom: 30px;
+  margin-bottom: 30px;
   height: 915px;
 }
 .headingpanel{
@@ -719,4 +719,74 @@ align-items: center;
 text-align: center;
 letter-spacing: 0.02em;
 color: #FFFFFF;
+  }
+  @media (max-width: 768px){
+
+    .settingspanel{
+      padding: 0px;
+      background: #FFFFFF;
+    }
+    .settingsheadingpanel{
+      height: 55px;
+      padding-left: 12px;
+    }
+    .heading{
+      padding-left: 55px;
+    }
+    .settingarea{
+      border: none;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .userinformationsection{
+      display: block;
+      width: 100%;
+    }
+    .deletesection{
+      display: flex;
+      width: 100%;
+      margin-top: 37px;
+    }
+    .profile{
+      text-align: left;
+      display: block;
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
+    .textfield {
+      width: 100%;
+      display: inline-block;
+    }
+    .form_input.pass{
+      width: 75%;
+    }
+    .passwordtoggle{
+      display: initial;
+    }
+    .savebtnpanel{
+      padding-bottom: 30px;
+    }
+    .cancelinvite{
+      width: 50%;
+
+    }
+    .sendinvite
+    {
+      width: 50%;
+      margin-right: 7px;
+    }
+    .form_input{
+      width: 100%;
+    }
+    .dropdown{
+      width: 100%;
+      margin-right: 0px;
+    }
+    .dropdown-menu.show{
+      width: 100%;
+    }
+    .deletesection{
+ 
+      text-align: center;
+    }
   }

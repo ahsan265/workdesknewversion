@@ -127,3 +127,25 @@ border: 1px solid rgba(208, 208, 222, 0.6);
 box-sizing: border-box;
 border-radius: 4px;
 }
+@media (max-width: 768px){
+
+  .closepanel{
+    display: none;
+  }
+  .headingpanel{
+    width: 100%;
+  }
+  .cancelbtnpanel{
+    width: 40%;
+  }
+  .cancel{
+    width: 75%;
+    margin-right: 7px;
+  }
+  .yes{
+    width: 100%;
+  }
+  .yesbtnpanel{
+    width: 60%;
+  }
+}

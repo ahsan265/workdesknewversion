@@ -1,8 +1,12 @@
 <div class="settingspanel">
     <div class="settingsheadingpanel">
-            <svg (click)="getbacktoteams()" class="backicon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <p class="agentsettingspaths">Agents</p>
+        <svg   class="backicon" width="5" height="8" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.00390625 6.54297L2.68359 3.86328L0.00390625 1.18359L0.824219 0.363281L4.32422 3.86328L0.824219 7.36328L0.00390625 6.54297Z" fill="#7D8696"/>
+            </svg>
+            <!-- <svg (click)="getbacktoteams()" class="backicon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.6797 6.17969V7.82031H3.52344L8.17188 12.5078L7 13.6797L0.320312 7L7 0.320312L8.17188 1.49219L3.52344 6.17969H13.6797Z" fill="#7D8696"/>
-                </svg>
+                </svg> -->
         <p class="heading">Agent Settings</p>
     </div>
     <div class="settingarea">
@@ -111,7 +115,16 @@
                 </div>
             <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6); "></div>
             <div class="savebtnpanel">
-                <button type="submit" class="savebtn">Save</button>
+                <div style="text-align: left;display: inline-block;
+                width: 50%;">
+                 <button  (click)="getbacktoteams()" type="reset" class="backbtn">Back</button>
+
+                </div>
+                <div style="text-align: right;display: inline-block;
+                width: 50%;">
+                    <button type="submit" class="savebtn">Save</button>
+
+                </div>
             </div>
         </form>
     

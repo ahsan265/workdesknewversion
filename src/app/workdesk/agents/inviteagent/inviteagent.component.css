@@ -445,11 +445,10 @@ color: #FFFFFF;
 }
 
 .deletepanel{
-  display: inline-block;
   height: 35px;
   margin-left: 5%;
   margin-top: 8px;
-  vertical-align: middle;
+  width: 14%;
 }
 .borderformobile{
  display: none;

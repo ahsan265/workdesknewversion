@@ -488,22 +488,22 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
   {
    if(val=="en")
    {
- return this.langurl='../../../assets/assets_workdesk/Flags/Eng.svg'
+ return this.langurl='../../../assets/assets_workdesk/Flags/english.svg'
    }
    else if(val=="de") {
-    return this.langurl='../../../assets/assets_workdesk//Flags/German.svg'
+    return this.langurl='../../../assets/assets_workdesk/Flags/german.svg'
 
    }
    else if(val=="ar") {
-    return this.langurl='../../../assets/assets_workdesk/Flags/Spain.svg'
+    return this.langurl='../../../assets/assets_workdesk/Flags/arabic.svg'
 
   }
   else if(val=="es") {
-    return this.langurl='../../../assets/Flagsassets_workdesk/Flags/italy.svg'
+    return this.langurl='../../../assets/Flagsassets_workdesk/Flags/spanish.svg'
 
   }
   else if(val=="ru") {
-    return this.langurl='../../../assets/assets_workdesk/Flags/Russia.svg'
+    return this.langurl='../../../assets/assets_workdesk/Flags/russian.svg'
 
   }
   else if(val=="tr") {
@@ -525,7 +525,7 @@ changebrowser(val)
  }
  else if(val=="Firefox")
  {
-  return this.browserurl="../../../assets/assets_workdesk/browsers/mozilla.svg";
+  return this.browserurl="../../../assets/assets_workdesk/browsers/firefox.svg";
  }
  else if(val=="Safari") {
   return this.browserurl="../../../assets/assets_workdesk/browsers/safari.svg";
@@ -562,7 +562,6 @@ else
   return this.deviceurl="../../../assets/assets_workdesk/device/mobile.svg";
 }
 }
-
 // change operation system
 changeoperatingsystem(val)
 {
@@ -580,9 +579,9 @@ changeoperatingsystem(val)
  else if(val=="Android") {
   return this.operatsystemnurl="../../../assets/assets_workdesk/os/Android.svg";
  }
-else if(val==null)
+else if(val=="Linux")
 {
-  return this.operatsystemnurl="../../../assets/assets_workdesk/os/Windows.svg";
+  return this.operatsystemnurl="../../../assets/assets_workdesk/os/Linux.svg";
 }
 else{
   {

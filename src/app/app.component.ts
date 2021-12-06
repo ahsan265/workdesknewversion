@@ -10,6 +10,7 @@ import { LoginBtnComponent } from './useraccount/landingpage/login-btn/login-btn
 import * as color from "string-to-color";
 import { sharedres_service } from './service/sharedres.service';
 import { MessageService } from './service/messege.service';
+import { agentsocketapi } from './service/agentsocketapi';
 
 @Component({
   selector: 'app-root',
@@ -21,35 +22,37 @@ export class AppComponent implements OnInit {
   workplaces = [];
   redirectUri = `${environment.oauth_url}/logout?continue=${environment.redirect_uri}/logout`;
 
-  intentIcon = '../assets/images/sidemenu/intents_icon.svg';
-  activeIntentIcon = '../assets/images/sidemenu//intents_icon_active.svg';
-  entityIcon = '../assets/images/sidemenu//entity.svg';
-  activeEntityIcon = '../assets/images/sidemenu//entity_active.svg';
-  flowIcon = '../assets/images/sidemenu//flow_icon.svg';
-  activeFlowIcon = '../assets/images/sidemenu//flow_icon_active.svg';
+  dashboardIcon = '../assets/assets_workdesk/dashboard_icon .svg';
+  activedashboardIcon = '../assets/assets_workdesk/dashboard_icon .svg';
+
+  callIcon = '../assets/assets_workdesk/calls_icon.svg';
+  activeCallIcon = '../assets/assets_workdesk/calls_icon.svg';
+
+  agentIcon = '../assets/assets_workdesk/Group_4.svg';
+  activeAgentIcon = '../assets/assets_workdesk/Group_4.svg';
   activityIcon = '../assets/images/sidemenu//activities_icon.svg';
   activeActivityIcon = '../assets/images/sidemenu//activities_icon_active.svg';
 
-  logo = '../assets/images/sidemenu//gigaaa-layer-logo-navyblue-1.svg';
+  logo = '../assets/gigaaa_logo_long_new.png';
   logoCollapsed = '../assets/images/sidemenu//gigaaa-layer-logo-1.svg';
   sidebarData: any = [
     {
-      iconUrl: this.intentIcon,
-      activeIconUrl: this.activeIntentIcon,
+      iconUrl: this.dashboardIcon,
+      activeIconUrl: this.activedashboardIcon,
       name: 'Dashboard',
       routeUrl: ['/dashboard'],
       dropdown: false,
     },
     {
-      iconUrl: this.entityIcon,
-      activeIconUrl: this.activeEntityIcon,
+      iconUrl: this.callIcon,
+      activeIconUrl: this.activeCallIcon,
       name: 'Calls',
       routeUrl: ['/calls'],
       dropdown: false,
     },
     {
-      iconUrl: this.flowIcon,
-      activeIconUrl: this.activeFlowIcon,
+      iconUrl: this.agentIcon,
+      activeIconUrl: this.activeAgentIcon,
       name: 'Agents',
       routeUrl: ['/agents'],
       dropdown: false,
@@ -58,7 +61,8 @@ export class AppComponent implements OnInit {
   slideOpened: boolean = false;
   oauthUrl = `${environment.oauth_url}`;
   token: string;
-
+  online_status:any;
+  statusonline:boolean;
   accessToken = new ReplaySubject(1);
 
   user: User;
@@ -69,7 +73,8 @@ export class AppComponent implements OnInit {
     private cookie: CookieService,
     private share_res:sharedres_service,
     private messegeService:MessageService,
-    
+    private agentsocketapi:agentsocketapi,
+    private sharedres:sharedres_service,
     private router: Router
   ) {}
 
@@ -79,6 +84,7 @@ export class AppComponent implements OnInit {
       this.user = r;
       console.log('BILOOO STA');
       this.getallintegrationlist();
+      this.calltheagentsocket();
 
     });
 
@@ -103,6 +109,7 @@ export class AppComponent implements OnInit {
   }
 
   isSlideOpened(slideOpened: any) {
+    
     this.slideOpened = slideOpened;
   }
 
@@ -149,8 +156,8 @@ export class AppComponent implements OnInit {
      this.apiService.getloggedinagentuuid(accesstoken,uuid,intid.int_id).subscribe(data=>{
      console.log(data);
      localStorage.setItem('userlogged_uuid', JSON.stringify(data));
-      //  this.showonlinetatus(0);
-       this.share_res.getcallsocketapi(1);
+     //this.showonlinetatus(0);
+     this.sharedres.getcallsocketapi(1);
      });
     }
   });
@@ -165,5 +172,58 @@ private handleLoginRegisterError(response: any) {
   console.log(response)
       this.messegeService.setErrorMessage(response.error.error, 'toast-bottom-right');
 }
+showonlinetatus(value:any){
+  if(value==0)
+  { 
 
+    this.online_status="Online"
+    this.statusonline=true;
+  }
+  else if(value==1)
+  {
+    this.online_status="Away"
+    this.statusonline=false;
+
+  }
+ 
+ }
+ calltheagentsocket()
+ {    
+  this.sharedres.runthesocketforagent$.subscribe(data=>{
+    const status = JSON.parse(localStorage.getItem('user-status'))
+    console.log(data);
+    if(data==1)
+    {
+      if (status==false)
+      {
+        this.showonlinetatus(1)
+
+      }
+      else if(status==true){
+        this.showonlinetatus(0)
+      }
+    }
+
+  });
+ }
+ public setonlinestatus(e)
+{
+  console.log(e)
+    localStorage.setItem('user-status', JSON.stringify(e));
+    this.agentsocketapi.send_isonline_status(e);
+    if(e==true)
+    {
+      this.online_status="Online"
+      this.statusonline=true;
+
+    }
+    else if(e==false)
+    {
+      this.online_status="Away"
+      this.statusonline=false;
+
+    }
+  
+   
+    }
 }

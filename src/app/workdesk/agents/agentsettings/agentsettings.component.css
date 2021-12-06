@@ -6,9 +6,8 @@
 .settingsheadingpanel{
   display: block;
   width: 100%;
-  height: 77px;
-  padding-bottom: 30px;
-  padding-top: 30px;
+  height: 50px;
+
 }
 .settingarea{
   background: #FFFFFF;
@@ -18,7 +17,8 @@
   padding-left: 30px;
   padding-right: 30px;
   margin-bottom: 30px;
-  height: 915px;
+  height: fit-content;
+  padding-bottom: 30px;
 }
 .headingpanel{
   display: block;
@@ -73,8 +73,8 @@ width: 50%;
 .heading{
     font-family: "Roboto",sans-serif;
 font-style: normal;
-font-weight: 500;
-font-size: 18px;
+font-weight: normal;
+font-size: 12px;
 line-height: 22px;
 display: inline-block;
 align-items: center;
@@ -110,6 +110,7 @@ color: #6A7585;
 .backicon{
     display: inline-block;
     margin-right: 12px;
+    margin-left: 12px;
     cursor: pointer;
 }
 .backicon:hover
@@ -649,7 +650,23 @@ input:checked + .slider:before {
   margin-right: 24px;
   color: #162741;
   }
+.backbtn{
+  border: 1px solid rgba(22, 39, 65, 0.2);
+box-sizing: border-box;
+border-radius: 3px;
+width: 60px;
+height: 35px;
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 18px;
+align-items: center;
+text-align: center;
+letter-spacing: 0.02em;
+color: #162741;
 
+}
   .cancelinvite{
     width: 130px;
     height: 35px;
@@ -719,6 +736,18 @@ align-items: center;
 text-align: center;
 letter-spacing: 0.02em;
 color: #FFFFFF;
+  }
+  .agentsettingspaths{
+    display: inline-block;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 22px;
+    vertical-align: middle;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #6A7585;
   }
   @media (max-width: 768px){
 

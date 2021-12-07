@@ -7,14 +7,22 @@ import { gigaaasocketapi } from './gigaaasocketapi.service';
 import { MessageService } from './messege.service';
 import { UserloginserviceService } from './userloginservice.service';
 import { AuthService } from './auth.service';
+import { agentsocketapi } from './agentsocketapi';
+import { sharedres_service } from './sharedres.service';
 @Injectable({
   providedIn: 'root'
 })
 
 export class oAuthService  {
   integration:any;
-  constructor(private AccountAuth:AuthService,private gigaaaapi:GigaaaApiService,
-    private router: ActivatedRoute,private useraccountservice:UserloginserviceService,private message:MessageService,private gigaaaApiService: GigaaaApiService) {
+  constructor(private AccountAuth:AuthService,
+    private gigaaaapi:GigaaaApiService,
+    private router: ActivatedRoute,
+    private useraccountservice:UserloginserviceService
+    ,private message:MessageService,
+    private sharedres:sharedres_service,
+    private agentsocketapi:agentsocketapi,
+    private gigaaaApiService: GigaaaApiService) {
   }
 
   public  async login(): Promise<void> {
@@ -67,11 +75,14 @@ catch(err){
   this.integration.forEach(element => {
     if(element.last_used===true)
     {        localStorage.setItem('intgid', JSON.stringify({int_id:element.uuid,name:element.name}));
-
+    this.gigaaaapi.getloggedinagentuuid(accesstoken,uuid,element.uuid).subscribe(data=>{
+      console.log(data);
+      localStorage.setItem('userlogged_uuid', JSON.stringify(data));
+      this.sharedres.getcallsocketapi(1);
+      });
     }
-
   });
-
+ 
   })
 
 } catch (error) {
@@ -86,13 +97,10 @@ catch(err){
     }
   }
   public logOff() {
-    //this.user.next(null);
     localStorage.clear();
+  
   }
 
-  // public isLoggedIn(): boolean {
-  //   return !!localStorage.getItem('gigaaa-user') || !!this.user.value;
-  // }
 
   public getLoggedUser(): User {
     return JSON.parse(localStorage.getItem('gigaaa-user'));
@@ -104,8 +112,4 @@ catch(err){
     localStorage.setItem('gigaaa-user', JSON.stringify(user));
   }
 
-
-  // canActivate() {
-  //   return this.isLoggedIn();
-  // }
 }

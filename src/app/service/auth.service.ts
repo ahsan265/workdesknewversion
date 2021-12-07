@@ -3,6 +3,7 @@ import { ReplaySubject } from 'rxjs';
 import { CanActivate } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from '../model/User';
+import { oAuthService } from './authservice.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class AuthService implements CanActivate {
   token: any;
 
   constructor(
-    private cookie: CookieService
+    private cookie: CookieService,
+
   ) {
     if (this.isLoggedIn()) {
       this.user.next(this.getLoggedUser());

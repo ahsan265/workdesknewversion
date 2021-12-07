@@ -45,13 +45,15 @@ export class CallbackComponent implements OnInit {
           return this.http.post(`${this.oauthUrl}/token`, formData)})
       ).subscribe(
         (res: any) => {
-          this.authService.token = res;
-          this.apiService.getCurrentUser(res.access_token).subscribe((r) => {
+            this.authService.token = res;
+            this.apiService.getCurrentUser(res.access_token).subscribe((r) => {
+            console.log(r);
             this.authService.user.next(r);
             this.cookie.set("gigaaa_user", JSON.stringify(r));
             this.cookie.set("access_token_active", JSON.stringify(res));
-            this.oauthService.login();
-            this.router.navigate(["/dashboard"]);
+            this.oauthService.login().finally(()=>{
+              this.router.navigate(["/dashboard"]);
+            })
           });
         },
         err => console.log(err)

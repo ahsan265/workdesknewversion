@@ -40,29 +40,17 @@ callsocketapi_by_selecting_intgid()
     if(data==1 && socketvalue!=true)
     {
         this.getlistofliveque();
-     //   this.checksocketopen=false;
     }
-    // else if(this.checksocketopen==false)
-    // {
-    //   this.getlistofliveque();
-    //   this.checksocketopen=true;
-
-    // }
-
-
   })
-
 }
 
-
-   getlistofliveque()
+ public  getlistofliveque()
   {
     var getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
     var accesstoken=getdata?.access_token;
       var uuid=getdata?.subscription_id.subsid.uuid;
       var intid = JSON.parse(localStorage.getItem('intgid'))
       var integrationid=intid?.int_id;
-  //  console.log(accesstoken,uuid,integrationid)
    if(accesstoken!=null&&uuid!=null&&integrationid!=null)
      {
 
@@ -73,13 +61,6 @@ callsocketapi_by_selecting_intgid()
         this.message.setErrorMessage("socket-"+e.type);
         this.checksocketopen=true;
         localStorage.setItem('gigaaa-socket', JSON.stringify(this.checksocketopen));
-
-        // if(this.closestate!=null)
-        //   {
-        //     this.sendfilterparams(this.currentStateofcallsocket);
-        //     this.closestate=null;
-        //   }
-
       }
 
        this.ws.onmessage = (e) => {

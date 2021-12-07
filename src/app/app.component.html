@@ -11,7 +11,7 @@
     </gigaaa-header>
     <router-outlet></router-outlet>
   </div>
-  <div class="onlineswitchpanel">
+  <div class="onlineswitchpanel" *ngIf="this.authService.isLoggedIn()">
     <a   aria-expanded="false" class=" homeSubmenu">
       <label class="switch">
         <input (change)="setonlinestatus(!$event.target.checked)" type="checkbox" [checked]="!statusonline">
@@ -19,4 +19,26 @@
       </label> {{online_status}}
      </a>
   </div>
+  <!-- <div class="dropdown "  *ngIf="this.authService.isLoggedIn()">
+    <a id="languagename"  aria-expanded="false"   data-toggle="dropdown" class=" homeSubmenu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="3" cy="3" r="3" fill="#C4C4C4"/>
+        <circle cx="21" cy="3" r="3" fill="#C4C4C4"/>
+        <circle cx="12" cy="3" r="3" fill="#C4C4C4"/>
+        <circle cx="3" cy="12" r="3" fill="#C4C4C4"/>
+        <circle cx="21" cy="12" r="3" fill="#C4C4C4"/>
+        <circle cx="12" cy="12" r="3" fill="#C4C4C4"/>
+        <circle cx="3" cy="21" r="3" fill="#C4C4C4"/>
+        <circle cx="21" cy="21" r="3" fill="#C4C4C4"/>
+        <circle cx="12" cy="21" r="3" fill="#C4C4C4"/>
+        </svg>
+     gigaaa Apps
+    </a>
+    <ul    class="dropdown-menu" role="menu">
+      <li  class="websiteslist"   *ngFor="let lang of websites ; let i=index" >
+        <a  (click)="openwebsites(lang.url)"    data-toggle="collapse" aria-expanded="false">
+       <img class="srcimg" [src]="lang.src" alt="">   {{lang.name}}</a>
+      </li>
+    </ul>
+  </div> -->
 </div>

@@ -29,6 +29,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import { DragDirective } from './agents/croppicture/dragdroppic';
 import { agentsocketapi } from '../service/agentsocketapi';
 import { MobilefilterspopupComponent } from './mobilefilterspopup/mobilefilterspopup.component';
+import { gigaaasocketapi } from '../service/gigaaasocketapi.service';
 
 
 @NgModule({
@@ -44,10 +45,8 @@ import { MobilefilterspopupComponent } from './mobilefilterspopup/mobilefiltersp
     CountUpModule,
     MatProgressBarModule,
     MatSliderModule,
-
-
   ],
-  providers: [UserloginserviceService],
+  providers: [agentsocketapi,gigaaasocketapi],
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
 
 })

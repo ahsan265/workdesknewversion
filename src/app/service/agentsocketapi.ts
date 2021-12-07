@@ -41,12 +41,10 @@ import { sharedres_service } from "./sharedres.service";
                 var  url="wss://websockets.gigaaa.com/customer-support/agents?organization="+uuid+"&integration="+integrationid+"&agent="+loggedinuser_uuid?.uuid;
                 this.ws = new WebSocket(url);
                     this.ws.onopen=(e)=>{
-                        this.message.setErrorMessage("hello-"+e.type);
-                  
+                     this.message.setSuccessMessage("Agent-socket-"+e.type);
                       var checksocketopen=true;
                         localStorage.setItem('gigaaa-socket', JSON.stringify(checksocketopen));
-                        
-                        this.issocketliveornot=true;
+                      //  this.issocketliveornot=true;
 
                     }
                     this.ws.onmessage = (e) => {

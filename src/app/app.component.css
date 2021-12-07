@@ -15,7 +15,41 @@
   border-left: none;
   box-sizing: border-box;
 }
-
+.dropdown-menu.show{
+max-width: 256px;
+min-width: 256px;
+background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.8);
+box-sizing: border-box;
+box-shadow: 0px 0px 10px rgba(101, 119, 146, 0.32);
+border-radius: 4px;
+}
+.websiteslist{
+  height: 44px;
+  margin-top: 4px;
+  display: block;
+  width: 94%;
+  line-height: 44px;
+  border-radius: 4px;
+  margin-left: 3%;
+}
+li.websiteslist a{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 24px;
+letter-spacing: -0.02em;
+color: #162741;
+}
+li.websiteslist:hover{
+background: #EDEDF6;
+}
+.srcimg{
+  margin-right: 20px;
+  margin-left: 20px;
+  vertical-align: middle;
+}
 .consoleWrap::-webkit-scrollbar {
   display: none;
 }

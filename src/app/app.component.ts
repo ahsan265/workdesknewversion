@@ -30,11 +30,17 @@ export class AppComponent implements OnInit {
 
   agentIcon = '../assets/assets_workdesk/Group_4.svg';
   activeAgentIcon = '../assets/assets_workdesk/Group_4.svg';
+  
   activityIcon = '../assets/images/sidemenu//activities_icon.svg';
   activeActivityIcon = '../assets/images/sidemenu//activities_icon_active.svg';
 
   logo = '../assets/gigaaa_logo_long_new.png';
-  logoCollapsed = '../assets/images/sidemenu//gigaaa-layer-logo-1.svg';
+  logoCollapsed = '../assets/images/sidemenu//gigaaa_logo_square.png';
+  websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/',src:'../assets/assets_workdesk/partnership.svg'},
+{name:"Console",url:'https://console.gigaaa.com/',src:'../assets/assets_workdesk/console.svg'},
+{name:"Workdesk",url:'https://workdesk.gigaaa.com/',src:'../assets/assets_workdesk/workdesk.svg'},
+{name:"Messenger",url:'https://messenger.gigaaa.com/',src:'../assets/assets_workdesk/messenger.svg'},
+{name:"Analytics",url:'https://analytics.gigaaa.com/',src:'../assets/assets_workdesk/analytics.svg'}]
   sidebarData: any = [
     {
       iconUrl: this.dashboardIcon,
@@ -83,7 +89,7 @@ export class AppComponent implements OnInit {
     this.authService.user.subscribe((r: any) => {
       this.user = r;
       console.log('BILOOO STA');
-      this.getallintegrationlist();
+     // this.getallintegrationlist();
       this.calltheagentsocket();
 
     });
@@ -148,15 +154,12 @@ export class AppComponent implements OnInit {
     if(element.last_used===true)
     {        
       localStorage.setItem('intgid', JSON.stringify({int_id:element.uuid,name:element.name}));
-     // this.defaultingt=element.name;
       this.share_res.getintegrationrelation(element.uuid);
-     // this.getonlinestatus(accesstoken,uuid,element.uuid);
      this.share_res.getuserole();
      var intid = JSON.parse(localStorage.getItem('intgid'))
      this.apiService.getloggedinagentuuid(accesstoken,uuid,intid.int_id).subscribe(data=>{
      console.log(data);
      localStorage.setItem('userlogged_uuid', JSON.stringify(data));
-     //this.showonlinetatus(0);
      this.sharedres.getcallsocketapi(1);
      });
     }
@@ -223,7 +226,9 @@ showonlinetatus(value:any){
       this.statusonline=false;
 
     }
-  
-   
     }
+public openwebsites(val)
+{
+  window.open(val, '_blank');
+}
 }

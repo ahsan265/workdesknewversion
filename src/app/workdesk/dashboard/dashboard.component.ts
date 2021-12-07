@@ -301,15 +301,11 @@ export class DashboardComponent implements OnInit {
      // getall languages
      public async getlllangugaes(): Promise<void>{
       const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
-       var accesstoken=getdata.access_token;
-
-      // This is how you can get token and please use const instend of va
-     // const accesstoken = this.authService.token;
-
-      var subsid=getdata.subscription_id?.subsid?.uuid;
+       const accesstoken=getdata.access_token;
+     const subsid=getdata.subscription_id?.subsid?.uuid;
       const intid = JSON.parse(localStorage.getItem('intgid'))
       try{
-       var languagee=[{name:'Arabic' ,status:false},
+        const languagee=[{name:'Arabic' ,status:false},
         {name:'English' ,status:false},
         {name:'German' ,status:false},
         {name:'Russian' ,status:false},
@@ -331,13 +327,14 @@ export class DashboardComponent implements OnInit {
      ngOnInit(): void {
        this.getlistofdashboard("Calls");
       this.onDateChange([this.ranges[0].value[0],this.ranges[0].value[1]])
-      this.router.navigate(['dashboard'])
-      this.getlllangugaes();
+      //this.router.navigate(['dashboard'])
+   
       this.roundbarchartcorners()
       this.loadcallstatsoninit();
       this.loadcallchartinit();
       this.getstatsonintg();
       this.getallthecountries();
+     this.getlllangugaes();
    
 
     $(document).ready(function() {

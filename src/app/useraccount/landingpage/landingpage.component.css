@@ -9,10 +9,9 @@ p{
   width: 100%;
   z-index: 1;
   background: #FFFFFF;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .icon-image{
-  background-image: url('../../../assets/gigaaa_logo_long_new.png');
+  background-image: url('../../../assets/logo.png');
   background-size: 120px 40px;
   height: 40px;
   width: 120px;
@@ -240,7 +239,7 @@ span{
       box-shadow: none;
   }
   .content-area{
-      height: 100%;
+  height: max-content;
   background-size: 359px 297px;
   background-position: top 12% right 100%;
   }

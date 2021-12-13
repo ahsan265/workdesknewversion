@@ -2,13 +2,12 @@
 <!-- <div class="topheadingpanel">
   <p class="mainheading">Requests</p>
   </div> -->
-  <div class="tabspanel" style="z-index: 1; border-bottom: 2px solid #E1E1EA; padding-top: 10px;">
-        <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
-            <li  class="tabs-title is-active"><a (click)="getpanalview('incoming')"   href="#one" >Incoming <span class="numberofcalls">{{size_incoming_call}}</span> </a></li>
-            <li  class="tabs-title"><a (click)="getpanalview('outgoing')"  href="#twp">Ongoing <span class="numberofcalls">{{size_ougoing_call}}</span></a></li>
-            <li  class="tabs-title"><a  (click)="getpanalview('missed')" href="#three">Missed</a></li>
-            <li  class="tabs-title"><a (click)="getpanalview('answered')"  href="#founr">Answered</a></li>
-          </ul>
+  <div class="tabspanel" style="z-index: 1; border-bottom: 1px solid #E1E1EA;">
+     
+            <div class="tabsitem" ><a [ngClass]="{ active: isActive('incoming') }" (click)="getpanalview('incoming')"   class="itemoftabs" >Incoming <span class="numberofcalls">{{size_incoming_call}}</span> </a></div>
+            <div  class="tabsitem"  ><a [ngClass]="{ active: isActive('outgoing') }" (click)="getpanalview('outgoing')"   class="itemoftabs">Ongoing <span class="numberofcalls">{{size_ougoing_call}}</span></a></div>
+            <div  class="tabsitem"  ><a [ngClass]="{ active: isActive('missed') }"  (click)="getpanalview('missed')"  class="itemoftabs">Missed</a></div>
+            <div  class="tabsitem"  ><a [ngClass]="{ active: isActive('answered') }" (click)="getpanalview('answered')"   class="itemoftabs">Answered</a></div>
   </div>
   <div class="callsarea">
   <div [hidden]="!incoming">
@@ -77,10 +76,10 @@
                 <td><span style="padding-left: 4px; padding-right: 20px; color: #949CA8;">#</span> {{i+1}}</td>
                 <td><p class="username">{{data.name}}</p>
                 <p class="id">{{data.user_id}}</p></td>
-                <td><img class="userinfoicon" height="16" width="16" [src]="changecountryflag(data?.language_icon)" alt="">
-                  <img  class="userinfoicon" height="16" width="16" [src]="changebrowser(data?.browser)" alt="">
-                  <img  class="userinfoicon" height="16" width="16" [src]="changedevicetype(data?.mobile)" alt="">
-                  <img  class="userinfoicon" height="16" width="16" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+                <td><img class="userinfoicon" height="18" width="16" [src]="changecountryflag(data?.language_icon)" alt="">
+                  <img  class="userinfoicon" height="18" width="18" [src]="changebrowser(data?.browser)" alt="">
+                  <img  class="userinfoicon" height="18" width="18" [src]="changedevicetype(data?.mobile)" alt="">
+                  <img  class="userinfoicon" height="18" width="18" [src]="changeoperatingsystem(data?.operating_system)" alt="">
                 </td>
                 <td>
                 <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 6px;" alt=""> {{changecalltype(data?.is_video)}}
@@ -166,10 +165,10 @@
             <tr class="mainlist" *ngFor="let data of  ougoing_call">
               <td style=" padding-left: 30px;"><p class="username">{{data?.name}}</p>
               <p>{{data?.user_id}}</p></td>
-              <td><img class="userinfoicon" height="16" width="16" [src]="changecountryflag(data?.language_icon)" alt="">
-                <img  class="userinfoicon" height="16" width="16" [src]="changebrowser(data?.browser)" alt="">
-                <img  class="userinfoicon" height="16" width="16" [src]="changedevicetype(data?.is_mobile)" alt="">
-                <img  class="userinfoicon" height="16" width="16" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+              <td><img class="userinfoicon" height="18" width="18" [src]="changecountryflag(data?.language_icon)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changebrowser(data?.browser)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changedevicetype(data?.is_mobile)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changeoperatingsystem(data?.operating_system)" alt="">
               </td>
               <td>
                 <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 6px;" alt=""> {{changecalltype(data?.is_video)}}
@@ -304,10 +303,10 @@
             <tr class="mainlist" *ngFor="let data of  missed_call">
               <td style="padding-left: 30px;"><p class="username">{{data?.name}}</p>
               <p class="id">{{data?.user_id}}</p></td>
-              <td ><img class="userinfoicon" height="16" width="16" [src]="changecountryflag(data?.language_icon)" alt="">
-                <img  class="userinfoicon" height="16" width="16" [src]="changebrowser(data?.browser)" alt="">
-                <img  class="userinfoicon" height="16" width="16" [src]="changedevicetype(data?.is_mobile)" alt="">
-                <img  class="userinfoicon" height="16" width="16" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+              <td ><img class="userinfoicon" height="18" width="18" [src]="changecountryflag(data?.language_icon)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changebrowser(data?.browser)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changedevicetype(data?.mobile)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changeoperatingsystem(data?.operating_system)" alt="">
               </td>
               <td class="calltype">
                 <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 17px;" alt=""> {{changecalltype(data?.is_video)}}
@@ -432,10 +431,10 @@
             <tr class="mainlist" *ngFor="let data of  answered_call">
               <td style="padding-left: 30px;"><p  class="username">{{data?.name}}</p>
                 <p class="id">{{data?.user_id}}</p></td>
-              <td><img style="border-radius: 50%;" class="userinfoicon" height="16" width="16" [src]="changecountryflag(data?.language_icon)" alt="">
-                <img  class="userinfoicon" height="16" width="16" [src]="changebrowser(data?.browser)" alt="">
-                <img  class="userinfoicon" height="16" width="16" [src]="changedevicetype(data?.is_mobile)" alt="">
-                <img  class="userinfoicon" height="16" width="16" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+              <td><img style="border-radius: 50%;" class="userinfoicon" height="18" width="18" [src]="changecountryflag(data?.language_icon)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changebrowser(data?.browser)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changedevicetype(data?.mobile)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changeoperatingsystem(data?.operating_system)" alt="">
               </td>
               <td>
                 <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 6px;" alt=""> {{changecalltype(data?.is_video)}}

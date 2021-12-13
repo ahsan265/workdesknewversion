@@ -57,6 +57,7 @@ form = new FormGroup({
     this.getlllangugaes();
     this.getagentprofilesettingview();
     this.updategaentprofilewith();
+    this.recieveupdatedpicture();
   }
   selectsubscription(val)
 
@@ -359,8 +360,8 @@ form = new FormGroup({
    // get load ids of languages
 
    getselectedlanguages(val:Array<any>)
-   {      console.log(this.idsoflanguages)
-            console.log(val)
+   {    
+         
           val.forEach(ele=>{
           var  index = this.lang.findIndex(x => x.id ==ele.id);
           this.idsoflanguages.push(ele.id)
@@ -368,9 +369,7 @@ form = new FormGroup({
           this.lang[index].status=true;
          
        });
-      
      this.selectedlanguages=this.idsoflanguages.length +"\xa0"+"Selected";
-    // console.log(this.selectedlanguages);
       if(this.idsoflanguages.length==6)
       {
           this.selectedlanguages="All Selected"
@@ -475,5 +474,15 @@ public async updateagentprofile(): Promise<any>
     catch(err){
       this.message.setErrorMessage(err.error.error)
     }
+  }
+
+  // recieve updated picture
+  recieveupdatedpicture()
+  {
+    this.sharedres.sendpicture$.subscribe(data=>{
+      console.log(data)
+      var timestamp = (new Date()).getTime();
+      this.agentprofilepic=data + '?_=' + timestamp;
+    })
   }
 }

@@ -1,8 +1,9 @@
 <div class="tablearea" [hidden]="agentlistview">
+  <div style="display: block;width: 100%;">
   <div class="showagenttypes">
     <div class="dropdown agentype
      form_input mobiledropdown">
-      <li style="height: 34px;">
+      <li>
         <a class="selectedagenttype" data-toggle="dropdown" aria-expanded="false">
           {{selectedusername}}
           <i class="tagiconnn fa fa-chevron-down" aria-hidden="true"></i>
@@ -21,6 +22,24 @@
 
 
   <div class="searchandaddagent">
+    <div class="mobilefilteropen">
+      <svg (click)="openmobilefilterpopup()"  style="position: initial;
+      margin: 0 auto;
+      margin-top: 14px;
+      margin-right: 14px;
+      text-align: center;" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.08579 6.58585C1.71071 6.21077 1.5 5.70207 1.5 5.17163V3.00006C1.5 1.89549 2.39543 1.00006 3.5 1.00006H17.5C18.6046 1.00006 19.5 1.89549 19.5 3.00006V5.17163C19.5 5.70207 19.2893 6.21077 18.9142 6.58585L12.7929 12.7072C12.6054 12.8947 12.5 13.1491 12.5 13.4143V17.9457C12.5 18.2905 12.3224 18.611 12.03 18.7937L10.03 20.0437C9.36395 20.46 8.5 19.9811 8.5 19.1957V13.4143C8.5 13.1491 8.39464 12.8947 8.20711 12.7072L2.08579 6.58585Z" stroke="#455267" stroke-width="1.4"/>
+        </svg>
+        
+    </div>
+    <div class="mobileopenserach">
+      <svg  (click)="Invtieteagentpopup()" style="    margin-top: 13px;
+      margin-right: 13px;" width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.18219 6.89563C9.18219 3.18861 12.1873 0.183472 15.8943 0.183472C19.6014 0.183472 22.6065 3.18861 22.6065 6.89563C22.6065 10.6026 19.6014 13.6078 15.8943 13.6078C12.1873 13.6078 9.18219 10.6026 9.18219 6.89563ZM8.51285 10.4195C6.73348 10.4195 5.29102 8.97699 5.29102 7.19762C5.29102 5.41825 6.73348 3.97579 8.51285 3.97579L8.51285 10.4195ZM23.278 3.67385C25.0574 3.67385 26.4999 5.11631 26.4999 6.89568C26.4999 8.08799 25.8522 9.12903 24.8895 9.68618V14.4132C24.8895 16.6375 23.0864 18.4405 20.8622 18.4405H19.6869C19.2981 19.2543 18.4673 19.8165 17.5053 19.8165H14.2835C12.9489 19.8165 11.8671 18.7347 11.8671 17.4001C11.8671 16.0656 12.9489 14.9838 14.2835 14.9838H17.5053C18.6433 14.9838 19.5975 15.7704 19.8539 16.8296H20.8622C22.1967 16.8296 23.2786 15.7478 23.2786 14.4132V10.1175H23.278V3.67385Z" fill="white"/>
+        <rect x="3.5" y="11.2461" width="2" height="8" rx="1" fill="white"/>
+        <rect x="8.5" y="14.2462" width="2" height="8" rx="1" transform="rotate(90 8.5 14.2462)" fill="white"/>
+        </svg>
+    </div>
     <div class="dropdown mobiledropdown ">
       <ul class="form_input">
         <li style="height: 34px;">
@@ -43,9 +62,7 @@
       </ul>
     </div>
     <div class="serachagents">
-
-
-      <Input type="text" (keyup)='search($event.target.value)' class="form_input search"
+      <Input type="text" (keyup)='search($event.target.value)' class="form_input search" [value]="searchquerymobilefilter"
         placeholder="Search by name or e-mail..." />
     </div>
     <button class="addagent" (click)="Invtieteagentpopup()"><span style="margin-right: 8px;
@@ -59,7 +76,7 @@
 
   </div>
 
-
+</div>
 
   <div class=" datatable" [hidden]="agentlist">
     <table>
@@ -91,7 +108,6 @@
               display: inline-block;
               vertical-align: middle;
               ">
-              <!-- <p [hidden]="getinvitedagents(data?.invited,data?.inactive,data?.active)">{{data?.display_name}}</p> -->
 
               <p class="displayname" [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)">
                 {{getagentname(data?.display_name)}}</p>
@@ -130,8 +146,49 @@
     </div>
 
   </div>
+  <div class="mobiledatacard" *ngFor="let data of  all_agent; let i=index">
+   <div class="agentinformation">
+     <div style="display: inline-block; width: 80%;padding-left: 20px; ">
+    <div class="icon-container"><img style="margin-right: 15px;" class="agentpic" height="36p" width="36"
+      src="{{data?.images[96] | getpicture}}" alt="">
+    <div class='status-circle' [style.background]="isagentonline(data?.is_online,data?.is_available)">
+    </div>
+  </div>
+  <div style="
+          width: 100px;
+          white-space: nowrap;
+          display: inline-block;
+          vertical-align: middle;">
+  <p class="displayname"  [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)">
+    {{getagentname(data?.display_name)}}</p>
+  <p  class="displayname"[style.line-height]="getlineheight(data?.invited,data?.inactive,data?.active)"  [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)">{{data?.email}}</p>
+   </div></div> 
+   <div style="width: 20%; display: inline-block; text-align: right; vertical-align: middle;">
+    <img class="settings"
+    (click)="getsettingspage(data?.images[96],data?.email,data?.invited,data?.display_name,data?.first_name,data?.last_name,data?.languages,data?.role,data?.uuid)"
+    [hidden]="!(getsettingforloggedinagent()==data?.email && isagent==false||isagent==true)"
+    [src]="agentrole">
+   </div>
+  </div>
+   <div class="agentfullname">
+    <p class="fullname">FULL NAME</p>
+    <div style="line-height: 25px;" [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)">
+      <div style="display: inline-block;">
+        <div style="width: 16px;"> <img class="" [src]="getengamentofagentcall(data.is_in_call,data.is_in_chat)"
+            alt=""></div>
+      </div> {{getfullname(data?.invited,data?.inactive,data?.active,data?.first_name,data?.last_name)}}
+    </div>
+   </div>
+   <div class="agentlanguages">
+    <p class="fullname">LANGUAGE</p>
+    <div style="padding-left: 20px;"><p [style.color]="getinvitedagents(data?.invited,data?.inactive,data?.active)"
+      *ngFor="let lang of data?.languages; let i=index;" style="display:inline-block;padding-right: 2px; line-height: 25px;">
+      {{lang.name}}<span [hidden]="i == data.languages.length-1">, </span> </p></div>
+    
+   </div>
+  </div>
   <div [hidden]="noagent">
-    <p class="cell large-12 no-agents">{{allagentmsg}}</p>
+    <p class="no-agents">{{allagentmsg}}</p>
   </div>
 
 

@@ -71,8 +71,8 @@ callsocketapi_by_selecting_intgid()
           console.log(data);
           this.getlistofagentsinquesubjecct.next(data);
           const online = JSON.parse(localStorage.getItem('user-status'))
-
-          if(data['new_call']==true&&online['is_online']==true)
+          console.log(online)
+          if(data['new_call']==true&&online==true)
             {
               this.getdesktopnotification("Customer Support","Please connect call")
             }

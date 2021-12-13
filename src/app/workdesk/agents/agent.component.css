@@ -437,21 +437,7 @@ tr:nth-last-child(odd)
 .head{
   background: #FFFFFF;
 }
-/* thead, tbody tr:nth-child(even){
-    background:none;
-    border: none;
-}
-thead tr{
-    border: none;
-    margin-top: 3px;
-    border-bottom: 0px solid rgba(229, 229, 229, 0.5);;
 
-}
-table,tbody
-{
-  background: #FFFFFF;
-  border: 1px solid rgba(208, 208, 222, 0.6); 
-} */
 td p.displayname{
 
 font-weight: 500;
@@ -525,13 +511,6 @@ color: rgba(41, 47, 88, 0.8);
 
 }
 
-/* tr,tbody tr:nth-child(even)
-{
-    border-bottom: 1px solid rgba(229, 229, 229, 0.5);;
-    background: #FAFAFD;
-    border: 1px solid rgba(208, 208, 222, 0.6);
-    box-sizing: border-box;
-} */
 
 tr.mainlist{
     border: none;
@@ -543,12 +522,9 @@ tr.mainlist{
 
 }
 
-
 .userinfoicon{
 margin: 5px;
-
 }
-
 .agentpic{
   width: 36px;
 height: 36px;
@@ -556,8 +532,6 @@ border-radius: 50%;
 display: inline-block;
 position: relative;
 }
-
-
 .settings{
     font-family: "Roboto",sans-serif;
     font-style: normal;
@@ -584,7 +558,6 @@ line-height: 24px;
 display: block;
 align-items: center;
 color: #292F58;
-
 }
 .dropdown-menu.show{
   transform: translate3d(0, 0, 0);
@@ -601,19 +574,134 @@ color: #292F58;
   z-index: 10;
   margin-left: -16px;
 }
-/* .dropdown-menu.languages{
-  width: 108px;
-  left: -13px;
-} */
 .agentnames{
   font-weight: 500;
 }
 .showagentinnumberpanel{
   width: 100%;
   display: block;
-  
+}
+.mobilefilteropen{
+  display: none;
+}
+.mobileopenserach{
+  display: none;
+}
+.mobiledatacard{
+  display: none;
 }
 @media (max-width: 768px){
+  .displayname{
+    line-height: 25px;
+  }
+  .fullname{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 25px;
+letter-spacing: 0.02em;
+color: rgba(22, 39, 65, 0.45);
+padding-left: 20px;
+  }
+  .settings{
+    padding-right: 20px;
+  }
+  .icon-container{
+    height: 30px;
+    width: 30px;
+  }
+  .agentpic{
+    height: 30px;
+    width: 30px;
+  }
+.mobiledatacard{
+    width: 100%;
+    display: block;
+    background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px 4px 4px 4px;
+height: fit-content;
+margin-bottom: 20px;
+  }
+  .agentinformation{
+    height: 54px;
+    background: #FAFAFD;
+    border: 1px solid rgba(208, 208, 222, 0.6);
+    box-sizing: border-box;
+    border-radius: 0px 4px 0px 0px;
+  }
+  .agentfullname{
+    height: 54px;
+    background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+  }
+  .agentlanguages{
+    height: 54px;
+    background: #FAFAFD;
+    border: 1px solid rgba(208, 208, 222, 0.6);
+    box-sizing: border-box;
+    border-radius: 4px 0px 0px 0px;
+  }
+.mobilefilteropen{
+background: #FFFFFF;
+border: 1px solid #E3E3EB;
+box-sizing: border-box;
+border-radius: 4px;
+width: 45%;
+height: 50px;
+display: inline-block;
+margin-left: 2.5%;
+}
+.mobileopenserach{
+ display: inline-block;
+ width: 45%;
+ height: 50px;
+ background: #1C54DB;
+ border-radius: 4px;
+ margin-left: 5%;
+ vertical-align: bottom;
+ }
+.searchandaddagent{
+    width: 36%;
+    height: 55px;
+    vertical-align: top;
+  }
+  .addagent{
+    display: none;
+  }
+  .showagenttypes{
+    width: 64%;
+    text-align: left;
+    height: 55px;
+  }
+ 
+  .dropdown.mobiledropdown{
+  display: none;
+  }
+  .dropdown.agentype{
+    display: block;
+    height: 50px;
+    width: 100%;
+  }
+  .selectedagenttype{
+    line-height: 50px;
+  }
+  .tagiconnn{
+    line-height: 50px;
+    margin-left: 8px;
+  }
+  .dropdown-menu.show.usertype{
+    min-width: 100%;
+    max-width: 100%;
+    margin-top: 28px;
+  }
+  .serachagents
+  {
+    display: none;
+  }
   .tabs-title > a
   {
     font-size: 11px;
@@ -623,7 +711,7 @@ color: #292F58;
     margin-bottom: 24px;
   }
   .datatable{
-    display: block;
+    display: none;
       width: inherit;
       overflow-x: auto;
   }

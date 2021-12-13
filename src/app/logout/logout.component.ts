@@ -18,9 +18,9 @@ export class LogoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-   console.log("hello")
-    // this.authService.logOff();
-    // this.oauthService.logOff();
+  
+    this.authService.logOff();
+    this.oauthService.logOff();
     location.href = this.redirectUri;
   }
 

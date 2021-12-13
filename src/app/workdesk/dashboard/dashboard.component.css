@@ -683,6 +683,21 @@
        display: none;
    }
    @media (max-width: 768px){
+       .dashboardtypepanel{
+           width: 75%;
+       }
+       .subcard{
+           padding-left: 30px;
+           padding-right: 30px;
+       }
+       .statsareapanel{
+           padding-left: 30px;
+           padding-right: 30px;
+       }
+       .maindropdownpanel{
+           padding-left: 30px;
+           padding-right: 30px;
+       }
        .agentpic{
            height: 30px;
            width: 30px;
@@ -788,9 +803,10 @@
            display: inline-flex;
            float: right;
            height: 55px;
+           margin-left: 2.5%;
        }
        .calltype.dropdown{
-           width: 257px;
+           width: 100%;
            height: 55px;
        }
        .selecteddashboardname{
@@ -804,7 +820,7 @@
            margin-right: 30.5%;
        }
        .arrowdownicon1{
-           margin-right: -44px;
+           margin-right: -16px;
            margin-top: 25px;
        }
        .calander{
@@ -818,6 +834,9 @@
        }
        .barchartpanel{
            margin-top: 0px;
+           padding-left: 30px;
+           padding-right: 30px;
+           margin-bottom: 30px;
        }
        .mobilelastcard{
            margin-bottom: 0px;

@@ -13,6 +13,7 @@ import { MessageService } from 'src/app/service/messege.service';
 import { sharedres_service } from 'src/app/service/sharedres.service';
 import { AddagentComponent } from '../addagent/addagent.component';
 import { EditformComponent } from '../editform/editform.component';
+import { MobilefiltersforagentsComponent } from '../mobilefiltersforagents/mobilefiltersforagents.component';
 import { InviteagentComponent } from './inviteagent/inviteagent.component';
 declare var $: any;
 @Component({
@@ -22,6 +23,8 @@ declare var $: any;
 })
 
 export class AgentComponent implements OnInit {
+  langaugesfrommobilefilter:any;
+  searchquerymobilefilter:any=null;
   languagetag:any;
   languageflag:any;
   langid:any;
@@ -116,16 +119,15 @@ export class AgentComponent implements OnInit {
     this.agentlist=false;
     this.noagent=true;
     this.getagentviews();
-  //  this.getlistofagentwithintg();
+    this.get_search_query();
+    this.getagentslistbylanguages_mobilefilter();
     this.getagentlist();
     this.getagentrole();
-   setTimeout(() => {
-   this.selectusertype(true,"Show all",0)
-
-   }, 500);
-
+      setTimeout(() => {
+      this.selectusertype(true,"Show all",0)
+      }, 500);
     this.sharedres.submitapplication$.subscribe(data=>{
-      this.agentsocketgigaaaapi.send_agentsparam_status(this.invited_agents,this.active_agents,this.inactive_agents,this.id_soflanguages)
+    this.agentsocketgigaaaapi.send_agentsparam_status(this.invited_agents,this.active_agents,this.inactive_agents,this.id_soflanguages)
     })
     this.getagentdetailslive()
 
@@ -199,11 +201,8 @@ export class AgentComponent implements OnInit {
   }
  getsettingforloggedinagent()
  {
-   
-    const getdata = JSON.parse(localStorage.getItem('gigaaa-user'))
+   const getdata = JSON.parse(localStorage.getItem('gigaaa-user'))
    return getdata.email;  
-   
-  
  }
 
  // get row of loggedin user at top 
@@ -499,6 +498,18 @@ getagentname(val)
 
 
   // get invieted or active agent list
+  getlineheight(invited,inactive,active)
+  {
+ if(invited==true&&inactive==false&&active==false)
+ {
+  return '50px';
+
+ }
+ else{
+  return '25px';
+
+ }
+}
   getinvitedagents(invited,inactive,active)
   {
  if(invited==true&&inactive==false&&active==false)
@@ -644,10 +655,11 @@ return false;
         }
     }
       this.lang=udpatedlang;
-     
-     }
+      this.langaugesfrommobilefilter=this.id_soflanguages;
 
-     selectlanguageonebyone(e,id)
+     }
+// select language one by one
+  selectlanguageonebyone(e,id)
    {      const intid = JSON.parse(localStorage.getItem('intgid'));
 
      if(e==true)
@@ -694,11 +706,19 @@ return false;
       }
  
      }
-   
+     this.langaugesfrommobilefilter=this.id_soflanguages;
 
    }
-   search(term:string) {
+   // get search query from mobile version from 
 
+  get_search_query()
+  {
+    this.sharedres.sendsearchqueryforagent$.subscribe(data=>{
+      this.search(data);
+    })
+  }
+   search(term:string) {
+    this.searchquerymobilefilter=term
       var result = this.tobefilteragent.filter(obj => {
         if(obj['display_name']!=null)
         {
@@ -721,5 +741,49 @@ return false;
       }
     }
  
+ // open mobile filter for agents page
+ openmobilefilterpopup()
+ {
+   this.dialog.open(MobilefiltersforagentsComponent,{
+     data:{languages:this.langaugesfrommobilefilter,search_item:this.searchquerymobilefilter},
+     hasBackdrop:true,
+     panelClass:"mobilefilter-form-container",
+   });
+ }
+
+ // get agents by languages using mobile filter
+ getagentslistbylanguages_mobilefilter()
+ {
+   this.sharedres.loadagentwithlanguages$.subscribe(data=>{
+    this.langaugesfrommobilefilter=data;
+    this.agentsocketgigaaaapi.send_agentsparam_status(this.active_agents,this.inactive_agents,this.invited_agents,data);
+    this.getselectedlanguages(data);
+   })
+ }
+ getselectedlanguages(val:Array<any>)
+ {    
+          console.log(val)
+          this.lang.forEach((ele,i)=>{
+            this.lang[i].status=false;
+          })
+          this.id_soflanguages=[];
+          val.forEach(ele=>{
+            this.id_soflanguages.push(ele)
+          var  index = this.lang.findIndex(x => x.id==ele);
+          this.lang[index].status=true;
+          });
+         
+
+         
+         
+     this.selectedlanguages=this.id_soflanguages.length +"\xa0"+"Selected";
+      if(this.id_soflanguages.length==6)
+      {
+          this.selectedlanguages="All Selected"
+          this.allselectedtag=true;
+      }
+      console.log(this.lang);
+
+   }
  
 }

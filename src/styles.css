@@ -10,8 +10,13 @@
 @import '../node_modules/foundation-sites/dist/css/foundation.css';
 @import '../node_modules/foundation-sites/dist/css/foundation.min.css';
 
-
-
+.sidebarWrap{
+    border: 0px !important;
+    border-right: 1px solid rgba(208,208,222,.8) !important;
+}
+.linkWrap{
+    animation:opacity .5s !important;
+}
 .pageTitleWrap{
     font-family: "Roboto",sans-serif;
     font-style: normal;
@@ -2503,5 +2508,7 @@ body .bs-datepicker-container  .bs-datepicker-body   tbody tr:nth-child(even){
     .addagent-dialog-container > .mat-dialog-container{
         max-width: 320px;
         min-width: 320px;
+        min-height: 540px;
+        max-height: 540px;
     }
 }

@@ -22,8 +22,9 @@ button {
 }
 
 @media only screen and (max-width: 768px) {
-  .button {
-    width: 140px;
-    height: 25.57px;
+  button {
+    width: 214px;
+    margin: 0 auto;
+    margin-top: 30px;
   }
 }

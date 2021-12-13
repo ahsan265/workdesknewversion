@@ -327,8 +327,7 @@ export class DashboardComponent implements OnInit {
      ngOnInit(): void {
        this.getlistofdashboard("Calls");
       this.onDateChange([this.ranges[0].value[0],this.ranges[0].value[1]])
-      //this.router.navigate(['dashboard'])
-   
+      this.router.navigate(['dashboard'])
       this.roundbarchartcorners()
       this.loadcallstatsoninit();
       this.loadcallchartinit();

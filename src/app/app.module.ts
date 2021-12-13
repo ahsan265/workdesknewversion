@@ -59,7 +59,8 @@ import { MainPageComponent } from './main-page/main-page.component';
     LoginBtnComponent,
     LogoutComponent,
     CallbackComponent,
-    MainPageComponent
+    MainPageComponent,
+    
   ],
   imports: [
     ChartsModule,

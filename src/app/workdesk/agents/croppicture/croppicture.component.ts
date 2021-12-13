@@ -5,6 +5,7 @@ import { SafeUrl } from '@angular/platform-browser';
 import { base64ToFile, Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
 import { GigaaaApiService } from 'src/app/service/gigaaaapi.service';
 import { MessageService } from 'src/app/service/messege.service';
+import { sharedres_service } from 'src/app/service/sharedres.service';
 import { FileHandle } from './dragdroppic';
 
 @Component({
@@ -43,6 +44,7 @@ export class CroppictureComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data,
   private gigaaapi:GigaaaApiService,private message:MessageService,
   public dialogRef: MatDialogRef<CroppictureComponent>,
+  private shared_res:sharedres_service,
   ) { }
 
   ngOnInit(): void {
@@ -304,17 +306,13 @@ public  updateuserprofilepic(file:any)
       var id=JSON.parse(localStorage.getItem('intgid'));
 
      this.gigaaapi.uploaduserprofilepic(accesstoken,subsid,id.int_id,file).subscribe(event=>{
-       
+       console.log(event)
        if(event['type']===4)
-       {
-        var timestamp = (new Date()).getTime();
-
-
+       {        
+        this.shared_res.sendpictureupdated(event['body']['96'])
         this.message.setSuccessMessage("Profile picture updated");
         this.dialogRef.close();
        }
-        
-       
        
      },err=>{
         console.log(err)
@@ -333,10 +331,11 @@ public  agentupdateuserprofilepic(file:any,uuid:any)
     var id=JSON.parse(localStorage.getItem('intgid'));
 
    this.gigaaapi.agentuploaduserprofilepic(accesstoken,subsid,id.int_id,uuid,file).subscribe(event=>{
-     
+     console.log(event)
      if(event['type']===4)
-     {      var timestamp = (new Date()).getTime();
-
+     {   
+        
+        this.shared_res.sendpictureupdated(event['body']['96'])
 
       this.message.setSuccessMessage("Agent profile picture updated");
       this.dialogRef.close()

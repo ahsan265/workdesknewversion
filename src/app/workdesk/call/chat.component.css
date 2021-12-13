@@ -741,6 +741,21 @@ color: #7D8696;
 .waitingtime{
   width: 10%;
 }
+.itemoftabs{
+  line-height: 50px;
+  height: 50px;
+  display: block;
+}
+.tabsitem{
+  padding-right: 2%;
+  display: inline-block;
+  width: fit-content;
+  text-align: center;
+}
+.active {
+  border-bottom:2px solid #1C54DB;
+  transition-duration: 0.5s;
+}
 @media (max-width: 768px){
   .tabs-title > a
   {

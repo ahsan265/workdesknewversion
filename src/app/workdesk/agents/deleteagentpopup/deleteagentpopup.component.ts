@@ -13,6 +13,7 @@ import { sharedres_service } from 'src/app/service/sharedres.service';
 export class DeleteagentpopupComponent implements OnInit {
  agentfullname:any;
  agentdisplayname:any;
+ agentpic:any;
   constructor(private gigaaaapi:GigaaaApiService,
     private message:MessageService,
     private sharedres:sharedres_service,
@@ -24,6 +25,7 @@ export class DeleteagentpopupComponent implements OnInit {
     console.log(this.data);
     this.agentfullname=this.data?.agentfullname;
     this.agentdisplayname=this.data?.display_name;
+    this.agentpic=this.data?.image;
   }
 
 

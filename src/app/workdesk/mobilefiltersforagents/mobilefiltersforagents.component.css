@@ -1,0 +1,393 @@
+.mobilefilterpanel{
+    display: block;
+    width: 100%;
+
+}
+.filterpanel{
+    display: inherit;
+    width: 100%;
+    height: 88px;
+    padding-left: 26px;
+    padding-right: 26px;
+    border-bottom: 1px solid rgba(208, 208, 222, 0.6);
+}
+.clearallfilterpanel{
+    padding-left: 26px;
+    padding-right: 26px;
+    height: 50px;
+    border: none;
+    background:  #EDEDF6;
+    box-sizing: border-box;
+    border-radius: 0px 0px 4px 4px;
+}
+.informationpanel{
+    display: inline-block;
+    width: 75%;
+    height: 88px;
+    padding-top: 10px;
+    vertical-align: middle;
+
+}
+.selectedpanel.location{
+    line-height: 64px;
+}
+.informationpanel.clear{
+    height: 50px;
+}
+.arrowpanel{
+    display: inline-block;
+    width: 25%;
+    text-align: right;
+}
+
+.selectedpanel{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 35px;
+    display: block;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #162741;
+    
+}
+.selecteddaterange{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    /* or 22px */
+    
+    display: block;
+    align-items: center;
+    letter-spacing: 0.02em;
+    
+    color: rgba(22, 39, 65, 0.8);
+}
+.clearall{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 26px;
+/*  to box height, or 24px */
+display: block;
+align-items: center;
+letter-spacing: 0.02em;
+text-align: left;
+color: #162741;
+}
+.selecteddaterangepanel{
+    display: block;
+    width: 100%;
+}
+.showdatemainpanel{
+    display: inherit;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid rgba(208, 208, 222, 0.6);
+    padding-left: 26px;
+    padding-right: 26px;
+}
+.arrowpanel.daterange{
+    text-align: left;
+    width: fit-content;
+}
+.showdateheadingpanel{
+    width: 90%;
+    display: inline-block;
+}
+.datemainheading{
+    font-family: "Roboto";
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 48px;
+/* or 24px */
+display: block;
+align-items: center;
+text-align: center;
+letter-spacing: 0.02em;
+color: #162741;
+}
+.selectedtabspanel{
+    padding-left: 26px;
+    padding-right: 26px;
+    height: 50px;
+    display: block;
+    border-bottom: 1px solid rgba(208, 208, 222, 0.6);
+}
+.selectedtabspanel.custom{
+    background: #EDEDF6;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 0px 0px 4px 4px;
+}
+.selecteddate{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 48px;
+/* or 24px */
+display: block;
+align-items: center;
+letter-spacing: 0.02em;
+color: #162741;
+cursor: pointer;
+}
+.headingpanel{
+    display: block;
+    width: 100%;
+    padding-left: 26px;
+    padding-right: 26px;
+    padding-top: 26px;
+}
+.mainheading{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 48px;
+/* identical to box height, or 24px */
+
+display: flex;
+align-items: center;
+letter-spacing: 0.02em;
+
+color: #162741;
+}
+.scrollpanelforlanguagelist{
+    min-height: 146px;
+    max-height: 146px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 95%;
+    margin-top: 6px;
+}
+.scrollpanelforcountrylist{
+    min-height: 203px;
+    max-height: 212px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 95%;
+    margin-top: 6px;
+}
+.country.dropdown{
+ width: 100%;
+background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px;
+display: block;
+}
+
+.dropdown-menu.show.country{
+    width: 100%;
+    margin-top: -40px;
+    min-height: 226px;
+    max-height: 226px;
+    padding: 0px;
+    position: relative !important;
+
+}
+.dropdown-menu.show.langauges{
+    width: 100%;
+    margin-top: -40px;
+    min-height: 165px;
+    max-height: 165px;
+    padding: 0px;
+    position: relative !important;
+
+}
+.dropdownlistitem1{ font-family: "Roboto",sans-serif;
+    font-style: normal;
+   font-weight: normal;
+   font-size: 12px;
+   line-height: 20px;
+   display: inline-block;
+   width: 45px;
+    /* overflow: hidden; */
+    white-space: nowrap;
+    text-overflow: inherit;
+   color: #292F58;
+   vertical-align: bottom;
+   height: 24px;
+  }
+.scrollpanelforlanguagelist::-webkit-scrollbar,.scrollpanelforcountrylist::-webkit-scrollbar{
+    width: 8px;
+    height: 138px;
+    background: #EDEDF0;
+    border-radius: 8px;
+
+}
+.scrollpanelforlanguagelist::-webkit-scrollbar-thumb, .scrollpanelforcountrylist::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #616B7B;
+  height: 74px;
+  width: 7px;
+  background-clip: padding-box;
+
+}
+.scrollpanelforlanguagelist::-webkit-scrollbar-track, .scrollpanelforcountrylist::-webkit-scrollbar-track{
+  padding: 10px;
+ 
+  width: 8px;
+
+}
+input[type="checkbox"]  {
+    height: 18px;
+    width: 18px;
+    margin-left: 12px;
+    margin-right: 0px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    background: #FFFFFF;
+    border: 0.5px solid rgba(166, 168, 186, 0.5);
+    box-sizing: border-box;
+    border-radius: 4px;
+    vertical-align: middle;
+    appearance: inherit;
+    cursor: pointer;
+    }
+    
+    input[type=checkbox]:before{
+    background-color: #FFFFFF; 
+    border-bottom:none;
+    
+    }
+    input[type=checkbox]:checked{
+      background-image: url(../../../assets/assets_workdesk/checkbox_icon.svg);
+      background-repeat: no-repeat;
+      background-size: 19px 21px;
+      background-position: center;
+    border-bottom:none;
+    }
+    
+    input[type=checkbox]:checked:after {
+    content: " ";
+    margin-left: 2px;
+    margin-top: 0px;
+    position: absolute;
+    color: #FFFFFF;
+    border-bottom:none;
+    }
+    .selectlocationpanel{
+        display: block;
+        width: 100%;
+        margin-top: 30px;
+        padding-right: 26px;
+        padding-left: 26px;
+    }
+    .selectlanguagepanel{
+        display: block;
+        width: 100%;
+        padding-right: 26px;
+        padding-left: 26px;
+        min-height: 240px;
+        max-height: 240px;
+    }
+    .selectedlocationname{
+        font-family: "Roboto",sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 48px;
+        padding-left: 11px;
+        text-align: left;
+        display: inline-block;
+        vertical-align: sub;
+        width: 95%;
+        align-items: center;
+        letter-spacing: 0.02em;
+        color: #162741;
+        }
+    .arrowdownicon1{
+        float: right;
+        line-height: 34px;
+        display: flex;
+        margin-right: 6px;
+        margin-top: 22px;
+        cursor: pointer;
+        color: #292F58;
+    
+    }
+    .applybtnpanel{
+        width: 100%;
+        display: block;
+        padding-top: 13px;
+        padding-left: 26px;
+        padding-right: 13px;
+        height: 76px;
+        text-align: right;
+        border-top: 1px solid rgba(208, 208, 222, 0.6);
+        box-sizing: border-box;
+        border-radius: 0px 0px 4px 4px;
+    }
+ .applybtn{
+width: 83px;
+height: 50px;
+bottom: 13px;
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 48px;
+align-items: center;
+letter-spacing: 0.02em;
+color: #FFFFFF;
+background: #1C54DB;
+border-radius: 3px;
+    }
+.dateviewpanel{
+        display: block;
+        width: 100%;
+        padding-left: 26px;
+        padding-right: 26px;
+        height: 76px;
+        border-bottom: 1px solid rgba(208, 208, 222, 0.6);
+        box-sizing: border-box;
+        border-radius: 0px;
+        padding-top: 12px;
+}
+.dateview{
+    display: inline-block;
+    width: 104px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 1px solid rgba(208, 208, 222, 0.6);
+    box-sizing: border-box;
+    border-radius: 4px;
+}    
+.datetext{
+    font-family: "Roboto";
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 44px;
+text-align: center;
+display: block;
+align-items: center;
+letter-spacing: 0.02em;
+color: rgba(22, 39, 65, 0.8);
+}
+.form_input.search{
+    background: url(../../../assets/search.svg) no-repeat scroll 10px 9px;
+    padding-left: 36px;
+    background-position: 12px;
+  }
+  .form_input{
+    background: #FFFFFF;
+    border: 1px solid rgba(208, 208, 222, 0.6);
+    box-sizing: border-box;
+    border-radius: 4px;
+    height: 50px;
+    width: 100%;
+  }
+.calenderview{
+    height: 293px;
+    border-bottom: 1px solid rgba(208, 208, 222, 0.6);
+
+}

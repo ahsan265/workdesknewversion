@@ -30,10 +30,11 @@ import { DragDirective } from './agents/croppicture/dragdroppic';
 import { agentsocketapi } from '../service/agentsocketapi';
 import { MobilefilterspopupComponent } from './mobilefilterspopup/mobilefilterspopup.component';
 import { gigaaasocketapi } from '../service/gigaaasocketapi.service';
+import { MobilefiltersforagentsComponent } from './mobilefiltersforagents/mobilefiltersforagents.component';
 
 
 @NgModule({
-  declarations: [MobilefilterspopupComponent, DragDirective,percentcolorpipe,getloadpictures, AgentComponent, ChatComponent, ViewchatComponent, ActivechatComponent, EditformComponent, AddagentComponent, DashboardComponent, InviteagentComponent, AgentsettingsComponent, DeleteagentpopupComponent, UpdatepasswordComponent, CroppictureComponent, MobilefilterspopupComponent],
+  declarations: [MobilefiltersforagentsComponent, DragDirective,percentcolorpipe,getloadpictures, AgentComponent, ChatComponent, ViewchatComponent, ActivechatComponent, EditformComponent, AddagentComponent, DashboardComponent, InviteagentComponent, AgentsettingsComponent, DeleteagentpopupComponent, UpdatepasswordComponent, CroppictureComponent, MobilefilterspopupComponent],
   imports: [  Ng2SearchPipeModule,  ImageCropperModule,
     BsDatepickerModule.forRoot(),
     ChartsModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -11,6 +11,7 @@ import * as color from "string-to-color";
 import { sharedres_service } from './service/sharedres.service';
 import { MessageService } from './service/messege.service';
 import { agentsocketapi } from './service/agentsocketapi';
+import { textChangeRangeIsUnchanged } from 'typescript';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,9 @@ import { agentsocketapi } from './service/agentsocketapi';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  integration:any;
+  lastuserintegration:any="";
+  integration_id:any;
   pageTitle: string = 'Dashboard';
   workplaces = [];
   redirectUri = `${environment.oauth_url}/logout?continue=${environment.redirect_uri}/logout`;
@@ -33,15 +37,18 @@ export class AppComponent implements OnInit {
   
   activityIcon = '../assets/images/sidemenu//activities_icon.svg';
   activeActivityIcon = '../assets/images/sidemenu//activities_icon_active.svg';
+  select_integration_icon='../assets/assets_workdesk/select_integration.svg'
 
-  logo = '../assets/gigaaa_logo_long_new.png';
-  logoCollapsed = '../assets/images/sidemenu//gigaaa_logo_square.png';
-  websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/',src:'../assets/assets_workdesk/partnership.svg'},
+  logo = '../assets/logo.png';
+  logoCollapsed = '../../assets/images/sidemenu/gigaaa-layer-logo-1.svg';
+
+websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/',src:'../assets/assets_workdesk/partnership.svg'},
 {name:"Console",url:'https://console.gigaaa.com/',src:'../assets/assets_workdesk/console.svg'},
 {name:"Workdesk",url:'https://workdesk.gigaaa.com/',src:'../assets/assets_workdesk/workdesk.svg'},
 {name:"Messenger",url:'https://messenger.gigaaa.com/',src:'../assets/assets_workdesk/messenger.svg'},
 {name:"Analytics",url:'https://analytics.gigaaa.com/',src:'../assets/assets_workdesk/analytics.svg'}]
   sidebarData: any = [
+    { iconUrl: this.select_integration_icon, name:"Select integration", dropdownItems:[], dropdown: true },
     {
       iconUrl: this.dashboardIcon,
       activeIconUrl: this.activedashboardIcon,
@@ -70,9 +77,9 @@ export class AppComponent implements OnInit {
   online_status:any;
   statusonline:boolean;
   accessToken = new ReplaySubject(1);
-
   user: User;
-  integration:any;
+  url:String;
+  
   constructor(
     public authService: AuthService,
     private apiService: GigaaaApiService,
@@ -81,17 +88,29 @@ export class AppComponent implements OnInit {
     private messegeService:MessageService,
     private agentsocketapi:agentsocketapi,
     private sharedres:sharedres_service,
-    private router: Router
-  ) {}
-
+    private router: Router,
+    private route:ActivatedRoute
+  ) {
+  
+  }
   ngOnInit(): void {
-    this.pageTitle = this.sidebarData[0].name;
+    this.route.queryParams
+      .subscribe(params => {
+       if(params.code!=null)
+       {
+         this.pageTitle="Dashboard"
+       }
+       else{
+        this.url= window.location.href;
+        let locID = this.url.split('/');
+        this.pageTitle=locID[3].charAt(0).toUpperCase() + locID[3].slice(1);
+       }
+      });
     this.authService.user.subscribe((r: any) => {
-      this.user = r;
-      console.log('BILOOO STA');
-     // this.getallintegrationlist();
-      this.calltheagentsocket();
-
+    this.user = r;
+    console.log('BILOOO STA');
+    this.getallintegrationlist();
+    this.calltheagentsocket();
     });
 
     this.accessToken.subscribe((res: any) => {
@@ -111,15 +130,18 @@ export class AppComponent implements OnInit {
   }
 
   addNewRouteName(event: any) {
+    
     this.pageTitle = event;
   }
 
   isSlideOpened(slideOpened: any) {
-    
+    console.log(slideOpened)
+  
     this.slideOpened = slideOpened;
   }
 
   onNoLoggedUsers(event: any) {
+    console.log(event)
     if (event) {
       this.authService.logOff();
       location.href = this.redirectUri;
@@ -141,6 +163,8 @@ export class AppComponent implements OnInit {
       callLogin.generateChallenge(action);
     }
   }
+
+ // get all integration
   getallintegrationlist()
   {
    try {
@@ -148,22 +172,28 @@ export class AppComponent implements OnInit {
   var accesstoken=getdata.access_token;
   var uuid=getdata.subscription_id.subsid.uuid;
   this.apiService.getallintegration(accesstoken,uuid).subscribe(data=>{
-  console.log(data)
   this.integration=data;
+
   this.integration.forEach(element => {
+
     if(element.last_used===true)
-    {        
+    {   
       localStorage.setItem('intgid', JSON.stringify({int_id:element.uuid,name:element.name}));
-      this.share_res.getintegrationrelation(element.uuid);
-     this.share_res.getuserole();
-     var intid = JSON.parse(localStorage.getItem('intgid'))
-     this.apiService.getloggedinagentuuid(accesstoken,uuid,intid.int_id).subscribe(data=>{
-     console.log(data);
-     localStorage.setItem('userlogged_uuid', JSON.stringify(data));
-     this.sharedres.getcallsocketapi(1);
-     });
+      this.lastuserintegration=element.name;
     }
   });
+  let updatearr = this.integration.map((item, i) => Object.assign(item,{ routeUrl: ['/intents']}));
+
+   let update_integration_list = updatearr;
+  console.log(update_integration_list);
+  this.sidebarData.forEach(element => {
+    if(element.name=="Select integration")
+    {
+      element.dropdownItems=update_integration_list;
+      element.name=this.lastuserintegration
+    }
+  });
+  console.log(this.sidebarData);
 
   })
 
@@ -190,6 +220,8 @@ showonlinetatus(value:any){
   }
  
  }
+ 
+ // get the online status when agent is online or away.
  calltheagentsocket()
  {    
   this.sharedres.runthesocketforagent$.subscribe(data=>{

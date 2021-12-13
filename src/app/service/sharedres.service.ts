@@ -34,6 +34,15 @@ export class sharedres_service {
 
     runthesocketforagent$: Observable<any>;
     private runthesocketforagent_subject = new Subject<any>();
+
+    sendsearchqueryforagent$: Observable<any>;
+    private sendsearchqueryforagent_subject = new Subject<any>();
+
+    loadagentwithlanguages$: Observable<any>;
+    private loadagentwithlanguages_subject = new Subject<any>();
+
+    sendpicture$: Observable<any>;
+    private sendpciture_subject = new Subject<any>();
     constructor(private gigaaaapi:GigaaaApiService,
       private router: ActivatedRoute,
 
@@ -47,7 +56,9 @@ export class sharedres_service {
         this.inviteduserdetails$=this.inviteduserdetailssubject.asObservable().pipe();
         this.runsocketapiusingint_id$=this.runsocketapiusingint_idsubject.asObservable().pipe();
         this.runthesocketforagent$=this.runthesocketforagent_subject.asObservable().pipe();
-
+        this.sendsearchqueryforagent$=this.sendsearchqueryforagent_subject.asObservable().pipe();
+        this.loadagentwithlanguages$=this.loadagentwithlanguages_subject.asObservable().pipe();
+        this.sendpicture$=this.sendpciture_subject.asObservable().pipe()
 
     }
     getintegrationrelation(intid:any) {
@@ -132,6 +143,21 @@ runagentsocket(val)
 {
   this.runthesocketforagent_subject.next(val)
 }
+// send search query
+sendsearchquery(val)
+{
+  this.sendsearchqueryforagent_subject.next(val);
+}
+// load agent with respect to languages from mobile filter 
 
+sendlanguagestoagentpage_mobilefilter(val)
+{
+  this.loadagentwithlanguages_subject.next(val);
+}
+// send picture updated for agents
 
+sendpictureupdated(val)
+{
+  this.sendpciture_subject.next(val);
+}
 }

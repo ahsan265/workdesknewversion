@@ -28,6 +28,7 @@ interface IRange {
 })
 
 export class ChatComponent implements OnInit {
+  tab = "";
   datepreviewstart:any;
   datepreviewend:any;
   datepreviewstart1:any;
@@ -330,9 +331,9 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
     }, 250);
     this.getlllangugaes();
 
-    $(document).ready(function() {
-      $(document).foundation();
-   })
+  //   $(document).ready(function() {
+  //     $(document).foundation();
+  //  })
 
   }
 
@@ -365,6 +366,7 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
 
   getpanalview(val)
   {
+    this.tab=val
     if(val=="incoming")
     {
       this.incoming=true;
@@ -507,7 +509,7 @@ return ("0" + minutes).slice(-2) + ":" + ("0" +seconds).slice(-2);
 
   }
   else if(val=="tr") {
-    return this.langurl='../../../assets/assets_workdesk/turkey.svg'
+    return this.langurl='../../../assets/assets_workdesk/Flags/turkish.svg'
 
   }
   else
@@ -537,16 +539,16 @@ changebrowser(val)
   return this.browserurl="../../../assets/assets_workdesk/browsers/opera.svg";
 }
 else if(val=="edge") {
-  return  this.browserurl="../../../assets/assets_workdesk/browsers/default.svg";
+  return  this.browserurl="../../../assets/assets_workdesk/browsers/default_browser_icon.svg";
 }
 else if(val==null)
 {
-  return this.browserurl="../../../assets/assets_workdesk/browsers/default.svg";
+  return this.browserurl="../../../assets/assets_workdesk/browsers/default_browser_icon.svg";
 }
 else
 
   {
-    return this.browserurl="../../../assets/assets_workdesk/browsers/default.svg";
+    return this.browserurl="../../../assets/assets_workdesk/browsers/default_browser_icon.svg";
   }
 
 }
@@ -555,11 +557,11 @@ changedevicetype(val)
 {
  if(val==true)
  {
-  return this.deviceurl="../../../assets/assets_workdesk/device/desktop.svg";
+  return this.deviceurl="../../../assets/assets_workdesk/device/mobile.svg"; 
  }
-else
+else if(val==false)
 {
-  return this.deviceurl="../../../assets/assets_workdesk/device/mobile.svg";
+  return this.deviceurl="../../../assets/assets_workdesk/device/desktop.svg";
 }
 }
 // change operation system
@@ -567,21 +569,21 @@ changeoperatingsystem(val)
 {
  if(val=="macOS")
  {
-  return this.operatsystemnurl="../../../assets/assets_workdesk/os/Apple.svg";
+  return this.operatsystemnurl="../../../assets/assets_workdesk/os/apple.svg";
  }
  else if(val=="iOS")
  {
-  return this.operatsystemnurl="../../../assets/assets_workdesk/os/Apple.svg";
+  return this.operatsystemnurl="../../../assets/assets_workdesk/os/apple.svg";
  }
  else if(val=="Windows") {
   return this.operatsystemnurl="../../../assets/assets_workdesk/os/Windows.svg";
  }
  else if(val=="Android") {
-  return this.operatsystemnurl="../../../assets/assets_workdesk/os/Android.svg";
+  return this.operatsystemnurl="../../../assets/assets_workdesk/os/android.svg";
  }
 else if(val=="Linux")
 {
-  return this.operatsystemnurl="../../../assets/assets_workdesk/os/Linux.svg";
+  return this.operatsystemnurl="../../../assets/assets_workdesk/os/linux.svg";
 }
 else{
   {
@@ -1606,6 +1608,10 @@ this.allselectedcall2=status;
 
  }
 }
+
+  isActive(tabId:any): boolean {
+    return this.tab === tabId;
+  }
 }
 
 

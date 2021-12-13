@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../service/auth.service';
 import { oAuthService } from '../service/authservice.service';
@@ -13,14 +15,15 @@ export class LogoutComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private oauthService:oAuthService
+    private router: Router,
+    private cookie: CookieService
 
   ) { }
 
   ngOnInit(): void {
-  
+
+    this.cookie.deleteAll();
     this.authService.logOff();
-    this.oauthService.logOff();
     location.href = this.redirectUri;
   }
 

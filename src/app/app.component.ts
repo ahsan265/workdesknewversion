@@ -7,7 +7,7 @@ import { User } from './model/User';
 import { AuthService } from './service/auth.service';
 import { GigaaaApiService } from './service/gigaaaapi.service';
 import { LoginBtnComponent } from './useraccount/landingpage/login-btn/login-btn.component';
-import * as color from "string-to-color";
+import * as color from 'string-to-color';
 import { sharedres_service } from './service/sharedres.service';
 import { MessageService } from './service/messege.service';
 import { agentsocketapi } from './service/agentsocketapi';
@@ -19,9 +19,9 @@ import { textChangeRangeIsUnchanged } from 'typescript';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  integration:any;
-  lastuserintegration:any="";
-  integration_id:any;
+  integration: any;
+  lastuserintegration: any = '';
+  integration_id: any;
   pageTitle: string = 'Dashboard';
   workplaces = [];
   redirectUri = `${environment.oauth_url}/logout?continue=${environment.redirect_uri}/logout`;
@@ -34,21 +34,48 @@ export class AppComponent implements OnInit {
 
   agentIcon = '../assets/assets_workdesk/Group_4.svg';
   activeAgentIcon = '../assets/assets_workdesk/Group_4.svg';
-  
+
   activityIcon = '../assets/images/sidemenu//activities_icon.svg';
   activeActivityIcon = '../assets/images/sidemenu//activities_icon_active.svg';
-  select_integration_icon='../assets/assets_workdesk/select_integration.svg'
+  select_integration_icon = '../assets/assets_workdesk/select_integration.svg';
 
   logo = '../assets/logo.png';
   logoCollapsed = '../../assets/images/sidemenu/gigaaa-layer-logo-1.svg';
 
-websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/',src:'../assets/assets_workdesk/partnership.svg'},
-{name:"Console",url:'https://console.gigaaa.com/',src:'../assets/assets_workdesk/console.svg'},
-{name:"Workdesk",url:'https://workdesk.gigaaa.com/',src:'../assets/assets_workdesk/workdesk.svg'},
-{name:"Messenger",url:'https://messenger.gigaaa.com/',src:'../assets/assets_workdesk/messenger.svg'},
-{name:"Analytics",url:'https://analytics.gigaaa.com/',src:'../assets/assets_workdesk/analytics.svg'}]
+  websites = [
+    {
+      name: 'Partnership',
+      url: 'https://partnerships.gigaaa.com/',
+      src: '../assets/assets_workdesk/partnership.svg',
+    },
+    {
+      name: 'Console',
+      url: 'https://console.gigaaa.com/',
+      src: '../assets/assets_workdesk/console.svg',
+    },
+    {
+      name: 'Workdesk',
+      url: 'https://workdesk.gigaaa.com/',
+      src: '../assets/assets_workdesk/workdesk.svg',
+    },
+    {
+      name: 'Messenger',
+      url: 'https://messenger.gigaaa.com/',
+      src: '../assets/assets_workdesk/messenger.svg',
+    },
+    {
+      name: 'Analytics',
+      url: 'https://analytics.gigaaa.com/',
+      src: '../assets/assets_workdesk/analytics.svg',
+    },
+  ];
   sidebarData: any = [
-    { iconUrl: this.select_integration_icon, name:"Select integration", dropdownItems:[], dropdown: true },
+    {
+      iconUrl: this.select_integration_icon,
+      name: 'Select integration',
+      dropdownItems: [],
+      dropdown: true,
+    },
     {
       iconUrl: this.dashboardIcon,
       activeIconUrl: this.activedashboardIcon,
@@ -73,48 +100,44 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/',src:'../ass
   ];
   slideOpened: boolean = false;
   oauthUrl = `${environment.oauth_url}`;
-  token: string;
-  online_status:any;
-  statusonline:boolean;
+  token = this.authService?.token?.access_token;
+  online_status: any;
+  statusonline: boolean;
   accessToken = new ReplaySubject(1);
   user: User;
-  url:String;
-  
+  url: String;
+
   constructor(
     public authService: AuthService,
     private apiService: GigaaaApiService,
     private cookie: CookieService,
-    private share_res:sharedres_service,
-    private messegeService:MessageService,
-    private agentsocketapi:agentsocketapi,
-    private sharedres:sharedres_service,
+    private share_res: sharedres_service,
+    private messegeService: MessageService,
+    private agentsocketapi: agentsocketapi,
+    private sharedres: sharedres_service,
     private router: Router,
-    private route:ActivatedRoute
+    private route: ActivatedRoute
   ) {
-  
+
   }
   ngOnInit(): void {
-    this.route.queryParams
-      .subscribe(params => {
-       if(params.code!=null)
-       {
-         this.pageTitle="Dashboard"
-       }
-       else{
-        this.url= window.location.href;
+    this.route.queryParams.subscribe((params) => {
+      if (params.code != null) {
+        this.pageTitle = 'Dashboard';
+      } else {
+        this.url = window.location.href;
         let locID = this.url.split('/');
-        this.pageTitle=locID[3].charAt(0).toUpperCase() + locID[3].slice(1);
-       }
-      });
+        this.pageTitle = locID[3].charAt(0).toUpperCase() + locID[3].slice(1);
+      }
+    });
     this.authService.user.subscribe((r: any) => {
-    this.user = r;
-    console.log('BILOOO STA');
-    this.getallintegrationlist();
-    this.calltheagentsocket();
+      this.user = r;
+      console.log('BILOOO STA', this.user);
+      this.getallintegrationlist();
+      this.calltheagentsocket();
     });
 
     this.accessToken.subscribe((res: any) => {
-      console.log('BILOOO STA BRATEEEEEELS JDLAKSJ DLASK JDLASKD JASLKDJ ALSKDJ ASLKDJ ALSKD JAS');
       if (res) {
         this.token = res.access_token;
         this.apiService.getCurrentUser(this.token).subscribe((r: any) => {
@@ -123,25 +146,24 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/',src:'../ass
           this.authService.user.next(r);
           this.cookie.set('gigaaa_user', JSON.stringify(r));
           this.cookie.set('access_token_active', JSON.stringify(res));
-          this.router.navigate(['/']);
+          this.router.navigate(['/dashboard']);
         });
       }
     });
   }
 
   addNewRouteName(event: any) {
-    
     this.pageTitle = event;
   }
 
   isSlideOpened(slideOpened: any) {
-    console.log(slideOpened)
-  
+    console.log(slideOpened);
+
     this.slideOpened = slideOpened;
   }
 
   onNoLoggedUsers(event: any) {
-    console.log(event)
+    console.log(event);
     if (event) {
       this.authService.logOff();
       location.href = this.redirectUri;
@@ -164,103 +186,86 @@ websites=[{name:"Partnership",url:'https://partnerships.gigaaa.com/',src:'../ass
     }
   }
 
- // get all integration
-  getallintegrationlist()
-  {
-   try {
-  const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
-  var accesstoken=getdata.access_token;
-  var uuid=getdata.subscription_id.subsid.uuid;
-  this.apiService.getallintegration(accesstoken,uuid).subscribe(data=>{
-  this.integration=data;
+  // get all integration
+  getallintegrationlist() {
+    try {
+      const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'));
+      var accesstoken = getdata.access_token;
+      var uuid = getdata.subscription_id.subsid.uuid;
+      this.apiService.getallintegration(accesstoken, uuid).subscribe((data) => {
+        this.integration = data;
 
-  this.integration.forEach(element => {
+        this.integration.forEach((element) => {
+          if (element.last_used === true) {
+            localStorage.setItem(
+              'intgid',
+              JSON.stringify({ int_id: element.uuid, name: element.name })
+            );
+            this.lastuserintegration = element.name;
+          }
+        });
+        let updatearr = this.integration.map((item, i) =>
+          Object.assign(item, { routeUrl: ['/intents'] })
+        );
 
-    if(element.last_used===true)
-    {   
-      localStorage.setItem('intgid', JSON.stringify({int_id:element.uuid,name:element.name}));
-      this.lastuserintegration=element.name;
+        let update_integration_list = updatearr;
+        console.log(update_integration_list);
+        this.sidebarData.forEach((element) => {
+          if (element.name == 'Select integration') {
+            element.dropdownItems = update_integration_list;
+            element.name = this.lastuserintegration;
+          }
+        });
+        console.log(this.sidebarData);
+      });
+    } catch (error) {
+      this.handleLoginRegisterError(error.error.error);
     }
-  });
-  let updatearr = this.integration.map((item, i) => Object.assign(item,{ routeUrl: ['/intents']}));
-
-   let update_integration_list = updatearr;
-  console.log(update_integration_list);
-  this.sidebarData.forEach(element => {
-    if(element.name=="Select integration")
-    {
-      element.dropdownItems=update_integration_list;
-      element.name=this.lastuserintegration
-    }
-  });
-  console.log(this.sidebarData);
-
-  })
-
-} catch (error) {
-  this.handleLoginRegisterError(error.error.error);
-}
-}
-private handleLoginRegisterError(response: any) {
-  console.log(response)
-      this.messegeService.setErrorMessage(response.error.error, 'toast-bottom-right');
-}
-showonlinetatus(value:any){
-  if(value==0)
-  { 
-
-    this.online_status="Online"
-    this.statusonline=true;
   }
-  else if(value==1)
-  {
-    this.online_status="Away"
-    this.statusonline=false;
-
+  private handleLoginRegisterError(response: any) {
+    console.log(response);
+    this.messegeService.setErrorMessage(
+      response.error.error,
+      'toast-bottom-right'
+    );
   }
- 
- }
- 
- // get the online status when agent is online or away.
- calltheagentsocket()
- {    
-  this.sharedres.runthesocketforagent$.subscribe(data=>{
-    const status = JSON.parse(localStorage.getItem('user-status'))
-    console.log(data);
-    if(data==1)
-    {
-      if (status==false)
-      {
-        this.showonlinetatus(1)
-
-      }
-      else if(status==true){
-        this.showonlinetatus(0)
-      }
+  showonlinetatus(value: any) {
+    if (value == 0) {
+      this.online_status = 'Online';
+      this.statusonline = true;
+    } else if (value == 1) {
+      this.online_status = 'Away';
+      this.statusonline = false;
     }
+  }
 
-  });
- }
- public setonlinestatus(e)
-{
-  console.log(e)
+  // get the online status when agent is online or away.
+  calltheagentsocket() {
+    this.sharedres.runthesocketforagent$.subscribe((data) => {
+      const status = JSON.parse(localStorage.getItem('user-status'));
+      console.log(data);
+      if (data == 1) {
+        if (status == false) {
+          this.showonlinetatus(1);
+        } else if (status == true) {
+          this.showonlinetatus(0);
+        }
+      }
+    });
+  }
+  public setonlinestatus(e) {
+    console.log(e);
     localStorage.setItem('user-status', JSON.stringify(e));
     this.agentsocketapi.send_isonline_status(e);
-    if(e==true)
-    {
-      this.online_status="Online"
-      this.statusonline=true;
-
+    if (e == true) {
+      this.online_status = 'Online';
+      this.statusonline = true;
+    } else if (e == false) {
+      this.online_status = 'Away';
+      this.statusonline = false;
     }
-    else if(e==false)
-    {
-      this.online_status="Away"
-      this.statusonline=false;
-
-    }
-    }
-public openwebsites(val)
-{
-  window.open(val, '_blank');
-}
+  }
+  public openwebsites(val) {
+    window.open(val, '_blank');
+  }
 }

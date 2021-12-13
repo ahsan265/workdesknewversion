@@ -12,12 +12,12 @@
     <router-outlet></router-outlet>
   </div>
   <div class="onlineswitchpanel" *ngIf="this.authService.isLoggedIn()">
-    <a   aria-expanded="false" class=" homeSubmenu">
+    <a aria-expanded="false" class=" homeSubmenu">
       <label class="switch">
         <input (change)="setonlinestatus(!$event.target.checked)" type="checkbox" [checked]="!statusonline">
         <span class="slider round"></span>
       </label> {{online_status}}
-     </a>
+    </a>
   </div>
   <!-- <div class="dropdown "  *ngIf="this.authService.isLoggedIn()">
     <a id="languagename"  aria-expanded="false"   data-toggle="dropdown" class=" homeSubmenu">

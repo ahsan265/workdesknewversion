@@ -321,7 +321,7 @@ export class DashboardComponent implements OnInit {
 
       }
       catch(err){
-        this.messageservie.setErrorMessage(err.error.error)
+        // this.messageservie.setErrorMessage(err.error.error)
       }
     }
      ngOnInit(): void {
@@ -334,7 +334,7 @@ export class DashboardComponent implements OnInit {
       this.getstatsonintg();
       this.getallthecountries();
      this.getlllangugaes();
-   
+
 
     $(document).ready(function() {
       $(document).foundation();

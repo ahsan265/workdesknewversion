@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   integration_id: any;
   pageTitle: string = 'Dashboard';
   workplaces = [];
-  redirectUri = `${environment.oauth_url}/logout?continue=${environment.redirect_uri}/logout`;
+  redirectUri = `${environment.oauth_url}/logout?continue=${environment.uri}/logout`;
 
   dashboardIcon = '../assets/assets_workdesk/dashboard_icon .svg';
   activedashboardIcon = '../assets/assets_workdesk/dashboard_icon .svg';
@@ -163,7 +163,6 @@ export class AppComponent implements OnInit {
   }
 
   onNoLoggedUsers(event: any) {
-    console.log(event);
     if (event) {
       this.authService.logOff();
       location.href = this.redirectUri;

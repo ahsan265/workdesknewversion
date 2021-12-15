@@ -1,0 +1,84 @@
+.footerheading
+{
+    font-weight: bolder;
+color: rgb(5, 5, 71);
+font-family: Roboto;
+font-size: 16px;
+}
+.footersubheading
+{
+font-weight: 400;
+color: rgb(31, 31, 78);
+font-family:  Roboto;
+cursor: pointer;
+font-size: 12px
+}
+
+footer {
+    text-align: center;
+    padding: 4px;
+    background-color: #292f58;
+    color: white;
+  }
+
+ .footertabs
+ {
+     padding: 10px;
+     cursor: pointer;
+ }
+
+ .card-size
+ {
+     width: 600px;
+ }
+ .footerbar{
+    height: 48px;
+    background: #292F58;
+    align-items: center;
+    bottom: 0;
+ }
+ .copyright
+ {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 12px;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+    color: #FFFFFF;
+ }
+ .socialpanel
+ {
+    text-align: right;
+    /* margin-bottom: 20px; */
+    margin-top: -24px;
+    height: 12px;
+    width: 100%;
+    bottom: 0px;
+    display: flow-root;
+
+ }
+ svg{
+     margin-right: 22px;
+     height: 12px;
+     width: 12px;
+     z-index:-2;
+     cursor: pointer;
+ }
+ @media (max-width: 768px){
+     .footerbar{
+        height: 72px;
+     }
+     .copyright{
+        margin-bottom: 30px;
+     }
+     .socialpanel{
+         text-align: center;
+         
+    margin-top: -27px;
+
+     }
+ }

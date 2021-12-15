@@ -1,0 +1,1092 @@
+::marker{
+  margin: 0px;
+}
+.callsarea{
+  display: block;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: 100vh;
+  background: white;
+}
+.topheadingpanel{
+  display: block;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background: #FAFAFD;
+}
+.dropdownpanels{
+  width: 100%;
+  display: block;
+  height: 34px;
+  margin-bottom: 30px;
+}
+.languagepanel{
+  display: inline-block;
+  text-align: left;
+  width: 25%;
+}
+.secondpanel{
+  display: inline-block;
+  width: 75%;
+  text-align: right;
+}
+.dropdown.languages{
+  width: 185.55px;
+  height: 34px;
+  background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px;
+display: inline-block;
+margin-right: 20px;
+}
+.dropdown.calltype{
+  margin-right: 10px;
+  width: 107px;
+  height: 34px;
+  background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px;
+display: inline-block;
+list-style: none;
+padding-left: 12px;
+
+text-align: left;
+}
+/* .dropdown-menu{
+  margin-right: -11px;
+} */
+.dropdown-menu.show.languages{
+  min-width: 185.55px;
+  max-width: 185.55px;
+  display: block;
+  transform: none !important;
+  margin-top: 40px
+}
+.dropdown-menu.show.calltype{
+  min-width:  107px;
+  max-width:  107px;
+  display: block;
+  transform: none !important;
+  margin-top: 40px
+}
+.mainheading{
+  font-family: "Roboto";
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 22px;
+align-items: center;
+letter-spacing: 0.02em;
+color: #162741;
+}
+.tabspanel{
+display: block;
+width: 100%;
+padding-left: 30px;
+padding-right: 30px;
+background: #FAFAFD;
+}
+.dropdown-menu.show.calander{
+  display: inline-flex;
+  width: 776px;
+height: 386px;
+padding: 0px;
+margin-top: 12px;
+}
+.calander{
+  background: #FFFFFF;
+        border: 1px solid rgba(208, 208, 222, 0.6);
+        box-sizing: border-box;
+        border-radius: 4px;
+        height: 34px;
+        padding: 0px;
+        cursor: pointer;
+        text-align: left;
+        margin-left: 14px;
+}
+.datepicker{
+  width: 200px;
+  height: 34px;
+  display: inline-block;
+}
+.caland{
+
+  float: left;
+  height: 34px;
+  cursor: pointer;
+  }
+  .caland:hover{
+    cursor: pointer;
+  }
+  /* svg{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 12px;
+    color:  #C4C4C4;
+    cursor: pointer;
+    } */
+    .arrowdownicon{
+      float: right;
+      line-height: 40px;
+      display: flex;
+      margin-right: 12px;
+      margin-top: 14px;
+      cursor: pointer;
+      color: #292F58;
+  
+  }
+    .arrowdownicon:hover{
+      color:  #A6A8BA;
+      cursor: pointer;
+
+
+    }
+    .calanderheadingpanel.dropdown{
+      width: 200px;
+      display: inline-block;
+      text-align: left;
+      background: #FFFFFF;
+      border: 1px solid rgba(208, 208, 222, 0.6);
+      box-sizing: border-box;
+      border-radius: 4px;
+      height: 34px;
+    }
+  .calhead{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 34px;
+    width: 174px;
+    vertical-align: middle;
+    align-items: center;
+    display: inline-block;
+    text-align: left;
+    letter-spacing: 0.02em;
+    padding-left: 10px;
+    color: rgba(22, 39, 65, 0.8);
+}
+.calhead:hover{
+  cursor: pointer;
+}
+
+
+
+
+.selectionpanel{
+  /* background: #FFFFFF;
+box-shadow: 0px 15px 35px rgba(37, 51, 66, 0.15); */
+width: 153px;
+height: 386px;
+text-align: center;
+display: inline-block;
+border-right: 1px solid rgba(166, 168, 186, 0.3);
+}
+*:hover{
+  cursor: default;
+
+}
+.dialcall{
+  cursor: pointer;
+}
+.tabs-title.is-active> a:focus { outline-style: none; }
+
+  .tabs-title > a
+  {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    color:  rgba(22, 39, 65, 0.66); 
+    background-color: #FAFAFD;
+    border-bottom: 2px solid #E1E1EA;
+    margin-bottom: -2px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    margin-right: 2.1rem;
+    cursor: pointer;
+  }
+  .tabs-title.is-active > a
+  {
+
+    border-bottom: 2px solid #1C54DB;
+    font-weight: 500;
+    color: #162741;
+    margin-bottom: -2px;
+
+  }
+  .tabs
+  {
+    border: none;
+    background-color: #FAFAFD;
+
+  }
+  .datepreviewpanel{
+    display: block;
+    width: 622px;
+    z-index: 1;
+    bottom: 0;
+    position: absolute;
+    height: 65px;
+    left: 153px;
+    border-top: 1px solid rgba(208, 208, 222, 0.6);
+
+}
+.previewmain{
+    display: inline-block;
+    padding-left: 42px;
+    padding-top: 14px;
+    width: 50%;
+
+}
+.buttonpanelfordate{
+ display: inline-block;
+ width: 50%;
+ text-align: right;
+ padding-right: 51px;
+}
+.cancel{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 120%;
+/* or 14px */
+cursor: pointer;
+display: inline-block;
+align-items: center;
+letter-spacing: 0.02em;
+
+color: #706F6F;
+}
+.applybtn{
+    background: #1C54DB;
+border-radius: 4px;
+width: 65px;
+height: 34px;
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 120%;
+display: inline-block;
+cursor: pointer;
+margin-left: 26px;
+align-items: center;
+letter-spacing: 0.02em;
+color: #FFFFFF;
+
+}
+.selectedvalue{
+  background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px;
+width: 86px;
+height: 34px;
+font-family: "Roboto";
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 34px;
+display: inline-block;
+align-items: center;
+text-align: center;
+letter-spacing: 0.02em;
+color: rgba(22, 39, 65, 0.8);
+}
+  .form_input{
+  
+    height: 34px;
+    text-align: left;
+    padding-left: 40px;
+    width: 245px;
+    position: relative;
+    color: #293059;
+    border: 0;
+    outline: 0;
+    display: inline-block;
+    background: #FFFFFF;
+    border: 0.5px solid rgba(166, 168, 186, 0.5);
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 120%;
+    
+    align-items: center;
+    letter-spacing: 0.02em;
+    
+    color: #7D8696;
+    
+    cursor: text;
+    cursor: default;
+  }
+  .is-dropdown-submenu-parent.opens-right > .is-dropdown-submenu
+  {
+    left: 0;
+    margin-top: 2.6rem;
+  }
+  .menu .is-active > a
+  {
+    background: none;
+  
+  }
+  .dropdown.menu > li > a{
+    font-family: "Roboto",sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  height: 36px;
+  padding-left: 14px;
+  display: block;
+  align-items: center;
+  text-align: left;
+  color: #292F58;
+  }
+  .is-dropdown-submenu-parent.opens-right > .is-dropdown-submenu
+  {
+      left: 0;
+      margin-top: 2.6rem;
+  }
+  .menu.submenuu{
+    margin-top: 12px;
+    margin: 0px;
+    z-index: 3;
+  }
+  .menu{
+   
+    background: #FFFFFF;
+    border: 0.5px solid rgba(166, 168, 186, 0.5);
+    box-sizing: border-box;
+    border-radius: 4px;
+    top: 0px;
+    width: 100%;
+    top: 0px;
+  
+  }
+  .labal
+{
+  font-family: "Roboto",sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 50px;
+  display: flex;
+  align-items: center;
+  color: #292F58;
+}
+.numberofcalls{
+  margin-left:8px;
+  height: 15px;
+  width: 15px;
+  padding-top: 1px;
+  display: inline-block;
+  text-align: center;
+  background: #1C54DB;
+  vertical-align: middle;
+  border-radius: 50%;
+  line-height: 12px;
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+color: #FFFFFF;
+}
+.dialcallbtn{
+  width: 59px;
+height: 25px;
+background: #1C54DB;
+border-radius: 4px;
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 120%;
+cursor: pointer;
+/* or 14px */
+
+align-items: center;
+letter-spacing: 0.02em;
+
+color: #FFFFFF;
+}
+.tagiconnn
+{
+    color: #A6A8BA;
+    cursor: pointer;
+    float: right;
+    line-height: 34px;
+    display: flex;
+    margin-top: 0px;
+    margin-right: 14px;
+    height: 12px;
+    width: 7px;
+    
+}
+.tagiconnn:hover
+{
+    color: #A6A8BA;
+}
+
+thead, tbody tr:nth-child(even){
+    background:#FFFFFF;
+    border: none;
+    border-bottom: 1px solid #E1E1EA;
+
+}
+thead tr{
+    margin-top: 3px;
+    background: #FFFFFF;
+    height: 50px;
+    border-bottom: 1px solid  #E1E1EA;
+}
+table,tbody
+{
+  background: #FFFFFF;
+  border: 1px solid #E1E1EA;
+  box-sizing: border-box;
+  border-radius: 4px 4px 0px 0px;
+  border-radius: 4px;
+  margin: 0px;
+}
+th{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    /* or 357% */
+    width: 20%;
+    align-items: center;
+    font-family: "Roboto",sans-serif;
+    border-bottom: 1px solid rgba(166, 168, 186, 0.1);
+    color: rgba(22, 39, 65, 0.6);
+    margin-bottom: 6px;
+    height: 48px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+li.listitem{
+  margin: 4px;
+  border-radius: 4px;
+  display: block;
+  width: 95%;
+}
+.dropdownlistitem1{ font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+display: inline-block;
+width: 60px;
+/* overflow: hidden; */
+white-space: nowrap;
+text-overflow: inherit;
+color: #292F58;
+vertical-align: bottom;
+height: 24px;
+}
+.languagetext{
+  font-family: "Roboto",sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height:34px;
+  align-items: center;
+  letter-spacing: 0.02em;
+  margin-left: 0px;
+  color: rgba(22, 39, 65, 0.8);
+}
+.dropdownlistitem{ font-family: "Roboto",sans-serif;
+  font-style: normal;
+ font-weight: normal;
+ font-size: 14px;
+ line-height: 24px;
+ display: inline-block;
+ overflow: hidden;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ color: #292F58;
+ vertical-align: middle;
+ height: 24px;
+}
+td  {   font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 17px;
+    align-items: center;
+    color: #445167;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+.username{
+  font-weight: 500;
+  font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 17px;
+    align-items: center;
+    color: #162741;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+.id{
+  font-weight: normal;
+  font-family: "Roboto",sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 17px;
+  align-items: center;
+  color: #162741;
+  padding-bottom: 0px;
+  padding-top: 0px;
+
+}
+.call_type{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 17px;
+align-items: center;
+letter-spacing: 0.02em;
+color: #445167;
+
+}
+td.expd{
+    padding-bottom: 12px;
+    padding-top: 12px;  
+}
+td .first{    font-family: "Roboto",sans-serif;
+        font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    padding-left: 0px;
+    padding-right: 0px;
+    color: #445167;
+    
+}
+td .second{    font-family: "Roboto",sans-serif;
+
+    font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+padding-left: 0px;
+padding-right: 0px;
+color: rgba(41, 47, 88, 0.8);
+
+}
+tr,tbody tr:nth-child(even)
+{
+    border-bottom: 1px solid rgba(229, 229, 229, 0.5);;
+}
+tr.mainlist{
+    border: none;
+    border-bottom: 1px solid rgba(229, 229, 229, 0.5);;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    height: 50px;
+    background: #FAFAFD;
+}
+.userinfoicon{
+margin-right: 10px;
+
+}
+
+.agentpic{
+  width: 36px;
+height: 36px;
+border-radius: 50%;
+display: inline-block;
+position: relative;
+}
+
+input[type="radio"]  {
+  height: 18px;
+  width: 18px;
+  margin-left: 12px;
+  margin-right: 0px;
+  border-radius: 50%;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  background: #FFFFFF;
+  border: 0.5px solid rgba(166, 168, 186, 0.5);
+  box-sizing: border-box;
+  vertical-align: middle;
+  appearance: inherit;
+  cursor: pointer;
+  }
+  
+  input[type=radio]:before{
+  background-color: #FFFFFF; 
+  border-bottom:none;
+  
+  }
+  input[type=radio]:checked{
+    background-image: url(../../../assets/assets_workdesk/checkbox_icon.svg);
+    background-repeat: no-repeat;
+    background-size: 19px 21px;
+    background-position: center;
+    border-bottom:none;
+  
+  }
+  
+  input[type=radio]:checked:after {
+  content: "";
+  margin-left: 2px;
+  margin-top: 0px;
+  position: absolute;
+  color: #FFFFFF;
+  border-bottom:none;
+  }
+  /* input[type=radio]:checked:after {
+  background: #64DFDF;
+  } */
+  
+   
+  input[type="checkbox"]  {
+  height: 18px;
+  width: 18px;
+  margin-left: 12px;
+  margin-right: 0px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  background: #FFFFFF;
+  border: 0.5px solid rgba(166, 168, 186, 0.5);
+  box-sizing: border-box;
+  border-radius: 4px;
+  vertical-align: middle;
+  appearance: inherit;
+  cursor: pointer;
+  }
+  
+  input[type=checkbox]:before{
+  background-color: #FFFFFF; 
+  border-bottom:none;
+  
+  }
+  input[type=checkbox]:checked{
+    background-image: url(../../../assets/assets_workdesk/checkbox_icon.svg);
+    background-repeat: no-repeat;
+    background-size: 19px 21px;
+    background-position: center;
+  border-bottom:none;
+  }
+  
+  input[type=checkbox]:checked:after {
+  content: " ";
+  margin-left: 2px;
+  margin-top: 0px;
+  position: absolute;
+  color: #FFFFFF;
+  border-bottom:none;
+  }
+.call-status{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 24px;
+/* identical to box height, or 171% */
+
+display: block;
+align-items: center;
+
+color: #292F58;
+
+}
+.callindicationpanel{
+  display: block;
+  width: 100%;  
+  padding-top: 20px;
+}
+.form_input.search{
+  background: url(../../../assets/search.svg) no-repeat scroll 10px 9px;
+  padding-left: 36px;
+}
+.numberofvailablerequest{
+  font-family: "Roboto";
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 120%;
+/* or 14px */
+align-items: center;
+letter-spacing: 0.02em;
+
+color: #7D8696;
+}
+.imagetag{
+  width: 20%;
+}
+.fullnamecol{
+  width: 20%;
+}
+.agentnamecol{
+  width: 30%;
+}
+.waitingtime{
+  width: 10%;
+}
+.itemoftabs{
+  line-height: 50px;
+  height: 50px;
+  display: block;
+}
+.tabsitem{
+  padding-right: 2%;
+  display: inline-block;
+  width: fit-content;
+  text-align: center;
+}
+.active {
+
+  border-bottom:2px solid #1C54DB;
+  transition-duration: 0.5s;
+}
+.mobilefilteropen{
+  display: none;
+}
+.searchpanel{
+  display: inline-block;
+  margin-left: 10px;
+  height: 34px;
+}
+.cardspanel{
+  display: none;
+}
+
+@media (max-width: 768px){
+  .calliconsstyle{
+    position: relative;
+    display: block;
+     margin: 0 auto;
+  }
+  .calliconpanel{
+    background: #76CB09;
+border-radius: 20px;
+height: 35px;
+width: 35px;
+margin: 0 auto;
+padding-top: 10px;
+  }
+  .agentusername.name{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    display: inline-block;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #162741;
+    margin-left: 16px;
+    width: fit-content;
+  }
+  .agentpic{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    vertical-align: sub;
+  }
+  .notrorateicon{
+    background: url(../../../assets/assets_workdesk/down_arrow.svg);
+    background-repeat: no-repeat;
+    height: 6px;
+    width: 10px;
+  }
+  .pagedotspanel{
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    text-align: center;
+  }
+  .showdotsarea{
+    display: block;
+    width: fit-content;
+  }
+  .dots{
+    width: 6px;
+    height: 6px;
+    border: 2px solid white;
+    background: #E3E3EB;
+    border-radius: 50%;
+    margin-right: 7px;
+    display: inline-block;
+  }
+  .showpanel{
+    display: none;
+  }
+  .rotateicon{
+    background: url(../../../assets/assets_workdesk/up_arrow.svg);
+    background-repeat: no-repeat;
+    height: 6px;
+    width: 10px;
+  }
+  .expandedpanel{
+    min-height: 0px;
+    max-height: 45px;
+    background: #FFFFFF;
+    display: block;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-top: 1px solid rgba(208, 208, 222, 0.6);
+  
+  }
+  .userinfoicon{
+    margin-right: 6px;
+    height: 10px;
+    width: 10px;
+  }
+  .agentinfodata{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 160%;
+/* or 19px */
+
+display: flex;
+align-items: center;
+letter-spacing: 0.02em;
+
+color: #162741;
+  }
+.agentinfoheading{
+ font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height:16px;
+align-items: center;
+letter-spacing: 0.02em;
+color: rgba(22, 39, 65, 0.45);
+  }
+  .agentidpanel{
+    display: inline-block;
+    width: 25%;
+    text-align: left;
+  }
+  .agentinfopanel
+  {
+    display: inline-block;
+    width: 35%;
+    text-align: left;
+
+  }
+  .userinfopanel{
+    display: inline-block;
+    width: 30%;
+    text-align: left;
+
+  }
+  
+  
+  .callreason{
+    font-family: "Roboto";
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 17px;
+display: inline-block;
+padding-right: 12px;
+align-items: center;
+text-align: right;
+letter-spacing: 0.02em;
+vertical-align: middle;
+color: #FF155A;
+  }
+.callmissedat{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 45px;
+padding-right: 12px;
+display: inline-block;
+text-align: right;
+align-items: center;
+text-align: left;
+letter-spacing: 0.02em;
+color: #445167;
+  }
+  .calltypepanel{
+    display: inline-block;
+    width: 5%;
+    text-align: right;
+  }
+  .reasonpanel{
+    display: inline-block;
+    width: 25%;
+    text-align: right;
+  }
+  .iconpanel{
+    display: inline-block;
+    width: 10%;
+  }
+  .durationpanel{
+    display: inline-block;
+    width: 20%;
+    text-align: right;
+  }
+  .usernamepanel{
+    display: inline-block;
+    width: 40%;
+  }
+  .cardspanel{
+    display: block;
+    width: 100%;
+    min-height: 66px;
+    max-height: 75vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+}
+  
+  .cardsitem{
+    max-height: 92px;
+    min-height: 45px;
+    display:inline-block;
+    width: 100%;
+    background: #FAFAFD;
+    border: 1px solid rgba(208, 208, 222, 0.6);
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .agentusername{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+overflow: hidden;
+line-height: 10px;
+/* identical to box height, or 146% */
+align-items: center;
+letter-spacing: 0.02em;
+text-overflow: ellipsis;
+  white-space: nowrap;
+text-align: left;
+color: #162741;
+width: 100%;
+  }
+  .showtable{
+    display: none;
+  }
+  .tabspanel{
+    background: #FFFFFF;
+
+  }
+  .dropdown-menu.calltype.show
+  {
+    min-width: 100%;
+    max-width: 100%;
+    margin-top: 60px;
+  }
+  .languagetext{
+    line-height: 50px;
+  }
+  .dropdown.calltype{
+    display:inline-block;
+    width: 78%;
+    text-align: left;
+    height: 50px;
+    margin-right: 2%;
+    background: #EDEDF6;
+    border: none;
+  }
+  .secondpanel{
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+  }
+  .searchpanel{
+    display: none;
+  }
+  .languagepanel{
+    display: none;
+  }
+  .mobilefilteropen{
+    background: #FFFFFF;
+    border: 1px solid #E3E3EB;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 20%;
+    height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    }
+  .arrowdownicon{
+    margin-top: 20px;
+  }
+.datepicker{
+  display: none;
+}
+
+  .tabsitem{
+   padding-right: 3.5%;
+  }
+
+    th{
+      font-size: 12px;
+      line-height: 14px;
+    }
+    td{
+      font-size: 12px;
+      line-height: 14px;
+    
+    }
+tr.mainlist{
+ padding-left: 0px;
+ padding-right: 0px;  
+}
+.datatable{
+display: block;
+width: 100%;
+overflow-x: auto;
+}
+table{
+  width: 768px;
+}
+img{
+  height: 14px;
+  width: 14px;
+  
+}
+.reason{
+  display: block;
+  width: max-content;
+}
+
+.imagetag{
+width: 10%;
+}
+.fullnamecol{
+  width: 15%;
+}
+.agentnamecol{
+  width: 25%;
+}
+.waitingtime{
+  width: 12%;
+}
+}

@@ -1,0 +1,13 @@
+<div class="mainContainer">
+  <gigaaa-sidebar [logo]="logo" [logoCollapsed]="logoCollapsed" [sidebarData]="sidebarData"
+    (newRouteName)="addNewRouteName($event)" (slideOpened)="isSlideOpened($event)">
+  </gigaaa-sidebar>
+  <div class="consoleWrap">
+    <gigaaa-header (signin)="onSignin($event)" (addAnotherAccount)="onAddAnotherAccount($event)"
+      (noLoggedUsers)="onNoLoggedUsers($event)" [accessTokenSubject]="accessToken" [token]="token" [oauthUrl]="oauthUrl"
+      [slideOpened]="slideOpened" [redirectUri]="redirectUri" [pageTitle]="pageTitle"
+      [user]="this.authService.getLoggedUser()">
+    </gigaaa-header>
+    <router-outlet></router-outlet>
+  </div>
+</div>

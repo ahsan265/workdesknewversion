@@ -1,0 +1,824 @@
+.settingspanel{
+  padding-left: 30px;
+  padding-right: 30px;
+  background: #FAFAFD;
+}
+.settingsheadingpanel{
+  display: block;
+  width: 100%;
+  height: 50px;
+  position: relative;
+  margin-bottom: 30px;
+
+}
+.settingarea{
+  background: #FFFFFF;
+  border: 1px solid rgba(208, 208, 222, 0.6);
+  box-sizing: border-box;
+  border-radius: 7px;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: fit-content;
+  padding-bottom: 30px;
+  position: relative;
+    bottom: 30px;
+}
+.headingpanel{
+  display: block;
+  margin-top: 30px;
+}
+.languagetextt{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 18px;
+margin-top: 9px;
+align-items: center;
+letter-spacing: 0.02em;
+color: #162741;
+margin-bottom: 12px;
+}
+.languagetext{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 34px;
+margin-left: 10px;
+height: 34px;
+align-items: center;
+letter-spacing: 0.02em;
+color: #162741;
+
+}
+.languagepanel{
+  display: block;
+  width: 100%;
+  margin-top: 26px;
+}
+.formarea{
+  display: block;
+  width: 100%;
+}
+form{
+  width: 100%;
+}
+.userinformationsection{
+display: inline-block;
+width: 50%;
+}
+.deletesection{
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+}
+.heading{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 22px;
+display: inline-block;
+align-items: center;
+letter-spacing: 0.02em;
+color: #162741;
+}
+.profile{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+width: 100%;
+height: 48.83px;
+margin-top: 15px;
+line-height: 48.83px;
+display: inline-block;
+align-items: center;
+letter-spacing: 0.02em;
+
+color: #162741;
+}
+.languageheading{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 13px;
+line-height: 180%;
+display: flex;
+align-items: center;
+letter-spacing: 0.02em;
+color: #6A7585;
+}
+.backicon{
+    display: inline-block;
+    margin-right: 12px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+.backicon:hover
+{
+    color: hsl(232, 36%, 25%);
+}
+.icon-container {
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  position: relative;
+  margin-right: 28.6px;
+}
+.uploadcamera{
+  margin: 5px;
+  margin-top: 6px;
+}
+.status-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  bottom: 0;
+  right: -8px;
+  position: absolute;
+  background: #FFFFFF;
+  cursor: pointer;
+box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+}
+.contracttag
+{
+  font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+color: #A6A8BA;
+cursor: pointer;
+display: block;
+width: 200px;
+margin: auto;
+margin-bottom: .5rem;
+width: 100px;}
+.fas
+{
+  color: #A6A8BA;
+  
+}
+.fas:hover{
+  color: #A6A8BA;
+}
+
+.agentprofilepic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.joiningname{
+    font-family: "Roboto";
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 32.5px;
+display: block;
+align-items: center;
+color: #162741;
+}
+
+.agentemail{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 13px;
+line-height: 23.4px;
+display: block;
+align-items: center;
+color: #6A7585;
+
+}
+
+.upload{
+
+    background: #64DFDF;
+border-radius: 8px;
+width: 120px;
+height: 36px;
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 36px;
+/* identical to box height, or 171% */
+
+align-items: center;
+text-align: center;
+cursor: pointer;
+color: #FFFFFF;
+
+}
+.passwordheading{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 305.19%;
+/* identical to box height, or 49px */
+display: flex;
+align-items: center;
+letter-spacing: 0.02em;
+
+color: #162741;
+
+}
+.adminrightpanel{
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+}
+.textfield{
+  display: inline-block;
+  margin-right:37px ; 
+  width: fit-content;
+}
+.textfield.last{
+width: 100%;
+}
+.textfield.pass{
+  display: block;
+}
+.form_input.pass{
+  display: inline-block;
+  margin-right: 20px;
+  letter-spacing: 0.02em;
+
+}
+.deletetext{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 22px;
+vertical-align: text-top;
+align-items: center;
+letter-spacing: 0.02em;
+color: #162741;
+}
+.delbtn{
+  vertical-align: middle;
+  margin-right: 12px;
+}
+.form_input{
+    text-align: left;
+    line-height: 24px;
+    height: 35px;
+    width: 240px;
+    position: relative;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 19.2px;
+    color: #162741;
+    border: 0;
+    outline: 0;
+    background: #FFFFFF;
+    border: 1px solid rgba(208, 208, 222, 0.6);
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-top: 12px;
+}
+.form_input.last{
+  margin-bottom: 0px;
+}
+
+input[type="checkbox"]  {
+    height: 17px;
+    width: 17px;
+    margin-left: 14px;
+    margin-right: 0px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    background: #FFFFFF;
+    border: 0.5px solid rgba(166, 168, 186, 0.5);
+    box-sizing: border-box;
+    border-radius: 2px;
+    vertical-align: middle;
+    appearance: inherit;
+    cursor: pointer;
+    }
+    
+    input[type=checkbox]:before{
+    background-color: #FFFFFF; 
+    border-bottom:none;
+    
+    }
+    input[type=checkbox]:checked{
+    background-color: #1C54DB; 
+    border-bottom:none;
+    
+    }
+    
+    input[type=checkbox]:checked:after {
+    content: "\2714";
+    margin-left: 2px;
+    margin-top: 0px;
+      position: absolute;
+    color: #FFFFFF;
+    border-bottom:none;
+    }
+    li.listitem{
+    margin: 4px;
+    border-radius: 4px;
+    display: block;
+    width: 96%;
+    }
+    li.listitem:hover{
+      background: rgba(166, 168, 186, 0.15);    
+    }
+    .tagiconnn
+{
+    color: #A6A8BA;
+    cursor: pointer;
+    float: right;
+    line-height: 34px;
+    display: block;
+    margin-top: 0px;
+    margin-right: 12px;
+    height: 12px;
+    width: 7px;
+    
+}
+.tagiconnn:hover
+{
+    color: #A6A8BA;
+}
+.is-dropdown-submenu-parent.opens-right > .is-dropdown-submenu
+  {
+    left: 0;
+    margin-top: 2.6rem;
+  }
+  .menu .is-active > a
+  {
+    background: none;
+  
+  }
+  .dropdown.menu > li > a{
+    font-family: "Roboto",sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  height: 36px;
+  padding-left: 14px;
+  display: block;
+  align-items: center;
+  text-align: left;
+  color: #292F58;
+  }
+  .is-dropdown-submenu-parent.opens-right > .is-dropdown-submenu
+  {
+      left: 0;
+      margin-top: 2.6rem;
+  }
+  .menu.submenuu{
+    
+    margin: 0px;
+    margin-top: 12px;
+    z-index: 3;
+  }
+  .menu{
+   
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 4px;
+    top: 0px;
+    width: 240px;
+    top: 0px;
+  
+  }
+input[type="radio"]{
+    height: 24px;
+    width: 24px;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    background: #FFFFFF;
+}
+.dropdownlistitem1{ font-family: "Roboto",sans-serif;
+  font-style: normal;
+ font-weight: normal;
+ font-size: 14px;
+ line-height: 16px;
+ display: inline-block;
+ width: 60px;
+  /* overflow: hidden; */
+  white-space: nowrap;
+  text-overflow: inherit;
+ color: #292F58;
+ vertical-align: bottom;
+ height: 24px;
+}
+.dropdown{
+  margin: 0px;
+  list-style: none;
+  width: 240px;
+  height: 34px;
+  display: inline-block;
+  margin-right: 10px;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px;
+}
+
+.dropdown-menu.show{
+  transform: translate3d(0, 0, 0);
+  min-width: 240px;
+  max-width: 240px;
+}
+.dropdownlistitem{ font-family: "Roboto",sans-serif;
+  font-style: normal;
+ font-weight: normal;
+ font-size: 12px;
+ line-height: 24px;
+ display: inline-block;
+ /* width: 150px;
+ overflow: hidden; */
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ color: rgba(22, 39, 65, 0.8);
+ vertical-align: middle;
+ height: 24px;
+}
+input[type="radio"]:checked+label{
+color: #292F58;
+}
+.dropdown-menu
+{  
+background: #FFFFFF;
+border: 0.5px solid rgba(166, 168, 186, 0.5);
+box-sizing: border-box;
+box-shadow: 0px 0px 5px 2px rgba(229, 229, 229, 0.5);
+border-radius: 4px;
+top: 0px;
+margin-left: -11px;
+margin-top: 12px;
+}
+
+
+.top-bar-section .has-dropdown > a:after {
+border-color: transparent transparent transparent;
+}
+.menu > li > a{
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+height: 36px;
+padding-left: 14px;
+display: block;
+align-items: center;
+text-align: left;
+color: #292F58;
+}
+
+.dropdown.menu > li > a{
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+height: 36px;
+padding-left: 14px;
+display: block;
+align-items: center;
+text-align: left;
+color: #292F58;
+}
+.dropdown.menu > li > a:after { 
+content: "";
+display: none;
+width: 0;
+height: 0;
+border:0;
+border-color: none;
+border-left-style: none;
+margin-right: 0;
+margin-top: 0;
+position: absolute;
+top: 0;
+right: 0;
+}
+input[type="radio"]  {
+height: 24px;
+width: 24px;
+margin-left: 12px;
+margin-right: 0px;
+border-radius: 50%;
+margin-top: 6px;
+margin-bottom: 6px;
+background: #FFFFFF;
+border: 0.5px solid rgba(166, 168, 186, 0.5);
+box-sizing: border-box;
+vertical-align: middle;
+appearance: inherit;
+cursor: pointer;
+}
+
+input[type=radio]:before{
+background-color: #FFFFFF; 
+border-bottom:none;
+
+}
+input[type=radio]:checked{
+background-color: #1C54DB; 
+border-bottom:none;
+
+}
+
+input[type=radio]:checked:after {
+content: "\2714";
+margin: 5px;
+color: #FFFFFF;
+border-bottom:none;
+}
+/* input[type=radio]:checked:after {
+background: #64DFDF;
+} */
+.smallheading{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 18px;
+display: flex;
+align-items: center;
+color: #162741;
+}
+.labal
+{
+  font-family: "Roboto",sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 23.4px;
+  display: flex;
+  align-items: center;
+  color: #6A7585;
+}
+.descp{
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+display: flex;
+align-items: center;
+color: #6A7585;
+margin-top: 12px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34.33px;
+  height: 20.6px;
+  margin: 0px;
+  margin-top: 15px;
+}
+.agentinvited{
+  display: inline-block;
+}
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #3BD182;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  width: 14px;
+  height: 14px;
+  top: 3px;
+  left: 2px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #C4C4C4;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #C4C4C4;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(15px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+  height: 20.6px;
+  width: 34.33px;
+  margin: 0px;
+  right: 3px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+  .sendinvite{
+    background: #FFFFFF;
+    border: 1px solid rgba(208, 208, 222, 0.6);
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 130px;
+    height: 35px;
+    font-family: "Roboto",sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  margin-right: 24px;
+  color: #162741;
+  }
+.backbtn{
+  border: 1px solid rgba(22, 39, 65, 0.2);
+box-sizing: border-box;
+border-radius: 3px;
+width: 60px;
+height: 35px;
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 18px;
+align-items: center;
+text-align: center;
+letter-spacing: 0.02em;
+color: #162741;
+
+}
+  .cancelinvite{
+    width: 130px;
+    height: 35px;
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 16px;
+align-items: center;
+text-align: center;
+color: #162741;
+background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px
+  }
+
+  .deleteagent{
+    width: 130px;
+    height: 35px;
+    font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+align-items: center;
+text-align: center;
+
+color: #162741;
+background: #FFFFFF;
+border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px;border: 1px solid rgba(208, 208, 222, 0.6);
+box-sizing: border-box;
+border-radius: 4px;
+  }
+  .passwordtoggle
+  {
+    font-size: 13px;
+    color: #715DFF;
+    line-height: 15px;
+    cursor: pointer;
+    display: inline-block;
+    padding-right: 12px;
+    position: relative;
+  }
+  .savebtnpanel{
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding-top: 30px;
+  }
+  .savebtn{
+    width: 60px;
+  height: 35px;
+  background: #1C54DB;
+border-radius: 4px;
+font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 160%;
+/* or 22px */
+
+
+align-items: center;
+text-align: center;
+letter-spacing: 0.02em;
+color: #FFFFFF;
+  }
+  .agentsettingspaths{
+    display: inline-block;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 22px;
+    vertical-align: middle;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #6A7585;
+  }
+  @media (max-width: 768px){
+
+    .settingspanel{
+      padding: 0px;
+      background: #FFFFFF;
+    }
+    .settingsheadingpanel{
+      height: 55px;
+      padding-left: 12px;
+    }
+    .heading{
+      padding-left: 0px;
+    }
+    .settingarea{
+      border: none;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .userinformationsection{
+      display: block;
+      width: 100%;
+    }
+    .deletesection{
+      display: flex;
+      width: 100%;
+      margin-top: 37px;
+    }
+    .profile{
+      text-align: left;
+      display: block;
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
+    .textfield {
+      width: 100%;
+      display: inline-block;
+    }
+    .form_input.pass{
+      width: 75%;
+    }
+    .passwordtoggle{
+      display: initial;
+    }
+    .savebtnpanel{
+      padding-bottom: 30px;
+    }
+    .cancelinvite{
+      width: 50%;
+
+    }
+    .sendinvite
+    {
+      width: 50%;
+      margin-right: 7px;
+    }
+    .form_input{
+      width: 100%;
+    }
+    .dropdown{
+      width: 100%;
+      margin-right: 0px;
+    }
+    .dropdown-menu.show{
+      width: 100%;
+    }
+    .deletesection{
+ 
+      text-align: center;
+    }
+  }

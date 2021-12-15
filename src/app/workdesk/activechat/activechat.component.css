@@ -1,0 +1,296 @@
+.passwordtoggle
+{
+  font-size: 16px;
+  color: #293059;
+  margin-top: -45px;
+  cursor: pointer;
+  float: right;
+}
+.form_input{
+  
+    height: 22px;
+    text-align: left;
+    line-height: 1.12rem;
+    width: 100%;
+    position: relative;
+    color: #293059;
+    border: 0;
+    outline: 0;
+    background: none;
+    border-bottom: 1px solid #e1e1e1;
+    box-shadow: none;
+    margin-top: 1rem;
+  }
+  .labal
+{
+  font-family: "futura-pt",sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+  
+  
+  color: #A6A8BA;
+  opacity: 1;
+  line-height: 2px;
+  text-align: left;
+  background: none;
+}
+thead, tbody tr:nth-child(even){
+  background:none;
+  border: none;
+}
+thead tr{
+  border: none;
+}
+table,tbody
+{
+  background:none;
+  border: none; 
+}
+th{
+  font-family: "futura-pt",sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  padding-left: 0px;
+  color: #A6A8BA;
+}
+td {    font-family: "futura-pt",sans-serif;
+
+  font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+padding-left: 0px;
+padding-right: 0px;
+color: rgba(41, 47, 88, 0.8);
+
+}
+td .first{    font-family: "futura-pt",sans-serif;
+margin-bottom: .5rem;
+  font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+padding-left: 0px;
+padding-right: 0px;
+color: rgba(41, 47, 88, 0.8);
+
+}
+td .second{    font-family: "futura-pt",sans-serif;
+
+  font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+padding-left: 0px;
+padding-right: 0px;
+color: rgba(41, 47, 88, 0.8);
+
+}
+
+tr,tbody tr:nth-child(even)
+{
+  border-bottom: 2px solid #E5E5E5;
+}
+table{
+  border-top: 2px solid #E5E5E5
+
+}
+.viewchat
+{font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: "futura-pt",sans-serif;
+    color: #A6A8BA;
+    cursor: pointer;
+    text-align: right;
+
+
+}
+.chattype
+{font-family: "futura-pt",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    
+    color: rgba(41, 47, 88, 0.8);
+}
+.gigaaausername
+{font-family: "futura-pt",sans-serif;
+    font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+display: inline-block;
+color: rgba(41, 47, 88, 0.8);
+}
+.gigaaaid
+{font-family: "futura-pt",sans-serif;
+    font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+display: block;
+color: #A6A8BA;
+
+}
+.datetime{
+  font-family: "futura-pt",sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  
+  color: rgba(41, 47, 88, 0.8);
+}
+
+.agentpic
+{
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+    position: relative;
+}
+.flagimg
+{
+    display: inline-block;
+    margin-right: 5px;
+}
+.requesttype
+{
+  font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+font-family: "futura-pt",sans-serif;
+color: rgba(41, 47, 88, 0.8);
+}
+
+
+.integration
+{
+  font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+font-family: "futura-pt",sans-serif;
+color: rgba(41, 47, 88, 0.8);
+}
+.role
+{
+  font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+
+color: #715DFF;
+}
+.languagetagdropdown.show 
+{
+    transform: none;
+}
+.dropdown-menu
+{
+  width: 100%;
+}
+.allintegration
+{ height: 34px;
+   text-align: left;
+   line-height: 32px;
+   padding-left: 5px;
+
+   position: relative;
+   background: #FFFFFF;
+   border: 1px solid #E5E5E5;
+   box-sizing: border-box;
+   border-radius: 4px;
+   margin-top: 1rem;
+}
+
+.alllanguages
+{ height: 34px;
+   text-align: left;
+   line-height: 32px;
+   padding-left: 5px;
+
+   position: relative;
+   background: #FFFFFF;
+   border: 1px solid #E5E5E5;
+   box-sizing: border-box;
+   border-radius: 4px;
+   margin-top: 1rem;
+   margin-left: 1rem;
+}
+.tagiconnn
+{
+    color: gray;
+    cursor: pointer;
+    float: right;
+    line-height: 27px;
+    height: 20px;
+    width: 20px;
+}
+.tagiconnn:hover
+{
+    color: gray;
+}
+
+.imglanguage
+{
+   width: 15px;
+   height: 10px;
+ margin-right: 5px;
+ display: inline-block;
+
+}
+.languagedrop
+{ height: 22px;
+   text-align: left;
+   line-height: 1.12rem;
+   width: 287px;
+   display: inline-block;
+   position: relative;
+   color: #293059;
+   border: 0;
+   outline: 0;
+   background: none;
+   border-bottom: 1px solid #e1e1e1;
+   box-shadow: none;
+   margin-top: 1rem;
+}
+
+.allintegration
+{ height: 34px;
+   text-align: left;
+   line-height: 32px;
+   padding-left: 5px;
+
+   position: relative;
+   background: #FFFFFF;
+   border: 1px solid #E5E5E5;
+   box-sizing: border-box;
+   border-radius: 4px;
+   margin-top: 1rem;
+}
+
+.alllanguages
+{ height: 34px;
+   text-align: left;
+   line-height: 32px;
+   padding-left: 5px;
+
+   position: relative;
+   background: #FFFFFF;
+   border: 1px solid #E5E5E5;
+   box-sizing: border-box;
+   border-radius: 4px;
+   margin-top: 1rem;
+   margin-left: 1rem;
+}

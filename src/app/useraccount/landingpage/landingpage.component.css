@@ -1,0 +1,337 @@
+p{
+  margin: 0px;
+}
+.gigaaa-topbar{
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background: #FFFFFF;
+}
+.icon-image{
+  background-image: url('../../../assets/logo.png');
+  background-size: 120px 40px;
+  height: 40px;
+  width: 120px;
+  margin-left: 36px;
+  margin-top:20px;
+  background-repeat: no-repeat;
+}
+
+.footer{
+  height: 336px;
+  background: #FFFFFF;
+  display: block;
+}
+.footerheadings{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 17.81px;
+letter-spacing: 0.02em;
+color: rgba(22, 39, 65, 0.7);
+margin-bottom: 8px;
+}
+
+.gigaaa-footer-text{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 28.17px;
+width: max-content;
+display: block;
+letter-spacing: 0.02em;
+margin: 0px;
+cursor: pointer;
+color: rgba(22, 39, 65, 0.7);
+}
+.footer-columns
+{
+  margin-top: 52px;
+  margin-right: 18.5%;
+  display: inline-block;
+  vertical-align: text-top;
+  width: 7.8%;
+}
+.footer-columns.first{
+ 
+margin-left: 6.6%;
+}
+.footer-columns.last
+{
+  margin-right: 0%;
+  margin-right:  6.6%;
+}
+.grid-x
+{
+  margin:0px;
+}
+.gigaaa-social-panel{
+
+  display: block;
+}
+.gigaaa-social-icons{
+  display: inline-block;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.privacy-panel{
+  text-align: right;
+  display: inline-block;
+  width: 62.3%;
+  margin-right: 6.6%;
+  
+}
+.gigaaa-policy-text{
+  font-family: "Roboto",sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+letter-spacing: 0.02em;
+display: inline-block;
+color: rgba(22, 39, 65, 0.7);
+cursor: pointer;
+}
+.gigaaa-policy-text.priv
+{
+  margin-right: 62px;
+
+}
+.content-area{
+  background-color: #F5F6FB;
+  height: 682px;
+  background-image: url(../../../assets/main.png);
+  background-repeat: no-repeat;
+  background-size: 708px 552px;
+  background-position: top 100% right 6.6% 
+}
+
+.descp{
+  margin: 0px;
+  font-family: "Roboto",sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 33px;
+  line-height: 37px;
+  letter-spacing: 0.02em;
+  color: #162741;
+  margin-top: 186px;
+  margin-left: 118px;
+  position: relative;
+
+  }
+  span.descp{
+    color: #1C54DB;
+
+  }
+span{
+      color: #1C54DB;
+      text-align: center;
+      font-family: "Roboto",sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 0.02em;
+      position: relative;
+      display: contents;
+
+  }
+  .smallheading{
+      font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 25px;
+    margin-top: 32px;
+    color: #292F58;
+    margin-left: 118px;
+    
+    
+    }    
+  .gigaaa-iconspanels{
+      display: block;
+      margin-top: 49px;
+      margin-left: 118px;
+  }      
+  .iconslist{
+      display: inline-block;
+      vertical-align: text-top;
+      text-align: center;
+      text-align: -webkit-center;
+      width: fit-content;
+      margin-right: 28px;
+  }
+  .icontext
+  {
+          margin: 0px;
+          margin-top: 12px;
+              font-family: "Roboto",sans-serif;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 17px;
+          text-align: center;
+          letter-spacing: 0.02em;
+          text-transform: capitalize;
+          color: #162741;
+  }
+  .signup
+  {   margin: 0px;
+      margin-top: 32px;
+      margin-left: 118px;
+      width: 240px;
+      height: 55.57px;
+      left: calc(50% - 240px/2 - 480px);
+      top: 456px;
+      background: #1C54DB;
+      border-radius: 41px;
+      font-family: "Roboto",sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24.1611px;
+      color: white;
+      cursor: pointer;
+  }
+  .imggicons{
+      height: 42px;
+      width: 42px;
+      text-align: center;
+      background: rgba(28, 84, 219, 0.12);
+      border-radius: 50%;
+      padding: 9px;
+
+      }
+.socialpacks{
+  display: inline-block;
+  width: 24.5%;
+  margin-top: 42px;
+  margin-left: 6.6%;
+} 
+.mobiledescp{
+  display: none;
+}       
+.mobilesmallheading{
+  display: none;
+}
+@media (max-width: 768px) {
+  .icon-image{
+      margin: 0px;
+      margin: 0 auto;
+      margin-top: 32px;
+
+  }
+  .gigaaa-topbar{
+      width: 100%;
+  }
+  .gigaaa-iconspanels{
+          margin-left: 0px;
+          width: 100%;
+          display: block;
+          text-align: center;
+  }
+  .gigaaa-topbar{
+      background-color: #F5F6FB;
+      box-shadow: none;
+  }
+  .content-area{
+  height: max-content;
+  background-size: 359px 297px;
+  background-position: top 12% right 100%;
+  }
+  .descp{
+     display: none;
+  }
+  .mobiledescp{
+      display: block;
+      margin: 0px;
+      margin-right: 30px;
+      margin-left: 30px;
+      text-align: center;
+      font-family: "Roboto",sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 0.02em;
+      color: #162741;
+      margin-top:400px;
+      position: relative;
+  }
+  .smallheading{
+      display: none;
+  }
+  .mobilesmallheading{
+      display: block;
+      font-family: "Roboto",sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      margin-top: 24px;
+      text-align: center;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      
+      color: #162741;
+  }
+  
+  .iconslist{
+      margin-bottom: 41px;
+      width: 22%;
+      
+  }
+  .iconslist.last{
+      margin-right: 0px;
+  }
+  .footer-columns.mfirst{
+      margin-left: 9%;
+  }   
+  .footer-columns{
+     width: 45%;
+      margin-right: 0px;
+  }
+  .footer-columns.last{
+      margin-right: 0px;
+  }
+  .socialpacks{
+      display:block;
+      width: 100%;
+      text-align: center;
+      margin-left: 0px;
+      margin-top: 21px;
+  }
+  .privacy-panel{
+  width: 82%;
+  margin-right: 9%;
+  margin-left: 9%;
+  margin-top: 18px;
+  }
+  .gigaaa-policy-text.priv{
+      margin-right: 0px;
+      width: 50%;
+      text-align: left;
+      margin-top: 18px;
+    
+  }
+  .gigaaa-policy-text.priv.moblast{
+   text-align: right;
+  }
+  .gigaaa-policy-text.mobile{
+      text-align: center;
+      width: 100%;
+      margin-top: 18px;
+      margin-bottom: 30px;
+  }
+  .signupalign{
+      text-align: center;
+  }
+  .signup{
+      margin: 0px;
+      margin-top: 27px;
+  }
+}

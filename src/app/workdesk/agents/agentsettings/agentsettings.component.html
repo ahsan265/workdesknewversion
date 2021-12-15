@@ -1,0 +1,133 @@
+<div class="settingspanel">
+    <div class="settingsheadingpanel">
+        <p class="agentsettingspaths">Agents</p>
+        <svg   class="backicon" width="5" height="8" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.00390625 6.54297L2.68359 3.86328L0.00390625 1.18359L0.824219 0.363281L4.32422 3.86328L0.824219 7.36328L0.00390625 6.54297Z" fill="#7D8696"/>
+            </svg>
+            <!-- <svg (click)="getbacktoteams()" class="backicon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.6797 6.17969V7.82031H3.52344L8.17188 12.5078L7 13.6797L0.320312 7L7 0.320312L8.17188 1.49219L3.52344 6.17969H13.6797Z" fill="#7D8696"/>
+                </svg> -->
+        <p class="heading">Agent Settings</p>
+    </div>
+    <div class="settingarea">
+        <div class="headingpanel" [hidden]="profiledetals">
+            <div class="userinformationsection">
+                <div  class="icon-container"><img class="agentprofilepic" [src]="agentprofilepic" height="60" width="60" alt="">
+                    <div [hidden]="uploadpic" class='status-circle' ><svg class="uploadcamera" (click)="uploadpicture()" width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.7645 0.795434C12.2509 0.989022 12.5948 1.33796 12.9031 1.84951L13.0047 2.02607L13.3815 2.74869L13.3939 2.76887L13.4052 2.78643L13.4372 2.83019C13.6089 3.01727 13.8963 3.1303 14.0859 3.1303C15.8232 3.1303 17.2422 4.49468 17.3292 6.20991L17.3334 6.37696V11.2061C17.3334 13.4328 15.5749 15.2499 13.3714 15.344L13.1917 15.3478H4.80841C2.5812 15.3478 0.76464 13.5896 0.670574 11.3858L0.666748 11.2061V6.37696C0.666748 4.58412 2.1209 3.1303 3.91425 3.1303C4.10323 3.1303 4.39098 3.01711 4.56295 2.83019L4.56887 2.8232L4.57629 2.81349L4.61914 2.74776L4.99493 2.0263C5.32989 1.41753 5.69428 1.01057 6.23498 0.795356C7.22582 0.401372 10.7745 0.401372 11.7645 0.795434ZM6.69704 1.95682C6.51255 2.03025 6.34552 2.20022 6.16726 2.49488L6.0901 2.62888L5.76938 3.24896L5.69044 3.39182C5.62455 3.50143 5.55863 3.59395 5.48337 3.67596C5.09969 4.093 4.5488 4.33388 4.0591 4.37423L3.91425 4.3803L3.7775 4.3849C2.78339 4.45212 1.98859 5.24674 1.92136 6.24029L1.91675 6.37696V11.2061C1.91675 12.7497 3.12653 14.0111 4.64976 14.0935L4.80841 14.0978H13.1917C14.735 14.0978 15.9967 12.8875 16.0791 11.3647L16.0834 11.2061V6.37696C16.0834 5.32048 15.262 4.45518 14.2227 4.3849L14.0859 4.3803L13.9408 4.37423C13.4504 4.33387 12.8995 4.09293 12.5163 3.6754C12.442 3.59448 12.3765 3.50262 12.311 3.39394L12.2952 3.367L12.2765 3.33353L12.1797 3.15208L11.9098 2.62911C11.7275 2.29819 11.5606 2.09594 11.3804 1.9943L11.3023 1.95682L11.2028 1.92377C10.3452 1.68136 7.36209 1.69238 6.69704 1.95682ZM8.99983 5.66588C10.8083 5.66588 12.274 7.13154 12.274 8.94005C12.274 10.7486 10.8083 12.2142 8.99983 12.2142C7.19132 12.2142 5.72566 10.7486 5.72566 8.94005C5.72566 7.13154 7.19132 5.66588 8.99983 5.66588ZM8.99983 6.91588C7.88168 6.91588 6.97566 7.82189 6.97566 8.94005C6.97566 10.0582 7.88168 10.9642 8.99983 10.9642C10.118 10.9642 11.024 10.0582 11.024 8.94005C11.024 7.82189 10.118 6.91588 8.99983 6.91588ZM13.587 5.08338C14.0472 5.08338 14.4203 5.45647 14.4203 5.91671C14.4203 6.34408 14.0986 6.6963 13.6842 6.74444L13.587 6.75005C13.1193 6.75005 12.7462 6.37695 12.7462 5.91671C12.7462 5.48935 13.0679 5.13712 13.4823 5.08898L13.587 5.08338Z" fill="#162741"/>
+                        </svg>
+                        </div>
+                </div>
+            <div style="display: inline-block; vertical-align: middle;">
+            <p class="joiningname">{{agentfullname}}</p>
+            <p class="agentemail">{{this.agentsettingdata?.email}}</p>
+            </div>
+            </div>
+            <div class="deletesection" [hidden]="deltebutton"  style="text-align: right;">
+                <button class="deleteagent" (click)="deleteagent()"><span><svg class="delbtn" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.27344 13.7266C5.60156 15.0286 7.17708 15.6797 9 15.6797C10.8229 15.6797 12.3854 15.0286 13.6875 13.7266C15.0156 12.3984 15.6797 10.8229 15.6797 9C15.6797 7.17708 15.0156 5.61458 13.6875 4.3125C12.3854 2.98438 10.8229 2.32031 9 2.32031C7.17708 2.32031 5.60156 2.98438 4.27344 4.3125C2.97135 5.61458 2.32031 7.17708 2.32031 9C2.32031 10.8229 2.97135 12.3984 4.27344 13.7266ZM3.10156 3.14062C4.74219 1.5 6.70833 0.679688 9 0.679688C11.2917 0.679688 13.2448 1.5 14.8594 3.14062C16.5 4.75521 17.3203 6.70833 17.3203 9C17.3203 11.2917 16.5 13.2578 14.8594 14.8984C13.2448 16.513 11.2917 17.3203 9 17.3203C6.70833 17.3203 4.74219 16.513 3.10156 14.8984C1.48698 13.2578 0.679688 11.2917 0.679688 9C0.679688 6.70833 1.48698 4.75521 3.10156 3.14062ZM4.82031 8.17969H13.1797V9.82031H4.82031V8.17969Z" fill="#FF155A"/>
+                    </svg>
+                    </span><span class="deletetext">Delete agent</span> </button>
+                </div>
+                <div class="deletesection" [hidden]="initationbtns" style="text-align: right;">
+                    <button class="sendinvite" (click)="invitationresendagent()">Resend Invitation</button>
+                    <button class="cancelinvite" (click)="cancelagentinvitation()">Cancel Invitation</button>
+                    </div>
+            </div>
+
+            <!-- <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div> -->
+            <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div>
+            <form  name="form" [formGroup]="form" (ngSubmit)="updateagentprofile()">
+
+            <div   [hidden]="profileforagent">
+            <p class="profile">Profile</p>
+           
+            <div class="textfield">
+                <label for="" class="labal">
+                    First Name
+                </label>
+                <input formControlName="first_name" type="text" class="form_input" placeholder="Account First Name">
+            </div>
+            <div class="textfield" >
+                <label for="" class="labal">
+                    Last Name
+                </label>
+                <input formControlName="last_name" type="text" class="form_input" placeholder="Account Last Name">
+            </div>
+            <div class="textfield last">
+                <label for="" class="labal">
+                    Agent Name
+                </label>
+                <input type="text"  formControlName="display_name" class="form_input last"  placeholder="Account Name">
+                </div>
+   
+                <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div>
+                <div class="languagepanel"  [hidden]="displayname_languages">
+
+                    <p class="languagetextt">
+                        Language
+                    </p>
+                    <p class="languageheading">
+                        Select language(s) for this agent:
+                    </p>
+                    <ul style="margin-top: 13px;"  class="dropdown"  >  
+                        <li style="height: 36px;">
+                        <a class="languagetext" id="dropdownMenuButton2" data-toggle="dropdown" aria-expanded="false">
+                            {{selectedlanguages}}
+                        <i class="tagiconnn fa fa-chevron-down" aria-hidden="true" ></i>
+                        </a>  
+                       
+                        <ul  class="dropdown-menu" >
+
+                            <li class="listitem"  *ngFor="let count of this.lang; let i=index" [ngValue]="count.name" > <input  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name"  (click)="selectlanguageonebyone($event.target.checked,count.id)" [attr.id]="'count.name'+i"> <label class="dropdownlistitem"  [for]="'count.name'+i"> 
+                                {{count.name}}
+                               </label></li>
+                        </ul>
+                         </li>
+                      </ul>
+                </div>
+              
+                </div>  
+                <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div>
+                <div class="formarea">
+                    <div class="adminrightpanel" [hidden]="administratorright">
+                            <p class="smallheading">Administrative Rights</p>
+                            <p class="descp">Admins can add new agents and change settings. </p>
+                    </div>
+                        <label class="switch" [hidden]="administratorright">
+                            <input type="checkbox" [checked]="!isadmin"
+                              formControlName="is_admin">
+                           <span class="slider round"></span>
+                          </label>
+            
+             </div>
+               
+                <div [hidden]="password" style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6);"></div>
+
+               
+            <div class="textfield pass" [hidden]="password" style="margin-top: 9px;">
+                <p class="passwordheading">Password</p>
+                <label for="" class="labal">
+                    Set password
+                </label>
+                <input  type="text" class="form_input pass last" placeholder="Old password" value="********">
+                <p class="passwordtoggle" (click)="updatepasswordpopup()">Change</p>
+                </div>
+            <div style="margin-top: 30px; height: 1px;width: 100%; background: rgba(208, 208, 222, 0.6); "></div>
+            <div class="savebtnpanel">
+                <div style="text-align: left;display: inline-block;
+                width: 50%;">
+                 <button  (click)="getbacktoteams()" type="reset" class="backbtn">Back</button>
+
+                </div>
+                <div style="text-align: right;display: inline-block;
+                width: 50%;">
+                    <button type="submit" class="savebtn">Save</button>
+
+                </div>
+            </div>
+        </form>
+    
+       </div> 
+        
+</div>

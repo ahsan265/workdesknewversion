@@ -1,0 +1,30 @@
+button {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8.05369px;
+  width: 240px;
+  height: 55.57px;
+  background: #1c54db;
+  border-radius: 41px;
+  border: none;
+  cursor: pointer;
+  margin-top: 32px;
+  margin-left: 118px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.51em;
+  line-height: 120%;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 768px) {
+  button {
+    width: 214px;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+}

@@ -1,0 +1,66 @@
+
+  <div class="grid-x" style="text-align: center; ">
+    <div class="cell large-12" style="text-align: end;">
+      <span class="material-icons closebtn" mat-button [mat-dialog-close]="true" cdkFocusInitial>
+        close
+        </span>
+    </div>
+  </div>
+        
+        
+<div class="grid-x" style="margin-top: 40px;">
+    <div  class="cell large-12">
+     <p class="heading">Login</p>
+    </div>
+     </div>
+              <form  class="grid-x" name="form" [formGroup]="form" (ngSubmit)="login()" >
+
+                            <div class="cell large-12" style="text-align: left;margin-top: 36px; ">
+                            
+                              <input placeholder="E-mail Address" type="email" class="form_input" formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}" required>
+                              <div *ngIf="form.get('email').touched && form.get('email').invalid"  class="invalid-feedback">
+                                <div *ngIf="form.get('email').errors.required">Email Name is required</div>
+                                <div *ngIf="form.get('email').errors.email">Email must be a valid email Address</div>
+                              </div>
+                             </div>
+                             
+                             <div class="cell large-12">
+                              <input placeholder="Password" [type]="passType" spellcheck="false"  class="form_input"
+                              formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}" >
+                              
+                              <span class="passwordtoggle"><img (click)="changePasswordType('password')" [src]="srcpass1" alt="" srcset=""></span>
+                              <div *ngIf="form.get('password').touched && form.get('password').invalid"  class="invalid-feedback">
+                                <div *ngIf="form.get('password').errors.required">Password is required</div>
+                              </div>  
+                             </div>
+                           
+                            
+                              <div class=" cell large-6" style="margin-top: 24px;">
+                                  <input type="checkbox"  required  style="margin-right: 4px;" />
+                                  <span class="remember">Remember Me
+                                     </span>
+                              </div>
+                              <div class="cell large-6" style="text-align: right; margin-top: 24px;">
+                                <p class="forgotpass">Forgot your password?</p>
+                              </div>                            
+                              <div class="cell large-12" style="text-align: center;">
+                                <button type="submit"   class="loginbtn">Log In</button>
+                              </div>
+                        </form> 
+                       <div class="grid-x" style="margin-top: 24px;">
+                        <div class="cell large-12" style="text-align: center;">
+                          <p class="newtogiga">
+                            Don’t have an account yet? <span class="register" (click)="openDialogSignup()">Register</span>
+                          </p>
+                        </div>
+                       </div>
+          
+ 
+  
+   
+  
+  
+      
+  
+  
+

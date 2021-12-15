@@ -1,0 +1,166 @@
+<div class="mobilefilterpanel">
+    <div [hidden]="showmainfilters">
+        <div class="filterpanel">
+        <div class="informationpanel ">
+            <p  (click)="showselectedpanel('location')" class="selectedpanel location">Search</p>
+        </div>
+        <div class="arrowpanel">
+            <img src="../../../assets/assets_workdesk/arrow.svg" alt="">
+        
+        </div>
+        </div>
+        <div class="filterpanel">
+          <div class="informationpanel">
+            <p (click)="showselectedpanel('languages')" class="selectedpanel">Language</p>
+            <p  (click)="showselectedpanel('languages')" class="selecteddaterange">{{selectedlanguages}}</p> 
+        
+         </div>
+         <div class="arrowpanel">
+            <img (click)="showselectedpanel('languages')" src="../../../assets/assets_workdesk/arrow.svg" alt="">
+        
+         </div>
+        </div>
+        <div  class="clearallfilterpanel">
+        <div class="informationpanel clear">
+         <p [mat-dialog-close]="true" (click)="clearallfiltersformobile()" cdkFocusInitial class="clearall">Clear all filters</p>
+        </div>
+        </div>
+    </div>
+
+    <!-- show selected range -->
+<div [hidden]="showselectedrange">
+  <div class="selecteddaterangepanel">
+       <div class="showdatemainpanel">
+           <div class="arrowpanel daterange">
+            <img (click)="showselectedpanel('main')" src="../../../assets/assets_workdesk/arrow_left.svg" alt="" srcset="">
+           </div>
+           <div class="showdateheadingpanel">
+            <p class="datemainheading">Select date range</p>
+           </div>
+      </div>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">Today</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">Yesterday</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">This week</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">Last week</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">This month</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">Last month</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">This year</p>
+   </div>
+   <div class="selectedtabspanel">
+    <p class="selecteddate">Last year</p>
+   </div>
+   <div class="selectedtabspanel custom">
+    <p (click)="showselectedpanel('custom')" class="selecteddate">Custom</p>
+   </div>
+    </div>
+</div>
+<!-- show location filter -->
+<div [hidden]="showsearchfilter">
+    <div class="selecteddaterangepanel">
+        <div class="showdatemainpanel">
+            <div class="arrowpanel daterange">
+             <img (click)="showselectedpanel('main')" src="../../../assets/assets_workdesk/arrow_left.svg" alt="" srcset="">
+            </div>
+            <div class="showdateheadingpanel">
+             <p class="datemainheading">Search</p>
+            </div>
+       </div>
+    </div>
+ <form name="form" [formGroup]="form"  (ngSubmit)="send_search_query()">
+    <div class="selectlocationpanel">
+        <input formControlName="search" class="form_input search" type="text" placeholder="Search by name or email...">
+    </div>
+    <div class="applybtnpanel">
+        <button type="submit" [mat-dialog-close]="true" cdkFocusInitial class="applybtn">Apply</button>
+    </div></form>
+</div>
+<!-- show language filter -->
+<div [hidden]="showlanguagefilter">
+    <div class="selecteddaterangepanel">
+        <div class="showdatemainpanel">
+            <div class="arrowpanel daterange">
+             <img (click)="showselectedpanel('main')" src="../../../assets/assets_workdesk/arrow_left.svg" alt="" srcset="">
+            </div>
+            <div class="showdateheadingpanel">
+             <p class="datemainheading">Select language</p>
+            </div>
+       </div>
+    </div>
+    <div class="headingpanel">
+        <p class="mainheading">Select language:</p>
+    </div>
+    <div class="selectlanguagepanel">
+        <div class="dropdown country">
+            <li style="height:50px; list-style: none;">
+            <a class="selectedlocationname"   data-toggle="dropdown" aria-expanded="false">
+               {{selectedlanguages}}
+                <svg  class="arrowdownicon1" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                 </svg>
+            </a>  
+              <ul class="dropdown-menu langauges" style="transform: translate3d(0px, 23px, 0px);">
+                <div class="scrollpanelforlanguagelist">
+                  <li class="listitem user"   *ngFor="let count of this.lang" [ngValue]="count.name" > <input  (click)="selectlanguageonebyone($event.target.checked,count.id)"  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name" [attr.id]="count.name"> <label class="dropdownlistitem1"  [for]="count.name"> 
+                    {{count.name}}
+                   </label></li> </div>
+              </ul>          
+             </li>
+       </div>
+    </div>
+    <div class="applybtnpanel">
+        <button  [mat-dialog-close]="true" (click)="sendlanguages_mobilefilter()" cdkFocusInitial class="applybtn">Apply</button>
+    </div>
+</div>
+<!-- custom date filter -->
+<div [hidden]="showcustomdatefilter">
+    <div class="selecteddaterangepanel">
+        <div class="showdatemainpanel">
+            <div class="arrowpanel daterange">
+             <img (click)="showselectedpanel('selectedrange')" src="../../../assets/assets_workdesk/arrow_left.svg" alt="" srcset="">
+            </div>
+            <div class="showdateheadingpanel">
+             <p class="datemainheading">Select custom range</p>
+            </div>
+       </div>
+    </div>
+    <div class="dateviewpanel">
+       <div class="dateview">
+        <p class="datetext">{{datepreviewstart}}</p>
+       </div> 
+       <svg style="margin-left: 24.5px;
+       margin-right: 24.5px;" width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.2383 1.73828H0.761719V0.261719H11.2383V1.73828Z" fill="#162741"/>
+        </svg>
+        
+       <div class="dateview" style="float: right;">
+        <p class="datetext">{{datepreviewend}}</p>
+       </div>
+    </div>
+    <div class="calenderview">
+        <bs-daterangepicker-inline style=" margin: 0px;
+        display: contents;"  type="text"
+        bsDaterangepicker
+        placement="bottom"
+        [bsValue]="bsValue"
+        (bsValueChange)="onDateChange($event)"
+        [bsConfig]="bsConfig">
+      </bs-daterangepicker-inline>
+    </div>
+    <div class="applybtnpanel">
+        <button  [mat-dialog-close]="true" cdkFocusInitial class="applybtn">Apply</button>
+    </div>
+</div>

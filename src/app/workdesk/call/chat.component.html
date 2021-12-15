@@ -1,0 +1,681 @@
+
+<!-- <div class="topheadingpanel">
+  <p class="mainheading">Requests</p>
+  </div> -->
+  <div class="tabspanel" style="z-index: 1; border-bottom: 1px solid #E1E1EA;">
+     
+            <div class="tabsitem" ><a [ngClass]="{ active: isActive('incoming') }" (click)="getpanalview('incoming')"   class="itemoftabs" >Incoming <span class="numberofcalls">{{size_incoming_call}}</span> </a></div>
+            <div  class="tabsitem"  ><a [ngClass]="{ active: isActive('outgoing') }" (click)="getpanalview('outgoing')"   class="itemoftabs">Ongoing <span class="numberofcalls">{{size_ougoing_call}}</span></a></div>
+            <div  class="tabsitem"  ><a [ngClass]="{ active: isActive('missed') }"  (click)="getpanalview('missed')"  class="itemoftabs">Missed</a></div>
+            <div  class="tabsitem"  ><a [ngClass]="{ active: isActive('answered') }" (click)="getpanalview('answered')"   class="itemoftabs">Answered</a></div>
+  </div>
+  <div class="callsarea">
+  <div [hidden]="!incoming">
+      <div class="dropdownpanels" style="margin-top: 30px;">
+        <div class="languagepanel">
+  
+          <div class="dropdown languages">  
+            <li style="height: 36px;">
+            <a class="languagetext"  data-toggle="dropdown" aria-expanded="false">
+              {{selectedlanguagesincom}}
+              <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                </svg>
+            </a>  
+            <ul class="dropdown-menu languages">
+                <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="incoming" [checked]="allselectedtagincom" (change)="getalllanguage($event.target.checked,'incoming',0)" type="checkbox" id="incoming"> <label class="dropdownlistitem"  for="incoming"> 
+                    Select all languages
+                   </label></li> -->
+                <li class="listitem"  *ngFor="let count of this.lang1" [ngValue]="count.name" > <input (click)="selectlanguageonebyone($event.target.checked,count.id)"  #i (change)="!i['checked']" [checked]="count.status" name="incoming"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
+                    {{count.name}}
+                   </label></li>
+            </ul>
+        
+             </li>
+          </div>
+          </div>
+          <div class="secondpanel">
+          <div class="dropdown calltype">  
+            <li style="height: 36px;">
+            <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
+               {{totalsizeofcalltype1}}
+               <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                </svg>
+            </a>  
+            <ul class="dropdown-menu calltype" >
+                <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall1" (change)="selectallcalltype($event.target.checked,'incoming',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call"> 
+                    Select all call types
+                   </label></li> -->
+                <li class="listitem"   *ngFor="let count of this.call1" [ngValue]="count.name" > <input (click)="selectcalltypeonebyone($event.target.checked,count.name)"   [checked]="count.status" name="call"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
+                    {{count.name}}
+                   </label></li>
+             </ul>
+             </li>
+            </div>
+            <div class="mobilefilteropen">
+              <svg  (click)="openmobilefilterpopup('incoming')" style="position: initial;
+              margin: 0 auto;
+              margin-top: 14px;
+              text-align: center;" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.08579 6.58585C1.71071 6.21077 1.5 5.70207 1.5 5.17163V3.00006C1.5 1.89549 2.39543 1.00006 3.5 1.00006H17.5C18.6046 1.00006 19.5 1.89549 19.5 3.00006V5.17163C19.5 5.70207 19.2893 6.21077 18.9142 6.58585L12.7929 12.7072C12.6054 12.8947 12.5 13.1491 12.5 13.4143V17.9457C12.5 18.2905 12.3224 18.611 12.03 18.7937L10.03 20.0437C9.36395 20.46 8.5 19.9811 8.5 19.1957V13.4143C8.5 13.1491 8.39464 12.8947 8.20711 12.7072L2.08579 6.58585Z" stroke="#455267" stroke-width="1.4"/>
+                </svg>
+                
+            </div>
+       <div class="searchpanel">
+     
+        <Input type="text" (keyup)="search($event.target.value,'incoming')" class="form_input search" placeholder="Search by name or user id"/>
+       </div>
+        </div>
+      </div> 
+        <div class="datatable" >
+          <table [hidden]="showincoming" class="showtable">
+            <thead>
+              <tr>
+                <th style="width:10%; padding-left: 30px">QUEUE</th>
+                <th  style="width:25%;">FULL NAME & ID</th>
+                <th class="imagetag">USER INFO</th>
+                <th style="width:15%;">CALL TYPE</th>
+                <th class="waitingtime" style=" text-align: center;">WAITING TIME</th>
+                <th style="width: 20%;"></th>
+   </tr>
+  </thead>
+  <tbody>
+  <tr class="mainlist" *ngFor="let data of incoming_call; let i=index">
+                <td><span style="padding-left: 4px; padding-right: 20px; color: #949CA8;">#</span> {{i+1}}</td>
+                <td><p class="username">{{data.name}}</p>
+                <p class="id">{{data.user_id}}</p></td>
+                <td><img class="userinfoicon" height="18" width="16" [src]="changecountryflag(data?.language_icon)" alt="">
+                  <img  class="userinfoicon" height="18" width="18" [src]="changebrowser(data?.browser)" alt="">
+                  <img  class="userinfoicon" height="18" width="18" [src]="changedevicetype(data?.mobile)" alt="">
+                  <img  class="userinfoicon" height="18" width="18" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+                </td>
+                <td>
+                <img  [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 6px;" alt=""> {{changecalltype(data?.is_video)}}
+                </td>
+                <td style="text-align: center;">{{getElapsedTime(data?.waiting_started_at)}}</td>
+                <td style="text-align: right; padding-right: 30px;"><button  class="dialcallbtn" (click)="dialcall(data?.call_uuid)" >Answer
+                  </button>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="cardspanel">
+            <div class="cardsitem" *ngFor="let data of  incoming_call; let i=index;">
+              <div style="    padding-left: 16px;
+              padding-right: 16px;  " >
+                <div class="iconpanel" >
+                    <div [ngClass]="{ rotateicon: isExpand(data.call_uuid+1) }" (click)="getExpandeditem(data.call_uuid+1)" class="notrorateicon"></div>
+                </div>
+                <div class="usernamepanel" style="width: 60%;">
+                  <p class="agentusername">{{data?.name}}</p>
+                </div>
+                <div class="durationpanel" style="width: 20%;">
+                  <p class="callmissedat">{{getElapsedTime(data?.waiting_started_at)}}</p>
+                </div>
+                <div class="calltypepanel" style="width: 10%; vertical-align: middle;">
+                  <div class="calliconpanel">
+                    <img class="calliconsstyle" (click)="dialcall(data?.call_uuid)" height="16" width="16" [src]="calltypeiconformobile(data?.is_video)" alt="" srcset="">
+
+                  </div>
+                </div>
+              </div>
+              <div class="showpanel" [ngClass]="{ expandedpanel: isExpand(data.call_uuid+1) }">
+                <div class="agentidpanel" style="width: 25%;">
+                  <p class="agentinfoheading">QUEUE</p>
+                  <p class="agentinfodata"><span style="padding-left: 4px; padding-right: 5px; color: #949CA8;">#</span>{{i+1}}</p>
+                </div>
+                <div class="agentidpanel" style="width: 25%;">
+                  <p class="agentinfoheading">AGENT</p>
+                  <p class="agentinfodata">{{data?.user_id}}</p>
+                </div>
+                <div class="userinfopanel" style="width: 50%; text-align: right;">
+                  <p class="agentinfoheading">USER INFO</p>
+                  <img class="userinfoicon" height="10" width="10" [src]="changecountryflag(data?.language_icon)" alt="">
+                  <img  class="userinfoicon" height="18" width="10" [src]="changebrowser(data?.browser)" alt="">
+                  <img  class="userinfoicon" height="10" width="10" [src]="changedevicetype(data?.mobile)" alt="">
+                  <img  style="margin-right: 0px;" class="userinfoicon" height="10" width="10" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+  
+                </div>
+              </div>
+            </div>
+            </div>
+          <div [hidden]="showincoming_message">
+            <p class="call-status">There is no Incoming requests yet.</p>
+    </div>
+   </div>
+   
+  </div>
+  
+  
+    <div [hidden]="!outgoing">
+      <div class="dropdownpanels" style="margin-top: 30px;">
+        <div class="languagepanel">
+          <div class="dropdown languages ">  
+            <li style="height: 36px;">
+            <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
+              {{selectedlanguagesongo}}
+              <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                </svg>
+            </a>  
+            <ul class="dropdown-menu languages" >
+                <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="user" [checked]="allselectedtagiongo" (change)="getalllanguage($event.target.checked,'ongoing',0)" type="checkbox" id="count"> <label class="dropdownlistitem"  for="count"> 
+                    Select all languages
+                   </label></li> -->
+                <li class="listitem"  *ngFor="let count of this.lang2" [ngValue]="count.name" > <input (click)="selectlanguageonebyone($event.target.checked,count.id)"  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
+                    {{count.name}}
+                   </label></li>
+            </ul>
+        
+             </li>
+            </div>
+          </div>
+  
+        <div class="secondpanel">
+          <div class="dropdown calltype" >  
+            <li style="height: 36px;">
+            <a class="languagetext" data-toggle="dropdown" aria-expanded="false" >
+               {{totalsizeofcalltype2}}
+               <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                </svg>
+            </a>  
+            <ul class="dropdown-menu calltype" >
+                <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall2" (change)="selectallcalltype($event.target.checked,'ongoing',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call"> 
+                    Select all call types
+                   </label></li> -->
+                <li class="listitem"   *ngFor="let count of this.call2" [ngValue]="count.name" > <input (click)="selectcalltypeonebyone($event.target.checked,count.name)"   [checked]="count.status" name="call"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
+                    {{count.name}}
+                   </label></li>
+             </ul>
+             </li>
+            </div>
+          <div class="mobilefilteropen">
+            <svg (click)="openmobilefilterpopup('outgoing')"  style="position: initial;
+            margin: 0 auto;
+            margin-top: 14px;
+            text-align: center;" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.08579 6.58585C1.71071 6.21077 1.5 5.70207 1.5 5.17163V3.00006C1.5 1.89549 2.39543 1.00006 3.5 1.00006H17.5C18.6046 1.00006 19.5 1.89549 19.5 3.00006V5.17163C19.5 5.70207 19.2893 6.21077 18.9142 6.58585L12.7929 12.7072C12.6054 12.8947 12.5 13.1491 12.5 13.4143V17.9457C12.5 18.2905 12.3224 18.611 12.03 18.7937L10.03 20.0437C9.36395 20.46 8.5 19.9811 8.5 19.1957V13.4143C8.5 13.1491 8.39464 12.8947 8.20711 12.7072L2.08579 6.58585Z" stroke="#455267" stroke-width="1.4"/>
+              </svg>
+              
+          </div>
+          <div class="searchpanel">
+          
+          <Input (keyup)="search($event.target.value,'ongoing')"  type="text" class="form_input search" placeholder="Search by name or user id"/>
+          </div>
+        </div> 
+        </div>
+      <div class="datatable" >
+        <table [hidden]="showongoing" class="showtable">
+          <thead>
+            <tr>
+              <th  style="width:20%; padding-left: 30px;">FULL NAME & ID</th>
+              <th class="imagetag">USER INFO</th>
+              <th style="width:20%;">CALL TYPE</th>
+              <th style="width:20%; text-align: center;">DURATION</th>
+              <th style="width:20%;">AGENT NAME</th>
+      
+         
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="mainlist" *ngFor="let data of  ougoing_call">
+              <td style=" padding-left: 30px;"><p class="username">{{data?.name}}</p>
+              <p>{{data?.user_id}}</p></td>
+              <td><img class="userinfoicon" height="18" width="18" [src]="changecountryflag(data?.language_icon)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changebrowser(data?.browser)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changedevicetype(data?.is_mobile)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+              </td>
+              <td>
+                <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 6px;" alt=""> {{changecalltype(data?.is_video)}}
+                </td>
+                <td style=" text-align: center;">{{ongoingcalltime(data?.call_started_at)}}</td>
+              <td> 
+                <img class="agentpic" height="36p" width="36" src="../../../assets/gigaaa_logo.png" alt="">
+              <div style="
+              width: 100px;
+              white-space: nowrap;
+              display: inline-block;
+              vertical-align: inherit;
+              margin-left: 16px;">
+                 <p class="username">{{data?.agent?.display_name}}</p>
+                 <!-- <p>{{data?.agent.agent_id}}</p> -->
+              </div>
+              </td>
+              <td style="text-align: right;">
+                </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="cardspanel">
+          <div class="cardsitem" *ngFor="let data of  ougoing_call; let i=index;">
+            <div style="    padding-left: 16px;
+            padding-right: 16px;  " >
+              <div class="iconpanel" >
+                  <div [ngClass]="{ rotateicon: isExpand(data.call_uuid+1) }" (click)="getExpandeditem(data.call_uuid+1)" class="notrorateicon"></div>
+              </div>
+              <div class="usernamepanel" style="width: 60%;">
+                <p class="agentusername">{{data?.name}}</p>
+              </div>
+              <div class="durationpanel" style="width: 20%;">
+                <p class="callmissedat">{{ongoingcalltime(data?.call_started_at)}}</p>
+              </div>
+              <div class="calltypepanel"style="width: 10%;">
+                <img height="16" width="16" [src]="changecalltypeicon(data?.is_video)" alt="" srcset="">
+              </div>
+            </div>
+            <div class="showpanel" [ngClass]="{ expandedpanel: isExpand(data.call_uuid+1) }">
+              <div class="agentinfopanel" style="width: 50%;">
+                <img class="agentpic" height="36p" width="36" src="../../../assets/gigaaa_logo.png" alt="">
+                <p class="agentusername name">{{data?.agent?.display_name}}</p>
+              </div>
+              <div class="agentidpanel" style="width: 25%;">
+                <p class="agentinfoheading">AGENT</p>
+                <p class="agentinfodata">{{data?.user_id}}</p>
+              </div>
+              <div class="userinfopanel" style="width: 25%; text-align: right;">
+                <p class="agentinfoheading">USER INFO</p>
+                <img class="userinfoicon" height="10" width="10" [src]="changecountryflag(data?.language_icon)" alt="">
+                <img  class="userinfoicon" height="18" width="10" [src]="changebrowser(data?.browser)" alt="">
+                <img  class="userinfoicon" height="10" width="10" [src]="changedevicetype(data?.mobile)" alt="">
+                <img  style="margin-right: 0px;" class="userinfoicon" height="10" width="10" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+
+              </div>
+            </div>
+          </div>
+          </div>
+        <div  [hidden]="showongoing_message">
+          <p class="call-status">There is no Oncoming requests yet.</p>
+        </div>
+      </div>
+      
+      
+    </div>
+    
+    <div [hidden]="!missed">
+      <div  class="dropdownpanels" style="margin-top: 30px;" >
+        <div class="languagepanel">
+          <div class="dropdown languages ">
+              <li style="height: 36px;">
+              <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
+                {{selectedlanguagesmiss}}
+                <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                  </svg>
+              </a>  
+              <ul class="dropdown-menu languages" >
+                  <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="user" [checked]="allselectedtagmiss" (change)="getalllanguage($event.target.checked,'missed',0)" type="checkbox" id="count"> <label class="dropdownlistitem"  for="count"> 
+                      Select all languages
+                     </label></li> -->
+                  <li class="listitem"  *ngFor="let count of this.lang3" [ngValue]="count.name" > <input (click)="selectlanguageonebyone($event.target.checked,count.id)"  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
+                      {{count.name}}
+                     </label></li>
+              </ul>
+          
+               </li>
+          </div>
+        </div>
+          <div class="secondpanel">
+           
+            <div class="dropdown calltype" >  
+              <li style="height: 36px;">
+              <a class="languagetext"  data-toggle="dropdown" aria-expanded="false" >
+                 {{totalsizeofcalltype3}}
+                 <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                  </svg>
+              </a>  
+              <ul class="dropdown-menu calltype" >
+                  <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall3" (change)="selectallcalltype($event.target.checked,'missed',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call"> 
+                      Select all call types
+                     </label></li> -->
+                  <li class="listitem"   *ngFor="let count of this.call3" [ngValue]="count.name" > <input (click)="selectcalltypeonebyone($event.target.checked,count.name)"   [checked]="count.status" name="call"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
+                      {{count.name}}
+                     </label></li>
+               </ul>
+               </li>
+              </div>
+              <div class="mobilefilteropen">
+                <svg (click)="openmobilefilterpopup('missed')"  style="position: initial;
+                margin: 0 auto;
+                margin-top: 14px;
+                text-align: center;" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2.08579 6.58585C1.71071 6.21077 1.5 5.70207 1.5 5.17163V3.00006C1.5 1.89549 2.39543 1.00006 3.5 1.00006H17.5C18.6046 1.00006 19.5 1.89549 19.5 3.00006V5.17163C19.5 5.70207 19.2893 6.21077 18.9142 6.58585L12.7929 12.7072C12.6054 12.8947 12.5 13.1491 12.5 13.4143V17.9457C12.5 18.2905 12.3224 18.611 12.03 18.7937L10.03 20.0437C9.36395 20.46 8.5 19.9811 8.5 19.1957V13.4143C8.5 13.1491 8.39464 12.8947 8.20711 12.7072L2.08579 6.58585Z" stroke="#455267" stroke-width="1.4"/>
+                  </svg>
+                  
+              </div>
+              <div class="datepicker">
+              <div   class="dropdown calanderheadingpanel" data-toggle="dropdown"  >
+               <p #dp  class="calhead">{{rangeSelected1}}</p> 
+               <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                </svg>          
+               <div class="calander dropdown-menu dropdown-menu-right">
+                 <div class="selectionpanel">
+               </div>
+                <bs-daterangepicker-inline style=" margin: 0px;
+                display: contents;"  type="text"
+                bsDaterangepicker
+                placement="bottom|right"
+                [bsValue]="bsValue"
+                (bsValueChange)="onDateChange($event,'missed_date')"
+                [bsConfig]="bsConfig">
+                
+              </bs-daterangepicker-inline>
+              <div class="datepreviewpanel">
+                <div class="previewmain">
+                  <p class="selectedvalue">{{datepreviewstart}}</p><span><svg style="margin: 9px;" width="12" height="3" viewBox="0 0 12 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.2383 2.23828H0.761719V0.761719H11.2383V2.23828Z" fill="#162741"/>
+                    </svg>
+                    </span><p  class="selectedvalue">{{datepreviewend}}</p> 
+                </div>
+  
+                <div class="buttonpanelfordate">
+                  <button (click)="canceldaterange('missed_date')" class="cancel">Cancel</button>
+                  <button class="applybtn">Apply</button>
+                </div>
+                </div>
+              </div>
+            </div> </div>
+        
+            <div class="searchpanel"  >
+            
+              <Input type="text" (keyup)="search($event.target.value,'missed')" class="form_input search" placeholder="Search by name or user id"/>
+            </div>
+          </div>
+        </div>
+      <div class="datatable" >
+        <table [hidden]="showmissed" class="showtable">
+          <thead>
+            <tr>
+              <th  class="fullnamecol"  style="padding-left: 30px;">FULL NAME & ID</th>
+              <th class="imagetag" >USER INFO</th>
+              <th style="width:15%;">CALL TYPE</th>
+              <th style="width:15%; text-align: center;">CALLED AT</th>
+              <th style="width:15%; text-align: center;">WAIT TIME</th>
+              <th style="width:15%;">REASON</th>
+              <th style="width: 5%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="mainlist" *ngFor="let data of  missed_call">
+              <td style="padding-left: 30px;"><p class="username">{{data?.name}}</p>
+              <p class="id">{{data?.user_id}}</p></td>
+              <td ><img class="userinfoicon" height="18" width="18" [src]="changecountryflag(data?.language_icon)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changebrowser(data?.browser)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changedevicetype(data?.mobile)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+              </td>
+               <td class="calltype">
+                <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 17px;" alt=""> {{changecalltype(data?.is_video)}}
+                </td>
+                <td style="text-align: center;">{{gettimeduration(data?.missed_at)}}</td>
+                <td style="text-align: center;">{{calculatetime(data?.wait_time)}}</td>
+                <td class="reason"> 
+               {{getreasonformissedcall(data?.reason)}}
+              </td>
+              <td style="text-align: right;">
+                </td>
+            </tr>
+            
+        
+          </tbody>
+        </table>
+
+        <div class="cardspanel">
+       
+
+          <div class="cardsitem" *ngFor="let data of  missed_call; let i=index;">
+
+            
+            <div style="    padding-left: 16px;
+            padding-right: 16px;  " >
+              <div class="iconpanel" >
+                  <div [ngClass]="{ rotateicon: isExpand(data.call_uuid+1) }" (click)="getExpandeditem(data.call_uuid+1)" class="notrorateicon"></div>
+              </div>
+              <div class="durationpanel">
+                <p class="callmissedat">{{gettimeduration(data?.missed_at)}}</p>
+              </div>
+              <div class="usernamepanel">
+                <p class="agentusername">{{data?.name}}</p>
+              </div>
+              <div class="reasonpanel">
+                <p class="callreason">{{getreasonformissedcall(data?.reason)}}</p>
+              </div>
+              <div class="calltypepanel">
+                <img height="16" width="16" [src]="changecalltypeicon(data?.is_video)" alt="" srcset="">
+              </div>
+            </div>
+           
+            <div class="showpanel" [ngClass]="{ expandedpanel: isExpand(data.call_uuid+1) }">
+              <div class="agentidpanel">
+                <p class="agentinfoheading">AGENT</p>
+                <p class="agentinfodata">{{data?.user_id}}</p>
+              </div>
+              <div class="agentinfopanel">
+                <p class="agentinfoheading">WAIT TIME</p>
+                <p class="agentinfodata">{{calculatetime(data?.wait_time)}}</p>
+
+              </div>
+              <div class="userinfopanel">
+                <p class="agentinfoheading">USER INFO</p>
+                <img class="userinfoicon" height="10" width="10" [src]="changecountryflag(data?.language_icon)" alt="">
+                <img  class="userinfoicon" height="18" width="10" [src]="changebrowser(data?.browser)" alt="">
+                <img  class="userinfoicon" height="10" width="10" [src]="changedevicetype(data?.mobile)" alt="">
+                <img  class="userinfoicon" height="10" width="10" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="callindicationpanel" [hidden]="!showmissed_message">
+          <p class="numberofvailablerequest">{{size_missed_call}} missed requests</p>
+            </div>
+        <div [hidden]="showmissed_message">
+          <p class="call-status">There is no Missed requests yet.</p>
+  
+        </div>
+        <!-- <div class="pagedotspanel">
+          <div class="showdotsarea">
+            <div class="dots">
+            </div>
+            <div class="dots">
+            </div>
+            <div class="dots">
+            </div>
+            <div class="dots">
+            </div>
+          </div>
+      </div> -->
+    </div>
+    
+    <div [hidden]="!answered">
+      <div  class="dropdownpanels" style="margin-top: 30px;" >
+        <div class="languagepanel">
+          <div class="dropdown languages ">
+              <li style="height: 36px;">
+              <a class="languagetext" data-toggle="dropdown" aria-expanded="false">
+                {{selectedlanguagesfinish}}
+                <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                  </svg>
+              </a>  
+              <ul class="dropdown-menu languages" >
+                  <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="user" [checked]="allselectedtagfinish" (change)="getalllanguage($event.target.checked,'finished',0)" type="checkbox" id="count"> <label class="dropdownlistitem"  for="count"> 
+                      Select all languages
+                     </label></li> -->
+                  <li class="listitem"  *ngFor="let count of this.lang4" [ngValue]="count.name" > <input (click)="selectlanguageonebyone($event.target.checked,count.id)"  #i (change)="!i['checked']" [checked]="count.status" name="user"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
+                      {{count.name}}
+                     </label></li>
+              </ul>
+          
+               </li>
+          </div>
+        </div>
+          <div class="secondpanel">
+           
+            <div class="dropdown calltype" >  
+              <li style="height: 36px;">
+              <a class="languagetext"  data-toggle="dropdown" aria-expanded="false" >
+                 {{totalsizeofcalltype4}}
+                 <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                  </svg>
+              <!-- <i class="tagiconnn fa fa-chevron-down" aria-hidden="true"></i> -->
+              </a>  
+              <ul class="dropdown-menu calltype" >
+                  <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   name="call" [checked]="allselectedcall3" (change)="selectallcalltype($event.target.checked,'finished',0)" type="checkbox" id="call"> <label class="dropdownlistitem"  for="call"> 
+                      Select all call types
+                     </label></li> -->
+                  <li class="listitem"   *ngFor="let count of this.call4" [ngValue]="count.name" > <input (click)="selectcalltypeonebyone($event.target.checked,count.name)"   [checked]="count.status" name="call"  type="checkbox" [value]="count.name" [attr.id]="count.name+1"> <label class="dropdownlistitem"  [for]="count.name+1"> 
+                      {{count.name}}
+                     </label></li>
+               </ul>
+               </li>
+              </div>
+              <div class="mobilefilteropen">
+                <svg (click)="openmobilefilterpopup('answered')"  style="position: initial;
+                margin: 0 auto;
+                margin-top: 14px;
+                text-align: center;" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2.08579 6.58585C1.71071 6.21077 1.5 5.70207 1.5 5.17163V3.00006C1.5 1.89549 2.39543 1.00006 3.5 1.00006H17.5C18.6046 1.00006 19.5 1.89549 19.5 3.00006V5.17163C19.5 5.70207 19.2893 6.21077 18.9142 6.58585L12.7929 12.7072C12.6054 12.8947 12.5 13.1491 12.5 13.4143V17.9457C12.5 18.2905 12.3224 18.611 12.03 18.7937L10.03 20.0437C9.36395 20.46 8.5 19.9811 8.5 19.1957V13.4143C8.5 13.1491 8.39464 12.8947 8.20711 12.7072L2.08579 6.58585Z" stroke="#455267" stroke-width="1.4"/>
+                  </svg>
+                  
+              </div>
+                <div class="datepicker">
+              <div style="height: 34px; list-style: none;"  class="dropdown calanderheadingpanel" data-toggle="dropdown"  >
+               
+              <p  #dp  class="calhead">{{rangeSelected2}}</p> 
+              <svg  class="arrowdownicon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.05566 0.371094L4.50098 3.81641L7.94629 0.371094L9.00098 1.42578L4.50098 5.92578L0.000976562 1.42578L1.05566 0.371094Z" fill="#162741"/>
+                </svg>            <div class="calander dropdown-menu dropdown-menu-right">
+                 <div class="selectionpanel">
+              </div>
+                <bs-daterangepicker-inline style=" margin: 0px;
+                display: contents;"  type="text"
+                bsDaterangepicker
+                placement="bottom"
+                [bsValue]="bsValue"
+                (bsValueChange)="onDateChange($event,'finished_date')"
+                [bsConfig]="bsConfig">
+                
+              </bs-daterangepicker-inline>
+              <div class="datepreviewpanel">
+                <div class="previewmain">
+                  <p class="selectedvalue">{{datepreviewstart1}}</p><span><svg style="margin: 9px;" width="12" height="3" viewBox="0 0 12 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.2383 2.23828H0.761719V0.761719H11.2383V2.23828Z" fill="#162741"/>
+                    </svg>
+                    </span><p  class="selectedvalue">{{datepreviewend1}}</p> 
+                </div>
+  
+                <div class="buttonpanelfordate">
+                  <button (click)="canceldaterange('finished_date')" class="cancel">Cancel</button>
+                  <button class="applybtn">Apply</button>
+  
+                </div>
+              </div>
+            </div>  </div> </div>
+          
+            <div class="searchpanel">
+             
+              <Input type="text" (keyup)="search($event.target.value,'finished')" class="form_input search" placeholder="Search by name or user id"/>
+            </div>
+          </div>
+        </div>
+      <div class="datatable" >
+        <table [hidden]="showanswered" class="showtable">
+          <thead>
+            <tr>
+              <th  style="width:20%; padding-left: 30px;">FULL NAME & ID</th>
+              <th  class="imagetag" >USER INFO</th>
+              <th style="width:10%;">CALL TYPE</th>
+              <th style="width:15%; text-align: center;">CALLED AT</th>
+              <th style="padding-left: 60px;" class="agentnamecol" >AGENT NAME</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="mainlist" *ngFor="let data of  answered_call">
+              <td style="padding-left: 30px;"><p  class="username">{{data?.name}}</p>
+                <p class="id">{{data?.user_id}}</p></td>
+              <td><img style="border-radius: 50%;" class="userinfoicon" height="18" width="18" [src]="changecountryflag(data?.language_icon)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changebrowser(data?.browser)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changedevicetype(data?.mobile)" alt="">
+                <img  class="userinfoicon" height="18" width="18" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+              </td>
+              <td>
+                <img [src]="changecalltypeicon(data?.is_video)"  style="margin-right: 6px;" alt=""> {{changecalltype(data?.is_video)}}
+                </td>
+                <td style="text-align: center;">{{gettimeduration(data?.call_started_at)}}</td>
+              <td style="padding-left: 60px;"> 
+                <img class="agentpic" height="36p" width="36" src="../../../assets/gigaaa_logo.png" alt="">
+              <div style="width: 100px;
+              white-space: nowrap;
+              display: inline-block;
+              vertical-align: inherit;
+              margin-left: 15px;">
+                 <p class="username">{{data?.agent?.display_name}}</p>
+                 <!-- <p>{{data?.agent.agent_id}}</p> -->
+              </div>
+              </td>
+         
+            </tr>
+           
+          </tbody>
+        </table>
+        <div class="cardspanel">
+          <div class="cardsitem" *ngFor="let data of  answered_call; let i=index;">
+            <div style="    padding-left: 16px;
+            padding-right: 16px;  " >
+              <div class="iconpanel" >
+                  <div [ngClass]="{ rotateicon: isExpand(data.call_uuid+1) }" (click)="getExpandeditem(data.call_uuid+1)" class="notrorateicon"></div>
+              </div>
+              <div class="usernamepanel" style="width: 60%;">
+                <p class="agentusername">{{data?.name}}</p>
+              </div>
+              <div class="durationpanel" style="width: 20%;">
+                <p class="callmissedat">{{gettimeduration(data?.call_started_at)}}</p>
+              </div>
+              <div class="calltypepanel"style="width: 10%;">
+                <img height="16" width="16" [src]="changecalltypeicon(data?.is_video)" alt="" srcset="">
+              </div>
+            </div>
+           
+            <div class="showpanel" [ngClass]="{ expandedpanel: isExpand(data.call_uuid+1) }">
+              <div class="agentinfopanel" style="width: 50%;">
+                <img class="agentpic" height="36p" width="36" src="../../../assets/gigaaa_logo.png" alt="">
+                <p class="agentusername name">{{data?.agent?.display_name}}</p>
+              </div>
+              <div class="agentidpanel" style="width: 25%;">
+                <p class="agentinfoheading">AGENT</p>
+                <p class="agentinfodata">12345</p>
+              </div>
+              <div class="userinfopanel" style="width: 25%; text-align: right;">
+                <p class="agentinfoheading">USER INFO</p>
+                <img class="userinfoicon" height="10" width="10" [src]="changecountryflag(data?.language_icon)" alt="">
+                <img  class="userinfoicon" height="18" width="10" [src]="changebrowser(data?.browser)" alt="">
+                <img  class="userinfoicon" height="10" width="10" [src]="changedevicetype(data?.mobile)" alt="">
+                <img  style="margin-right: 0px;" class="userinfoicon" height="10" width="10" [src]="changeoperatingsystem(data?.operating_system)" alt="">
+
+              </div>
+            </div>
+          </div>
+          </div>
+        <div class="callindicationpanel"[hidden]="!showanswered_message">
+          <p class="numberofvailablerequest">{{size_answered_call}} missed requests</p>
+            </div>
+        <div  [hidden]="showanswered_message">
+          <p class="call-status">There is no Answered requests yet.</p>
+        </div>
+      </div>
+      
+    </div>
+  <!--   
+    <div class="callindicationpanel">
+  <p class="numberofvailablerequest">5 requests</p>
+    </div>  -->
+    
+  </div>
+  

@@ -1,0 +1,94 @@
+<div style="display: block;">
+    <div class="inviteheading">
+        <p class="heading">Invite Human Agents</p>
+        </div>
+    <div class="closebutton">
+      <span class="material-icons closebtn" mat-button [mat-dialog-close]="true" cdkFocusInitial>
+        close
+        </span>
+    </div>
+  </div>
+<div class="initetext" >
+    <div class="fordesktop" style="margin-top: 20px;">
+        <p class="desp">Invite human agents to your integration now and get started with AI Customer Support. </p>
+        </div>
+<div class="hidde" style="margin-top: 20px;">
+<p class="desp">Invite human agents to your <br> integration now and get started with<br> AI Customer Support. </p>
+</div>
+</div>
+
+<div style="margin-top: 24px;text-align: left; display: block;">
+<p class="heading1" >E-mail Address</p>
+
+<p class="heading1">Language</p>
+</div>
+
+<form name="form" [formGroup]="form" (ngSubmit)="getinviteagentvalidation()" style="margin-top: 24px;">
+   
+    <div  formArrayName="emailgroup" >
+        <div [formGroupName]="i" *ngFor="let creds of emailgrouparray.controls; let i = index;" >
+            <p class="mobilelanguages">Email</p>
+            <div class="forfieldsformobile"  style="display: inline-block;     width: 45%;
+            margin-right: 5%;
+           ">
+           <input formControlName="email" style="display: inline-block;  " type="text" placeholder="name@example.com" class="form_input" required>
+            </div>
+            <div class=" mobilemargin" style="display: inline-flex; width: 50%;">
+                            <p class="mobilelanguages">Language</p>
+             <div class="dropdown langdropdown" >
+              <a  class="languagetext form_input"  data-toggle="dropdown">
+                          
+                            {{ checkhowmanyselected(this.getlangselect(i).length)}}
+                      
+                            <i class="tagiconnn fa fa-chevron-down" aria-hidden="true" ></i></a>
+                                <ul class="dropdown-menu">
+                                    <!-- <li style="border-bottom: 2px solid  #E5E5E5; border-radius: 0px;" class="listitem"   > <input style="padding-bottom: 12px;"   (change)="checkAll($event.target.checked,i)" type="checkbox" [checked]="setallcheckedbutton(this.getlangselect(i).length)" > <label class="dropdownlistitem"  > 
+                                       Select languages
+                                      </label></li> -->
+                                      <div formArrayName="language_ids" >
+                                          <div class="inner">
+                                            <li  *ngFor="let d of getlangselect(i).controls; let count of this.lang; let j=index; "  class="listitem">  <input [name]='j'  (change)="$event ? removeandaddlang($event,i,j,count.id):false" [value]="count.id" 	[checked]="isRowSelected(i,j) || getselectedonebyone(this.getlangselect(i).length)"  type="checkbox"   [attr.id]="count.id" required> <label [for]="count.id" class="dropdownlistitem"  > 
+                                                {{count.name}}
+                                               </label></li>
+                                          </div>
+                                      
+                                      </div>
+                                    </ul>
+                                
+                                </div>
+                            <div class="deletepanel">
+                       
+                              <svg   (click)="removeagentrow(i)" style="vertical-align: inherit;
+                       
+                                cursor: pointer;" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.27344 13.7266C5.60156 15.0286 7.17708 15.6797 9 15.6797C10.8229 15.6797 12.3854 15.0286 13.6875 13.7266C15.0156 12.3984 15.6797 10.8229 15.6797 9C15.6797 7.17708 15.0156 5.61458 13.6875 4.3125C12.3854 2.98438 10.8229 2.32031 9 2.32031C7.17708 2.32031 5.60156 2.98438 4.27344 4.3125C2.97135 5.61458 2.32031 7.17708 2.32031 9C2.32031 10.8229 2.97135 12.3984 4.27344 13.7266ZM3.10156 3.14062C4.74219 1.5 6.70833 0.679688 9 0.679688C11.2917 0.679688 13.2448 1.5 14.8594 3.14062C16.5 4.75521 17.3203 6.70833 17.3203 9C17.3203 11.2917 16.5 13.2578 14.8594 14.8984C13.2448 16.513 11.2917 17.3203 9 17.3203C6.70833 17.3203 4.74219 16.513 3.10156 14.8984C1.48698 13.2578 0.679688 11.2917 0.679688 9C0.679688 6.70833 1.48698 4.75521 3.10156 3.14062ZM4.82031 8.17969H13.1797V9.82031H4.82031V8.17969Z" fill="#616B7B"/>
+                                </svg> <span (click)="removeagentrow(i)"
+                                 class="deleteagenttext">Delete agent</span>
+                                
+                              </div>
+                              <!-- border -->
+                     <div class="borderformobile" >
+                     </div>
+                           
+                   </div>
+        </div>
+      
+    </div>
+<div class="addnewagentrowpanel" >
+    <p class="addnewagent" (click)="addinvitelist()">
+        + Add agent
+    </p>
+</div>
+<div  class="sendinvitepanel">
+    <div style="display: inline-block; width: 50%; text-align: left;">
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="cancel">Cancel</button>
+
+    </div>
+    <div style="display: inline-block; width: 50%; text-align: right;">
+        <button type="submit" class="sendrequest">Send Invitation</button>
+    </div>
+
+</div></form> 
+
+
+        

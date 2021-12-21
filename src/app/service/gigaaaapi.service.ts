@@ -42,7 +42,7 @@ getHeaders() {
   return {
     "Content-Type": "application/json",
     Accept: "application/json",
-    Authorization: `Bearer ${this.authService.getLoggedUserToken()?.access_token}`
+    Authorization: `Bearer ${this.authService.token.access_token}`
   }
 }
 

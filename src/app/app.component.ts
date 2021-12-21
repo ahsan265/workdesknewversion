@@ -11,7 +11,6 @@ import * as color from 'string-to-color';
 import { sharedres_service } from './service/sharedres.service';
 import { MessageService } from './service/messege.service';
 import { agentsocketapi } from './service/agentsocketapi';
-import { textChangeRangeIsUnchanged } from 'typescript';
 
 @Component({
   selector: 'app-root',
@@ -100,10 +99,10 @@ export class AppComponent implements OnInit {
   ];
   slideOpened: boolean = false;
   oauthUrl = `${environment.oauth_url}`;
-  token = this.authService?.token?.access_token;
+  token: string;
   online_status: any;
   statusonline: boolean;
-  accessToken = new ReplaySubject(1);
+  accessToken;
   user: User;
   url: String;
 
@@ -111,7 +110,6 @@ export class AppComponent implements OnInit {
     public authService: AuthService,
     private apiService: GigaaaApiService,
     private cookie: CookieService,
-    private share_res: sharedres_service,
     private messegeService: MessageService,
     private agentsocketapi: agentsocketapi,
     private sharedres: sharedres_service,
@@ -131,24 +129,22 @@ export class AppComponent implements OnInit {
       }
     });
     this.authService.user.subscribe((r: any) => {
+      console.log('App component Auth Service', r);
       this.user = r;
-      console.log('BILOOO STA', this.user);
-      this.getallintegrationlist();
-      this.calltheagentsocket();
+      // this.getallintegrationlist();
+      // this.calltheagentsocket();
     });
 
-    this.accessToken.subscribe((res: any) => {
-      if (res) {
-        this.token = res.access_token;
-        this.apiService.getCurrentUser(this.token).subscribe((r: any) => {
-          r.api_token = this.token;
-          r.color = color.default(r.profile.first_name + r.profile.last_name);
-          this.authService.user.next(r);
-          this.cookie.set('gigaaa_user', JSON.stringify(r));
-          this.cookie.set('access_token_active', JSON.stringify(res));
-          this.router.navigate(['/dashboard']);
-        });
-      }
+    this.authService.accessToken.subscribe((res: any) => {
+      this.token = res.access_token;
+      this.apiService.getCurrentUser(this.token).subscribe((r: any) => {
+        r.api_token = this.token;
+        r.color = color.default(r.profile.first_name + r.profile.last_name);
+        this.authService.user.next(r);
+        this.cookie.set('gigaaa_user', JSON.stringify(r));
+        this.cookie.set('access_token_active', JSON.stringify(res));
+        this.router.navigate(['/dashboard']);
+      });
     });
   }
 
@@ -189,9 +185,9 @@ export class AppComponent implements OnInit {
   getallintegrationlist() {
     try {
       const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'));
-      var accesstoken = getdata.access_token;
+      var accesstokenMuhamed = getdata.access_token;
       var uuid = getdata.subscription_id.subsid.uuid;
-      this.apiService.getallintegration(accesstoken, uuid).subscribe((data) => {
+      this.apiService.getallintegration(accesstokenMuhamed, uuid).subscribe((data) => {
         this.integration = data;
 
         this.integration.forEach((element) => {

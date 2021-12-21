@@ -301,8 +301,8 @@ export class DashboardComponent implements OnInit {
      // getall languages
      public async getlllangugaes(): Promise<void>{
       const getdata = JSON.parse(localStorage.getItem('gigaaa-subscription'))
-       const accesstoken=getdata.access_token;
-     const subsid=getdata.subscription_id?.subsid?.uuid;
+      //  const accesstoken=getdata.access_token;
+    //  const subsid=getdata.subscription_id?.subsid?.uuid;
       const intid = JSON.parse(localStorage.getItem('intgid'))
       try{
         const languagee=[{name:'Arabic' ,status:false},
@@ -313,10 +313,10 @@ export class DashboardComponent implements OnInit {
         {name:'Turkish' ,status:false},
 
       ];
-      var  language= await this.gigaaaservice.getAllLanguages(accesstoken,subsid,intid.int_id)
-        let updatearr = language.map((item, i) => Object.assign({}, item, languagee[i]));
-          console.log(updatearr)
-         this.lang=updatearr;
+      // var  language= await this.gigaaaservice.getAllLanguages(accesstoken,subsid,intid.int_id)
+      //   let updatearr = language.map((item, i) => Object.assign({}, item, languagee[i]));
+      //     console.log(updatearr)
+      //    this.lang=updatearr;
          //this.getalllanguage(false);
 
       }

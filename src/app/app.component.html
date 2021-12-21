@@ -6,9 +6,11 @@
   <div class="consoleWrap">
     <gigaaa-header *ngIf="this.authService.isLoggedIn()" (signin)="onSignin($event)"
       (addAnotherAccount)="onAddAnotherAccount($event)" (noLoggedUsers)="onNoLoggedUsers($event)"
-      [accessTokenSubject]="accessToken" [token]="token" [oauthUrl]="oauthUrl" [slideOpened]="slideOpened"
-      [redirectUri]="redirectUri" [pageTitle]="pageTitle" [user]="this.authService.getLoggedUser()">
+      [accessTokenSubject]="this.authService.accessToken" [token]="this.authService.token.access_token"
+      [oauthUrl]="oauthUrl" [slideOpened]="slideOpened" [redirectUri]="redirectUri" [pageTitle]="pageTitle"
+      [user]="this.authService.getLoggedUser()">
     </gigaaa-header>
+
     <router-outlet></router-outlet>
   </div>
   <div class="onlineswitchpanel" *ngIf="this.authService.isLoggedIn()">

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../service/auth.service';
-import { oAuthService } from '../service/authservice.service';
 
 @Component({
   selector: 'app-logout',
@@ -15,13 +14,12 @@ export class LogoutComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router,
     private cookie: CookieService
 
   ) { }
 
   ngOnInit(): void {
-
+    this.authService.accessToken.next(null);
     this.cookie.deleteAll();
     this.authService.logOff();
     location.href = this.redirectUri;

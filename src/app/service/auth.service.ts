@@ -11,6 +11,7 @@ import { oAuthService } from './authservice.service';
 export class AuthService implements CanActivate {
 
   public user: ReplaySubject<User> = new ReplaySubject(1);
+  public accessToken: ReplaySubject<any> = new ReplaySubject(1);
   token: any;
 
   constructor(
@@ -22,6 +23,7 @@ export class AuthService implements CanActivate {
     }
     if (this.cookie.get('access_token_active')) {
       this.token = JSON.parse(this.cookie.get('access_token_active'));
+      console.log('AUTH SERVICE TOKEN', this.token);
     }
    }
   canActivate(): boolean {
@@ -43,9 +45,6 @@ export class AuthService implements CanActivate {
 
   public getLoggedUser(): any {
     return JSON.parse(this.cookie.get('gigaaa_user'));
-  }
-  public getLoggedUserToken():any{
-    return JSON.parse(this.cookie.get('access_token_active'));
   }
 
 }

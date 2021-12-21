@@ -67,12 +67,12 @@ export class MainPageComponent implements OnInit {
   accessToken = new ReplaySubject(1);
 
   ngOnInit(): void {
- 
+
     this.pageTitle = this.sidebarData[0].name;
-    this.authService.user.subscribe((r: any) => {
-      console.log(r)
-      this.user = r;
-    });
+    // this.authService.user.subscribe((r: any) => {
+    //   // console.log(r)
+    //   this.user = r;
+    // });
 
     this.accessToken.subscribe((res: any) => {
       this.authService.token = res;

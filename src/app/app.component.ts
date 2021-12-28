@@ -10,6 +10,7 @@ import * as color from 'string-to-color';
 import { sharedres_service } from './service/sharedres.service';
 import { MessageService } from './service/messege.service';
 import { agentsocketapi } from './service/agentsocketapi';
+import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -107,9 +108,9 @@ export class AppComponent implements OnInit {
 
   // This is property for show/hide online button
   showOnlineButton: boolean = true;
-
-  userStatus: boolean = JSON.parse(localStorage.getItem('user-status'));
-  sendUserStatus: boolean;
+  userStatus: boolean;
+  sendUserStatus = new ReplaySubject(1);
+  sendUserText: string = '';
 
   constructor(
     public authService: AuthService,
@@ -124,13 +125,10 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    if (!this.userStatus) {
-      console.log('Ne postoji');
-      this.sendUserStatus = false;
-    } else {
-      this.sendUserStatus = true;
-      console.log('Postoji', this.sendUserStatus);
-    }
+    this.userStatus = JSON.parse(localStorage.getItem('user-status'));
+    this.sendUserStatus.subscribe((res: any) => {
+      localStorage.setItem('user-status', JSON.stringify(res));
+    });
     this.route.queryParams.subscribe((params) => {
       if (params.code != null) {
         this.pageTitle = 'Dashboard';
@@ -141,7 +139,6 @@ export class AppComponent implements OnInit {
       }
     });
     this.authService.user.subscribe((r: any) => {
-      console.log('App component Auth Service', r);
       this.user = r;
       // this.getallintegrationlist();
       // this.calltheagentsocket();
@@ -165,7 +162,6 @@ export class AppComponent implements OnInit {
   }
 
   isSlideOpened(slideOpened: any) {
-    console.log(slideOpened);
     this.slideOpened = slideOpened;
   }
 
@@ -215,21 +211,18 @@ export class AppComponent implements OnInit {
         );
 
         let update_integration_list = updatearr;
-        console.log(update_integration_list);
         this.sidebarData.forEach((element) => {
           if (element.name == 'Select integration') {
             element.dropdownItems = update_integration_list;
             element.name = this.lastuserintegration;
           }
         });
-        console.log(this.sidebarData);
       });
     } catch (error) {
       this.handleLoginRegisterError(error.error.error);
     }
   }
   private handleLoginRegisterError(response: any) {
-    console.log(response);
     this.messegeService.setErrorMessage(
       response.error.error,
       'toast-bottom-right'
@@ -249,7 +242,6 @@ export class AppComponent implements OnInit {
   calltheagentsocket() {
     this.sharedres.runthesocketforagent$.subscribe((data) => {
       const status = JSON.parse(localStorage.getItem('user-status'));
-      console.log(data);
       if (data == 1) {
         if (status == false) {
           this.showonlinetatus(1);
@@ -258,18 +250,6 @@ export class AppComponent implements OnInit {
         }
       }
     });
-  }
-  public setonlinestatus(e) {
-    console.log('Idemooooooo', e);
-    localStorage.setItem('user-status', JSON.stringify(e));
-    this.agentsocketapi.send_isonline_status(e);
-    if (e == true) {
-      this.online_status = 'Online';
-      this.statusonline = true;
-    } else if (e == false) {
-      this.online_status = 'Away';
-      this.statusonline = false;
-    }
   }
   public openwebsites(val) {
     window.open(val, '_blank');
@@ -285,7 +265,5 @@ export class AppComponent implements OnInit {
   // This is function for online butotn event
   isOnlineButtonClicked(event: any) {
     console.log('From app', event);
-    console.log('SEND USER STATUS', this.sendUserStatus);
-    localStorage.setItem('user-status', JSON.stringify(event));
   }
 }

@@ -2,7 +2,7 @@
   <gigaaa-sidebar *ngIf="this.authService.isLoggedIn()" [logo]="logo" [logoCollapsed]="logoCollapsed"
     [sidebarData]="sidebarData" (newRouteName)="addNewRouteName($event)" (slideOpened)="isSlideOpened($event)"
     (isSidebarOpen)="isSidebarOpen($event)" [showOnlineButton]="showOnlineButton"
-    (isOnlineButtonClicked)="isOnlineButtonClicked($event)">
+    (isOnlineButtonClicked)="isOnlineButtonClicked($event)" [currentUserStatus]="this.sendUserStatus">
   </gigaaa-sidebar>
   <div class="consoleWrap">
     <gigaaa-header *ngIf="this.authService.isLoggedIn()" (signin)="onSignin($event)"

@@ -108,6 +108,9 @@ export class AppComponent implements OnInit {
   // This is property for show/hide online button
   showOnlineButton: boolean = true;
 
+  userStatus: boolean = JSON.parse(localStorage.getItem('user-status'));
+  sendUserStatus: boolean;
+
   constructor(
     public authService: AuthService,
     private apiService: GigaaaApiService,
@@ -121,6 +124,13 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    if (!this.userStatus) {
+      console.log('Ne postoji');
+      this.sendUserStatus = false;
+    } else {
+      this.sendUserStatus = true;
+      console.log('Postoji', this.sendUserStatus);
+    }
     this.route.queryParams.subscribe((params) => {
       if (params.code != null) {
         this.pageTitle = 'Dashboard';
@@ -250,7 +260,7 @@ export class AppComponent implements OnInit {
     });
   }
   public setonlinestatus(e) {
-    console.log(e);
+    console.log('Idemooooooo', e);
     localStorage.setItem('user-status', JSON.stringify(e));
     this.agentsocketapi.send_isonline_status(e);
     if (e == true) {
@@ -275,5 +285,7 @@ export class AppComponent implements OnInit {
   // This is function for online butotn event
   isOnlineButtonClicked(event: any) {
     console.log('From app', event);
+    console.log('SEND USER STATUS', this.sendUserStatus);
+    localStorage.setItem('user-status', JSON.stringify(event));
   }
 }

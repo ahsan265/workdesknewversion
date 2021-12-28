@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from './model/User';
 import { AuthService } from './service/auth.service';
@@ -39,7 +38,7 @@ export class AppComponent implements OnInit {
   select_integration_icon = '../assets/assets_workdesk/select_integration.svg';
 
   logo = '../assets/logo.png';
-  logoCollapsed = '../../assets/images/sidemenu/gigaaa-layer-logo-1.svg';
+  logoCollapsed = '../../assets/images/sidemenu/gigaaa-layer-logo-1.png';
 
   websites = [
     {
@@ -106,6 +105,9 @@ export class AppComponent implements OnInit {
   user: User;
   url: String;
 
+  // This is property for show/hide online button
+  showOnlineButton: boolean = true;
+
   constructor(
     public authService: AuthService,
     private apiService: GigaaaApiService,
@@ -154,7 +156,6 @@ export class AppComponent implements OnInit {
 
   isSlideOpened(slideOpened: any) {
     console.log(slideOpened);
-
     this.slideOpened = slideOpened;
   }
 
@@ -262,5 +263,17 @@ export class AppComponent implements OnInit {
   }
   public openwebsites(val) {
     window.open(val, '_blank');
+  }
+
+
+  // This is callback function for getting information about sidebar
+  isSidebarOpen(event: any) {
+    console.log('Is sidebar open', event);
+  }
+
+
+  // This is function for online butotn event
+  isOnlineButtonClicked(event: any) {
+    console.log('From app', event);
   }
 }
